@@ -42,6 +42,10 @@ and your local ~/.ansible.cfg
 
         mkpasswd --method=des
 
+# Edit vault files
+
+        ansible-vault --vault-password-file=.vault-password edit group_vars/fileserver/vault
+
 # More
 
 To get more involved read:
