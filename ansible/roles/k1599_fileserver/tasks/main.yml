@@ -1,0 +1,4 @@
+---
+- name: Ensure package samba is installed
+  package:
+    name: samba

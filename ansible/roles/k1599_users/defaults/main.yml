@@ -1,0 +1,10 @@
+---
+present_groups:
+  - fileserver
+
+present_users:
+  - name: 'guest'
+    comment: "Gaeste sind willkommen"
+    password: "{{ _vault_userpassword['guest'] }}"
+  - name: 'fapra1599'
+    password: "{{ _vault_userpassword['fapra1599'] }}"

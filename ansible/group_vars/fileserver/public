@@ -1,0 +1,26 @@
+---
+absent_groups:
+  - test
+
+present_users:
+  - name: 'guest'
+    comment: "Gaeste sind willkommen"
+    password: "{{ _vault_userpassword['guest'] }}"
+  - name: 'fapra1599'
+    groups: 'sudo,users'
+    password: "{{ _vault_userpassword['fapra1599'] }}"
+  - name: 'sgirrulat'
+    groups: 'sudo,users'
+    password: "{{ _vault_userpassword['sgirrulat'] }}"
+  - name: 'sjansen'
+    groups: 'sudo,users'
+    password: "{{ _vault_userpassword['sjansen'] }}"
+  - name: 'sbruch'
+    groups: 'sudo,users'
+    password: "{{ _vault_userpassword['sbruch'] }}"
+  - name: 'fhofmann'
+    groups: 'sudo,users'
+    password: "{{ _vault_userpassword['fhofmann'] }}"
+  - name: 'tgrosswendt'
+    groups: 'sudo,users'
+    password: "{{ _vault_userpassword['tgrosswendt'] }}"

@@ -1,0 +1,33 @@
+---
+- name: Ensure expected groups are created
+  group:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - present_groups
+
+- name: Ensure expected groups are absent
+  group:
+    name: "{{ item }}"
+    state: absent
+  with_items:
+    - "{{ absent_groups|default([]) }}"
+
+- name: Ensure expected users are created
+  user:
+    name: "{{ item.name }}"
+    password: "{{ item.password }}"
+    shell: '/bin/bash'
+    groups: "{{ item.groups|default('users') }}"
+    append: yes
+    comment: "{{ item.name|default('') }}"
+    state: present
+  with_items:
+    - "{{ present_users }}"
+
+- name: Ensure expected users are absend
+  user:
+    name: "{{ item  }}"
+    state: absent
+  with_items:
+    - "{{ absent_users|default([]) }}"

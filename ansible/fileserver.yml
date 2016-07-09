@@ -1,0 +1,6 @@
+---
+- hosts: fileserver
+  roles:
+    - k1599_common
+    - k1599_users
+    - k1599_fileserver
