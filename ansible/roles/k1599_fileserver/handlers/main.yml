@@ -1,0 +1,9 @@
+- name: restart_samba
+  service:
+    name: "{{ _smb_srv }}"
+    state: restarted
+
+- name: reload_samba
+  service:
+    name: "{{ _smb_srv }}"
+    state: reloaded

@@ -24,3 +24,5 @@ present_users:
   - name: 'tgrosswendt'
     groups: 'sudo,users'
     password: "{{ _vault_userpassword['tgrosswendt'] }}"
+
+k1599_fileserver_smbd_enabled: no

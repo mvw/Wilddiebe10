@@ -1,4 +1,23 @@
 ---
+- set_fact: 
+    _smb_srv: 'smbd'
+
 - name: Ensure package samba is installed
   package:
     name: samba
+
+- name: "Ensure service samba is started and enabled: {{ k1599_fileserver_smbd_enabled }}"
+  service:
+    name: "{{ _smb_srv }}"
+    state: started
+    runlevel: '2 3 4 5'
+    enabled: "{{ k1599_fileserver_smbd_enabled }}" 
+
+- name: Ensure /etc/samba/smb.conf is present
+  template:
+    src: 'etc/samba/smb.conf.j2'
+    dest: '/etc/samba/smb.conf'
+    owner: 'root'
+    group: 'root'
+    mode: '0644'
+  notify: reload_samba
