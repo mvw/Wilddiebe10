@@ -1,2 +1,2 @@
 [fileserver]
-fileserver ansible_host=138.201.175.250
+fileserver ansible_host="{{ fileserver_ip }}"

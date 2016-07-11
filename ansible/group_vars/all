@@ -1,0 +1,1 @@
+fileserver_ip: "{{ _vault_fileserver_ip }}"

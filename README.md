@@ -25,7 +25,7 @@ Run Ansible via
 
 or do a
 
-        ssh-copy-id root@138.201.175.250
+        ssh-copy-id root@<hostip>
         ansible-playbook -i inventory site.yml --vault-password-file=.vault-password -u root
 
 alternative you could use the commands 'make [ansible_with_password]' instead of the commands above.
@@ -33,7 +33,7 @@ alternative you could use the commands 'make [ansible_with_password]' instead of
 The length of the commands above depends to your ~/.ssh/config
 
         Host fileserver fapra_1599
-        HostName 138.201.175.250
+        HostName <hostip>
         User root
 
 and your local ~/.ansible.cfg
