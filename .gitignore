@@ -1,3 +1,9 @@
 *.pdf
 ./ansible/site.retry
 ./ansible/.vault-password
+*.sw?
+*~
+*#
+vendor
+*.bak
+.bundle
