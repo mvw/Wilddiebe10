@@ -5,7 +5,6 @@
 # Author: Sascha Girrulat <sascha@girrulat.de>
 #
 #
-# TODO: Add syntax checks for yml files
 
 SOURCE=Wilddiebe10.md
 PDF=$(SOURCE:md=pdf)
