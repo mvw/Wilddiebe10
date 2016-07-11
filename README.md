@@ -17,15 +17,18 @@ or
 
         pandoc -s Wilddiebe10.mdwn -o Wilddiebe10.pdf
 
-# Run Ansible
+# Run Ansibleq
+Run Ansible via
 
         ansible-playbook -i inventory site.yml --vault-password-file=.vault-password -u root -k
 
 
 or do a
 
-        ssh-copy-id 138.201.175.250
+        ssh-copy-id root@138.201.175.250
         ansible-playbook -i inventory site.yml --vault-password-file=.vault-password -u root
+
+alternative you could use the commands 'make [ansible_with_password]' instead of the commands above.
 
 The length of the commands above depends to your ~/.ssh/config
 
