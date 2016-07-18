@@ -5,7 +5,7 @@ author: 'Gruppe 10: Fileserver Süd'
 header-includes:
     - \usepackage{fancyhdr}
     - \pagestyle{fancy}
-    - \fancyhead[CO,CE]{Fileserver Süd}
+    - \fancyhead[CO,CE]{}
     - \fancyfoot[CO,CE]{}
     - \fancyfoot[LE,RO]{\thepage}
 abstract: 'Schaffen einer Kommunikationsstruktur für die Fa. Müller Backwaren.'
@@ -16,7 +16,6 @@ abstract: 'Schaffen einer Kommunikationsstruktur für die Fa. Müller Backwaren.
 \newpage
 
 # Vorwort
-
 ## Zusammenfassung
 Für das 'Fachpraktikum 1599 - Sicherheit im Internet' an der Fernuniversität
 Hagen wurde als Aufgabenstellung folgendes Szenario gegeben:
@@ -54,3 +53,49 @@ __Bearbeitungszeitraum__: Mo-18-Jul-2016 bis So-28-Aug-2016
 * Fabian Hofmann
 * Thomas Grosswendt
 * Sascha Girrulat
+
+\newpage
+
+# Projekt Definition
+## Vorstellung der Firma
+## Aufgabenbeschreibung 
+## Ist-Zustand
+## Ziele
+## Universitätsmittel 
+## Dokumentation
+## Personal
+## Zeitplanung
+
+# Anforderungsanalyse und Planung
+## Aufgabenverteilung
+## Voraussetzungen
+## Problemstellungen
+## Kommunikation
+### Gruppenintern
+### Gruppenübergreifend 
+
+# Entwurf
+## mögliche Lösungen 
+### Vergleich und auswahl Server
+### Vergleich und auswahl Fileserver 
+## Benutzermodell
+## Konfiguration
+## Dokumentation
+
+# Umsetzung
+## Installation
+### Server
+### Software
+## Dokumentation
+
+# Test und Integration
+## Integration in das Gruppennetzwerk
+## Absprache mit anderen Gruppen
+## Aufgetretene Probleme und Fehler
+
+# Abschluss
+## Soll-Ist-Vergleich
+## Übergabe /Abnahme
+## Weiterführung und Folgeprojekte
+### offene Punkte
+## Fazit
