@@ -16,10 +16,10 @@ abstract: 'Schaffen einer Kommunikationsstruktur für die Fa. Müller Backwaren.
 \tableofcontents
 \newpage
 
-# Vorwort
-## Zusammenfassung
+# Projekt Definition
+## Aufgabenbeschreibung
 Für das 'Fachpraktikum 1599 - Sicherheit im Internet' an der Fernuniversität
-Hagen wurde als Aufgabenstellung folgendes Szenario gegeben:
+Hagen wurde als Aufgabenstellung folgendes Szenario definiert:
 
 Zwei fiktive Firmen Mayer Brot(Region Nord) und Müller Backwaren(Region Süd)
 haben fusioniert. Die daraus enstehenden Anforderungen, erzeugen auch für die
@@ -46,26 +46,27 @@ realisiert. Hierzu ist eine intensive Abstimmung mit den Gruppen Netzwerk und
 CA nötig da die Kommunikation über Zertifikate mit ensprechenden
 Vertrauensverhältnissen sichergestellt werden soll.
 
-__Bearbeitungszeitraum__: Mo-18-Jul-2016 bis So-28-Aug-2016
+## Ist-Zustand
+## Ziele
+## Universitätsmittel
+Seitens der Universität werden zur Kommunikation eine [Newsgroup][1] und die
+gesammelten E-Mailadressen zur Verfügung gestellt. Eine Bereitstellung von
+Unterlagen oder Hard- und Software durch die Universität findet nicht statt und
+muss vollumfänglich durch die Studenten zur Verfügung gestellt werden.
 
-## Teilnehmer Gruppe 10
+[1]: https://www.fernuni-hagen.de/www2news/thread.php?cluster=informatik-kurse.txt&group=feu.informatik.kurs.1599
+## Dokumentation
+## Personal
+### Teilnehmer
 * Silas Jansen
 * Stefan Bruch
 * Fabian Hofmann
 * Thomas Grosswendt
 * Sascha Girrulat
 
-\newpage
 
-# Projekt Definition
-## Vorstellung der Firma
-## Aufgabenbeschreibung 
-## Ist-Zustand
-## Ziele
-## Universitätsmittel 
-## Dokumentation
-## Personal
 ## Zeitplanung
+__Bearbeitungszeitraum__: Mo-18-Jul-2016 bis So-28-Aug-2016
 
 # Anforderungsanalyse und Planung
 ## Aufgabenverteilung
@@ -73,12 +74,14 @@ __Bearbeitungszeitraum__: Mo-18-Jul-2016 bis So-28-Aug-2016
 ## Problemstellungen
 ## Kommunikation
 ### Gruppenintern
-### Gruppenübergreifend 
+### Gruppenübergreifend
 
 # Entwurf
-## mögliche Lösungen 
+## mögliche Lösungen
 ### Vergleich und auswahl Server
-### Vergleich und auswahl Fileserver 
+
+
+### Vergleich und auswahl Fileserver
 ## Benutzermodell
 ## Konfiguration
 ## Dokumentation
