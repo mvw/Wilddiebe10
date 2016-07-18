@@ -7,6 +7,7 @@ header-includes:
     - \pagestyle{fancy}
     - \fancyhead[CO,CE]{}
     - \fancyfoot[CO,CE]{}
+    - \fancyfoot[LO,RE]{Gruppe 10 - File Süd}
     - \fancyfoot[LE,RO]{\thepage}
 abstract: 'Schaffen einer Kommunikationsstruktur für die Fa. Müller Backwaren.'
 ---
