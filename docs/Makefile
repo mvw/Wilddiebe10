@@ -25,4 +25,4 @@ pdf: ${PDF}
 #	pandoc -t beamer -s ${SOURCE} -o ${PDFSLIDE} --slide-level 2 -V theme:Hannover
 #
 ${PDF}: ${SOURCE} Makefile
-	pandoc -s ${SOURCE} -o ${PDF}
+	pandoc --number-sections -s ${SOURCE} -o ${PDF}

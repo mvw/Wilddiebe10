@@ -6,16 +6,22 @@ FaPra 1599 Uni Hagen
         apt-get install ansible sshpass pandoc
         echo <vaultpw> > .vault-password
 
-# Generate Docufiles
+# Generate Documentaion
+To ease the generation of the documentation files inside the doc folder you
+could use on of the commands below:
+
         make
 
 or
 
         make pdf
 
-or
+If you won't to do that all the time use conttest.
 
-        pandoc -s Wilddiebe10.mdwn -o Wilddiebe10.pdf
+        pip install conttest
+        conttest make
+
+That will generate the pdf all the time if something is changes inside the docs folder. 
 
 # Run Ansibleq
 Run Ansible via
@@ -51,6 +57,15 @@ and your local ~/.ansible.cfg
 
 # More
 
-To get more involved read:
+## Ansible
+To get more involved with Ansible take a look at:
 
-http://docs.ansible.com/ansible/playbooks_best_practices.html
+  http://docs.ansible.com/ansible/playbooks_best_practices.html
+
+## Pandoc
+To get more involved with pandoc take a look at:
+
+  http://pandoc.org/README.html
+
+## Latex
+  https://en.wikibooks.org/wiki/LaTeX
