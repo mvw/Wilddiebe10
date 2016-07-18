@@ -73,14 +73,23 @@ __Bearbeitungszeitraum__: Mo-18-Jul-2016 bis So-28-Aug-2016
 ## Voraussetzungen
 ## Problemstellungen
 ## Kommunikation
+Die Aufgabenstellungen der unterschiedlichen Gruppen erfordern eine Abstimming
+der Kommunikationswege für die Gruppeninterne und -externe Kommunikation.
+
 ### Gruppenintern
+Zur Kommunikation innerhalb der Gruppe wurde neben der Kommunikation über Mail
+und Newsgroup auch ein Mumbleserver genutzt. Dieser ermöglicht eine
+Platformunabhängige Anstimmung in Echtzeit. Dieser war zu Beginn des Projektes
+bereits vorhanden und wurde durch ein Gruppenmitglied zur Verfügung gestellt.
+Es gibt für alle gängigen Betriebsysteme einen Client. Die Registrierung
+erfolgt nach erstmaliger Anmeldung. Die hierfür benötigten Zugangsdaten werden
+auf Anfrage per Mail durch <sascha@girrulat.de> versand.
+
 ### Gruppenübergreifend
 
 # Entwurf
 ## mögliche Lösungen
 ### Vergleich und auswahl Server
-
-
 ### Vergleich und auswahl Fileserver
 ## Benutzermodell
 ## Konfiguration
