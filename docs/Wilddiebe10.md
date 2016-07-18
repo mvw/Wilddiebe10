@@ -99,7 +99,36 @@ __Bearbeitungszeitraum__: Mo-18-Jul-2016 bis So-28-Aug-2016
 
 # Abschluss
 ## Soll-Ist-Vergleich
+## Qualitätsicherung
 ## Übergabe /Abnahme
 ## Weiterführung und Folgeprojekte
 ### offene Punkte
 ## Fazit
+\begin{figure}
+  \caption{Dummy figure}
+\end{figure}
+
+
+| __Erforderliche Eigenschaften__ | Lösung A | Lösung B | Lösung C | Bemerkung |
+|---------------------------------|:--------:|:--------:|:--------:|:---------:|
+| Platformübergreifend            | x        |          |          |    (1)    |
+| Gruppen-/Benutzerverwaltung     |          | x        |          |    (2)    |
+|                                 |          |          |          |    (3)    |
+|                                 |          |          |          |           |
+|                                 |          |          |          |           |
+
+Table:  Demonstration of a grid table syntax.
+
+
+  Right     Left     Center     Default
+-------     ------ ----------   -------
+     12     12        12            12
+    123     123       123          123
+      1     1          1             1
+
+Table:  Demonstration of simple table syntax.
+
+\newpage
+\listoftables
+\newpage
+\listoffigures
