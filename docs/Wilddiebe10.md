@@ -124,6 +124,9 @@ Zentral?
 ### Backup/Restore
 Sharing zwischen Gruppe 5 und 10?
 ## Fazit
+# Quellenverzeichnis
+# Glossar 
+
 
 \begin{figure}
   \caption{Dummy figure}
