@@ -69,7 +69,7 @@ muss vollumfänglich durch die Studenten zur Verfügung gestellt werden.
 __Bearbeitungszeitraum__: Mo-18-Jul-2016 bis So-28-Aug-2016
 
 # Anforderungsanalyse und Planung
-## Aufgabenverteilung
+## Arbeitsweise
 ## Voraussetzungen
 ## Problemstellungen
 ## Kommunikation
@@ -86,12 +86,13 @@ erfolgt nach erstmaliger Anmeldung. Die hierfür benötigten Zugangsdaten werden
 auf Anfrage per Mail durch <sascha@girrulat.de> versand.
 
 ### Gruppenübergreifend
-
+Mumble, Mail Gruppe 5
 # Entwurf
 ## mögliche Lösungen
-### Vergleich und auswahl Server
-### Vergleich und auswahl Fileserver
+### Vergleich und Auswahl Server
+### Vergleich und Auswahl Fileserver
 ## Benutzermodell
+## Firewall
 ## Konfiguration
 ## Dokumentation
 
@@ -99,6 +100,7 @@ auf Anfrage per Mail durch <sascha@girrulat.de> versand.
 ## Installation
 ### Server
 ### Software
+
 ## Dokumentation
 
 # Test und Integration
@@ -111,8 +113,18 @@ auf Anfrage per Mail durch <sascha@girrulat.de> versand.
 ## Qualitätsicherung
 ## Übergabe /Abnahme
 ## Weiterführung und Folgeprojekte
-### offene Punkte
+### Sicherheit 
+BSI Grundschutz?
+### Betrieb
+ITIL?
+### Monitoring
+Systemmonitoring? BI Monitoring?
+### Rsyslog
+Zentral?
+### Backup/Restore
+Sharing zwischen Gruppe 5 und 10?
 ## Fazit
+
 \begin{figure}
   \caption{Dummy figure}
 \end{figure}
