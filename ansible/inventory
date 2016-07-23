@@ -1,5 +1,5 @@
-[fileserver]
-fileserver ansible_host="{{ fileserver_ip }}"
+[file_server]
+file_server ansible_host="{{ file_server_ip }}"
 
 [rsyslog_server]
-fileserver ansible_host="{{ fileserver_ip }}"
+file_server ansible_host="{{ file_server_ip }}"

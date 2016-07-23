@@ -6,12 +6,12 @@
   package:
     name: samba
 
-- name: "Ensure service samba is started and enabled: {{ k1599_fileserver_smbd_enabled }}"
+- name: "Ensure service samba is started and enabled: {{ k1599_file_server_smbd_enabled }}"
   service:
     name: "{{ _smb_srv }}"
     state: started
     runlevel: '2 3 4 5'
-    enabled: "{{ k1599_fileserver_smbd_enabled }}"
+    enabled: "{{ k1599_file_server_smbd_enabled }}"
 
 - name: Ensure /etc/samba/smb.conf is present
   template:

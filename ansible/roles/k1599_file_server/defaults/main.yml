@@ -1,0 +1,3 @@
+k1599_file_server_bind_interfaces_only: 'yes'
+k1599_file_server_workgroup: 'fapra1599'
+k1599_file_server_smbd_enabled: yes

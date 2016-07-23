@@ -1,3 +1,0 @@
-k1599_fileserver_bind_interfaces_only: 'yes'
-k1599_fileserver_workgroup: 'fapra1599'
-k1599_fileserver_smbd_enabled: yes

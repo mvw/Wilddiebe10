@@ -1,6 +1,6 @@
 ---
 present_groups:
-  - fileserver
+  - file_server
 
 present_users:
   - name: 'guest'
