@@ -1,0 +1,50 @@
+# Wir sind Clienten
+client
+
+#erlaubt dem VPN-Partner die IP-Adresse zu aendern
+float
+
+# Routingmodus
+dev tun
+
+#MTU: Fragmentierung, sollte der Einstellung auf dem Server
+#entsprechen, daher am besten nicht aendern
+tun-mtu 1492
+
+#tcp oder udp
+proto udp
+
+#Server IP und port
+remote {{ k1599_fileserver_ovpn_server }} 1194
+
+#Authentifizierung des Servers ueber Common Name im Zertifikat
+verify-x509-name {{ k1599_fileserver_ovpn_server_cn }} name
+
+#Zertifikate
+#Root-Zertifikat
+ca certs/ca-chain.cert.pem
+#Eigenes Zertifikat
+cert certs/cert.pem
+#persoenlicher Schluessel
+key certs/privkey.pem
+
+#Authentifizierung
+auth SHA256
+
+#Die Ports werden dynamisch ausgewaehlt
+nobind
+
+#Kompression
+comp-lzo
+
+# Die Key-Dateien werden nicht neu gelesen, wenn der Befehl
+#--ping-restart ausgefuehrt werden soll.
+persist-key
+
+#TUN/TAP-Device wird nicht geschlossen und neugestartet, wenn der Befehl
+# --ping-restart ausgefuehrt werden soll.
+persist-tun
+
+#Logging 0, (testing:5)
+verb 3
+

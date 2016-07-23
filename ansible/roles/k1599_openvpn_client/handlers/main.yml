@@ -1,0 +1,9 @@
+- name: restart_openvpn
+  service:
+    name: "{{ _openvpn_clt }}"
+    state: restarted
+
+- name: reload_openvpn
+  service:
+    name: "{{ _openvpn_clt }}"
+    state: reloaded

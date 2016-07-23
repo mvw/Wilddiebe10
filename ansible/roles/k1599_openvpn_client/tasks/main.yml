@@ -1,0 +1,30 @@
+---
+- set_fact:
+    _openvpn_clt: 'openvpn@client'
+
+- name: Ensure package openvpn is installed
+  package:
+    name: openvpn
+
+- name: Copy certs
+  file: path=/etc/openvpn/certs/ state=directory
+- copy: content="{{ _vault_ca_chain_cert }}" dest=/etc/openvpn/certs/ca-chain.cert.pem owner=root group=root mode=0644
+- copy: content="{{ _vault_cert }}" dest=/etc/openvpn/certs/cert.pem owner=root group=root mode=0644
+- copy: content="{{ _vault_cert_key }}" dest=/etc/openvpn/certs/privkey.pem owner=root group=root mode=0600
+
+- name: Ensure /etc/openvpn/client.conf is present
+  template:
+    src: 'etc/openvpn/client.conf.j2'
+    dest: '/etc/openvpn/client.conf'
+    owner: 'root'
+    group: 'root'
+    mode: '0644'
+  notify: reload_openvpn
+
+- name: "Ensure service openvpn is started and enabled: {{ k1599_fileserver_ovpn_enabled }}"
+  service:
+    name: "{{ _openvpn_clt }}"
+    state: started
+    runlevel: '2 3 4 5'
+    enabled: "{{ k1599_fileserver_ovpn_enabled }}"
+
