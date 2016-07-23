@@ -4,3 +4,5 @@
     - k1599_common
     - k1599_users
     - k1599_fileserver
+    - k1599_rsyslog_server
+    - k1599_rsyslog_client
