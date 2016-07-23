@@ -6,6 +6,9 @@
   package:
     name: samba
 
+- name: Create public dir
+  file: path=/share/public/ state=directory
+
 - name: "Ensure service samba is started and enabled: {{ k1599_file_server_smbd_enabled }}"
   service:
     name: "{{ _smb_srv }}"
@@ -20,4 +23,4 @@
     owner: 'root'
     group: 'root'
     mode: '0644'
-  notify: reload_samba
+  notify: restart_samba
