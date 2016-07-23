@@ -1,5 +1,5 @@
 *.pdf
-./ansible/site.retry
+*site.retry
 *.vault-password
 *.sw?
 *~
