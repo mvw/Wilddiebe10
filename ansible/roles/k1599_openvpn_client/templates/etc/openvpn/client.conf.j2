@@ -15,10 +15,10 @@ tun-mtu 1492
 proto udp
 
 #Server IP und port
-remote {{ k1599_fileserver_ovpn_server }} 1194
+remote {{ k1599_ovpn_server }} 1194
 
 #Authentifizierung des Servers ueber Common Name im Zertifikat
-verify-x509-name {{ k1599_fileserver_ovpn_server_cn }} name
+verify-x509-name {{ k1599_ovpn_server_cn }} name
 
 #Zertifikate
 #Root-Zertifikat

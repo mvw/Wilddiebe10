@@ -21,10 +21,10 @@
     mode: '0644'
   notify: reload_openvpn
 
-- name: "Ensure service openvpn is started and enabled: {{ k1599_fileserver_ovpn_enabled }}"
+- name: "Ensure service openvpn is started and enabled: {{ k1599_ovpn_enabled }}"
   service:
     name: "{{ _openvpn_clt }}"
     state: started
     runlevel: '2 3 4 5'
-    enabled: "{{ k1599_fileserver_ovpn_enabled }}"
+    enabled: "{{ k1599_ovpn_enabled }}"
 
