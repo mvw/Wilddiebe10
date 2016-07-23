@@ -1,1 +1,1 @@
-file_server_ip: "{{ _vault_file_server_ip }}"
+file_server_gruppe_10_ip: "{{ _vault_file_server_gruppe_10_ip }}"
