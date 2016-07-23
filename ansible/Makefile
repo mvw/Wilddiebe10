@@ -8,6 +8,10 @@
 
 all: syntax-checks ansible_with_key
 
+clean:
+	rm -f site.retry
+	rm -f docs/*.pdf
+
 ansible_with_key:
 	    ansible-playbook -i inventory site.yml --vault-password-file=.vault-password -u root
 
