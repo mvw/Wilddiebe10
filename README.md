@@ -6,6 +6,8 @@ FaPra 1599 Uni Hagen
         apt-get install ansible sshpass pandoc
         echo <vaultpw> > .vault-password
 
+Ansible >=2.0 is required!
+
 # Generate Documentaion
 To ease the generation of the documentation files inside the doc folder you
 could use on of the commands below:
