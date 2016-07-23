@@ -39,6 +39,7 @@ check-jinja:
 	    e.get_template('$$f')"; \
 	  if [ $$? -ne 0 ]; then \
 	    echo "Syntax Error in file: $$f."; \
+	    exit 1; \
 	  fi; \
 	done
 
@@ -49,6 +50,6 @@ check-jinja:
 	    e.get_template('$$f')"; \
 	  if [ $$? -ne 0 ]; then \
 	    echo "Syntax Error in file: $$f."; \
+	    exit 1; \
 	  fi; \
 	done
-
