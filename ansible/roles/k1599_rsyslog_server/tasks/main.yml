@@ -1,0 +1,57 @@
+---
+- include: asserts.yml
+
+- name: Ensure rsyslog packages are present.
+  package:
+    name: "{{ item }}"
+  with_items:
+    - rsyslog
+    - rsyslog-doc
+  tags:
+    - packages
+    - rsyslog
+
+- name: Ensure remote config snippets at /etc/rsyslog.d/*.conf are present.
+  template:
+    dest: "/etc/rsyslog.d/{{ item }}"
+    src: "etc/rsyslog.d/{{ item }}.j2"
+    mode: "0600"
+    owner: "root"
+    group: "root"
+  with_items:
+    - 10_imtcp_template_remote_input.conf
+    - 15_imtcp_rule_remote_input.conf
+    - 30_imtcp_remote_input.conf
+  notify: restart_rsyslog
+  tags:
+    - rsyslog
+
+- name: Ensure directory /var/lib/rsyslog is present.
+  file:
+    path: '/var/lib/rsyslog'
+    state: 'directory'
+    mode: '0600'
+    owner: 'root'
+    group: 'root'
+  notify: restart_rsyslog
+  tags:
+    - rsyslog
+
+- name: Ensure that rsyslog is started
+  service:
+    name: rsyslog
+    state: started
+    enabled: yes
+  tags:
+    - service
+    - rsyslog
+
+- name: Ensure /etc/logrotate.d/rsyslog is present.
+  template:
+    dest: '/etc/logrotate.d/rsyslog'
+    src: 'etc/logrotate.d/rsyslog.j2'
+    mode: '0640'
+    owner: 'root'
+    group: 'root'
+  tags:
+    - rsyslog

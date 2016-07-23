@@ -1,0 +1,27 @@
+#
+# Logrotate config to rotate all logfiles from remote input at:
+# {{ k1599_rsyslog_destination_folder }}
+#
+# Author: Sascha Girrulat <sascha.girrulat@sysfive.com>
+#
+#
+{{ k1599_rsyslog_destination_folder }}/*/*.log
+{{ k1599_rsyslog_destination_folder }}/*/mail {{ k1599_rsyslog_destination_folder }}/*/mail.info {{ k1599_rsyslog_destination_folder }}/*/mail.warn {{ k1599_rsyslog_destination_folder }}/*/mail.err
+{{ k1599_rsyslog_destination_folder }}/*/news.crit {{ k1599_rsyslog_destination_folder }}/*/news.err {{ k1599_rsyslog_destination_folder }}/*/news.notice
+{{ k1599_rsyslog_destination_folder }}/*/warn {{ k1599_rsyslog_destination_folder }}/*/messages {{ k1599_rsyslog_destination_folder }}/*/allmessages {{ k1599_rsyslog_destination_folder }}/*/localmessages
+{{ k1599_rsyslog_destination_folder }}/*/firewall {{ k1599_rsyslog_destination_folder }}/*/acpid {{ k1599_rsyslog_destination_folder }}/*/NetworkManager
+{
+    daily
+    compress
+    dateext
+    maxage 365
+    rotate 31
+    missingok
+    notifempty
+    size +4096k
+    create 640 root root
+    sharedscripts
+    postrotate
+        /usr/bin/systemctl reload syslog.service > /dev/null
+    endscript
+}

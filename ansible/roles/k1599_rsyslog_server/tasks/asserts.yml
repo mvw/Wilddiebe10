@@ -1,0 +1,7 @@
+---
+- name: Ensure asserts are fulfilled.
+  assert:
+    that:
+      - k1599_rsyslog_group is defined
+      - k1599_rsyslog_port is defined
+      - k1599_rsyslog_destination_folder is defined

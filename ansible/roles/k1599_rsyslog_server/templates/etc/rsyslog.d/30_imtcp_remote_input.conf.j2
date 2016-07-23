@@ -1,0 +1,13 @@
+# ######### Recieving Messages from Remote Hosts ##########
+
+# Enable imtcp listener on port {{ k1599_rsyslog_port }}
+module(
+  load="imtcp"
+  MaxSessions="{{ k1599_rsyslog_maxsessions|default(500) }}"
+)
+
+input(
+  type="imtcp"
+  port="{{ k1599_rsyslog_port }}"
+  ruleset="imtcp_remote_input"
+)

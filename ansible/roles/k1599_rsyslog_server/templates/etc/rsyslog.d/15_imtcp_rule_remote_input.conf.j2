@@ -1,0 +1,85 @@
+# Ruleset to combine different syslog facilitys and templates
+
+ruleset(name="imtcp_remote_input"){
+        if prifilt('auth,authpriv.*') then {
+          action( type="omfile" dynaFile="PerHostAuth" sync="on")
+        }
+
+        if prifilt("cron.*") then {
+                action(type="omfile" dynaFile="PerHostCron" sync="on")
+        }
+
+        if prifilt("daemon.*") then {
+                action(type="omfile" dynaFile="PerHostDaemon")
+        }
+
+        if prifilt("kern.*") then {
+                action(type="omfile" dynaFile="PerHostKern")
+        }
+
+        if prifilt("lpr.*") then {
+                action(type="omfile" dynaFile="PerHostLpr")
+        }
+
+        if prifilt("mail.*") then {
+                action(type="omfile" dynaFile="PerHostMail")
+        }
+
+        if prifilt("user.*") then {
+                action(type="omfile" dynaFile="PerHostUser")
+        }
+
+        if prifilt("mail.info") then {
+                action(type="omfile" dynaFile="PerHostMailInfo")
+        }
+
+        if prifilt("mail.warn") then {
+                action(type="omfile" dynaFile="PerHostMailWarn" sync="on")
+        }
+
+        if prifilt("mail.err") then {
+                action(type="omfile" dynaFile="PerHostNewsErr" sync="on")
+        }
+
+        if prifilt("news.crit") then {
+                action(type="omfile" dynaFile="PerHostNewsCrit" sync="on")
+        }
+
+        if prifilt("news.err") then {
+                action(type="omfile" dynaFile="PerHostNewsErr" sync="on")
+        }
+
+        if prifilt("news.notice") then {
+                action(type="omfile" dynaFile="PerHostNewsNotice")
+        }
+
+        if prifilt("*.=warning") or
+           prifilt("*.=err") then {
+                action(type="omfile" dynaFile="PerHostWarn")
+        }
+
+        if prifilt("*.crit") then {
+                action(type="omfile" dynaFile="PerHostWarn" sync="on")
+        }
+
+        if prifilt("*.=debug") or
+           prifilt("auth,authpriv.none") or
+           prifilt("news.none") or
+           prifilt("mail.none") then {
+                action(type="omfile" dynaFile="PerHostDebug")
+        }
+
+        if prifilt("*.*") or
+           prifilt("auth,authpriv.none") then {
+                action(type="omfile" dynaFile="PerHostSyslog")
+        } 
+
+        if prifilt("*.=info") or
+           prifilt("*.=notice") or
+           prifilt("*.=warn") or
+           prifilt("auth,authpriv.none") or
+           prifilt("cron,daemon.none") or
+           prifilt("mail,news.none") then {
+                action(type="omfile" dynaFile="PerHostMessages")
+        }
+}

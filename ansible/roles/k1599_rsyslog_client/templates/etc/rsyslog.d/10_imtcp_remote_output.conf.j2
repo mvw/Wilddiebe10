@@ -1,0 +1,43 @@
+#jinja2: lstrip_blocks: True
+# ######### Sending Messages to Remote Hosts ##########
+
+# Remote Logging using TCP for reliable delivery
+{% if k1599_rsyslog_group in groups %}
+  {% for host in groups[k1599_rsyslog_group] %}
+    {%- if hostvars[host]['ansible_default_ipv4'] is defined -%}
+      {% set destination_addr = hostvars[host]['ansible_default_ipv4']['address'] %}
+    {%- else -%}
+      {% set destination_addr = host %}
+    {% endif %}
+
+## Setup Sending Messages to {{ host }} ##
+
+# Setup memory based queue
+$ActionQueueType LinkedList
+$ActionQueueTimeoutEnqueue 500
+
+# Setup disk assistance for the memory queue
+$WorkDirectory /var/lib/rsyslog
+$ActionQueueFileName {{ host.replace('.','_') }}
+$ActionQueueSize 10000
+$ActionQueueHighWatermark 6000
+$ActionQueueLowWatermark 2000
+
+# Limit the disk cache to avoid stalled server.
+$ActionQueueMaxDiskSpace 5G
+
+# Discard all Notice messages and above if the Memory Queue reaches
+# a count of 8000 messages
+$ActionQueueDiscardMark 8000
+$ActionQueueDiscardSeverity 5
+
+# Don't drop messages if the server is not available
+$ActionResumeRetryCount -1
+
+# Save in memory data to disk before shutdown
+$ActionQueueSaveOnShutdown on
+
+*.* @@{{ destination_addr}}:{{ k1599_rsyslog_port }}
+
+  {% endfor %}
+{% endif %}

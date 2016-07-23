@@ -1,0 +1,31 @@
+---
+- include: asserts.yml
+
+- name: Ensure rsyslog packages are present.
+  package:
+    name: rsyslog
+  tags:
+    - packages
+    - rsyslog
+
+- name: Ensure remote config snippets at /etc/rsyslog.d/*.conf are present.
+  template:
+    dest: "/etc/rsyslog.d/{{ item }}"
+    src: "etc/rsyslog.d/{{ item }}.j2"
+    mode: "0600"
+    owner: "root"
+    group: "root"
+  with_items:
+    - 10_imtcp_remote_output.conf
+  notify: restart_rsyslog
+  tags:
+    - rsyslog
+
+- name: Ensure that rsyslog is started
+  service:
+    name: rsyslog
+    state: started
+    enabled: yes
+  tags:
+    - service
+    - rsyslog

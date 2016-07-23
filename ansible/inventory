@@ -1,2 +1,5 @@
 [fileserver]
 fileserver ansible_host="{{ fileserver_ip }}"
+
+[rsyslog_server]
+fileserver ansible_host="{{ fileserver_ip }}"
