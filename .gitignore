@@ -1,6 +1,6 @@
 *.pdf
 ./ansible/site.retry
-./ansible/.vault-password
+*.vault-password
 *.sw?
 *~
 *#
