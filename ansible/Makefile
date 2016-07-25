@@ -6,7 +6,7 @@
 #
 #
 
-all: syntax-checks ansible_with_key
+all: syntax-checks update ansible_with_key
 
 clean:
 	rm -f site.retry
@@ -17,6 +17,9 @@ ansible_with_key:
 
 test: syntax-checks
 	    ansible-playbook -i inventory site.yml --vault-password-file=.vault-password -u root -C
+
+update:
+	git submodule update --init
 
 ansible_with_password:
 	    ansible-playbook -i inventory site.yml --vault-password-file=.vault-password -u root -k
