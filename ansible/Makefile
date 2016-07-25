@@ -15,6 +15,9 @@ clean:
 ansible_with_key:
 	    ansible-playbook -i inventory site.yml --vault-password-file=.vault-password -u root
 
+test: syntax-checks
+	    ansible-playbook -i inventory site.yml --vault-password-file=.vault-password -u root -C
+
 ansible_with_password:
 	    ansible-playbook -i inventory site.yml --vault-password-file=.vault-password -u root -k
 
