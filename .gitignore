@@ -4,6 +4,5 @@
 *.sw?
 *~
 *#
-vendor
 *.bak
 .bundle
