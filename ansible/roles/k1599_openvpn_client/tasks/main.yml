@@ -42,7 +42,7 @@
     owner: 'root'
     group: 'root'
     mode: '0644'
-  notify: reload_openvpn
+  notify: restart_openvpn
 
 - name: "Ensure service openvpn is started and enabled: {{ k1599_ovpn_enabled }}"
   service:
