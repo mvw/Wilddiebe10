@@ -4,11 +4,7 @@
 # Remote Logging using TCP for reliable delivery
 {% if k1599_rsyslog_group in groups %}
   {% for host in groups[k1599_rsyslog_group] %}
-    {%- if hostvars[host]['ansible_default_ipv4'] is defined -%}
-      {% set destination_addr = hostvars[host]['ansible_default_ipv4']['address'] %}
-    {%- else -%}
-      {% set destination_addr = host %}
-    {% endif %}
+    {% set destination_addr = hostvars[host].ansible_host %}
 
 ## Setup Sending Messages to {{ host }} ##
 
