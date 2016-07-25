@@ -2,6 +2,9 @@
 absent_groups:
   - test
 
+present_groups:
+  - fapra1599
+
 present_users:
   - name: 'guest'
     comment: "Gaeste sind willkommen"

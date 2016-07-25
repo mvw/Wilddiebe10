@@ -1,5 +1,11 @@
-[file_server]
-file_server_gruppe_10 ansible_host="{{ file_server_gruppe_10_ip }}"
+[file_server:children]
+file_server_sued
+#file_server_nord
+
+[file_server_sued]
+file_server_sued ansible_host="{{ file_server_sued_ip }}"
+
+#[file_server_nord]
 
 [rsyslog_server]
-file_server_gruppe_10 ansible_host="{{ file_server_gruppe_10_ip }}"
+file_server_sued ansible_host="{{ file_server_sued_ip }}"
