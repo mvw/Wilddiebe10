@@ -6,11 +6,34 @@
   package:
     name: openvpn
 
-- name: Copy certs
-  file: path=/etc/openvpn/certs/ state=directory
-- copy: content="{{ _vault_ca_chain_cert }}" dest=/etc/openvpn/certs/ca-chain.cert.pem owner=root group=root mode=0644
-- copy: content="{{ _vault_cert }}" dest=/etc/openvpn/certs/cert.pem owner=root group=root mode=0644
-- copy: content="{{ _vault_cert_key }}" dest=/etc/openvpn/certs/privkey.pem owner=root group=root mode=0600
+- name: Ensure directory /etc/openvpn/certs/ is present
+  file:
+    path: '/etc/openvpn/certs/'
+    state: 'directory'
+
+- name: Ensure /etc/openvpn/certs/ca-chain.cert.pem is present
+  copy:
+    content: "{{ _vault_ca_chain_cert }}"
+    dest: '/etc/openvpn/certs/ca-chain.cert.pem'
+    owner: 'root'
+    group: 'root'
+    mode: '0644'
+
+- name: Ensure /etc/openvpn/certs/cert.pem is present
+  copy:
+    content: "{{ _vault_cert }}"
+    dest: '/etc/openvpn/certs/cert.pem'
+    owner: 'root'
+    group: 'root'
+    mode: '0644'
+
+- name: Ensure /etc/openvpn/certs/privkey.pem is present
+  copy:
+    content: "{{ _vault_cert_key }}"
+    dest: '/etc/openvpn/certs/privkey.pem'
+    owner: 'root'
+    group: 'root'
+    mode: '0600'
 
 - name: Ensure /etc/openvpn/client.conf is present
   template:
