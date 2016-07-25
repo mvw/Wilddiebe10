@@ -6,6 +6,8 @@ file_server_sued
 file_server_sued ansible_host="{{ file_server_sued_ip }}"
 
 #[file_server_nord]
+#file_server_nord ansible_host="{{ file_server_sued_ip }}"
 
 [rsyslog_server]
 file_server_sued ansible_host="{{ file_server_sued_ip }}"
+#file_server_nord ansible_host="{{ file_server_sued_ip }}"
