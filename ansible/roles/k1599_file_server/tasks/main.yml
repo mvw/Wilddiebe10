@@ -1,20 +1,18 @@
 ---
 - set_fact:
     _smb_srv: 'smbd'
+    _clamav_srv: 'clamav-daemon'
 
 - name: Ensure package samba is installed
   package:
     name: samba
 
-- name: Create public dir
-  file: path=/share/public/ state=directory
+- name: Ensure package clamav-daemon is installed
+  package:
+    name: clamav-daemon
 
-- name: "Ensure service samba is started and enabled: {{ k1599_file_server_smbd_enabled }}"
-  service:
-    name: "{{ _smb_srv }}"
-    state: started
-    runlevel: '2 3 4 5'
-    enabled: "{{ k1599_file_server_smbd_enabled }}"
+- name: Create public dir
+  file: path={{ k1599_file_server_public_share_path }} state=directory
 
 - name: Ensure /etc/samba/smb.conf is present
   template:
@@ -24,3 +22,26 @@
     group: 'root'
     mode: '0644'
   notify: restart_samba
+
+- name: "Ensure service samba is started and enabled: {{ k1599_file_server_smbd_enabled }}"
+  service:
+    name: "{{ _smb_srv }}"
+    state: started
+    runlevel: '2 3 4 5'
+    enabled: "{{ k1599_file_server_smbd_enabled }}"
+
+- name: Ensure /etc/clamav/clamd.conf is present
+  template:
+    src: 'etc/clamav/clamd.conf.j2'
+    dest: '/etc/clamav/clamd.conf'
+    owner: 'root'
+    group: 'root'
+    mode: '0644'
+  notify: restart_clamav
+
+- name: "Ensure service clamav is started and enabled: {{ k1599_file_server_clamd_enabled }}"
+  service:
+    name: "{{ _clamav_srv }}"
+    state: started
+    runlevel: '2 3 4 5'
+    enabled: "{{ k1599_file_server_clamd_enabled }}"

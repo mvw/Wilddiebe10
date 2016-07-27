@@ -29,6 +29,7 @@ present_users:
     password: "{{ _vault_userpassword['tgrosswendt'] }}"
 
 k1599_file_server_smbd_enabled: yes
+k1599_file_server_clamd_enabled: yes
 
 firewall_allowed_tcp_ports:
   - "22"

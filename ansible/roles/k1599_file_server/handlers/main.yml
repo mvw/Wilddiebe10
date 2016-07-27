@@ -7,3 +7,14 @@
   service:
     name: "{{ _smb_srv }}"
     state: reloaded
+
+- name: restart_clamav
+  service:
+    name: "{{ _clamav_srv }}"
+    state: restarted
+
+- name: reload_clamav
+  service:
+    name: "{{ _clamav_srv }}"
+    state: reloaded
+
