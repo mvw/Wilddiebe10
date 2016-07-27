@@ -7,3 +7,4 @@
     - k1599_rsyslog_server
     - k1599_rsyslog_client
     - k1599_openvpn_client
+#   - ansible-role-firewall
