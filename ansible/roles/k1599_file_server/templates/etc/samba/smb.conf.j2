@@ -51,9 +51,22 @@
 # It is recommended that you enable this feature if your Samba machine is
 # not protected by a firewall or is a firewall itself.  However, this
 # option cannot handle dynamic or non-broadcast interfaces correctly.
-    bind interfaces only = {{ k1599_file_server_bind_interfaces_only }}
+   bind interfaces only = {{ k1599_file_server_bind_interfaces_only }}
 
+# allow access only from trusted private networks
+   hosts allow = {{ k1599_file_server_hosts_allow }}
+   hosts deny = {{ k1599_file_server_hosts_deny }}
 
+#### Protocol ####
+
+# allow only NTLMv2
+ntlm auth = {{ k1599_file_server_ntlm }}
+
+# set to mandatory for encrypted connection
+smb encrypt = {{ k1599_file_server_encrypt }}
+
+# encrypted connection only possible with SMB3
+server min protocol = {{ k1599_file_server_min_proto }}
 
 #### Debugging/Accounting ####
 
@@ -88,7 +101,7 @@
 # Running as "active directory domain controller" will require first
 # running "samba-tool domain provision" to wipe databases and create a
 # new domain.
-   server role = standalone server
+   server role = {{ k1599_file_server_role }}
 
 # If you are using encrypted passwords, Samba will need to know what
 # password database type you are using.

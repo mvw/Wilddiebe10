@@ -1,7 +1,14 @@
+k1599_file_server_smbd_enabled: yes
 k1599_file_server_interfaces: '127.0.0.1/8 10.8.3.14/24'
 k1599_file_server_bind_interfaces_only: 'yes'
+k1599_file_server_hosts_allow:  '127.0.0.1 10.8.'
+k1599_file_server_hosts_deny: '0.0.0.0/0'
 k1599_file_server_workgroup: 'fapra1599'
+k1599_file_server_role: 'standalone server'
 k1599_file_server_public_share_path: '/share/public'
-k1599_file_server_smbd_enabled: yes
+k1599_file_server_ntlm: 'no'
+k1599_file_server_encrypt: 'auto'
+k1599_file_server_min_proto: 'NT1'
+
 k1599_file_server_clamd_enabled: yes
 k1599_file_server_av_block_access: 'no'
