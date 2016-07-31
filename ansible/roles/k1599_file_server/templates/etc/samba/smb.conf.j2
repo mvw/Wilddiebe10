@@ -203,7 +203,7 @@ server min protocol = {{ k1599_file_server_min_proto }}
 
 # By default, the home directories are exported read-only. Change the
 # next parameter to 'no' if you want to be able to write to them.
-   read only = yes
+   read only = no
 
 # File creation mask is set to 0700 for security reasons. If you want to
 # create files with group=rw permissions, set next parameter to 0775.
@@ -268,7 +268,7 @@ server min protocol = {{ k1599_file_server_min_proto }}
 # Add public share
 [public]
 path = {{ k1599_file_server_public_share_path }}
-writable = no
+read only = no
 guest ok = yes
 create mode = 0777
 
