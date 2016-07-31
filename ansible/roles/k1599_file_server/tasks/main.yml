@@ -12,7 +12,10 @@
     name: clamav-daemon
 
 - name: Create public dir
-  file: path={{ k1599_file_server_public_share_path }} state=directory
+  file:
+    path: "{{ k1599_file_server_public_share_path }}"
+    state: directory
+    mode: '0777'
 
 - name: Ensure /etc/samba/smb.conf is present
   template:
