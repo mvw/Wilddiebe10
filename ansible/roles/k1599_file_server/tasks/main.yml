@@ -33,6 +33,15 @@
     runlevel: '2 3 4 5'
     enabled: "{{ k1599_file_server_smbd_enabled }}"
 
+- name: Create Samba users if they don't exist yet
+  shell: >
+    (pdbedit -L | grep {{ item.name }} 2>&1 > /dev/null) \
+    || (echo {{ item.password }}; echo {{ item.password }}) \
+    | smbpasswd -s -a {{ item.name }}
+  with_items: "{{ samba_users }}"
+  register: create_user_output
+  changed_when: "'Added user' in create_user_output.stdout"
+
 - name: Ensure /etc/clamav/clamd.conf is present
   template:
     src: 'etc/clamav/clamd.conf.j2'
