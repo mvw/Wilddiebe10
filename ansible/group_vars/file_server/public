@@ -27,6 +27,21 @@ present_users:
   - name: 'tgrosswendt'
     groups: 'sudo,users'
     password: "{{ _vault_userpassword['tgrosswendt'] }}"
+  - name: 'cweissenborn'
+    groups: 'sudo,users'
+    password: "{{ _vault_userpassword['cweissenborn'] }}"
+  - name: 'jschumacher'
+    groups: 'sudo,users'
+    password: "{{ _vault_userpassword['jschumacher'] }}"
+  - name: 'wschmidt'
+    groups: 'sudo,users'
+    password: "{{ _vault_userpassword['wschmidt'] }}"
+  - name: 'mwoerkom'
+    groups: 'sudo,users'
+    password: "{{ _vault_userpassword['mwoerkom'] }}"
+  - name: 'phaebel'
+    groups: 'sudo,users'
+    password: "{{ _vault_userpassword['phaebel'] }}"
 
 k1599_file_server_smbd_enabled: yes
 k1599_file_server_clamd_enabled: yes
