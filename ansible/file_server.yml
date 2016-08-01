@@ -2,6 +2,7 @@
 - hosts: file_server
   roles:
     - k1599_common
+    - k1599_ssh
     - k1599_users
     - k1599_file_server
     - k1599_rsyslog_server
