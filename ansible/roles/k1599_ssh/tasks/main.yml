@@ -1,4 +1,8 @@
 ---
+- name: Ensure package openssh-server
+  package:
+    name: 'openssh-server'
+
 - name: Lege SSH-Konfigdatei auf Server an.
   template:
     src: 'templates/sshd_config'
