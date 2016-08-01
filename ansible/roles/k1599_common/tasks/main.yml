@@ -11,6 +11,6 @@
   copy:
     src: 'templates/sysctl.conf'
     dest: '/etc/sysctl.conf'
-    user: 'root'
+    owner: 'root'
     group: 'root'
     mode: '0644'
