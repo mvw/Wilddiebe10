@@ -4,7 +4,7 @@
     name: "{{ item }}"
     state: present
   with_items:
-    - present_groups
+    - "{{ present_groups|default([]) }}"
 
 - name: Ensure expected groups are absent
   group:
