@@ -16,7 +16,7 @@ ansible_with_key:
 	    ansible-playbook -i inventory site.yml --vault-password-file=.vault-password -u root
 
 test: syntax-checks
-	    ansible-playbook -i inventory site.yml --vault-password-file=.vault-password -u root -C
+	    ansible-playbook -i inventory site.yml --vault-password-file=.vault-password -u root -C --diff
 
 update:
 	git submodule update --init
