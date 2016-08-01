@@ -1,17 +1,16 @@
 ---
 - name: Lege SSH-Konfigdatei auf Server an.
-  copy:
-    content: "templates/sshd_config"
+  template:
+    src: 'templates/sshd_config'
     dest: '/etc/ssh/sshd_config'
     owner: 'root'
     group: 'root'
     mode:  '0644'
 
 - name: Lege Login-Banner mit Warnhinweis an.
-  copy:
-    content: "templates/issue.net"
+  template:
+    src: 'templates/issue.net'
     dest: '/etc/issue.net'
     owner: 'root'
     group: 'root'
     mode:  '0644'
-
