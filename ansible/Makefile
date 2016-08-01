@@ -6,17 +6,20 @@
 #
 #
 
-all: syntax-checks update ansible_with_key
+all: syntax-checks update ansible_with_sudo
 
 clean:
 	rm -f site.retry
 	rm -f docs/*.pdf
 
+ansible_with_sudo:
+	    ansible-playbook -i inventory site.yml --vault-password-file=.vault-password -s -K
+
 ansible_with_key:
 	    ansible-playbook -i inventory site.yml --vault-password-file=.vault-password -u root
 
 test: syntax-checks
-	    ansible-playbook -i inventory site.yml --vault-password-file=.vault-password -u root -C
+	    ansible-playbook -i inventory site.yml --vault-password-file=.vault-password -s -K -C --diff
 
 update:
 	git submodule update --init

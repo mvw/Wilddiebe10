@@ -6,3 +6,11 @@
     - 'sudo'
     - 'python'
     - 'openssl'
+
+- name: Disable IPV6 by copying sysctl.conf
+  copy:
+    src: 'templates/sysctl.conf'
+    dest: '/etc/sysctl.conf'
+    owner: 'root'
+    group: 'root'
+    mode: '0644'

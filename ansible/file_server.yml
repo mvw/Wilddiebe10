@@ -1,10 +1,11 @@
 ---
 - hosts: file_server
   roles:
-    - k1599_common
-    - k1599_users
-    - k1599_file_server
-    - k1599_rsyslog_server
-    - k1599_rsyslog_client
-    - k1599_openvpn_client
+    - { role: k1599_common, tags: common }
+    - { role: k1599_ssh, tags: ssh }
+    - { role: k1599_users, tags: users }
+    - { role: k1599_file_server, tags: file_server }
+    - { role: k1599_rsyslog_server, tags: rsyslog_server }
+    - { role: k1599_rsyslog_client, tags: rsyslog_client }
+    - { role: k1599_openvpn_client, tags: openvpn }
 #   - ansible-role-firewall

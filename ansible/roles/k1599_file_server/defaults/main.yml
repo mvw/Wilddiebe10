@@ -8,7 +8,7 @@ k1599_file_server_role: 'standalone server'
 k1599_file_server_public_share_path: '/share/public'
 k1599_file_server_ntlm: 'no'
 k1599_file_server_encrypt: 'auto'
-k1599_file_server_min_proto: 'NT1'
+k1599_file_server_min_proto: 'SMB3'
 
 k1599_file_server_clamd_enabled: yes
 k1599_file_server_av_block_access: no
