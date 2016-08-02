@@ -29,10 +29,18 @@ syntax-checks: check-yaml check-jinja
 check-yaml:
 	for f in $$(find host_vars/ group_vars/ -regextype posix-egrep -type f -regex '[^.]+'); do \
 	  python -c "import yaml; yaml.load(open('$$f'))"; \
+	  if [ $$? -ne 0 ]; then \
+	    echo "Syntax Error in file: $$f."; \
+	    exit 1; \
+	  fi; \
 	done
 
 	for f in $$(find . -name '*.yml'); do \
 	  python -c "import yaml; yaml.load(open('$$f'))"; \
+	  if [ $$? -ne 0 ]; then \
+	    echo "Syntax Error in file: $$f."; \
+	    exit 1; \
+	  fi; \
 	done
 
 check-jinja:
