@@ -1,5 +1,5 @@
 ---
-- hosts: file_server
+- hosts: file_server_sued
   roles:
     - { role: k1599_common, tags: common }
     - { role: k1599_ssh, tags: ssh }
