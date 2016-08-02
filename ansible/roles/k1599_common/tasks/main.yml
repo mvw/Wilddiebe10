@@ -24,3 +24,6 @@
     - rsh-redone-server
     - xserver-xorg
 
+- name: Ensure hostname is set as expected
+  hostname:
+    name: "{{ fapra1599_common_hostname  }}"

@@ -24,3 +24,5 @@ samba_users:
     password: "{{ _vault_smbpassword['mwoerkom'] }}"
   - name: 'phaebel'
     password: "{{ _vault_smbpassword['phaebel'] }}"
+
+fapra1599_common_hostname: 'fileserver'
