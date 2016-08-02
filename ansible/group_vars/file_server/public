@@ -2,6 +2,18 @@
 absent_groups:
   - test
 
+k1599_common_absent_packages:
+  - rsh-client
+  - rsh-server
+  - rsh-redone-client
+  - rsh-redone-server
+  - xserver-xorg
+
+k1599_common_present_packages:
+  - 'sudo'
+  - 'python'
+  - 'openssl'
+
 present_groups:
   - fapra1599
   - sshlogin

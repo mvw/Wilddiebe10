@@ -1,11 +1,16 @@
 ---
-- name: Ensure common packages are installed
+- name: Ensure common packages are present
   package:
     name: "{{ item }}"
   with_items:
-    - 'sudo'
-    - 'python'
-    - 'openssl'
+    - "{{ k1599_common_present_packages }}"
+
+- name: Ensure unwanted packages are absent
+  package:
+    name: "{{ item }}"
+    state: 'absent'
+  with_items:
+    - "{{ k1599_common_absent_packages }}"
 
 - name: Disable IPV6 by copying sysctl.conf
   copy:
@@ -14,15 +19,6 @@
     owner: 'root'
     group: 'root'
     mode: '0644'
-
-- name: Ensure packages are absent
-  apt: name={{ item }} state=absent
-  with_items:
-    - rsh-client
-    - rsh-server
-    - rsh-redone-client
-    - rsh-redone-server
-    - xserver-xorg
 
 - name: Ensure hostname is set as expected
   hostname:
