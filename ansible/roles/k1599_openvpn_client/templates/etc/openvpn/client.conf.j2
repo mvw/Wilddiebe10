@@ -17,9 +17,10 @@ proto udp
 #Server IP und port
 remote {{ k1599_ovpn_server }} 1194
 
+{% if k1599_ovpn_server_cn != '' %}
 #Authentifizierung des Servers ueber Common Name im Zertifikat
-#verify-x509-name {{ k1599_ovpn_server_cn }} name
-{{ k1599_verify_x509_ovpn_server_cn }}
+verify-x509-name {{ k1599_ovpn_server_cn }} name
+{% endif %}
 
 #Zertifikate
 #Root-Zertifikat
