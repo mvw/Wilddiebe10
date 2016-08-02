@@ -1,5 +1,5 @@
 ---
-absent_groups:
+k1599_users_absent_groups:
   - test
 
 k1599_common_absent_packages:
@@ -14,11 +14,11 @@ k1599_common_present_packages:
   - 'python'
   - 'openssl'
 
-present_groups:
+k1599_users_present_groups:
   - fapra1599
   - sshlogin
 
-present_users:
+k1599_users_present_users:
   - name: 'guest'
     comment: "Gaeste sind willkommen"
     password: "{{ _vault_userpassword['guest'] }}"

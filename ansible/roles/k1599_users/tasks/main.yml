@@ -4,14 +4,14 @@
     name: "{{ item }}"
     state: present
   with_items:
-    - "{{ present_groups|default([]) }}"
+    - "{{ k1599_users_present_groups|default([]) }}"
 
 - name: Ensure expected groups are absent
   group:
     name: "{{ item }}"
     state: absent
   with_items:
-    - "{{ absent_groups|default([]) }}"
+    - "{{ k1599_users_absent_groups|default([]) }}"
 
 - name: Ensure expected users are created
   user:
@@ -23,11 +23,11 @@
     comment: "{{ item.name|default('') }}"
     state: present
   with_items:
-    - "{{ present_users }}"
+    - "{{ k1599_users_present_users }}"
 
 - name: Ensure expected users are absend
   user:
     name: "{{ item  }}"
     state: absent
   with_items:
-    - "{{ absent_users|default([]) }}"
+    - "{{ k1599_users_absent_users|default([]) }}"
