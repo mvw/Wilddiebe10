@@ -8,4 +8,4 @@
     - { role: k1599_rsyslog_server, tags: rsyslog_server }
     - { role: k1599_rsyslog_client, tags: rsyslog_client }
     - { role: k1599_openvpn_client, tags: openvpn }
-#   - ansible-role-firewall
+    - { role: ansible-role-firewall, tags: firewall }
