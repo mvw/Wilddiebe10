@@ -1,5 +1,6 @@
 ---
 - set_fact:
+    _nmb_srv: 'nmbd'
     _smb_srv: 'smbd'
     _clamav_srv: 'clamav-daemon'
 
@@ -25,6 +26,13 @@
     group: 'root'
     mode: '0644'
   notify: restart_samba
+
+- name: "Ensure service NetBIOS nameserver is stopped and disabled"
+  service:
+    name: "{{ _nmb_srv }}"
+    state: stopped
+    runlevel: '2 3 4 5'
+    enabled: false
 
 - name: "Ensure service samba is started and enabled: {{ k1599_file_server_smbd_enabled }}"
   service:
