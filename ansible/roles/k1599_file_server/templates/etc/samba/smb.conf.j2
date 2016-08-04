@@ -68,6 +68,10 @@ smb encrypt = {{ k1599_file_server_encrypt }}
 # encrypted connection only possible with SMB3
 server min protocol = {{ k1599_file_server_min_proto }}
 
+# Disable Netbios
+disable netbios = yes
+smb ports = 445
+
 #### Debugging/Accounting ####
 
 # This tells Samba to use a separate log file for each machine
