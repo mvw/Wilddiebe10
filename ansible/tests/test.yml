@@ -1,0 +1,61 @@
+---
+- hosts: file_server_sued
+  remote_user: root
+
+  vars:
+    k1599_integration_test: true
+
+    fapra1599_common_hostname: 'file-server-sued'
+
+    firewall_allowed_tcp_ports:
+      - number: '10514'
+      - number: '445'
+      - number: '22'
+
+    k1599_common_absent_packages:
+      - rsh-client
+      - rsh-server
+      - rsh-redone-client
+      - rsh-redone-server
+      - xserver-xorg
+
+    k1599_common_present_packages:
+      - 'sudo'
+      - 'python'
+      - 'openssl'
+
+    k1599_users_present_groups:
+      - test-group-present
+      - sshlogin
+
+    k1599_users_absent_groups:
+      - test-group-absent
+
+    k1599_users_present_users:
+      - name: 'test-user-present'
+        comment: 'This is only a test'
+        groups: 'sudo,users,sshlogin'
+        password: 'Qqo9OBRptpvzU'
+
+    k1599_users_absent_users:
+      - 'test-user-absent'
+
+    samba_users: []
+
+    k1599_file_server_smbd_enabled: yes
+    k1599_file_server_clamd_enabled: yes
+
+    _vault_ca_chain_cert: 'NOTHING'
+    _vault_cert: 'NOTHING'
+    _vault_cert_key: 'NOTHING'
+    _vault_ovpn_server: '127.0.0.3'
+
+  roles:
+    - { role: k1599_common, tags: common }
+    - { role: k1599_ssh, tags: ssh }
+    - { role: k1599_users, tags: users }
+    - { role: k1599_file_server, tags: file_server }
+    - { role: k1599_rsyslog_server, tags: rsyslog_server }
+    - { role: k1599_rsyslog_client, tags: rsyslog_client }
+    - { role: k1599_openvpn_client, tags: openvpn }
+    - { role: ansible-role-firewall, tags: firewall }

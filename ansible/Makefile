@@ -21,6 +21,9 @@ ansible_with_key:
 test: syntax-checks
 	    ansible-playbook -i inventory site.yml --vault-password-file=.vault-password -s -K -C --diff
 
+ci:
+	    ansible-playbook -i tests/inventory tests/test.yml --connection=local --sudo
+
 update:
 	git submodule update --init
 

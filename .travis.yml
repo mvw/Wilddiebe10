@@ -1,0 +1,90 @@
+---
+sudo: required
+language: python
+python: "2.7"
+
+before_install:
+  - sudo apt-get update -qq
+  - sudo apt-get install -y curl make
+
+install:
+  - pip install ansible
+
+script:
+  # Change working directory
+  - "pushd ansible > /dev/null"
+
+  # Run the tests via makefile
+  - "make syntax-checks"
+
+  # Run the role/playbook via makefile
+  - "make ci"
+
+# Run the role/playbook again to make sure it's idempotent.
+  - >
+    make ci | grep -q 'changed=0.*failed=0'
+    && (echo 'Idempotence test: pass' && exit 0)
+    || (echo 'Idempotence test: fail' && exit 1)
+
+ # Return to starting directory
+  - "popd > /dev/null"
+
+  # Check open ssh port port.
+  - >
+    sudo iptables -L -n
+    | grep -q "ACCEPT.*dpt:10514"
+    && (echo 'Port 10514 is open - pass' && exit 0)
+    || (echo 'Port 10514 is not open - fail' && exit 1)
+
+  # Check open samba port 445.
+  - >
+    sudo iptables -L -n
+    | grep -q "ACCEPT.*dpt:445"
+    && (echo 'Port 445 is open - pass' && exit 0)
+    || (echo 'Port 445 is not open - fail' && exit 1)
+
+  # Check open ssh port 22.
+  - >
+    sudo iptables -L -n
+    | grep -q "ACCEPT.*dpt:22"
+    && (echo 'Port 22 is open - pass' && exit 0)
+    || (echo 'Port 22 is not open - fail' && exit 1)
+
+  # Check created user test-user-present.
+  - >
+    getent passwd | grep -q 'test-user-present'
+    && (echo 'User test-user-present is present - pass' && exit 0)
+    || (echo 'User test-user-present is not present' && exit 1)
+
+  # Check created group test-group-present.
+  - >
+    getent group | grep -q 'test-group-present'
+    && (echo 'User test-group-present is present - pass' && exit 0)
+    || (echo 'User test-group-present is not present' && exit 1)
+
+  # Check ssh service
+  - >
+    sudo service ssh status
+    && (echo 'Service ssh is running - pass' && exit 0)
+    || (echo 'Service ssh is not running - fail' && exit 1)
+
+  # Check samba service
+  - >
+    sudo service smbd status
+    && (echo 'Service smbd is running - pass' && exit 0)
+    || (echo 'Service smbd is not running - fail' && exit 1)
+
+  # Check rsyslog service
+  - >
+    sudo service rsyslog status
+    && (echo 'Service rsyslog is running - pass' && exit 0)
+    || (echo 'Service rsyslog is not running - fail' && exit 1)
+
+  # Check nmbd service
+  - >
+    sudo service nmbd status
+    || (echo 'Service nmbd is not running - pass' && exit 1)
+    && (echo 'Service nmbd is running - fail' && exit 0)
+
+notifications:
+  webhooks: https://galaxy.ansible.com/api/v1/notifications/

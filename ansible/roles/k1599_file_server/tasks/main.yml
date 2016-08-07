@@ -65,3 +65,4 @@
     state: started
     runlevel: '2 3 4 5'
     enabled: "{{ k1599_file_server_clamd_enabled }}"
+  when: k1599_integration_test is not defined

@@ -1,0 +1,13 @@
+[file_server:children]
+file_server_sued
+file_server_nord
+
+[file_server_sued]
+file-server-sued ansible_host="127.0.0.1"
+
+[file_server_nord]
+file-server-nord ansible_host="127.0.0.2"
+
+[rsyslog_server]
+file-server-sued ansible_host="127.0.0.1"
+file-server-nord ansible_host="127.0.0.2"
