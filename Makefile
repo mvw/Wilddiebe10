@@ -6,18 +6,28 @@
 #
 #
 
-all: ls-testcases 
+all: wiki
 
-ansible: 
+ansible:
 	cd ansible; make
 
+wiki: clean wiki-prepare ls-testcases ls-ansible-roles
+	cat wiki.txt
+
+wiki-prepare:
+	echo '====== Anhang ======' > wiki.txt
+
 ls-testcases:
-	echo '====== Anhang ======' > testcases.txt; echo '===== Testfälle =====' >> testcases.txt;
-	grep '#' .travis.yml | grep -E '(Check|Run)' | sed 's/#/-/g' >> testcases.txt
-	cat testcases.txt
+	echo '===== Testfälle =====' >> wiki.txt;
+	grep '#' .travis.yml | grep -E '(Check|Run)' | sed 's/#/-/g' >> wiki.txt
+
+ls-ansible-roles:
+	echo '===== Ansible Rollen =====' >> wiki.txt;
+	echo '==== Eigene Rollen ====' >> wiki.txt; ls ansible/roles | sed 's/^/  - /g' >> wiki.txt;
+	echo '==== Externe Rollen ====' >> wiki.txt; ls ansible/vendor | sed 's/^/  - /g' >> wiki.txt;
 
 clean:
-	rm testcases.txt
+	rm -f wiki.txt
 
 update:
 	git submodule update --init
