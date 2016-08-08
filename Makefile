@@ -11,7 +11,7 @@ all: wiki
 ansible:
 	cd ansible; make
 
-wiki: clean wiki-prepare ls-testcases ls-ansible-roles
+wiki: clean wiki-prepare ls-testcases ls-ansible-roles ls-present-groups ls-present-users ls-samba-users
 	cat wiki.txt
 
 wiki-prepare:
@@ -26,6 +26,20 @@ ls-ansible-roles:
 	echo '==== Eigene Rollen ====' >> wiki.txt; ls ansible/roles | sed 's/^/  - /g' >> wiki.txt;
 	echo '==== Externe Rollen ====' >> wiki.txt; ls ansible/vendor | sed 's/^/  - /g' >> wiki.txt;
 
+ls-present-groups:
+	echo '===== Erzeugte Gruppen =====' >> wiki.txt
+	python -c "import scripts.anhang as anhang; anhang.get_present_groups()" >> wiki.txt;
+
+ls-present-users:
+	echo '===== Erzeugte Benutzer =====' >> wiki.txt
+	python -c "import scripts.anhang as anhang; anhang.get_present_users()" >> wiki.txt;
+
+ls-samba-users:
+	echo '===== Erzeugte Samba Benutzer =====' >> wiki.txt
+	echo '==== Gruppe Nord ====' >> wiki.txt
+	python -c "import scripts.anhang as anhang; anhang.get_samba_users('ansible/group_vars/file_server_nord/public')" >> wiki.txt;
+	echo '==== Gruppe Sued ====' >> wiki.txt
+	python -c "import scripts.anhang as anhang; anhang.get_samba_users('ansible/group_vars/file_server_sued/public')" >> wiki.txt;
 clean:
 	rm -f wiki.txt
 

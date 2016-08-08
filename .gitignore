@@ -6,4 +6,5 @@
 *#
 *.bak
 .bundle
-testcases.txt
+wiki.txt
+*.pyc
