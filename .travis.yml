@@ -14,73 +14,73 @@ script:
   # Change working directory
   - "pushd ansible > /dev/null"
 
-  # Run the tests via makefile
+  # Run syntax-checks via makefile
   - "make syntax-checks"
 
   # Run the role/playbook via makefile
   - "make ci"
 
-# Run the role/playbook again to make sure it's idempotent.
+  # Run the role/playbook again to make sure it's idempotent
   - >
     make ci | grep -q 'changed=0.*failed=0'
     && (echo 'Idempotence test: pass' && exit 0)
     || (echo 'Idempotence test: fail' && exit 1)
 
- # Return to starting directory
+  # Return to starting directory
   - "popd > /dev/null"
 
-  # Check open ssh port port.
+  # Check if rsyslog port 10514 is open
   - >
     sudo iptables -L -n
     | grep -q "ACCEPT.*dpt:10514"
     && (echo 'Port 10514 is open - pass' && exit 0)
     || (echo 'Port 10514 is not open - fail' && exit 1)
 
-  # Check open samba port 445.
+  # Check if samba port 445 is open
   - >
     sudo iptables -L -n
     | grep -q "ACCEPT.*dpt:445"
     && (echo 'Port 445 is open - pass' && exit 0)
     || (echo 'Port 445 is not open - fail' && exit 1)
 
-  # Check open ssh port 22.
+  # Check if ssh port 22 is open
   - >
     sudo iptables -L -n
     | grep -q "ACCEPT.*dpt:22"
     && (echo 'Port 22 is open - pass' && exit 0)
     || (echo 'Port 22 is not open - fail' && exit 1)
 
-  # Check created user test-user-present.
+  # Check expected users will be created
   - >
     getent passwd | grep -q 'test-user-present'
     && (echo 'User test-user-present is present - pass' && exit 0)
     || (echo 'User test-user-present is not present' && exit 1)
 
-  # Check created group test-group-present.
+  # Check expected groups will be created
   - >
     getent group | grep -q 'test-group-present'
     && (echo 'User test-group-present is present - pass' && exit 0)
     || (echo 'User test-group-present is not present' && exit 1)
 
-  # Check ssh service
+  # Check if ssh service is up and running
   - >
     sudo service ssh status
     && (echo 'Service ssh is running - pass' && exit 0)
     || (echo 'Service ssh is not running - fail' && exit 1)
 
-  # Check samba service
+  # Check if samba service is up and running
   - >
     sudo service smbd status
     && (echo 'Service smbd is running - pass' && exit 0)
     || (echo 'Service smbd is not running - fail' && exit 1)
 
-  # Check rsyslog service
+  # Check if rsyslog service is up and running
   - >
     sudo service rsyslog status
     && (echo 'Service rsyslog is running - pass' && exit 0)
     || (echo 'Service rsyslog is not running - fail' && exit 1)
 
-  # Check nmbd service
+  # Check if nmbd service is disabled
   - >
     sudo service nmbd status
     || (echo 'Service nmbd is not running - pass' && exit 1)
