@@ -23,18 +23,18 @@ If you won't to do that all the time use conttest.
         pip install conttest
         conttest make
 
-That will generate the pdf all the time if something is changes inside the docs folder. 
+That will generate the pdf all the time if something is changes inside the docs folder.
 
-# Run Ansibleq
+# Run Ansible
 Run Ansible via
 
-        ansible-playbook -i inventory site.yml --vault-password-file=.vault-password -u root -k
+        ansible-playbook -i inventory site.yml --vault-password-file=.vault-password -u <user> -s -K [-k]
 
 
 or do a
 
         ssh-copy-id root@<hostip>
-        ansible-playbook -i inventory site.yml --vault-password-file=.vault-password -u root
+        ansible-playbook -i inventory site.yml --vault-password-file=.vault-password -u <user> -s -K
 
 alternative you could use the commands 'make [ansible_with_password]' instead of the commands above.
 
@@ -48,6 +48,13 @@ and your local ~/.ansible.cfg
 
         [ssh_connection]
         ssh_args = -o StrictHostKeyChecking=no
+
+## Run Ansible restricted to a tag
+        ansible-playbook -i inventory site.yml --vault-password-file=.vault-password -u <user> -s -K -t <tag> [-k]
+
+A list of all available tags could be found inside the file cat
+ansible/file_server.yml. If you use  a '-t ssh' only the related ssh
+configuraton set inside the role k1599_ssh will be used.
 
 # Generate a new password for the vault file
 
