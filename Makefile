@@ -12,7 +12,9 @@ ansible:
 	cd ansible; make
 
 ls-testcases:
-	grep '#' .travis.yml | grep -E '(Check|Run)' | sed 's/#/-/g' | tee testcases.txt
+	echo '====== Anhang ======' > testcases.txt; echo '===== Testfälle =====' >> testcases.txt;
+	grep '#' .travis.yml | grep -E '(Check|Run)' | sed 's/#/-/g' >> testcases.txt
+	cat testcases.txt
 
 clean:
 	rm testcases.txt
