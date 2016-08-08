@@ -20,3 +20,18 @@ def get_samba_users(vars_file, key='samba_users'):
         users = content.get(key)
         for user in users:
             _print_line(user['name'])
+
+def get_allowed_tcp_ports(vars_file, key='firewall_allowed_tcp_ports'):
+    content = yaml.load(open(vars_file))
+    if content.has_key(key):
+        ports = content.get(key)
+        for port in ports:
+            number = port['number']
+            try:
+                interfaces = port['interfaces']
+                for interface in interfaces:
+                    line = "%s: %s" % (interface, number)
+            except KeyError:
+                line = "all: %s" % number
+
+            _print_line(line)

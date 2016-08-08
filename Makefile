@@ -11,7 +11,7 @@ all: wiki
 ansible:
 	cd ansible; make
 
-wiki: clean wiki-prepare ls-testcases ls-ansible-roles ls-present-groups ls-present-users ls-samba-users
+wiki: clean wiki-prepare ls-testcases ls-ansible-roles ls-present-groups ls-present-users ls-samba-users ls-allowed-ports
 	cat wiki.txt
 
 wiki-prepare:
@@ -40,6 +40,14 @@ ls-samba-users:
 	python -c "import scripts.anhang as anhang; anhang.get_samba_users('ansible/group_vars/file_server_nord/public')" >> wiki.txt;
 	echo '==== Gruppe Sued ====' >> wiki.txt
 	python -c "import scripts.anhang as anhang; anhang.get_samba_users('ansible/group_vars/file_server_sued/public')" >> wiki.txt;
+
+ls-allowed-ports:
+	echo '===== Firewall =====' >> wiki.txt
+	echo '==== Offene Ports - Gruppe Nord ====' >> wiki.txt
+	python -c "import scripts.anhang as anhang; anhang.get_allowed_tcp_ports('ansible/group_vars/file_server_nord/public')" >> wiki.txt;
+	echo '==== Offene Ports - Gruppe Sued ====' >> wiki.txt
+	python -c "import scripts.anhang as anhang; anhang.get_allowed_tcp_ports('ansible/group_vars/file_server_sued/public')" >> wiki.txt;
+
 clean:
 	rm -f wiki.txt
 
