@@ -59,10 +59,14 @@ MaxQueue 100
 ExtendedDetectionInfo true
 OLE2BlockMacros false
 ScanOnAccess true
+{% if k1599_anti_virus_scan_all == True %}
 OnAccessMountPath /
+{% endif %}
 OnAccessIncludePath /home
+{% if k1599_file_server_public_share_path is defined %}
 OnAccessIncludePath {{ k1599_file_server_public_share_path }}
-OnAccessPrevention {{ k1599_file_server_av_block_access }}
+{% endif %}
+OnAccessPrevention {{ k1599_anti_virus_block_access }}
 OnAccessExtraScanning true
 AllowAllMatchScan true
 ForceToDisk false

@@ -5,6 +5,7 @@
     - { role: k1599_ssh, tags: ssh }
     - { role: k1599_users, tags: users }
     - { role: k1599_file_server, tags: file_server }
+    - { role: k1599_anti_virus, tags: anti_virus }
     - { role: k1599_rsyslog_server, tags: rsyslog_server }
     - { role: k1599_rsyslog_client, tags: rsyslog_client }
     - { role: k1599_openvpn_client, tags: openvpn }

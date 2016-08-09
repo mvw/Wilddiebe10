@@ -58,5 +58,6 @@ k1599_users_present_users:
 
 samba_users: []
 
+k1599_anti_virus_clamd_enabled: yes
+k1599_file_server_public_share_path: '/share/public'
 k1599_file_server_smbd_enabled: yes
-k1599_file_server_clamd_enabled: yes

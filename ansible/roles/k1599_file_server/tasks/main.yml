@@ -2,15 +2,10 @@
 - set_fact:
     _nmb_srv: 'nmbd'
     _smb_srv: 'smbd'
-    _clamav_srv: 'clamav-daemon'
 
 - name: Ensure package samba is installed
   package:
     name: samba
-
-- name: Ensure package clamav-daemon is installed
-  package:
-    name: clamav-daemon
 
 - name: Create public dir
   file:
@@ -50,19 +45,3 @@
   register: create_user_output
   changed_when: "'Added user' in create_user_output.stdout"
 
-- name: Ensure /etc/clamav/clamd.conf is present
-  template:
-    src: 'etc/clamav/clamd.conf.j2'
-    dest: '/etc/clamav/clamd.conf'
-    owner: 'root'
-    group: 'root'
-    mode: '0644'
-  notify: restart_clamav
-
-- name: "Ensure service clamav is started and enabled: {{ k1599_file_server_clamd_enabled }}"
-  service:
-    name: "{{ _clamav_srv }}"
-    state: started
-    runlevel: '2 3 4 5'
-    enabled: "{{ k1599_file_server_clamd_enabled }}"
-  when: k1599_integration_test is not defined

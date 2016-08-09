@@ -1,0 +1,24 @@
+---
+- set_fact:
+    _clamav_srv: 'clamav-daemon'
+
+- name: Ensure package clamav-daemon is installed
+  package:
+    name: clamav-daemon
+
+- name: Ensure /etc/clamav/clamd.conf is present
+  template:
+    src: 'etc/clamav/clamd.conf.j2'
+    dest: '/etc/clamav/clamd.conf'
+    owner: 'root'
+    group: 'root'
+    mode: '0644'
+  notify: restart_clamav
+
+- name: "Ensure service clamav is started and enabled: {{ k1599_anti_virus_clamd_enabled }}"
+  service:
+    name: "{{ _clamav_srv }}"
+    state: started
+    runlevel: '2 3 4 5'
+    enabled: "{{ k1599_anti_virus_clamd_enabled }}"
+  when: k1599_integration_test is not defined
