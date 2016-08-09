@@ -1,4 +1,4 @@
-# Wilddiebe10
+# Wilddiebe10 [![Build Status](https://travis-ci.org/sagiru/Wilddiebe10.svg?branch=master)](https://travis-ci.org/sagiru/Wilddiebe10)
 FaPra 1599 Uni Hagen
 
 # General setup
