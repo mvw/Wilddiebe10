@@ -24,12 +24,21 @@
   hostname:
     name: "{{ fapra1599_common_hostname  }}"
 
-- name: Ensure host entrys at /etc/hosts are present
+- name: Ensure group host entrys in /etc/hosts are present
   lineinfile:
     dest: '/etc/hosts'
-    regexp: '.*{{ item }}$'
+    regexp: '^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\s{{ item }}$'
     line: "{{ hostvars[item].ansible_host }} {{item}}"
     state: 'present'
   when: hostvars[item].ansible_host is defined
   with_items:
     - "{{ groups['file_server'] }}"
+
+- name: Ensure network hosts in /etc/hosts are present
+  lineinfile:
+    dest: '/etc/hosts'
+    regexp: '^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\s{{ item.name }}\s.*'
+    line: "{{ item.ip }} {{item.name}} {{ item.fqdn|default('') }}"
+    state: 'present'
+  with_items:
+    - "{{ k1599_common_hosts|default([]) }}"
