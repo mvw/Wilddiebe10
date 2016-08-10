@@ -11,7 +11,7 @@ all: wiki
 ansible:
 	cd ansible; make
 
-wiki: clean wiki-prepare ls-testcases ls-ansible-roles ls-present-groups ls-present-users ls-samba-users ls-allowed-ports
+wiki: clean wiki-prepare ls-testcases ls-ansible-roles ls-present-groups ls-present-users ls-samba-users ls-allowed-ports ls-hosts-entrys
 	cat wiki.txt
 
 wiki-prepare:
@@ -47,6 +47,10 @@ ls-allowed-ports:
 	python -c "import scripts.anhang as anhang; anhang.get_allowed_tcp_ports('ansible/group_vars/file_server_nord/public')" >> wiki.txt;
 	echo '==== Offene Ports - Gruppe Sued ====' >> wiki.txt
 	python -c "import scripts.anhang as anhang; anhang.get_allowed_tcp_ports('ansible/group_vars/file_server_sued/public')" >> wiki.txt;
+
+ls-hosts-entrys:
+	echo '===== Einträge /etc/hosts =====' >> wiki.txt
+	python -c "import scripts.anhang as anhang; anhang.get_hosts_entrys('ansible/group_vars/all')" >> wiki.txt;
 
 clean:
 	rm -f wiki.txt

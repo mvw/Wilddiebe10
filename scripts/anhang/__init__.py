@@ -21,6 +21,16 @@ def get_samba_users(vars_file, key='samba_users'):
         for user in users:
             _print_line(user['name'])
 
+def get_hosts_entrys(vars_file, key='k1599_common_hosts'):
+    content = yaml.load(open(vars_file))
+    if content.has_key(key):
+        hosts = content.get(key)
+        for host in hosts:
+            try:
+              _print_line("%s : %s %s" % (host['ip'], host['name'], host['fqdn']))
+            except KeyError:
+              _print_line("%s : %s" % (host['ip'], host['name']))
+
 def get_allowed_tcp_ports(vars_file, key='firewall_allowed_tcp_ports'):
     content = yaml.load(open(vars_file))
     if content.has_key(key):
