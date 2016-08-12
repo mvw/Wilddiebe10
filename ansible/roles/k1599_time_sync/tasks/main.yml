@@ -1,0 +1,14 @@
+---
+- set_fact:
+    _ntp_srv: 'openntpd'
+
+- name: Ensure package openntp is installed
+  package:
+    name: openntpd
+
+- name: "Ensure service openntpd is started and enabled: {{ k1599_time_sync_enabled }}"
+  service:
+    name: "{{ _ntp_srv }}"
+    state: started
+    runlevel: '2 3 4 5'
+    enabled: "{{ k1599_time_sync_enabled }}"
