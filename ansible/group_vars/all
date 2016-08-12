@@ -36,3 +36,5 @@ k1599_common_hosts:
     name: 'gateway-n'
   - ip: '10.8.2.2'
     name: 'gateway-s'
+  - ip: "{{ ansible_host }}"
+    name: "{{ fapra1599_common_hostname }}"
