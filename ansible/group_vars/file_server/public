@@ -72,3 +72,7 @@ firewall_allowed_tcp_ports:
     interfaces:
       - eth0
       - tun0
+
+# firewall settings
+firewall_enabled: yes
+firewall_state: 'started'

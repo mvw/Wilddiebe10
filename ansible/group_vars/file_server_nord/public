@@ -1,6 +1,2 @@
 ---
 fapra1599_common_hostname: filenord
-
-# firewall settings
-firewall_enabled: no
-firewall_state: 'stopped'
