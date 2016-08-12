@@ -86,5 +86,11 @@ script:
     || (echo 'Service nmbd is not running - pass' && exit 1)
     && (echo 'Service nmbd is running - fail' && exit 0)
 
+  # Check if openntpd service is up and running
+  - >
+    sudo service openntpd status
+    && (echo 'Service openntpd is running - pass' && exit 0)
+    || (echo 'Service openntpd is not running - fail' && exit 1)
+
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
