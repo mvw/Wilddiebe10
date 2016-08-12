@@ -26,14 +26,3 @@ samba_users:
     password: "{{ _vault_smbpassword['phaebel'] }}"
 
 fapra1599_common_hostname: 'fileserver'
-
-# firewall settings
-firewall_allowed_tcp_ports:
-  - number: '22'
-  - number: '445'
-    interfaces:
-      - tun0
-  - number: 10514
-    interfaces:
-      - eth0
-      - tun0
