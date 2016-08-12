@@ -24,6 +24,14 @@
   hostname:
     name: "{{ fapra1599_common_hostname  }}"
 
+- name: Ensure common hostname in /etc/hosts is present
+  lineinfile:
+    dest: '/etc/hosts'
+    regexp: '^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\s{{ fapra1599_common_hostname }}$'
+    line: "{{ file_server_sued_ip }} {{ fapra1599_common_hostname }}"
+    state: 'present'
+  when: fapra1599_common_hostname is defined
+
 - name: Ensure group host entrys in /etc/hosts are present
   lineinfile:
     dest: '/etc/hosts'
