@@ -1,3 +1,6 @@
 k1599_rsyslog_port: '10514'
 k1599_rsyslog_maxsessions: '1000'
-k1599_rsyslog_destination_folder: '/var/log/rsyslog'
+k1599_rsyslog_destination_folder: '/var/log/rsyslog-k1599'
+k1599_rsyslog_user: 'root'
+k1599_rsyslog_user_group: 'root'
+

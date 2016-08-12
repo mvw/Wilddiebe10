@@ -12,9 +12,9 @@
   template:
     dest: "/etc/rsyslog.d/{{ item }}"
     src: "etc/rsyslog.d/{{ item }}.j2"
-    mode: "0600"
-    owner: "root"
-    group: "root"
+    mode: "0664"
+    owner: "{{ k1599_rsyslog_user }}"
+    group: "{{ k1599_rsyslog_user_group }}"
   with_items:
     - 10_imtcp_remote_output.conf
   notify: restart_rsyslog

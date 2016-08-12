@@ -1,3 +1,5 @@
 ---
 k1599_rsyslog_group: 'rsyslog_server'
 k1599_rsyslog_port: '10514'
+k1599_rsyslog_user: 'root'
+k1599_rsyslog_user_group: 'root'

@@ -15,9 +15,9 @@
   template:
     dest: "/etc/rsyslog.d/{{ item }}"
     src: "etc/rsyslog.d/{{ item }}.j2"
-    mode: "0600"
-    owner: "root"
-    group: "root"
+    mode: "0664"
+    owner: "{{ k1599_rsyslog_user }}"
+    group: "{{ k1599_rsyslog_user_group }}"
   with_items:
     - 10_imtcp_template_remote_input.conf
     - 15_imtcp_rule_remote_input.conf
@@ -26,14 +26,17 @@
   tags:
     - rsyslog
 
-- name: Ensure directory /var/lib/rsyslog is present.
+- name: Ensure directorys /var/{log,lib}/rsyslog is present.
   file:
-    path: '/var/lib/rsyslog'
+    path: '{{ item }}'
     state: 'directory'
-    mode: '0600'
-    owner: 'root'
-    group: 'root'
+    mode: '0770'
+    owner: "{{ k1599_rsyslog_user|default('root') }}"
+    group: "{{ k1599_rsyslog_user_group|default('root') }}"
   notify: restart_rsyslog
+  with_items:
+    - '/var/lib/rsyslog'
+    - "{{ k1599_rsyslog_destination_folder }}"
   tags:
     - rsyslog
 
@@ -54,4 +57,16 @@
     owner: 'root'
     group: 'root'
   tags:
+    - rsyslog
+
+- name: Ensure privilige drop is set to group adm
+  lineinfile:
+    dest: '/etc/rsyslog.conf'
+    regexp: '^\$PrivDropToGroup .*'
+    line: "$PrivDropToGroup {{ k1599_rsyslog_user_group }}"
+    state: 'present'
+  when: k1599_rsyslog_user_group != 'root'
+  notify: restart_rsyslog
+  tags:
+    - service
     - rsyslog
