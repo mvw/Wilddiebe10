@@ -86,17 +86,5 @@ k1599_anti_virus_clamd_enabled: yes
 k1599_file_server_public_share_path: '/share/public'
 k1599_file_server_smbd_enabled: yes
 
-# firewall settings
-firewall_allowed_tcp_ports:
-  - number: '22'
-  - number: '445'
-    interfaces:
-      - tun0
-  - number: 10514
-    interfaces:
-      - eth0
-      - tun0
-
-# firewall settings
 firewall_enabled: yes
 firewall_state: 'started'
