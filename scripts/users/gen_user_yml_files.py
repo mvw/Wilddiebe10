@@ -2,6 +2,7 @@
 #-*- coding: UTF-8 -*-
 
 import argparse
+import copy
 import csv
 import sys
 import subprocess
@@ -119,7 +120,7 @@ def get_yaml_data(input_dict):
     return output
 
 def filter_user_data(dict_from_csv):
-    clean_dict = dict_from_csv.copy()
+    clean_dict = copy.deepcopy(dict_from_csv)
     dict_name = clean_dict.keys()[0]
 
     for key in clean_dict[dict_name].keys():
@@ -190,7 +191,7 @@ def main(argv):
 
     if args.verbose:
         print_out_yaml(dict_of_groups)
-        print_out_yaml(dict_from_csv)
+        print_out_yaml(dict_user_data)
         print_out_yaml(dict_plain_vault)
         print_out_yaml(dict_crypt_vault)
 
