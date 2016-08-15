@@ -1,12 +1,19 @@
 #!/usr/bin/env python
 #-*- coding: UTF-8 -*-
 
+
+import os
+import sys
+import subprocess
+
 import argparse
 import copy
 import csv
-import sys
-import subprocess
+import jinja2
 import yaml
+
+
+TEMPLATE_FILE = 'mail_template.j2'
 
 REPLACE_UMLAUTS = {
     u"ö" : 'oe',
@@ -63,11 +70,15 @@ def get_user_data(csv_data, dict_name='k1599_users_present_users'):
         cpassword = get_crypt_password(password)
         passwords = {'plain': password, 'crypt' : cpassword}
 
+        matnr = line[0].lower()
+        lastname = line[1].lower()
+        firstname = line[2].lower()
         email = line[3].lower()
         group = line[4].lower()
-        matnr = line[0].lower()
 
         users[name] = {}
+        users[name]['firstname'] = firstname
+        users[name]['lastname'] = lastname
         users[name]['passwords'] = passwords
         users[name]['email'] = email
         users[name]['group'] = group
@@ -147,6 +158,47 @@ def filter_user_data(dict_from_csv):
 
     return clean_dict
 
+def write_mail_data(dict_from_csv):
+
+    template_loader = jinja2.FileSystemLoader(searchpath="./data/")
+    template_env = jinja2.Environment(loader=template_loader)
+    mail_template = template_env.get_template(TEMPLATE_FILE)
+
+    dirname = 'mail'
+
+    try:
+        os.stat(dirname)
+    except OSError:
+        os.mkdir(dirname)
+
+    key = dict_from_csv.keys()[0]
+    data = dict_from_csv[key]
+
+    for key in data.keys():
+        username = key
+        userpassword = data[key]['passwords']['plain']
+        email = data[key]['email']
+
+        mail_text = mail_template.render(user_name=username,
+                        user_password=userpassword)
+
+        filename = '/'.join([dirname, email])
+        with open(filename, 'w') as wfile:
+            wfile.write(mail_text.encode('utf-8'))
+
+def write_data(name, data):
+    dirname = 'yaml'
+
+    try:
+        os.stat(dirname)
+    except OSError:
+        os.mkdir(dirname)
+
+    filename = '/'.join([dirname, name])
+    with open(filename, 'w') as wfile:
+        wfile.writelines(data)
+
+
 def main(argv):
     parser = argparse.ArgumentParser()
     parser.add_argument("-v", "--verbose", action="store_true",
@@ -163,31 +215,18 @@ def main(argv):
         data_from_csv = get_content(args.groupfile)
 
     dict_of_groups = get_user_groups(GROUPS)
-
     dict_from_csv = get_user_data(data_from_csv)
     dict_user_data = filter_user_data(dict_from_csv)
     dict_plain_vault = get_user_vault('_vault_user_plain_password', dict_from_csv)
     dict_crypt_vault = get_user_vault('_vault_user_crypt_password', dict_from_csv, 'crypt')
 
-    with open('user_groups.yml', 'w') as wfile:
-        data = get_yaml_data(dict_of_groups)
-        wfile.writelines(data)
+    write_data('user_groups.yml', get_yaml_data(dict_of_groups))
+    write_data('plain_password_vault.yml', get_yaml_data(dict_plain_vault))
+    write_data('crypt_password_vault.yml', get_yaml_data(dict_crypt_vault))
+    write_data('full_user_data.yml', get_yaml_data(dict_from_csv))
+    write_data('k1599_users_present_users.yml', get_yaml_data(dict_user_data))
 
-    with open('plain_password_vault.yml', 'w') as wfile:
-        data = get_yaml_data(dict_plain_vault)
-        wfile.writelines(data)
-
-    with open('crypt_password_vault.yml', 'w') as wfile:
-        data = get_yaml_data(dict_crypt_vault)
-        wfile.writelines(data)
-
-    with open('full_user_data.yml', 'w') as wfile:
-        data = get_yaml_data(dict_from_csv)
-        wfile.writelines(data)
-
-    with open('k1599_users_present_users.yml', 'w') as wfile:
-        data = get_yaml_data(dict_user_data)
-        wfile.writelines(data)
+    write_mail_data(dict_from_csv)
 
     if args.verbose:
         print_out_yaml(dict_of_groups)
