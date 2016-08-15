@@ -10,6 +10,7 @@ firewall_allowed_tcp_ports:
     interfaces:
       - ens3
       - tun0
+  - number: 64738
 
 k1599_rsyslog_user: 'syslog'
 k1599_rsyslog_user_group: 'adm'
