@@ -94,6 +94,7 @@ def get_user_vault(name, dict_from_csv, pw_type='plain'):
     for key in dict_from_csv[dict_name].keys():
         users[key] = dict_from_csv[dict_name][key]['passwords'][pw_type]
 
+
     return vault_dict
 
 def get_user_groups(dict_of_groups):
@@ -108,7 +109,7 @@ def get_user_groups(dict_of_groups):
 
 def get_plain_password(length=10):
 
-    cmd = ['pwgen', str(length), '-n1']
+    cmd = "pwgen -n1 %s" % length
     call = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
     password = call.stdout.read()
 
