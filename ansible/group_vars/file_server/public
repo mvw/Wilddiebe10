@@ -15,6 +15,16 @@ k1599_common_present_packages:
   - 'openssl'
 
 k1599_users_present_groups:
+  - web-nord
+  - mail-nord
+  - netz-nord
+  - cert-nord
+  - file-nord
+  - web-sued
+  - mail-sued
+  - netz-sued
+  - cert-sued
+  - file-sued
   - fapra1599
   - sshlogin
 
