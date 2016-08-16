@@ -32,7 +32,7 @@ GROUPS = {
     8 : 'netz-sued',
     9 : 'cert-sued',
     10 : 'file-sued',
-    11 : 'sshusers',
+    11 : 'sshlogin',
     12 : 'fapra1599',
 }
 
