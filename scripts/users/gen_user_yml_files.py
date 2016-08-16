@@ -43,7 +43,7 @@ def _replace_umlauts(str2rep):
         string2return = string2return.replace(key, value)
     return string2return
 
-def get_content(fname):
+def get_csv_content_from_file(fname):
 
     content = []
 
@@ -54,7 +54,7 @@ def get_content(fname):
 
     return content
 
-def get_user_data(csv_data, dict_name='k1599_users_present_users'):
+def gen_user_data_dict_from_csv(csv_data, dict_name='k1599_users_present_users'):
     users = {}
     dict_from_csv = {dict_name : users}
 
@@ -65,8 +65,8 @@ def get_user_data(csv_data, dict_name='k1599_users_present_users'):
         name = "%s%s" % (line[2][0].lower().decode('utf-8'), line[1].lower().decode('utf-8'))
         name = _replace_umlauts(name).encode('ascii', 'ignore')
 
-        password = get_plain_password()
-        cpassword = get_crypt_password(password)
+        password = gen_plain_password()
+        cpassword = convert_plain_to_crypt_password(password)
         passwords = {'plain': password, 'crypt' : cpassword}
 
         matnr = line[0].lower()
@@ -102,8 +102,8 @@ def _gen_group_user_data():
         groups.append('fapra1599')
         groups.append(GROUPS[key])
 
-        plain_password = get_plain_password()
-        crypt_password = get_crypt_password(plain_password)
+        plain_password = gen_plain_password()
+        crypt_password = convert_plain_to_crypt_password(plain_password)
         passwords = {}
         passwords['crypt'] = crypt_password
         passwords['plain'] = plain_password
@@ -115,7 +115,7 @@ def _gen_group_user_data():
 
     return users
 
-def get_user_vault(name, dict_from_csv, pw_type='plain'):
+def gen_user_vault_dict(name, dict_from_csv, pw_type='plain'):
     dict_name = dict_from_csv.keys()[0]
     users = {}
     vault_dict = {name : users}
@@ -126,7 +126,7 @@ def get_user_vault(name, dict_from_csv, pw_type='plain'):
 
     return vault_dict
 
-def get_user_groups(dict_of_groups):
+def gen_user_group_dict(dict_of_groups):
     name = 'k1599_users_present_groups'
     groups = []
     group_dict = {name : groups}
@@ -136,7 +136,7 @@ def get_user_groups(dict_of_groups):
 
     return group_dict
 
-def get_plain_password(length=10):
+def gen_plain_password(length=10):
 
     cmd = "pwgen -n1 %s" % length
     call = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
@@ -144,7 +144,7 @@ def get_plain_password(length=10):
 
     return password.rstrip()
 
-def get_crypt_password(pw_string):
+def convert_plain_to_crypt_password(pw_string):
     password = subprocess.Popen(['echo', pw_string], stdout=subprocess.PIPE)
     cmd = ['mkpasswd', '-s', '--method=des']
     call = subprocess.Popen(cmd, stdin=password.stdout, stdout=subprocess.PIPE)
@@ -160,7 +160,7 @@ def get_yaml_data(input_dict):
     output = yaml.dump(input_dict, default_flow_style=False, explicit_start=True)
     return output
 
-def gen_user_data(dict_from_csv):
+def gen_user_dict(dict_from_csv):
     dict_name = dict_from_csv.keys()[0]
 
     users = []
@@ -200,7 +200,7 @@ def gen_user_data(dict_from_csv):
 
     return users
 
-def write_mail_data(dict_from_csv):
+def write_mail_data_files(dict_from_csv):
 
     template_loader = jinja2.FileSystemLoader(searchpath="./data/")
     template_env = jinja2.Environment(loader=template_loader)
@@ -228,10 +228,10 @@ def write_mail_data(dict_from_csv):
         group_password = data[group_name]['passwords']['plain']
 
         mail_text = mail_template.render(
-                        user_name=user_name,
-                        group_name=group_name,
-                        group_password=group_password,
-                        user_password=user_password)
+            user_name=user_name,
+            group_name=group_name,
+            group_password=group_password,
+            user_password=user_password)
 
         filename = '/'.join([dirname, email])
         with open(filename, 'w') as wfile:
@@ -263,13 +263,13 @@ def main(argv):
         print "Please provide a csv file as parameter."
         sys.exit(1)
     else:
-        data_from_csv = get_content(args.groupfile)
+        data_from_csv = get_csv_content_from_file(args.groupfile)
 
-    dict_of_groups = get_user_groups(GROUPS)
-    dict_from_csv = get_user_data(data_from_csv)
-    dict_user_data = gen_user_data(dict_from_csv)
-    dict_plain_vault = get_user_vault('_vault_user_plain_password', dict_from_csv)
-    dict_crypt_vault = get_user_vault('_vault_user_crypt_password', dict_from_csv, 'crypt')
+    dict_of_groups = gen_user_group_dict(GROUPS)
+    dict_from_csv = gen_user_data_dict_from_csv(data_from_csv)
+    dict_user_data = gen_user_dict(dict_from_csv)
+    dict_plain_vault = gen_user_vault_dict('_vault_user_plain_password', dict_from_csv)
+    dict_crypt_vault = gen_user_vault_dict('_vault_user_crypt_password', dict_from_csv, 'crypt')
 
     write_data('user_groups.yml', get_yaml_data(dict_of_groups))
     write_data('plain_password_vault.yml', get_yaml_data(dict_plain_vault))
@@ -277,7 +277,7 @@ def main(argv):
     write_data('full_user_data.yml', get_yaml_data(dict_from_csv))
     write_data('k1599_users_present_users.yml', get_yaml_data(dict_user_data))
 
-    write_mail_data(dict_from_csv)
+    write_mail_data_files(dict_from_csv)
 
     if args.verbose:
         print_out_yaml(dict_of_groups)
