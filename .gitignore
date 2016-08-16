@@ -8,5 +8,6 @@
 .bundle
 wiki.txt
 *.pyc
-scripts/*.yml
-scripts/*.csv
+scripts/users/yaml/*.yml
+scripts/users/data/*.csv
+scripts/users/mail/*
