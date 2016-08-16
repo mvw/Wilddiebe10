@@ -65,13 +65,17 @@ def gen_user_data_dict_from_csv(csv_data, dict_name='k1599_users_present_users')
         name = "%s%s" % (line[2][0].lower().decode('utf-8'), line[1].lower().decode('utf-8'))
         name = _replace_umlauts(name).encode('ascii', 'ignore')
 
+
+        lastname = line[1].lower().decode('utf-8')
+        lastname = _replace_umlauts(lastname).encode('ascii', 'ignore')
+        firstname = line[2].lower().decode('utf-8')
+        firstname = _replace_umlauts(firstname).encode('ascii', 'ignore')
+
         password = gen_plain_password()
         cpassword = convert_plain_to_crypt_password(password)
         passwords = {'plain': password, 'crypt' : cpassword}
 
         matnr = line[0].lower()
-        lastname = line[1].lower()
-        firstname = line[2].lower()
         email = line[3].lower()
         group = line[4].lower()
 
