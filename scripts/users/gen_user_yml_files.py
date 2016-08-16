@@ -7,7 +7,6 @@ import sys
 import subprocess
 
 import argparse
-import copy
 import csv
 import jinja2
 import yaml
@@ -131,33 +130,41 @@ def get_yaml_data(input_dict):
     output = yaml.dump(input_dict, default_flow_style=False, explicit_start=True)
     return output
 
-def filter_user_data(dict_from_csv):
-    clean_dict = copy.deepcopy(dict_from_csv)
-    dict_name = clean_dict.keys()[0]
+def gen_user_data(dict_from_csv):
+    dict_name = dict_from_csv.keys()[0]
 
-    for key in clean_dict[dict_name].keys():
-        clean_dict[dict_name][key]['passwords']['crypt'] = '{{ _vault_user_crypt_password["%s"] }}' % key
-        clean_dict[dict_name][key]['passwords']['plain'] = '{{ _vault_user_plain_password["%s"] }}' % key
-        if 'email' in clean_dict[dict_name][key]:
-            del clean_dict[dict_name][key]['email']
+    users = []
 
-        if 'matnr' in clean_dict[dict_name][key]:
-            del clean_dict[dict_name][key]['matnr']
+    for key in dict_from_csv[dict_name].keys():
+        group_index = '0'
+        name = key
 
-        if 'group' in clean_dict[dict_name][key]:
-            group_index = clean_dict[dict_name][key]['group']
-            del clean_dict[dict_name][key]['group']
+        passwords = {}
+        passwords['crypt'] = '{{ _vault_user_crypt_password["%s"] }}' % key
+        passwords['plain'] = '{{ _vault_user_crypt_password["%s"] }}' % key
 
         groups = []
+        if 'group' in dict_from_csv[dict_name][key]:
+            group_index = dict_from_csv[dict_name][key]['group']
+
         if group_index == '5' or group_index == '10':
             groups.append('sudo')
             groups.append('sshusers')
         groups.append('fapra1599')
         groups.append(GROUPS[group_index])
 
-        clean_dict[dict_name][key]['groups'] = ','.join(groups)
+        dict_from_csv[dict_name][key]['groups'] = ','.join(groups)
 
-    return clean_dict
+        user = {}
+        user['name'] = name
+        user['firstname'] = dict_from_csv[dict_name][key]['firstname']
+        user['lastname'] = dict_from_csv[dict_name][key]['lastname']
+        user['passwords'] = passwords
+        user['groups'] = ','.join(groups)
+
+        users.append(user)
+
+    return users
 
 def write_mail_data(dict_from_csv):
 
@@ -217,7 +224,7 @@ def main(argv):
 
     dict_of_groups = get_user_groups(GROUPS)
     dict_from_csv = get_user_data(data_from_csv)
-    dict_user_data = filter_user_data(dict_from_csv)
+    dict_user_data = gen_user_data(dict_from_csv)
     dict_plain_vault = get_user_vault('_vault_user_plain_password', dict_from_csv)
     dict_crypt_vault = get_user_vault('_vault_user_crypt_password', dict_from_csv, 'crypt')
 
