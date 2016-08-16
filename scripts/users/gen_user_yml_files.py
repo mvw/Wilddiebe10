@@ -22,18 +22,18 @@ REPLACE_UMLAUTS = {
 }
 
 GROUPS = {
-    '1' : 'web-nord',
-    '2' : 'mail-nord',
-    '3' : 'netz-nord',
-    '4' : 'cert-nord',
-    '5' : 'file-nord',
-    '6' : 'web-sued',
-    '7' : 'mail-sued',
-    '8' : 'netz-sued',
-    '9' : 'cert-sued',
-    '10' : 'file-sued',
-    '11' : 'sshusers',
-    '12' : 'fapra1599',
+    1 : 'web-nord',
+    2 : 'mail-nord',
+    3 : 'netz-nord',
+    4 : 'cert-nord',
+    5 : 'file-nord',
+    6 : 'web-sued',
+    7 : 'mail-sued',
+    8 : 'netz-sued',
+    9 : 'cert-sued',
+    10 : 'file-sued',
+    11 : 'sshusers',
+    12 : 'fapra1599',
 }
 
 
@@ -82,8 +82,38 @@ def get_user_data(csv_data, dict_name='k1599_users_present_users'):
         users[name]['email'] = email
         users[name]['group'] = group
         users[name]['matnr'] = matnr
+
+    group_users = _gen_group_user_data()
+    users.update(group_users)
+
     return dict_from_csv
 
+def _gen_group_user_data():
+    users = {}
+
+    for key in GROUPS.keys():
+        name = GROUPS[key]
+        group_index = key
+
+        if group_index > 10:
+            continue
+
+        groups = []
+        groups.append('fapra1599')
+        groups.append(GROUPS[key])
+
+        plain_password = get_plain_password()
+        crypt_password = get_crypt_password(plain_password)
+        passwords = {}
+        passwords['crypt'] = crypt_password
+        passwords['plain'] = plain_password
+
+        users[name] = {}
+        users[name]['passwords'] = passwords
+        users[name]['group'] = key
+        users[name]['groups'] = ','.join(groups)
+
+    return users
 
 def get_user_vault(name, dict_from_csv, pw_type='plain'):
     dict_name = dict_from_csv.keys()[0]
@@ -136,7 +166,7 @@ def gen_user_data(dict_from_csv):
     users = []
 
     for key in dict_from_csv[dict_name].keys():
-        group_index = '0'
+        group_index = 0
         name = key
 
         passwords = {}
@@ -145,20 +175,24 @@ def gen_user_data(dict_from_csv):
 
         groups = []
         if 'group' in dict_from_csv[dict_name][key]:
-            group_index = dict_from_csv[dict_name][key]['group']
+            group_index = int(dict_from_csv[dict_name][key]['group'])
 
-        if group_index == '5' or group_index == '10':
-            groups.append('sudo')
-            groups.append('sshusers')
+            if group_index == 5 or group_index == 10:
+                groups.append('sudo')
+                groups.append('sshusers')
+
+            groups.append(GROUPS[group_index])
+
         groups.append('fapra1599')
-        groups.append(GROUPS[group_index])
 
         dict_from_csv[dict_name][key]['groups'] = ','.join(groups)
 
         user = {}
         user['name'] = name
-        user['firstname'] = dict_from_csv[dict_name][key]['firstname']
-        user['lastname'] = dict_from_csv[dict_name][key]['lastname']
+        if 'firstname' in dict_from_csv[dict_name][key]:
+            user['firstname'] = dict_from_csv[dict_name][key]['firstname']
+            user['lastname'] = dict_from_csv[dict_name][key]['lastname']
+
         user['passwords'] = passwords
         user['groups'] = ','.join(groups)
 
@@ -183,12 +217,21 @@ def write_mail_data(dict_from_csv):
     data = dict_from_csv[key]
 
     for key in data.keys():
-        username = key
-        userpassword = data[key]['passwords']['plain']
-        email = data[key]['email']
+        user_name = key
+        if user_name in GROUPS.values():
+            continue
 
-        mail_text = mail_template.render(user_name=username,
-                        user_password=userpassword)
+        user_password = data[key]['passwords']['plain']
+        email = data[key]['email']
+        group_index = int(data[key]['group'])
+        group_name = GROUPS[group_index]
+        group_password = data[group_name]['passwords']['plain']
+
+        mail_text = mail_template.render(
+                        user_name=user_name,
+                        group_name=group_name,
+                        group_password=group_password,
+                        user_password=user_password)
 
         filename = '/'.join([dirname, email])
         with open(filename, 'w') as wfile:
