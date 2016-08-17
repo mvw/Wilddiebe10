@@ -175,7 +175,7 @@ def gen_user_dict(dict_from_csv):
 
         passwords = {}
         passwords['crypt'] = '{{ _vault_user_crypt_password["%s"] }}' % key
-        passwords['plain'] = '{{ _vault_user_crypt_password["%s"] }}' % key
+        passwords['plain'] = '{{ _vault_user_plain_password["%s"] }}' % key
 
         groups = []
         if 'group' in dict_from_csv[dict_name][key]:
