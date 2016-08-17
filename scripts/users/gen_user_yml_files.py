@@ -202,7 +202,10 @@ def gen_user_dict(dict_from_csv):
 
         users.append(user)
 
-    return users
+    user_dict = {}
+    user_dict[dict_name] = users
+
+    return user_dict
 
 def write_mail_data_files(dict_from_csv):
 
