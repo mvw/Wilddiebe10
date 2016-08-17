@@ -188,6 +188,7 @@ def gen_user_dict(dict_from_csv):
             groups.append(GROUPS[group_index])
 
         groups.append('fapra1599')
+        groups.append('users')
 
         dict_from_csv[dict_name][key]['groups'] = ','.join(groups)
 
