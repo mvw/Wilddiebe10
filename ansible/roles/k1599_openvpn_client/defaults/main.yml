@@ -1,5 +1,5 @@
 k1599_ovpn_enabled: yes
 k1599_ovpn_server: "{{ _vault_ovpn_server }}"
 k1599_ovpn_server_cn: "{{ _vault_ovpn_server_cn|default('') }}"
-k1599_ovpn_server_auth: "{{ _vault_ovpn_server_auth }}"
+k1599_ovpn_server_auth: "{{ _vault_ovpn_server_auth|default ('SHA256') }}"
 k1599_ovpn_server_mtu: "{{ _vault_ovpn_server_mtu|default('') }}"
