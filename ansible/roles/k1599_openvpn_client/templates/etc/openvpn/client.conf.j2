@@ -7,9 +7,11 @@ float
 # Routingmodus
 dev tun
 
+{% if k1599_ovpn_server_mtu != '' %}
 #MTU: Fragmentierung, sollte der Einstellung auf dem Server
 #entsprechen, daher am besten nicht aendern
-tun-mtu 1492
+tun-mtu {{ k1599_ovpn_server_mtu }}
+{% endif %}
 
 #tcp oder udp
 proto udp
@@ -33,7 +35,7 @@ key certs/privkey.pem
 resolv-retry infinite
 
 #Authentifizierung
-auth SHA256
+auth {{ k1599_ovpn_server_auth }}
 
 #Die Ports werden dynamisch ausgewaehlt
 nobind
