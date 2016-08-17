@@ -12,5 +12,7 @@ firewall_allowed_tcp_ports:
       - tun0
   - number: 64738
 
+k1599_file_server_interfaces: '127.0.0.1/8 10.8.1.30/24'
+
 k1599_rsyslog_user: 'syslog'
 k1599_rsyslog_user_group: 'adm'
