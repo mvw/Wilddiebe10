@@ -5,9 +5,11 @@
 
 {% if k1599_integration_test is not defined %}
 # Set TLS options
-$ActionSendStreamDriverAuthMode anon
+#$ActionSendStreamDriverAuthMode anon
+$ActionSendStreamDriverAuthMode x509/certvalid
 #$ActionSendStreamDriverAuthMode x509/name
-#$ActionSendStreamDriverPermittedPeer central.example.net
+#$ActionSendStreamDriverPermittedPeer FileNord
+#$ActionSendStreamDriverPermittedPeer fileserver.mueller-backwaren.de
 $ActionSendStreamDriverMode 1 # run driver in TLS-only mode
 {% endif %}
 
