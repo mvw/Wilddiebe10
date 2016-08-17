@@ -1,9 +1,25 @@
-# ######### Recieving Messages from Remote Hosts ##########
+# ######### Receiving Messages from Remote Hosts ##########
+
+{% if k1599_integration_test is not defined %}
+# Set certificates
+global(
+  defaultNetstreamDriver="gtls"
+  defaultNetstreamDriverCAFile="/etc/rsyslog.d/certs/ca-chain.cert.pem"
+  defaultNetstreamDriverCertFile="/etc/rsyslog.d/certs/cert.pem"
+  defaultNetstreamDriverKeyFile="/etc/rsyslog.d/certs/privkey.pem"
+)
+{% endif %}
 
 # Enable imtcp listener on port {{ k1599_rsyslog_port }}
 module(
   load="imtcp"
   MaxSessions="{{ k1599_rsyslog_maxsessions|default(500) }}"
+{% if k1599_integration_test is not defined %}
+  StreamDriver.Mode="1"
+  StreamDriver.AuthMode="anon"
+  #StreamDriver.AuthMode="x509/name"
+  #PermittedPeer="*.mydomain.com"
+{% endif %}
 )
 
 input(

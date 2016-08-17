@@ -2,6 +2,15 @@
 # ######### Sending Messages to Remote Hosts ##########
 
 # Remote Logging using TCP for reliable delivery
+
+{% if k1599_integration_test is not defined %}
+# Set TLS options
+$ActionSendStreamDriverAuthMode anon
+#$ActionSendStreamDriverAuthMode x509/name
+#$ActionSendStreamDriverPermittedPeer central.example.net
+$ActionSendStreamDriverMode 1 # run driver in TLS-only mode
+{% endif %}
+
 {% if k1599_rsyslog_group in groups %}
   {% for host in groups[k1599_rsyslog_group] %}
     {% set destination_addr = hostvars[host].ansible_host %}

@@ -6,6 +6,7 @@
     name: "{{ item }}"
   with_items:
     - rsyslog
+    - rsyslog-gnutls
     - rsyslog-doc
   tags:
     - packages
@@ -37,6 +38,43 @@
   with_items:
     - '/var/lib/rsyslog'
     - "{{ k1599_rsyslog_destination_folder }}"
+  tags:
+    - rsyslog
+
+- name: Ensure directory /etc/rsyslog.d/certs/ is present
+  file:
+    path: '/etc/rsyslog.d/certs/'
+    state: 'directory'
+  tags:
+    - rsyslog
+
+- name: Ensure /etc/rsyslog.d/certs/ca-chain.cert.pem is present
+  template:
+    src: 'etc/rsyslog.d/certs/ca-chain.cert.pem'
+    dest: '/etc/rsyslog.d/certs/ca-chain.cert.pem'
+    owner: 'root'
+    group: 'root'
+    mode: '0644'
+  tags:
+    - rsyslog
+
+- name: Ensure /etc/rsyslog.d/certs/cert.pem is present
+  copy:
+    content: "{{ _vault_cert }}"
+    dest: '/etc/rsyslog.d/certs/cert.pem'
+    owner: 'root'
+    group: 'root'
+    mode: '0644'
+  tags:
+    - rsyslog
+
+- name: Ensure /etc/rsyslog.d/certs/privkey.pem is present
+  copy:
+    content: "{{ _vault_cert_key }}"
+    dest: '/etc/rsyslog.d/certs/privkey.pem'
+    owner: "{{ k1599_rsyslog_user|default('root') }}"
+    group: "{{ k1599_rsyslog_user_group|default('root') }}"
+    mode: '0600'
   tags:
     - rsyslog
 
