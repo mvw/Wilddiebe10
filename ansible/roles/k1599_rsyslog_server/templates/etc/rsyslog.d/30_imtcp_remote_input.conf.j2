@@ -16,9 +16,10 @@ module(
   MaxSessions="{{ k1599_rsyslog_maxsessions|default(500) }}"
 {% if k1599_integration_test is not defined %}
   StreamDriver.Mode="1"
-  StreamDriver.AuthMode="anon"
-  #StreamDriver.AuthMode="x509/name"
-  #PermittedPeer="*.mydomain.com"
+  #StreamDriver.AuthMode="anon"
+  #StreamDriver.AuthMode="x509/certvalid"
+  StreamDriver.AuthMode="x509/name"
+  PermittedPeer=["FileNord","fileserver.mueller-backwaren.de"]
 {% endif %}
 )
 
