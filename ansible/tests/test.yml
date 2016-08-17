@@ -33,14 +33,13 @@
 
     k1599_users_present_users:
       - name: 'test-user-present'
-        comment: 'This is only a test'
         groups: 'sudo,users,sshlogin'
-        password: 'Qqo9OBRptpvzU'
+        passwords:
+          crypt: 'Qqo9OBRptpvzU'
+          plain: 'test'
 
     k1599_users_absent_users:
       - 'test-user-absent'
-
-    samba_users: []
 
     k1599_file_server_smbd_enabled: yes
     k1599_file_server_clamd_enabled: yes

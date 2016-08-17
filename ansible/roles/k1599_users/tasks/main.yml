@@ -16,11 +16,10 @@
 - name: Ensure expected users are created
   user:
     name: "{{ item.name }}"
-    password: "{{ item.password }}"
+    password: "{{ item.passwords.crypt }}"
     shell: '/bin/bash'
     groups: "{{ item.groups|default('users') }}"
     append: yes
-    comment: "{{ item.name|default('') }}"
     state: present
   with_items:
     - "{{ k1599_users_present_users }}"

@@ -56,6 +56,13 @@ script:
     && (echo 'User test-user-present is present - pass' && exit 0)
     || (echo 'User test-user-present is not present' && exit 1)
 
+  # Check users will member of expected groups
+  - >
+    id test-user-present | grep 'users' | grep 'sudo' | grep -q 'sshlogin'
+    && (echo 'User test-user-present is member of expected groups - pass' && exit 0)
+    || (echo 'User test-user-present is not member of expected groups.' && exit 1)
+
+
   # Check expected groups will be created
   - >
     getent group | grep -q 'test-group-present'

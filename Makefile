@@ -34,9 +34,6 @@ ls-present-users:
 	echo '===== Erzeugte Benutzer =====' >> wiki.txt
 	python -c "import scripts.anhang as anhang; anhang.get_present_users()" >> wiki.txt;
 
-ls-samba-users:
-	echo '===== Erzeugte Samba Benutzer =====' >> wiki.txt
-	python -c "import scripts.anhang as anhang; anhang.get_samba_users('ansible/group_vars/file_server/public')" >> wiki.txt;
 ls-allowed-ports:
 	echo '===== Firewall =====' >> wiki.txt
 	echo '==== Offene Ports - Gruppe Nord ====' >> wiki.txt

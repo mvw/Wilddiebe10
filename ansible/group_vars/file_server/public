@@ -2,6 +2,10 @@
 k1599_users_absent_groups:
   - test
 
+k1599_users_absent_users:
+  - guest
+  - fapra1599
+
 k1599_common_absent_packages:
   - rsh-client
   - rsh-server
@@ -27,70 +31,6 @@ k1599_users_present_groups:
   - file-sued
   - fapra1599
   - sshlogin
-
-k1599_users_present_users:
-  - name: 'guest'
-    comment: "Gaeste sind willkommen"
-    password: "{{ _vault_userpassword['guest'] }}"
-  - name: 'fapra1599'
-    groups: 'sudo,users,sshlogin'
-    password: "{{ _vault_userpassword['fapra1599'] }}"
-  - name: 'sgirrulat'
-    groups: 'sudo,users,sshlogin'
-    password: "{{ _vault_userpassword['sgirrulat'] }}"
-  - name: 'sjansen'
-    groups: 'sudo,users,sshlogin'
-    password: "{{ _vault_userpassword['sjansen'] }}"
-  - name: 'sbruch'
-    groups: 'sudo,users,sshlogin'
-    password: "{{ _vault_userpassword['sbruch'] }}"
-  - name: 'fhofmann'
-    groups: 'sudo,users,sshlogin'
-    password: "{{ _vault_userpassword['fhofmann'] }}"
-  - name: 'tgrosswendt'
-    groups: 'sudo,users,sshlogin'
-    password: "{{ _vault_userpassword['tgrosswendt'] }}"
-  - name: 'cweissenborn'
-    groups: 'sudo,users,sshlogin'
-    password: "{{ _vault_userpassword['cweissenborn'] }}"
-  - name: 'jschumacher'
-    groups: 'sudo,users,sshlogin'
-    password: "{{ _vault_userpassword['jschumacher'] }}"
-  - name: 'wschmidt'
-    groups: 'sudo,users,sshlogin'
-    password: "{{ _vault_userpassword['wschmidt'] }}"
-  - name: 'mwoerkom'
-    groups: 'sudo,users,sshlogin'
-    password: "{{ _vault_userpassword['mwoerkom'] }}"
-  - name: 'phaebel'
-    groups: 'sudo,users,sshlogin'
-    password: "{{ _vault_userpassword['phaebel'] }}"
-
-samba_users:
-  - name: 'guest'
-    password: "{{ _vault_smbpassword['guest'] }}"
-  - name: 'fapra1599'
-    password: "{{ _vault_smbpassword['fapra1599'] }}"
-  - name: 'sgirrulat'
-    password: "{{ _vault_smbpassword['sgirrulat'] }}"
-  - name: 'sjansen'
-    password: "{{ _vault_smbpassword['sjansen'] }}"
-  - name: 'sbruch'
-    password: "{{ _vault_smbpassword['sbruch'] }}"
-  - name: 'fhofmann'
-    password: "{{ _vault_smbpassword['fhofmann'] }}"
-  - name: 'tgrosswendt'
-    password: "{{ _vault_smbpassword['tgrosswendt'] }}"
-  - name: 'cweissenborn'
-    password: "{{ _vault_smbpassword['cweissenborn'] }}"
-  - name: 'jschumacher'
-    password: "{{ _vault_smbpassword['jschumacher'] }}"
-  - name: 'wschmidt'
-    password: "{{ _vault_smbpassword['wschmidt'] }}"
-  - name: 'mwoerkom'
-    password: "{{ _vault_smbpassword['mwoerkom'] }}"
-  - name: 'phaebel'
-    password: "{{ _vault_smbpassword['phaebel'] }}"
 
 k1599_anti_virus_clamd_enabled: yes
 k1599_file_server_public_share_path: '/share/public'
@@ -251,3 +191,398 @@ ca_chain_cert_sued: |
   3Q2VfKXUo+JyS1JHJwNLPS9w3oSmf1f426UDlM1+Ww==
   -----END CERTIFICATE-----
 
+k1599_users_present_users:
+  - firstname: martin
+    groups: cert-nord,sshlogin,fapra1599,users
+    lastname: siepmann
+    name: msiepmann
+    passwords:
+      crypt: '{{ _vault_user_crypt_password["msiepmann"] }}'
+      plain: '{{ _vault_user_plain_password["msiepmann"] }}'
+  - firstname: sebastian
+    groups: mail-nord,sshlogin,fapra1599,users
+    lastname: hartmann
+    name: shartmann
+    passwords:
+      crypt: '{{ _vault_user_crypt_password["shartmann"] }}'
+      plain: '{{ _vault_user_plain_password["shartmann"] }}'
+  - firstname: thomas
+    groups: sudo,file-sued,sshlogin,fapra1599,users
+    lastname: grosswendt
+    name: tgrosswendt
+    passwords:
+      crypt: '{{ _vault_user_crypt_password["tgrosswendt"] }}'
+      plain: '{{ _vault_user_plain_password["tgrosswendt"] }}'
+  - groups: netz-nord,fapra1599,users
+    name: netz-nord
+    passwords:
+      crypt: '{{ _vault_user_crypt_password["netz-nord"] }}'
+      plain: '{{ _vault_user_plain_password["netz-nord"] }}'
+  - firstname: felix
+    groups: mail-sued,sshlogin,fapra1599,users
+    lastname: kamfenkel
+    name: fkamfenkel
+    passwords:
+      crypt: '{{ _vault_user_crypt_password["fkamfenkel"] }}'
+      plain: '{{ _vault_user_plain_password["fkamfenkel"] }}'
+  - firstname: christoph
+    groups: cert-sued,sshlogin,fapra1599,users
+    lastname: pempelforth
+    name: cpempelforth
+    passwords:
+      crypt: '{{ _vault_user_crypt_password["cpempelforth"] }}'
+      plain: '{{ _vault_user_plain_password["cpempelforth"] }}'
+  - firstname: marius
+    groups: netz-nord,sshlogin,fapra1599,users
+    lastname: klein
+    name: mklein
+    passwords:
+      crypt: '{{ _vault_user_crypt_password["mklein"] }}'
+      plain: '{{ _vault_user_plain_password["mklein"] }}'
+  - groups: sudo,file-sued,fapra1599,users
+    name: file-sued
+    passwords:
+      crypt: '{{ _vault_user_crypt_password["file-sued"] }}'
+      plain: '{{ _vault_user_plain_password["file-sued"] }}'
+  - firstname: sascha
+    groups: sudo,file-sued,sshlogin,fapra1599,users
+    lastname: girrulat
+    name: sgirrulat
+    passwords:
+      crypt: '{{ _vault_user_crypt_password["sgirrulat"] }}'
+      plain: '{{ _vault_user_plain_password["sgirrulat"] }}'
+  - firstname: fabian
+    groups: sudo,file-sued,sshlogin,fapra1599,users
+    lastname: hofmann
+    name: fhofmann
+    passwords:
+      crypt: '{{ _vault_user_crypt_password["fhofmann"] }}'
+      plain: '{{ _vault_user_plain_password["fhofmann"] }}'
+  - firstname: alexander
+    groups: netz-sued,sshlogin,fapra1599,users
+    lastname: hacker
+    name: ahacker
+    passwords:
+      crypt: '{{ _vault_user_crypt_password["ahacker"] }}'
+      plain: '{{ _vault_user_plain_password["ahacker"] }}'
+  - firstname: nicolas
+    groups: netz-nord,sshlogin,fapra1599,users
+    lastname: napp
+    name: nnapp
+    passwords:
+      crypt: '{{ _vault_user_crypt_password["nnapp"] }}'
+      plain: '{{ _vault_user_plain_password["nnapp"] }}'
+  - firstname: marc ernst eddy
+    groups: sudo,file-nord,sshlogin,fapra1599,users
+    lastname: woerkom
+    name: mwoerkom
+    passwords:
+      crypt: '{{ _vault_user_crypt_password["mwoerkom"] }}'
+      plain: '{{ _vault_user_plain_password["mwoerkom"] }}'
+  - firstname: stefan
+    groups: sudo,file-sued,sshlogin,fapra1599,users
+    lastname: bruch
+    name: sbruch
+    passwords:
+      crypt: '{{ _vault_user_crypt_password["sbruch"] }}'
+      plain: '{{ _vault_user_plain_password["sbruch"] }}'
+  - firstname: brigitte
+    groups: mail-nord,sshlogin,fapra1599,users
+    lastname: fischer
+    name: bfischer
+    passwords:
+      crypt: '{{ _vault_user_crypt_password["bfischer"] }}'
+      plain: '{{ _vault_user_plain_password["bfischer"] }}'
+  - firstname: cornelia
+    groups: web-sued,sshlogin,fapra1599,users
+    lastname: boettge
+    name: cboettge
+    passwords:
+      crypt: '{{ _vault_user_crypt_password["cboettge"] }}'
+      plain: '{{ _vault_user_plain_password["cboettge"] }}'
+  - firstname: joachim
+    groups: netz-sued,sshlogin,fapra1599,users
+    lastname: herold
+    name: jherold
+    passwords:
+      crypt: '{{ _vault_user_crypt_password["jherold"] }}'
+      plain: '{{ _vault_user_plain_password["jherold"] }}'
+  - firstname: frank
+    groups: cert-sued,sshlogin,fapra1599,users
+    lastname: schweisfurth
+    name: fschweisfurth
+    passwords:
+      crypt: '{{ _vault_user_crypt_password["fschweisfurth"] }}'
+      plain: '{{ _vault_user_plain_password["fschweisfurth"] }}'
+  - groups: web-nord,fapra1599,users
+    name: web-nord
+    passwords:
+      crypt: '{{ _vault_user_crypt_password["web-nord"] }}'
+      plain: '{{ _vault_user_plain_password["web-nord"] }}'
+  - firstname: joerg
+    groups: netz-sued,sshlogin,fapra1599,users
+    lastname: wichert
+    name: jwichert
+    passwords:
+      crypt: '{{ _vault_user_crypt_password["jwichert"] }}'
+      plain: '{{ _vault_user_plain_password["jwichert"] }}'
+  - firstname: martin
+    groups: mail-sued,sshlogin,fapra1599,users
+    lastname: kutter
+    name: mkutter
+    passwords:
+      crypt: '{{ _vault_user_crypt_password["mkutter"] }}'
+      plain: '{{ _vault_user_plain_password["mkutter"] }}'
+  - firstname: patrick
+    groups: sudo,file-nord,sshlogin,fapra1599,users
+    lastname: haebel
+    name: phaebel
+    passwords:
+      crypt: '{{ _vault_user_crypt_password["phaebel"] }}'
+      plain: '{{ _vault_user_plain_password["phaebel"] }}'
+  - groups: cert-nord,fapra1599,users
+    name: cert-nord
+    passwords:
+      crypt: '{{ _vault_user_crypt_password["cert-nord"] }}'
+      plain: '{{ _vault_user_plain_password["cert-nord"] }}'
+  - firstname: oliver
+    groups: mail-nord,sshlogin,fapra1599,users
+    lastname: offenburger
+    name: ooffenburger
+    passwords:
+      crypt: '{{ _vault_user_crypt_password["ooffenburger"] }}'
+      plain: '{{ _vault_user_plain_password["ooffenburger"] }}'
+  - firstname: marco
+    groups: cert-sued,sshlogin,fapra1599,users
+    lastname: ploeger
+    name: mploeger
+    passwords:
+      crypt: '{{ _vault_user_crypt_password["mploeger"] }}'
+      plain: '{{ _vault_user_plain_password["mploeger"] }}'
+  - firstname: daniel
+    groups: netz-nord,sshlogin,fapra1599,users
+    lastname: troeger
+    name: dtroeger
+    passwords:
+      crypt: '{{ _vault_user_crypt_password["dtroeger"] }}'
+      plain: '{{ _vault_user_plain_password["dtroeger"] }}'
+  - firstname: niklas
+    groups: cert-sued,sshlogin,fapra1599,users
+    lastname: reusch
+    name: nreusch
+    passwords:
+      crypt: '{{ _vault_user_crypt_password["nreusch"] }}'
+      plain: '{{ _vault_user_plain_password["nreusch"] }}'
+  - firstname: ingo
+    groups: mail-sued,sshlogin,fapra1599,users
+    lastname: stieglitz
+    name: istieglitz
+    passwords:
+      crypt: '{{ _vault_user_crypt_password["istieglitz"] }}'
+      plain: '{{ _vault_user_plain_password["istieglitz"] }}'
+  - firstname: christoph
+    groups: sudo,file-nord,sshlogin,fapra1599,users
+    lastname: weissenborn
+    name: cweissenborn
+    passwords:
+      crypt: '{{ _vault_user_crypt_password["cweissenborn"] }}'
+      plain: '{{ _vault_user_plain_password["cweissenborn"] }}'
+  - firstname: lars
+    groups: netz-sued,sshlogin,fapra1599,users
+    lastname: richter
+    name: lrichter
+    passwords:
+      crypt: '{{ _vault_user_crypt_password["lrichter"] }}'
+      plain: '{{ _vault_user_plain_password["lrichter"] }}'
+  - firstname: joerg
+    groups: sudo,file-nord,sshlogin,fapra1599,users
+    lastname: schumacher
+    name: jschumacher
+    passwords:
+      crypt: '{{ _vault_user_crypt_password["jschumacher"] }}'
+      plain: '{{ _vault_user_plain_password["jschumacher"] }}'
+  - groups: netz-sued,fapra1599,users
+    name: netz-sued
+    passwords:
+      crypt: '{{ _vault_user_crypt_password["netz-sued"] }}'
+      plain: '{{ _vault_user_plain_password["netz-sued"] }}'
+  - firstname: sven
+    groups: cert-sued,sshlogin,fapra1599,users
+    lastname: wyes
+    name: swyes
+    passwords:
+      crypt: '{{ _vault_user_crypt_password["swyes"] }}'
+      plain: '{{ _vault_user_plain_password["swyes"] }}'
+  - groups: mail-sued,fapra1599,users
+    name: mail-sued
+    passwords:
+      crypt: '{{ _vault_user_crypt_password["mail-sued"] }}'
+      plain: '{{ _vault_user_plain_password["mail-sued"] }}'
+  - firstname: markus
+    groups: cert-nord,sshlogin,fapra1599,users
+    lastname: sandkuehler
+    name: msandkuehler
+    passwords:
+      crypt: '{{ _vault_user_crypt_password["msandkuehler"] }}'
+      plain: '{{ _vault_user_plain_password["msandkuehler"] }}'
+  - firstname: evelyn
+    groups: web-sued,sshlogin,fapra1599,users
+    lastname: mueller
+    name: emueller
+    passwords:
+      crypt: '{{ _vault_user_crypt_password["emueller"] }}'
+      plain: '{{ _vault_user_plain_password["emueller"] }}'
+  - firstname: tobias
+    groups: web-nord,sshlogin,fapra1599,users
+    lastname: winkelhorst
+    name: twinkelhorst
+    passwords:
+      crypt: '{{ _vault_user_crypt_password["twinkelhorst"] }}'
+      plain: '{{ _vault_user_plain_password["twinkelhorst"] }}'
+  - groups: mail-nord,fapra1599,users
+    name: mail-nord
+    passwords:
+      crypt: '{{ _vault_user_crypt_password["mail-nord"] }}'
+      plain: '{{ _vault_user_plain_password["mail-nord"] }}'
+  - firstname: svetlana
+    groups: netz-sued,sshlogin,fapra1599,users
+    lastname: ganswind
+    name: sganswind
+    passwords:
+      crypt: '{{ _vault_user_crypt_password["sganswind"] }}'
+      plain: '{{ _vault_user_plain_password["sganswind"] }}'
+  - firstname: bjoern
+    groups: cert-nord,sshlogin,fapra1599,users
+    lastname: walter
+    name: bwalter
+    passwords:
+      crypt: '{{ _vault_user_crypt_password["bwalter"] }}'
+      plain: '{{ _vault_user_plain_password["bwalter"] }}'
+  - firstname: patrick
+    groups: web-nord,sshlogin,fapra1599,users
+    lastname: holtkamp
+    name: pholtkamp
+    passwords:
+      crypt: '{{ _vault_user_crypt_password["pholtkamp"] }}'
+      plain: '{{ _vault_user_plain_password["pholtkamp"] }}'
+  - firstname: carina
+    groups: web-nord,sshlogin,fapra1599,users
+    lastname: hesseling
+    name: chesseling
+    passwords:
+      crypt: '{{ _vault_user_crypt_password["chesseling"] }}'
+      plain: '{{ _vault_user_plain_password["chesseling"] }}'
+  - firstname: monika
+    groups: mail-nord,sshlogin,fapra1599,users
+    lastname: schrenk
+    name: mschrenk
+    passwords:
+      crypt: '{{ _vault_user_crypt_password["mschrenk"] }}'
+      plain: '{{ _vault_user_plain_password["mschrenk"] }}'
+  - firstname: willi
+    groups: netz-nord,sshlogin,fapra1599,users
+    lastname: pankraz
+    name: wpankraz
+    passwords:
+      crypt: '{{ _vault_user_crypt_password["wpankraz"] }}'
+      plain: '{{ _vault_user_plain_password["wpankraz"] }}'
+  - groups: sudo,file-nord,fapra1599,users
+    name: file-nord
+    passwords:
+      crypt: '{{ _vault_user_crypt_password["file-nord"] }}'
+      plain: '{{ _vault_user_plain_password["file-nord"] }}'
+  - firstname: karin
+    groups: web-sued,sshlogin,fapra1599,users
+    lastname: steinkohl
+    name: ksteinkohl
+    passwords:
+      crypt: '{{ _vault_user_crypt_password["ksteinkohl"] }}'
+      plain: '{{ _vault_user_plain_password["ksteinkohl"] }}'
+  - firstname: thomas
+    groups: mail-sued,sshlogin,fapra1599,users
+    lastname: bayer
+    name: tbayer
+    passwords:
+      crypt: '{{ _vault_user_crypt_password["tbayer"] }}'
+      plain: '{{ _vault_user_plain_password["tbayer"] }}'
+  - firstname: michael
+    groups: web-sued,sshlogin,fapra1599,users
+    lastname: berner
+    name: mberner
+    passwords:
+      crypt: '{{ _vault_user_crypt_password["mberner"] }}'
+      plain: '{{ _vault_user_plain_password["mberner"] }}'
+  - firstname: kamilla
+    groups: cert-nord,sshlogin,fapra1599,users
+    lastname: lauter
+    name: klauter
+    passwords:
+      crypt: '{{ _vault_user_crypt_password["klauter"] }}'
+      plain: '{{ _vault_user_plain_password["klauter"] }}'
+  - groups: web-sued,fapra1599,users
+    name: web-sued
+    passwords:
+      crypt: '{{ _vault_user_crypt_password["web-sued"] }}'
+      plain: '{{ _vault_user_plain_password["web-sued"] }}'
+  - firstname: waldemar
+    groups: netz-nord,sshlogin,fapra1599,users
+    lastname: lindemann
+    name: wlindemann
+    passwords:
+      crypt: '{{ _vault_user_crypt_password["wlindemann"] }}'
+      plain: '{{ _vault_user_plain_password["wlindemann"] }}'
+  - firstname: tobias
+    groups: web-nord,sshlogin,fapra1599,users
+    lastname: schroeder
+    name: tschroeder
+    passwords:
+      crypt: '{{ _vault_user_crypt_password["tschroeder"] }}'
+      plain: '{{ _vault_user_plain_password["tschroeder"] }}'
+  - firstname: marcus
+    groups: cert-nord,sshlogin,fapra1599,users
+    lastname: salwitzek
+    name: msalwitzek
+    passwords:
+      crypt: '{{ _vault_user_crypt_password["msalwitzek"] }}'
+      plain: '{{ _vault_user_plain_password["msalwitzek"] }}'
+  - firstname: julia
+    groups: mail-nord,sshlogin,fapra1599,users
+    lastname: affenzeller
+    name: jaffenzeller
+    passwords:
+      crypt: '{{ _vault_user_crypt_password["jaffenzeller"] }}'
+      plain: '{{ _vault_user_plain_password["jaffenzeller"] }}'
+  - firstname: waldemar
+    groups: sudo,file-nord,sshlogin,fapra1599,users
+    lastname: schmidt
+    name: wschmidt
+    passwords:
+      crypt: '{{ _vault_user_crypt_password["wschmidt"] }}'
+      plain: '{{ _vault_user_plain_password["wschmidt"] }}'
+  - firstname: angela beate
+    groups: mail-sued,sshlogin,fapra1599,users
+    lastname: szewc
+    name: aszewc
+    passwords:
+      crypt: '{{ _vault_user_crypt_password["aszewc"] }}'
+      plain: '{{ _vault_user_plain_password["aszewc"] }}'
+  - firstname: martin
+    groups: web-sued,sshlogin,fapra1599,users
+    lastname: mueller
+    name: mmueller
+    passwords:
+      crypt: '{{ _vault_user_crypt_password["mmueller"] }}'
+      plain: '{{ _vault_user_plain_password["mmueller"] }}'
+  - firstname: silas
+    groups: sudo,file-sued,sshlogin,fapra1599,users
+    lastname: jansen
+    name: sjansen
+    passwords:
+      crypt: '{{ _vault_user_crypt_password["sjansen"] }}'
+      plain: '{{ _vault_user_plain_password["sjansen"] }}'
+  - groups: cert-sued,fapra1599,users
+    name: cert-sued
+    passwords:
+      crypt: '{{ _vault_user_crypt_password["cert-sued"] }}'
+      plain: '{{ _vault_user_plain_password["cert-sued"] }}'
+>>>>>>> k1599_users/file_server: Add all new users and use the same data dicts for samba/unix
