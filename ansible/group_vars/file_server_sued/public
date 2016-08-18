@@ -1,6 +1,8 @@
 ---
 ca_chain_cert: "{{ ca_chain_cert_sued }}"
 
+fapra1599_common_hostname: 'filesued'
+
 firewall_allowed_tcp_ports:
   - number: '22'
   - number: '445'
