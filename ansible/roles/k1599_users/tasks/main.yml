@@ -13,16 +13,27 @@
   with_items:
     - "{{ k1599_users_absent_groups|default([]) }}"
 
-- name: Ensure expected users are created
-  user:
-    name: "{{ item.name }}"
-    password: "{{ item.passwords.crypt }}"
-    shell: '/bin/bash'
-    groups: "{{ item.groups|default('users') }}"
-    append: yes
-    state: present
+- name: Check if user are already created
+  shell: "getent passwd {{ item.name }} > /dev/null"
+  register: existing_users
+  failed_when: false
+  changed_when: false
   with_items:
     - "{{ k1599_users_present_users }}"
+
+- name: Ensure expected users are created
+  user:
+    name: "{{ item.0.name }}"
+    password: "{{ item.0.passwords.crypt }}"
+    shell: '/bin/bash'
+    group: 'users'
+    groups: "{{ item.0.groups|default('') }}"
+    comment: "{{ item.0.name }}"
+    state: present
+  when: item.1.rc != 0 or refresh_users is defined
+  with_together:
+    - "{{ k1599_users_present_users }}"
+    - "{{ existing_users.results }}"
 
 - name: Ensure expected users are absend
   user:
