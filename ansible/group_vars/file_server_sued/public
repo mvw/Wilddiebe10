@@ -1,5 +1,5 @@
 ---
-fapra1599_common_hostname: 'fileserver'
+ca_chain_cert: "{{ ca_chain_cert_sued }}"
 
 firewall_allowed_tcp_ports:
   - number: '22'
@@ -11,7 +11,9 @@ firewall_allowed_tcp_ports:
       - eth0
       - tun0
 
+fapra1599_common_hostname: 'fileserver'
+
+k1599_ovpn_server_mtu: '1492'
+
 k1599_rsyslog_user: 'root'
 k1599_rsyslog_user_group: 'root'
-
-ca_chain_cert: "{{ ca_chain_cert_sued }}"

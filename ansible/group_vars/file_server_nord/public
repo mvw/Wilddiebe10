@@ -1,5 +1,5 @@
 ---
-fapra1599_common_hostname: filenord
+ca_chain_cert: "{{ ca_chain_cert_nord }}"
 
 firewall_allowed_tcp_ports:
   - number: '22'
@@ -12,9 +12,11 @@ firewall_allowed_tcp_ports:
       - tun0
   - number: 64738
 
+fapra1599_common_hostname: filenord
+
 k1599_file_server_interfaces: '127.0.0.1/8 10.8.1.30/24'
+
+k1599_ovpn_server_auth: 'SHA1'
 
 k1599_rsyslog_user: 'syslog'
 k1599_rsyslog_user_group: 'adm'
-
-ca_chain_cert: "{{ ca_chain_cert_nord }}"
