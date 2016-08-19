@@ -183,9 +183,12 @@ def gen_user_dict(dict_from_csv):
 
             if group_index == 5 or group_index == 10:
                 groups.append('sudo')
-                groups.append('sshusers')
-
+            
             groups.append(GROUPS[group_index])
+
+
+        if name not in GROUPS.values():
+            groups.append('sshlogin')
 
         groups.append('fapra1599')
         groups.append('users')
