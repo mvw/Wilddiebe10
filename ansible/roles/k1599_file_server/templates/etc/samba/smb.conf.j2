@@ -274,5 +274,6 @@ smb ports = 445
 path = {{ k1599_file_server_public_share_path }}
 read only = no
 guest ok = yes
-create mode = 0777
+create mask = 0777
+directory mask = 0777
 
