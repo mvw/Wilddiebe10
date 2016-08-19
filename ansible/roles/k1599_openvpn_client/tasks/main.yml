@@ -13,7 +13,7 @@
 
 - name: Ensure /etc/openvpn/certs/ca-chain.cert.pem is present
   copy:
-    content: "{{ _vault_ca_chain_cert }}"
+    content: "{{ ca_chain_cert }}"
     dest: '/etc/openvpn/certs/ca-chain.cert.pem'
     owner: 'root'
     group: 'root'
