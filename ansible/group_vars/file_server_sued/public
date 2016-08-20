@@ -13,8 +13,6 @@ firewall_allowed_tcp_ports:
       - eth0
       - tun0
 
-fapra1599_common_hostname: 'fileserver'
-
 k1599_ovpn_server_mtu: '1492'
 
 k1599_rsyslog_user: 'root'
