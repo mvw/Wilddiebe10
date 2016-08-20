@@ -38,10 +38,12 @@
 
 - name: Create Samba users if they don't exist yet
   shell: >
-    (pdbedit -L | grep {{ item.name }} 2>&1 > /dev/null) \
-    || (echo {{ item.passwords.plain }}; echo {{ item.passwords.plain }}) \
-    | smbpasswd -s -a {{ item.name }}
-  with_items: "{{ k1599_users_present_users }}"
+    (pdbedit -L | grep {{ item.0.name }} 2>&1 > /dev/null) \
+    || (echo {{ item.0.passwords.plain }}; echo {{ item.0.passwords.plain }}) \
+    | smbpasswd -s -a {{ item.0.name }}
+  when: item.1.rc != 0 or refresh_users is defined
   register: create_user_output
   changed_when: "'Added user' in create_user_output.stdout"
-
+  with_together:
+    - "{{ k1599_users_present_users }}"
+    - "{{ existing_users.results }}"
