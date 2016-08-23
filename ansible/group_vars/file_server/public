@@ -193,16 +193,16 @@ ca_chain_cert_sued: |
 
 k1599_users_present_users:
   - firstname: martin
-    group: cert-nord
-    groups: cert-nord,sshlogin,fapra1599,users
+    group: web-nord
+    groups: web-nord,sshlogin,fapra1599,users
     lastname: siepmann
     name: msiepmann
     passwords:
       crypt: '{{ _vault_user_crypt_password["msiepmann"] }}'
       plain: '{{ _vault_user_plain_password["msiepmann"] }}'
   - firstname: sebastian
-    group: mail-nord
-    groups: mail-nord,sshlogin,fapra1599,users
+    group: cert-nord
+    groups: cert-nord,sshlogin,fapra1599,users
     lastname: hartmann
     name: shartmann
     passwords:
@@ -223,24 +223,24 @@ k1599_users_present_users:
       crypt: '{{ _vault_user_crypt_password["netz-nord"] }}'
       plain: '{{ _vault_user_plain_password["netz-nord"] }}'
   - firstname: felix
-    group: mail-sued
-    groups: mail-sued,sshlogin,fapra1599,users
+    group: cert-sued
+    groups: cert-sued,sshlogin,fapra1599,users
     lastname: kamfenkel
     name: fkamfenkel
     passwords:
       crypt: '{{ _vault_user_crypt_password["fkamfenkel"] }}'
       plain: '{{ _vault_user_plain_password["fkamfenkel"] }}'
   - firstname: christoph
-    group: cert-sued
-    groups: cert-sued,sshlogin,fapra1599,users
+    group: web-sued
+    groups: web-sued,sshlogin,fapra1599,users
     lastname: pempelforth
     name: cpempelforth
     passwords:
       crypt: '{{ _vault_user_crypt_password["cpempelforth"] }}'
       plain: '{{ _vault_user_plain_password["cpempelforth"] }}'
   - firstname: marius
-    group: netz-nord
-    groups: netz-nord,sshlogin,fapra1599,users
+    group: mail-nord
+    groups: mail-nord,sshlogin,fapra1599,users
     lastname: klein
     name: mklein
     passwords:
@@ -269,16 +269,16 @@ k1599_users_present_users:
       crypt: '{{ _vault_user_crypt_password["fhofmann"] }}'
       plain: '{{ _vault_user_plain_password["fhofmann"] }}'
   - firstname: alexander
-    group: netz-sued
-    groups: netz-sued,sshlogin,fapra1599,users
+    group: mail-sued
+    groups: mail-sued,sshlogin,fapra1599,users
     lastname: hacker
     name: ahacker
     passwords:
       crypt: '{{ _vault_user_crypt_password["ahacker"] }}'
       plain: '{{ _vault_user_plain_password["ahacker"] }}'
   - firstname: nicolas
-    group: netz-nord
-    groups: netz-nord,sshlogin,fapra1599,users
+    group: mail-nord
+    groups: mail-nord,sshlogin,fapra1599,users
     lastname: napp
     name: nnapp
     passwords:
@@ -301,32 +301,32 @@ k1599_users_present_users:
       crypt: '{{ _vault_user_crypt_password["sbruch"] }}'
       plain: '{{ _vault_user_plain_password["sbruch"] }}'
   - firstname: brigitte
-    group: mail-nord
-    groups: mail-nord,sshlogin,fapra1599,users
+    group: cert-nord
+    groups: cert-nord,sshlogin,fapra1599,users
     lastname: fischer
     name: bfischer
     passwords:
       crypt: '{{ _vault_user_crypt_password["bfischer"] }}'
       plain: '{{ _vault_user_plain_password["bfischer"] }}'
   - firstname: cornelia
-    group: web-sued
-    groups: web-sued,sshlogin,fapra1599,users
+    group: netz-sued
+    groups: netz-sued,sshlogin,fapra1599,users
     lastname: boettge
     name: cboettge
     passwords:
       crypt: '{{ _vault_user_crypt_password["cboettge"] }}'
       plain: '{{ _vault_user_plain_password["cboettge"] }}'
   - firstname: joachim
-    group: netz-sued
-    groups: netz-sued,sshlogin,fapra1599,users
+    group: mail-sued
+    groups: mail-sued,sshlogin,fapra1599,users
     lastname: herold
     name: jherold
     passwords:
       crypt: '{{ _vault_user_crypt_password["jherold"] }}'
       plain: '{{ _vault_user_plain_password["jherold"] }}'
   - firstname: frank
-    group: cert-sued
-    groups: cert-sued,sshlogin,fapra1599,users
+    group: web-sued
+    groups: web-sued,sshlogin,fapra1599,users
     lastname: schweisfurth
     name: fschweisfurth
     passwords:
@@ -339,16 +339,16 @@ k1599_users_present_users:
       crypt: '{{ _vault_user_crypt_password["web-nord"] }}'
       plain: '{{ _vault_user_plain_password["web-nord"] }}'
   - firstname: joerg
-    group: netz-sued
-    groups: netz-sued,sshlogin,fapra1599,users
+    group: mail-sued
+    groups: mail-sued,sshlogin,fapra1599,users
     lastname: wichert
     name: jwichert
     passwords:
       crypt: '{{ _vault_user_crypt_password["jwichert"] }}'
       plain: '{{ _vault_user_plain_password["jwichert"] }}'
   - firstname: martin
-    group: mail-sued
-    groups: mail-sued,sshlogin,fapra1599,users
+    group: cert-sued
+    groups: cert-sued,sshlogin,fapra1599,users
     lastname: kutter
     name: mkutter
     passwords:
@@ -369,40 +369,40 @@ k1599_users_present_users:
       crypt: '{{ _vault_user_crypt_password["cert-nord"] }}'
       plain: '{{ _vault_user_plain_password["cert-nord"] }}'
   - firstname: oliver
-    group: mail-nord
-    groups: mail-nord,sshlogin,fapra1599,users
+    group: cert-nord
+    groups: cert-nord,sshlogin,fapra1599,users
     lastname: offenburger
     name: ooffenburger
     passwords:
       crypt: '{{ _vault_user_crypt_password["ooffenburger"] }}'
       plain: '{{ _vault_user_plain_password["ooffenburger"] }}'
   - firstname: marco
-    group: cert-sued
-    groups: cert-sued,sshlogin,fapra1599,users
+    group: web-sued
+    groups: web-sued,sshlogin,fapra1599,users
     lastname: ploeger
     name: mploeger
     passwords:
       crypt: '{{ _vault_user_crypt_password["mploeger"] }}'
       plain: '{{ _vault_user_plain_password["mploeger"] }}'
   - firstname: daniel
-    group: netz-nord
-    groups: netz-nord,sshlogin,fapra1599,users
+    group: mail-nord
+    groups: mail-nord,sshlogin,fapra1599,users
     lastname: troeger
     name: dtroeger
     passwords:
       crypt: '{{ _vault_user_crypt_password["dtroeger"] }}'
       plain: '{{ _vault_user_plain_password["dtroeger"] }}'
   - firstname: niklas
-    group: cert-sued
-    groups: cert-sued,sshlogin,fapra1599,users
+    group: web-sued
+    groups: web-sued,sshlogin,fapra1599,users
     lastname: reusch
     name: nreusch
     passwords:
       crypt: '{{ _vault_user_crypt_password["nreusch"] }}'
       plain: '{{ _vault_user_plain_password["nreusch"] }}'
   - firstname: ingo
-    group: mail-sued
-    groups: mail-sued,sshlogin,fapra1599,users
+    group: cert-sued
+    groups: cert-sued,sshlogin,fapra1599,users
     lastname: stieglitz
     name: istieglitz
     passwords:
@@ -417,8 +417,8 @@ k1599_users_present_users:
       crypt: '{{ _vault_user_crypt_password["cweissenborn"] }}'
       plain: '{{ _vault_user_plain_password["cweissenborn"] }}'
   - firstname: lars
-    group: netz-sued
-    groups: netz-sued,sshlogin,fapra1599,users
+    group: mail-sued
+    groups: mail-sued,sshlogin,fapra1599,users
     lastname: richter
     name: lrichter
     passwords:
@@ -439,8 +439,8 @@ k1599_users_present_users:
       crypt: '{{ _vault_user_crypt_password["netz-sued"] }}'
       plain: '{{ _vault_user_plain_password["netz-sued"] }}'
   - firstname: sven
-    group: cert-sued
-    groups: cert-sued,sshlogin,fapra1599,users
+    group: web-sued
+    groups: web-sued,sshlogin,fapra1599,users
     lastname: wyes
     name: swyes
     passwords:
@@ -453,24 +453,24 @@ k1599_users_present_users:
       crypt: '{{ _vault_user_crypt_password["mail-sued"] }}'
       plain: '{{ _vault_user_plain_password["mail-sued"] }}'
   - firstname: markus
-    group: cert-nord
-    groups: cert-nord,sshlogin,fapra1599,users
+    group: web-nord
+    groups: web-nord,sshlogin,fapra1599,users
     lastname: sandkuehler
     name: msandkuehler
     passwords:
       crypt: '{{ _vault_user_crypt_password["msandkuehler"] }}'
       plain: '{{ _vault_user_plain_password["msandkuehler"] }}'
   - firstname: evelyn
-    group: web-sued
-    groups: web-sued,sshlogin,fapra1599,users
+    group: netz-sued
+    groups: netz-sued,sshlogin,fapra1599,users
     lastname: mueller
     name: emueller
     passwords:
       crypt: '{{ _vault_user_crypt_password["emueller"] }}'
       plain: '{{ _vault_user_plain_password["emueller"] }}'
   - firstname: tobias
-    group: web-nord
-    groups: web-nord,sshlogin,fapra1599,users
+    group: netz-nord
+    groups: netz-nord,sshlogin,fapra1599,users
     lastname: winkelhorst
     name: twinkelhorst
     passwords:
@@ -483,48 +483,48 @@ k1599_users_present_users:
       crypt: '{{ _vault_user_crypt_password["mail-nord"] }}'
       plain: '{{ _vault_user_plain_password["mail-nord"] }}'
   - firstname: svetlana
-    group: netz-sued
-    groups: netz-sued,sshlogin,fapra1599,users
+    group: mail-sued
+    groups: mail-sued,sshlogin,fapra1599,users
     lastname: ganswind
     name: sganswind
     passwords:
       crypt: '{{ _vault_user_crypt_password["sganswind"] }}'
       plain: '{{ _vault_user_plain_password["sganswind"] }}'
   - firstname: bjoern
-    group: cert-nord
-    groups: cert-nord,sshlogin,fapra1599,users
+    group: web-nord
+    groups: web-nord,sshlogin,fapra1599,users
     lastname: walter
     name: bwalter
     passwords:
       crypt: '{{ _vault_user_crypt_password["bwalter"] }}'
       plain: '{{ _vault_user_plain_password["bwalter"] }}'
   - firstname: patrick
-    group: web-nord
-    groups: web-nord,sshlogin,fapra1599,users
+    group: netz-nord
+    groups: netz-nord,sshlogin,fapra1599,users
     lastname: holtkamp
     name: pholtkamp
     passwords:
       crypt: '{{ _vault_user_crypt_password["pholtkamp"] }}'
       plain: '{{ _vault_user_plain_password["pholtkamp"] }}'
   - firstname: carina
-    group: web-nord
-    groups: web-nord,sshlogin,fapra1599,users
+    group: netz-nord
+    groups: netz-nord,sshlogin,fapra1599,users
     lastname: hesseling
     name: chesseling
     passwords:
       crypt: '{{ _vault_user_crypt_password["chesseling"] }}'
       plain: '{{ _vault_user_plain_password["chesseling"] }}'
   - firstname: monika
-    group: mail-nord
-    groups: mail-nord,sshlogin,fapra1599,users
+    group: cert-nord
+    groups: cert-nord,sshlogin,fapra1599,users
     lastname: schrenk
     name: mschrenk
     passwords:
       crypt: '{{ _vault_user_crypt_password["mschrenk"] }}'
       plain: '{{ _vault_user_plain_password["mschrenk"] }}'
   - firstname: willi
-    group: netz-nord
-    groups: netz-nord,sshlogin,fapra1599,users
+    group: mail-nord
+    groups: mail-nord,sshlogin,fapra1599,users
     lastname: pankraz
     name: wpankraz
     passwords:
@@ -537,32 +537,32 @@ k1599_users_present_users:
       crypt: '{{ _vault_user_crypt_password["file-nord"] }}'
       plain: '{{ _vault_user_plain_password["file-nord"] }}'
   - firstname: karin
-    group: web-sued
-    groups: web-sued,sshlogin,fapra1599,users
+    group: netz-sued
+    groups: netz-sued,sshlogin,fapra1599,users
     lastname: steinkohl
     name: ksteinkohl
     passwords:
       crypt: '{{ _vault_user_crypt_password["ksteinkohl"] }}'
       plain: '{{ _vault_user_plain_password["ksteinkohl"] }}'
   - firstname: thomas
-    group: mail-sued
-    groups: mail-sued,sshlogin,fapra1599,users
+    group: cert-sued
+    groups: cert-sued,sshlogin,fapra1599,users
     lastname: bayer
     name: tbayer
     passwords:
       crypt: '{{ _vault_user_crypt_password["tbayer"] }}'
       plain: '{{ _vault_user_plain_password["tbayer"] }}'
   - firstname: michael
-    group: web-sued
-    groups: web-sued,sshlogin,fapra1599,users
+    group: netz-sued
+    groups: netz-sued,sshlogin,fapra1599,users
     lastname: berner
     name: mberner
     passwords:
       crypt: '{{ _vault_user_crypt_password["mberner"] }}'
       plain: '{{ _vault_user_plain_password["mberner"] }}'
   - firstname: kamilla
-    group: cert-nord
-    groups: cert-nord,sshlogin,fapra1599,users
+    group: web-nord
+    groups: web-nord,sshlogin,fapra1599,users
     lastname: lauter
     name: klauter
     passwords:
@@ -575,32 +575,32 @@ k1599_users_present_users:
       crypt: '{{ _vault_user_crypt_password["web-sued"] }}'
       plain: '{{ _vault_user_plain_password["web-sued"] }}'
   - firstname: waldemar
-    group: netz-nord
-    groups: netz-nord,sshlogin,fapra1599,users
+    group: mail-nord
+    groups: mail-nord,sshlogin,fapra1599,users
     lastname: lindemann
     name: wlindemann
     passwords:
       crypt: '{{ _vault_user_crypt_password["wlindemann"] }}'
       plain: '{{ _vault_user_plain_password["wlindemann"] }}'
   - firstname: tobias
-    group: web-nord
-    groups: web-nord,sshlogin,fapra1599,users
+    group: netz-nord
+    groups: netz-nord,sshlogin,fapra1599,users
     lastname: schroeder
     name: tschroeder
     passwords:
       crypt: '{{ _vault_user_crypt_password["tschroeder"] }}'
       plain: '{{ _vault_user_plain_password["tschroeder"] }}'
   - firstname: marcus
-    group: cert-nord
-    groups: cert-nord,sshlogin,fapra1599,users
+    group: web-nord
+    groups: web-nord,sshlogin,fapra1599,users
     lastname: salwitzek
     name: msalwitzek
     passwords:
       crypt: '{{ _vault_user_crypt_password["msalwitzek"] }}'
       plain: '{{ _vault_user_plain_password["msalwitzek"] }}'
   - firstname: julia
-    group: mail-nord
-    groups: mail-nord,sshlogin,fapra1599,users
+    group: cert-nord
+    groups: cert-nord,sshlogin,fapra1599,users
     lastname: affenzeller
     name: jaffenzeller
     passwords:
@@ -615,16 +615,16 @@ k1599_users_present_users:
       crypt: '{{ _vault_user_crypt_password["wschmidt"] }}'
       plain: '{{ _vault_user_plain_password["wschmidt"] }}'
   - firstname: angela beate
-    group: mail-sued
-    groups: mail-sued,sshlogin,fapra1599,users
+    group: cert-sued
+    groups: cert-sued,sshlogin,fapra1599,users
     lastname: szewc
     name: aszewc
     passwords:
       crypt: '{{ _vault_user_crypt_password["aszewc"] }}'
       plain: '{{ _vault_user_plain_password["aszewc"] }}'
   - firstname: martin
-    group: web-sued
-    groups: web-sued,sshlogin,fapra1599,users
+    group: netz-sued
+    groups: netz-sued,sshlogin,fapra1599,users
     lastname: mueller
     name: mmueller
     passwords:

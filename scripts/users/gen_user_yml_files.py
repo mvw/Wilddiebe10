@@ -22,15 +22,15 @@ REPLACE_UMLAUTS = {
 }
 
 GROUPS = {
-    1 : 'web-nord',
-    2 : 'mail-nord',
-    3 : 'netz-nord',
-    4 : 'cert-nord',
+    1 : 'netz-nord',
+    2 : 'cert-nord',
+    3 : 'mail-nord',
+    4 : 'web-nord',
     5 : 'file-nord',
-    6 : 'web-sued',
-    7 : 'mail-sued',
-    8 : 'netz-sued',
-    9 : 'cert-sued',
+    6 : 'netz-sued',
+    7 : 'cert-sued',
+    8 : 'mail-sued',
+    9 : 'web-sued',
     10 : 'file-sued',
     11 : 'sshlogin',
     12 : 'fapra1599',
