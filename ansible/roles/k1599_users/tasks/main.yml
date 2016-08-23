@@ -26,7 +26,7 @@
     name: "{{ item.0.name }}"
     password: "{{ item.0.passwords.crypt }}"
     shell: '/bin/bash'
-    group: 'users'
+    group: "{{  item.0.group|default('users')  }}"
     groups: "{{ item.0.groups|default('') }}"
     comment: "{{ item.0.name }}"
     state: present
