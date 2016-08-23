@@ -11,7 +11,7 @@ all: wiki
 ansible:
 	cd ansible; make
 
-wiki: clean wiki-prepare ls-testcases ls-ansible-roles ls-present-groups ls-present-users ls-samba-users ls-allowed-ports ls-hosts-entrys
+wiki: clean wiki-prepare ls-testcases ls-ansible-roles ls-present-groups ls-present-users ls-allowed-ports ls-hosts-entrys
 	cat wiki.txt
 
 wiki-prepare:
