@@ -33,6 +33,7 @@
 
     k1599_users_present_users:
       - name: 'test-user-present'
+        group: 'test-sued'
         groups: 'sudo,users,sshlogin'
         passwords:
           crypt: 'Qqo9OBRptpvzU'

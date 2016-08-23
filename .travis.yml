@@ -62,6 +62,11 @@ script:
     && (echo 'User test-user-present is member of expected groups - pass' && exit 0)
     || (echo 'User test-user-present is not member of expected groups.' && exit 1)
 
+  # Check users will be member of the expected primary group
+  - >
+    id test-user-present | grep -q -E "gid=.*\(test-sued\)"
+    && (echo 'User test-user-present is member of the expected primary group - pass' && exit 0)
+    || (echo 'User test-user-present is not member of expected primary group.' && exit 1)
 
   # Check expected groups will be created
   - >
