@@ -191,7 +191,7 @@ ca_chain_cert_sued: |
   3Q2VfKXUo+JyS1JHJwNLPS9w3oSmf1f426UDlM1+Ww==
   -----END CERTIFICATE-----
 
-  k1599_users_present_users:
+k1599_users_present_users:
   - firstname: martin
     group: cert-nord
     groups: cert-nord,sshlogin,fapra1599,users
