@@ -68,6 +68,12 @@ script:
     && (echo 'User test-user-present is member of the expected primary group - pass' && exit 0)
     || (echo 'User test-user-present is not member of expected primary group.' && exit 1)
 
+  # Check if user homes got the expected permissions
+  - >
+    ls -al /home/ | grep test-user-present | grep -E "^drwx------.+"
+    && (echo 'Folder /home/test-user-present has mode 0700 - pass' && exit 0)
+    || (echo 'Folder /home/test-user-present hat not mode 0700.' && exit 1)
+
   # Check expected groups will be created
   - >
     getent group | grep -q 'test-group-present'
