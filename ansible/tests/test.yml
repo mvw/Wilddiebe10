@@ -59,6 +59,8 @@
     _vault_cert_key: 'NOTHING'
     _vault_ovpn_server: '127.0.0.3'
 
+    refresh_users: 'yes'
+
   roles:
     - { role: k1599_common, tags: common }
     - { role: k1599_ssh, tags: ssh }
