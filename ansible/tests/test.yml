@@ -18,6 +18,8 @@
       - rsh-redone-client
       - rsh-redone-server
       - xserver-xorg
+      - mysql-server
+      - mysql-server-5.7
 
     k1599_common_present_packages:
       - 'sudo'
