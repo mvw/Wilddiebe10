@@ -39,6 +39,12 @@
         passwords:
           crypt: 'Qqo9OBRptpvzU'
           plain: 'test'
+      - name: 'test-sued'
+        group: 'test-sued'
+        groups: 'sudo,users'
+        passwords:
+          crypt: 'Qqo9OBRptpvzU'
+          plain: 'test'
 
     k1599_users_absent_users:
       - 'test-user-absent'

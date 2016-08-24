@@ -74,6 +74,12 @@ script:
     && (echo 'Folder /home/test-user-present has mode 0700 - pass' && exit 0)
     || (echo 'Folder /home/test-user-present hat not mode 0700.' && exit 1)
 
+  # Check if groupuser homes got the expected permissions
+  - >
+    ls -al /home/ | grep test-user-present | grep -E "^drwxrwx---.+"
+    && (echo 'Folder /home/test-sued has mode 0770 - pass' && exit 0)
+    || (echo 'Folder /home/test-sued hat not mode 0770.' && exit 1)
+
   # Check expected groups will be created
   - >
     getent group | grep -q 'test-group-present'
