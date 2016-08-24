@@ -31,7 +31,7 @@ syntax-checks: check-yaml check-jinja
 
 check-yaml:
 	for f in $$(find host_vars/ group_vars/ -regextype posix-egrep -type f -regex '[^.]+'); do \
-	  python -c "import yaml; yaml.load(open('$$f'))"; \
+	  /usr/bin/env python2 -c "import yaml; yaml.load(open('$$f'))"; \
 	  if [ $$? -ne 0 ]; then \
 	    echo "Syntax Error in file: $$f."; \
 	    exit 1; \
@@ -39,7 +39,7 @@ check-yaml:
 	done
 
 	for f in $$(find . -name '*.yml'); do \
-	  python -c "import yaml; yaml.load(open('$$f'))"; \
+	  /usr/bin/env python2 -c "import yaml; yaml.load(open('$$f'))"; \
 	  if [ $$? -ne 0 ]; then \
 	    echo "Syntax Error in file: $$f."; \
 	    exit 1; \
@@ -48,7 +48,7 @@ check-yaml:
 
 check-jinja:
 	for f in $$(find host_vars/ group_vars/ -regextype posix-egrep -type f -regex '[^.]+'); do \
-	  python -c "import jinja2; \
+	  /usr/bin/env python2 -c "import jinja2; \
 	    e=jinja2.Environment(loader=jinja2.FileSystemLoader('./')); \
 	    e.filters['ipaddr'] = func=lambda:None; \
 	    e.get_template('$$f')"; \
@@ -59,7 +59,7 @@ check-jinja:
 	done
 
 	for f in $$(find . -regextype posix-egrep -type f -regex '.*j2'); do \
-	  python -c "import jinja2; \
+	  /usr/bin/env python2 -c "import jinja2; \
 	    e=jinja2.Environment(loader=jinja2.FileSystemLoader('./')); \
 	    e.filters['ipaddr'] = func=lambda:None; \
 	    e.get_template('$$f')"; \

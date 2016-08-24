@@ -28,22 +28,22 @@ ls-ansible-roles:
 
 ls-present-groups:
 	echo '===== Erzeugte Gruppen =====' >> wiki.txt
-	python -c "import scripts.anhang as anhang; anhang.get_present_groups()" >> wiki.txt;
+	/usr/bin/env python2 -c "import scripts.anhang as anhang; anhang.get_present_groups()" >> wiki.txt;
 
 ls-present-users:
 	echo '===== Erzeugte Benutzer =====' >> wiki.txt
-	python -c "import scripts.anhang as anhang; anhang.get_present_users()" >> wiki.txt;
+	/usr/bin/env python2 -c "import scripts.anhang as anhang; anhang.get_present_users()" >> wiki.txt;
 
 ls-allowed-ports:
 	echo '===== Firewall =====' >> wiki.txt
 	echo '==== Offene Ports - Gruppe Nord ====' >> wiki.txt
-	python -c "import scripts.anhang as anhang; anhang.get_allowed_tcp_ports('ansible/group_vars/file_server_nord/public')" >> wiki.txt;
+	/usr/bin/env python2 -c "import scripts.anhang as anhang; anhang.get_allowed_tcp_ports('ansible/group_vars/file_server_nord/public')" >> wiki.txt;
 	echo '==== Offene Ports - Gruppe Sued ====' >> wiki.txt
-	python -c "import scripts.anhang as anhang; anhang.get_allowed_tcp_ports('ansible/group_vars/file_server_sued/public')" >> wiki.txt;
+	/usr/bin/env python2 -c "import scripts.anhang as anhang; anhang.get_allowed_tcp_ports('ansible/group_vars/file_server_sued/public')" >> wiki.txt;
 
 ls-hosts-entrys:
 	echo '===== Einträge /etc/hosts =====' >> wiki.txt
-	python -c "import scripts.anhang as anhang; anhang.get_hosts_entrys('ansible/group_vars/all')" >> wiki.txt;
+	/usr/bin/env python2 -c "import scripts.anhang as anhang; anhang.get_hosts_entrys('ansible/group_vars/all')" >> wiki.txt;
 
 clean:
 	rm -f wiki.txt
