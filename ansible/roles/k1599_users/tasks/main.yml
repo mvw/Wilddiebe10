@@ -21,43 +21,43 @@
   with_items:
     - "{{ k1599_users_present_users }}"
 
-- block:
+- name: Ensure expected users are created
+  user:
+    name: "{{ item.0.name }}"
+    password: "{{ item.0.passwords.crypt }}"
+    shell: '/bin/bash'
+    group: "{{  item.0.group|default('users')  }}"
+    groups: "{{ item.0.groups|default('') }}"
+    comment: "{{ item.0.name }}"
+    state: present
+  when: item.1.rc != 0 or refresh_users is defined
+  with_together:
+    - "{{ k1599_users_present_users }}"
+    - "{{ existing_users.results }}"
 
-  - name: Ensure expected users are created
-    user:
-      name: "{{ item.0.name }}"
-      password: "{{ item.0.passwords.crypt }}"
-      shell: '/bin/bash'
-      group: "{{  item.0.group|default('users')  }}"
-      groups: "{{ item.0.groups|default('') }}"
-      comment: "{{ item.0.name }}"
-      state: present
-    when: item.1.rc != 0 or refresh_users is defined
-    with_together:
-      - "{{ k1599_users_present_users }}"
-      - "{{ existing_users.results }}"
+- name: Ensure permissions on user home
+  file:
+    path: '/home/{{ item.0.name }}'
+    state: 'directory'
+    mode: '0700'
+    owner: "{{ item.0.name }}"
+    group: "{{ item.0.group }}"
+  when: "{{ item.0.name != item.0.group|default('users') and (item.1.rc != 0 or refresh_users is defined) }}"
+  with_together:
+    - "{{ k1599_users_present_users }}"
+    - "{{ existing_users.results }}"
 
-  - name: Ensure permissions on user home
-    file:
-      path: '/home/{{ item.name }}'
-      state: 'directory'
-      mode: '0700'
-      owner: "{{ item.name }}"
-      group: "{{ item.group }}"
-    with_items: "{{ k1599_users_present_users }}"
-    when: "{{ item.name != item.group|default('users') }}"
-
-  - name: Ensure permissions on group user home
-    file:
-      path: '/home/{{ item.name }}'
-      state: 'directory'
-      mode: '0770'
-      owner: "{{ item.name }}"
-      group: "{{ item.group }}"
-    with_items: "{{ k1599_users_present_users }}"
-    when: "{{ item.name == item.group|default('users') }}"
-
-  when: refresh_users is defined
+- name: Ensure permissions on group user home
+  file:
+    path: '/home/{{ item.0.name }}'
+    state: 'directory'
+    mode: '0770'
+    owner: "{{ item.0.name }}"
+    group: "{{ item.0.group }}"
+  when: "{{ item.0.name == item.0.group|default('users') and (item.1.rc != 0 or refresh_users is defined) }}"
+  with_together:
+    - "{{ k1599_users_present_users }}"
+    - "{{ existing_users.results }}"
 
 - name: Ensure expected users are absend
   user:
