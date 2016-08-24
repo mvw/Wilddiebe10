@@ -76,9 +76,9 @@ script:
 
   # Check if groupuser homes got the expected permissions
   - >
-    ls -al /home/ | grep test-user-present | grep -E "^drwxrwx---.+"
+    ls -al /home/ | grep test-sued | grep -E "^drwxrwx---.+"
     && (echo 'Folder /home/test-sued has mode 0770 - pass' && exit 0)
-    || (echo 'Folder /home/test-sued hat not mode 0770.' && exit 1)
+    || (echo 'Folder /home/test-sued has not mode 0770.' && exit 1)
 
   # Check expected groups will be created
   - >
