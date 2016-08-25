@@ -5,7 +5,7 @@
   vars:
     k1599_integration_test: true
 
-    fapra1599_common_hostname: 'file-serveredsued'
+    fapra1599_common_hostname: 'file-server-sued'
 
     firewall_allowed_tcp_ports:
       - number: '10514'
