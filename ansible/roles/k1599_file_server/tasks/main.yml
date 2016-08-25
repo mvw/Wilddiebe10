@@ -36,7 +36,7 @@
     runlevel: '2 3 4 5'
     enabled: "{{ k1599_file_server_smbd_enabled }}"
 
-- name: Create Samba users if they don't exist yet
+- name: Create Samba users if they don't exist yet or refresh their password
   shell: >
     (echo {{ item.0.passwords.plain }}; echo {{ item.0.passwords.plain }}) \
     | smbpasswd -s -a {{ item.0.name }}
