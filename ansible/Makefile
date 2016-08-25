@@ -15,6 +15,12 @@ clean:
 ansible_with_sudo:
 	    ansible-playbook -i inventory site.yml --vault-password-file=.vault-password -s -K
 
+ansible_sued:
+	    ansible-playbook -i inventory site.yml -t file-server-sued --vault-password-file=.vault-password -s -K
+
+ansible_nord:
+	    ansible-playbook -i inventory site.yml l file-server-nord --vault-password-file=.vault-password -s -K
+
 ansible_with_key:
 	    ansible-playbook -i inventory site.yml --vault-password-file=.vault-password -u root
 

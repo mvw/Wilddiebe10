@@ -98,6 +98,12 @@ script:
     && (echo 'Service smbd is running - pass' && exit 0)
     || (echo 'Service smbd is not running - fail' && exit 1)
 
+  # Check if samba group share is present
+  - >
+    grep -E -q '\[test-sued\]' /etc/samba/smb.conf
+    && (echo 'Share /home/test-sued is present - pass' && exit 0)
+    || (echo 'Share /home/test-sued is not present - fail' && exit 1)
+
   # Check if rsyslog service is up and running
   - >
     sudo service rsyslog status

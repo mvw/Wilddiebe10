@@ -277,3 +277,14 @@ guest ok = yes
 create mask = 0777
 directory mask = 0777
 
+{% for user in k1599_users_present_users|default({}) %}
+{% if user.name == user.group %}
+[{{ user.name }}]
+path = /home/{{ user.name }}
+writable = yes
+create mode = 0660
+directory mode = 0770
+valid users @{{ user.group }}
+
+{% endif %}
+{% endfor %}
