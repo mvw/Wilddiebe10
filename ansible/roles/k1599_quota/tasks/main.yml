@@ -18,12 +18,12 @@
 - name: Check if quota index exists
   stat:
     path: /aquota.user
-  register: quota_exists
+  register: quota_index
 
 - name: Create quota index if not existing
   shell: >
     quotacheck -vguma
-  when: quota_exists == False
+  when: quota_index.stat.exists == False
 
 - name: Check if quota is enabled
   shell: >
