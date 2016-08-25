@@ -1,0 +1,46 @@
+- name: Ensure package quota is installed
+  package:
+    name: "{{ item }}"
+  with_items:
+    - quota
+    - quotatool
+
+- name: Ensure fstab includes usrquota
+  mount:
+    name: "{{ item.mount }}"
+    src: "{{ item.device }}"
+    fstype: "{{ item.fstype }}"
+    opts: "{{ item.options }},usrquota"
+    state: mounted
+  with_items: "{{ ansible_mounts }}"
+  when: item.mount == "/" and not 'usrquota' in item.options
+
+- name: Check if quota index exists
+  stat:
+    path: /aquota.user
+  register: quota_exists
+
+- name: Create quota index if not existing
+  shell: >
+    quotacheck -vguma
+  when: quota_exists == False
+
+- name: Check if quota is enabled
+  shell: >
+    quotaon -up /
+  register: quotaon_result
+  failed_when: quotaon_result.rc > 1
+  changed_when: quotaon_result.rc == 0
+
+- name: Enable quota
+  shell: >
+    quotaon -av
+  when: quotaon_result is defined and quotaon_result.rc == 0
+
+- name: Set quotas for users
+  shell: >
+    quotatool -b -q {{ k1599_quota_soft }} -l {{ k1599_quota_hard }} -u {{ item.0.name }} /
+  when: item.1.rc != 0 or refresh_users is defined
+  with_together:
+    - "{{ k1599_users_present_users }}"
+    - "{{ existing_users.results }}"
