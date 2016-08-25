@@ -29,8 +29,8 @@
   shell: >
     quotaon -up /
   register: quotaon_result
-  failed_when: quotaon_result.rc > 1
   changed_when: quotaon_result.rc == 0
+  failed_when: quotaon_result.rc > 1
 
 - name: Enable quota
   shell: >
@@ -42,7 +42,8 @@
     quotatool -b -q {{ k1599_quota_soft }} -l {{ k1599_quota_hard }} -u {{ item.0.name }} /
   when: item.1.rc != 0 or refresh_users is defined
   register: quotatool_output
-  changed_when: quotatool_output.rc != 0
+  changed_when: False
+  failed_when: quotatool_output.rc != 0
   with_together:
     - "{{ k1599_users_present_users }}"
     - "{{ existing_users.results }}"
