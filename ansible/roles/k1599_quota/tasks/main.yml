@@ -21,25 +21,21 @@
   register: quota_index
 
 - name: Create quota index if not existing
-  shell: >
-    quotacheck -vguma
+  shell: quotacheck -vguma
   when: quota_index.stat.exists == False
 
 - name: Check if quota is enabled
-  shell: >
-    quotaon -up /
+  shell: quotaon -up /
   register: quotaon_result
   changed_when: quotaon_result.rc == 0
   failed_when: quotaon_result.rc > 1
 
 - name: Enable quota
-  shell: >
-    quotaon -av
+  shell: quotaon -av
   when: quotaon_result is defined and quotaon_result.rc == 0
 
 - name: Set quotas for users
-  shell: >
-    quotatool -b -q {{ k1599_quota_soft }} -l {{ k1599_quota_hard }} -u {{ item.0.name }} /
+  shell: quotatool -b -q {{ k1599_quota_soft }} -l {{ k1599_quota_hard }} -u {{ item.0.name }} /
   when: item.1.rc != 0 or refresh_users is defined
   register: quotatool_output
   changed_when: False
@@ -47,3 +43,13 @@
   with_together:
     - "{{ k1599_users_present_users }}"
     - "{{ existing_users.results }}"
+
+- name: Check if quotas are set as expected
+  shell: >
+    quotatool -d -u {{ item.0.name }} / \
+    | awk '{ if ($4 == {{ k1599_quota_soft }} && $5 == {{ k1599_quota_hard }}) exit 0; exit 2}'
+  register: quotatool_dump_output
+  changed_when: quotatool_dump_output.rc == 2
+  failed_when: quotatool_dump_output.rc == 1
+  with_together:
+    - "{{ k1599_users_present_users }}"

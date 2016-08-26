@@ -1,2 +1,2 @@
-k1599_quota_soft: '100M'
-k1599_quota_hard: '150M'
+k1599_quota_soft: '102400'
+k1599_quota_hard: '153600'
