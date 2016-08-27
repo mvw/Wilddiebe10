@@ -6,10 +6,10 @@ k1599_users_absent_users:
   - guest
   - fapra1599
   - christoph
-  - joerg
   - marc
   - patrick
   - waldemar
+#  - joerg
 
 k1599_common_absent_packages:
   - rsh-client
