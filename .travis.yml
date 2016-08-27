@@ -122,5 +122,20 @@ script:
     && (echo 'Service openntpd is running - pass' && exit 0)
     || (echo 'Service openntpd is not running - fail' && exit 1)
 
+  # Check if quotas are enabled
+  - >
+    sudo quotaon -up / ;
+    if [ $? -eq 1 ]; then (echo 'Quotas are enabled - pass' && exit 0);
+    else (echo 'Quotas are disabled - fail' && exit 1); fi
+
+  # Check if quota limits are set as expected
+  - >
+    sudo quotatool -d -u test-user-present / \
+    | awk '{ if ($4 == 102400 && $5 == 153600) exit 0; exit 1}' \
+    && sudo quotatool -d -u test-sued / \
+    | awk '{ if ($4 == 102400 && $5 == 153600) exit 0; exit 1}' \
+    && (echo 'Quota limits are set as expected - pass' && exit 0) \
+    || (echo 'Quota limits are not set as expected - fail' && exit 1)
+
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/

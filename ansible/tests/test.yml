@@ -54,6 +54,9 @@
     k1599_file_server_smbd_enabled: yes
     k1599_file_server_clamd_enabled: yes
 
+    k1599_quota_soft: '102400'
+    k1599_quota_hard: '153600'
+
     ca_chain_cert: 'NOTHING'
     ca_chain_cert_nord: 'NOTHING'
     ca_chain_cert_sued: 'NOTHING'
