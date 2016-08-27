@@ -43,13 +43,3 @@
   with_together:
     - "{{ k1599_users_present_users }}"
     - "{{ existing_users.results }}"
-
-- name: Check if quotas are set as expected
-  shell: >
-    quotatool -d -u {{ item.0.name }} / \
-    | awk '{ if ($4 == {{ k1599_quota_soft }} && $5 == {{ k1599_quota_hard }}) exit 0; exit 2}'
-  register: quotatool_dump_output
-  changed_when: quotatool_dump_output.rc == 2
-  failed_when: quotatool_dump_output.rc == 1
-  with_together:
-    - "{{ k1599_users_present_users }}"
