@@ -15,6 +15,7 @@ docs/*.aux
 docs/*.bcf
 docs/*.bbl
 docs/*.bbg
+docs/*.blg
 docs/*.glo
 docs/*.ist
 docs/*.toc
