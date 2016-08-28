@@ -13,6 +13,8 @@ scripts/users/data/*.csv
 scripts/users/mail/*
 docs/*.aux
 docs/*.bcf
+docs/*.bbl
+docs/*.bbg
 docs/*.glo
 docs/*.ist
 docs/*.toc
