@@ -51,6 +51,12 @@ clean:
 update:
 	git submodule update --init
 
+docs:
+	cd docs; make
+
+pdf:
+	cd docs; make pdf
+
 test:
 	cd ansible; make test
 
