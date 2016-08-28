@@ -1,0 +1,62 @@
+\documentclass[12pt]{article}
+\usepackage[backend=biber, style=alphabetic, sorting=ynt]{biblatex}
+\usepackage[utf8]{inputenc} % Datei ist in UTF-8 encoded 
+\usepackage[T1]{fontenc}   % font encoding
+\usepackage{courier} % courier font, usage: \texttt{This is Courier font.}
+\usepackage[german]{babel} % deutsche Umlaute
+\usepackage{csquotes}
+\usepackage{epigraph}  % ein epigraph ist ein schönes Zitat am Anfang
+\usepackage{graphicx} % Required to insert images
+\usepackage{mathtools} % absmath with benefits
+\usepackage{listings} % source code listings
+\usepackage{authblk} % multiple authors
+\usepackage{xcolor} % colored things
+
+\usepackage{fancyhdr} % Required for custom headers
+\usepackage{extramarks} % Required for headers and footers
+
+\usepackage{booktabs} % neat table formatting
+\usepackage{longtable} % tables over more than one page
+\renewcommand{\arraystretch}{1.2} % mehr Zeilenabstand bei Tabellen
+\setlength\heavyrulewidth{0.25ex} % thicker top and bottom lines in tables
+\newcommand{\tabitem}{~~\llap{\textbullet}~~} % use items in tables with \tabitem XXX
+\usepackage[labelfont=bf]{caption} % captions for tables without float
+\captionsetup[table]{justification=raggedright,singlelinecheck=false} % tables have left aligned captions
+\usepackage{xparse}
+
+\usepackage[bookmarks=true]{hyperref}
+\usepackage{glossaries}
+
+\makeglossaries
+
+\newsavebox{\fminipagebox}
+\NewDocumentEnvironment{framedminipage}{m O{\fboxsep}}
+ {\par\kern#2\noindent\begin{lrbox}{\fminipagebox}
+  \begin{minipage}{#1}\ignorespaces}
+ {\end{minipage}\end{lrbox}%
+  \makebox[#1]{%
+    \kern\dimexpr-\fboxsep-\fboxrule\relax
+    \fbox{\usebox{\fminipagebox}}%
+    \kern\dimexpr-\fboxsep-\fboxrule\relax
+  }\par\kern#2
+ }
+
+\addbibresource{Quellen.bib}
+
+% Standard-Schriftart
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{helvet}
+
+% Margins
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+\linespread{1.1} % Line spacing
+\setlength\parindent{0pt} % Removes all indentation from paragraphs
+
+% Nummerierung
+\setcounter{secnumdepth}{4} % Tiefe in der Überschriften-Nummerierung endet
+\setcounter{tocdepth}{3} % Tiefe des Inhaltsverzeichnisses

@@ -19,7 +19,23 @@ SKIP_CLEANUP?=0
 pdf: setup_tex ${PDF} clean
 
 clean:
-	test $(SKIP_CLEANUP) -ne 1 && $(RM) count *.blg *.fdb_latexmk *.dvi *.fls *.bbl *.log *.fdb *.glo *.tex~ *.ist *.toc *.run.xml *.bcf *.out *.aux || echo "Skip cleanup, pls do make clean manually."
+	test $(SKIP_CLEANUP) -ne 1 && $(RM) count \
+		*.blg \
+		*.fdb_latexmk \
+		*.dvi \
+		*.fls \
+		*.bbl \
+		*.log \
+		*.fdb \
+		*.glo \
+		*.tex~ \
+		*.ist \
+		*.toc \
+		*.run.xml \
+		*.bcf \
+		*.out \
+		includes/*.aux \
+		*.aux || echo "Skip cleanup, pls do make clean manually."
 	
 setup:
 	sudo apt-get install texlive-latex-recommended \
