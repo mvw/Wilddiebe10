@@ -137,5 +137,8 @@ script:
     && (echo 'Quota limits are set as expected - pass' && exit 0)
     || (echo 'Quota limits are not set as expected - fail' && exit 1)
 
+  # Check if the doc files are building.
+  - "make docs"
+
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
