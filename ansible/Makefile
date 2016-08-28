@@ -10,7 +10,6 @@ all: syntax-checks update ansible_with_sudo
 
 clean:
 	rm -f site.retry
-	rm -f docs/*.pdf
 
 ansible_with_sudo:
 	    ansible-playbook -i inventory site.yml --vault-password-file=.vault-password -s -K
@@ -74,3 +73,5 @@ check-jinja:
 	    exit 1; \
 	  fi; \
 	done
+
+.PHONY: docs clean

@@ -37,3 +37,5 @@ setup:
 
 ${PDF}: ${SOURCE} Makefile
 	latexmk -f -bibtex -pdf -bibtex-cond ${SOURCE}
+
+.PHONY: docs clean

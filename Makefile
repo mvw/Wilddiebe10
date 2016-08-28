@@ -52,7 +52,7 @@ update:
 	git submodule update --init
 
 docs:
-	cd docs; make
+	cd docs; make docs
 
 pdf:
 	cd docs; make pdf
@@ -62,3 +62,5 @@ test:
 
 syntax-checks:
 	cd ansible; make syntax-checks
+
+.PHONY: docs clean
