@@ -9,16 +9,6 @@ before_install:
 
 install:
   - pip install ansible
-  - sudo apt-get install -y texlive-latex-recommended \
-                      texlive-extra-utils \
-                      texlive-latex-extra \
-                      texlive-lang-german \
-                      pandoc \
-                      texlive-latex-base \
-                      texlive-bibtex-extra \
-                      texlive-generic-extra
-  - wget https://launchpad.net/ubuntu/+archive/primary/+files/biber_2.5-1_all.deb
-  - dpkg -i biber_2.5-1_all.deb
 
 script:
   # Change working directory
@@ -148,7 +138,6 @@ script:
     || (echo 'Quota limits are not set as expected - fail' && exit 1)
 
   # Check if the doc files are building.
-  - make pdf
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
