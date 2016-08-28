@@ -11,3 +11,14 @@ wiki.txt
 scripts/users/yaml/*.yml
 scripts/users/data/*.csv
 scripts/users/mail/*
+docs/*.aux
+docs/*.bcf
+docs/*.glo
+docs/*.ist
+docs/*.toc
+docs/*.out
+docs/*.fls
+docs/*.fdb*
+docs/texmf/*ls-R
+docs/*.log
+docs/*.run.xml
