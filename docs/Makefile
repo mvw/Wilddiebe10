@@ -18,6 +18,9 @@ SKIP_CLEANUP?=0
 
 pdf: setup_tex ${PDF} clean
 
+clean_all: clean
+	rm $(RM) count *.pdf
+
 clean:
 	test $(SKIP_CLEANUP) -ne 1 && $(RM) count \
 		*.blg \

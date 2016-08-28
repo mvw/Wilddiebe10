@@ -1292,6 +1292,85 @@ Es wird auf Basis der Datenstruktur \code{k1599\_users\_present\_users} überpr�
     - "{{ existing_users.results }}"
 \end{lstlisting}
 
+\subsection{Quota}
+Mit Filesystem Quotas ist es möglich den für einzelne Benutzer zur Verfügung
+stehenden Speicherplatz zu beschränken. Dadurch wird sichergestellt, dass jeder
+Benutzer eine gewisse Menge Platz zur Verfügung hat und kein anderer Benutzer
+den gesamten Speicherplatz belegen kann. Jedem Benutzer stellen wir 100MB
+Speicherplatz zur Verfügung, der 7 Tage auf bis zu 150MB überschritten werden
+kann. Dann werden weitere Schreibzugriffe blockiert.\\
+
+Damit ein Filesystem auf Quotas überwacht wird, muss dieses mit der Option
+\code{usrquota} für Benutzerquota und/oder \code{grpquota} für Gruppenquota
+gemountet werden. Wir beschränken uns auf Benutzerquota und die Beschränkung
+des Speicherplatzes. Die Dateianzahl wird nicht limitiert. Dazu wird
+\code{/etc/fstab} wie folgt ergänzt:\\
+
+\code{    /dev/sda1 / ext4 rw,relatime,discard,data=ordered,usrquota 0 0}\\
+
+Der unter \code{/aquota.user} abgelegte Quota Index muss initial über den
+Befehl \code{quotacheck -vguma} erstellt werden. Sobald das erfolgt ist, werden
+die Quotas mit \code{quotaon -av} aktiv gemacht.\\
+
+Bisher sind noch keine Beschränkungen für die Benutzer festgelegt, über
+''repquota /'' kann aber bereits eine Übersicht des belegten Speicherplatzes
+und der Konfiguration ausgegeben werden:\\
+
+\begin{lstlisting}[label=code:quota1,caption=Quotasetup]
+  *** Report for user quotas on device /dev/sda1
+  Block grace time: 7days; Inode grace time: 7days
+                          Block limits                File limits
+  User            used    soft    hard  grace    used  soft  hard  grace
+  ----------------------------------------------------------------------
+  root      -- 2554096       0       0          32778     0     0
+  daemon    --      68       0       0              4     0     0
+  man       --     864       0       0             69     0     0
+  nobody    --       0       0       0              1     0     0
+  Debian-exim --      16       0       0              4     0     0
+  systemd-timesync --       0       0       0              1     0     0
+  sgirrulat --    3596       0       0             76     0     0
+  sbruch    --      16       0       0              4     0     0
+  fhofmann  --      16       0       0              4     0     0
+  tgrosswendt --      16       0       0              4     0     0
+  clamav    --  142352       0       0             12     0     0
+  cweissenborn --      20       0       0              5     0     0
+  jschumacher --      16       0       0              4     0     0
+  wschmidt  --      28       0       0              7     0     0
+  mwoerkom  --      16       0       0              4     0     0
+  phaebel   --      16       0       0              4     0     0
+  ...
+  file-sued --      12       0       0              5     0     0
+  ...
+\end{lstlisting}
+
+Die Angabe des belegten Speicherplatzes erfolgt standardmäßig in Kilobyte. Die
+Konfiguration der qota wird dann über das Hilfsprogramm \code{quotatool}
+vorgenommen:\\
+
+\code{  quotatool -b -q 102400 -l 153600 -u file-sued /}\\
+
+Hiermit werden die Beschränkungen für den Benutzer \code{file-sued} auf 100MB
+als \textit{Soft Limit} (Überschreitung maximal 7 Tage) und 150MB als
+\textit{Hard Limit} gesetzt.
+
+Als Ergebnis von ergibt sich dann für den einzelnen Benutzer:\\
+
+\begin{lstlisting}[label=code:quota2,caption=repquota]
+  *** Report for user quotas on device /dev/sda1
+  Block grace time: 7days; Inode grace time: 7days
+                          Block limits                File limits
+  User            used    soft    hard  grace    used  soft  hard  grace
+  ----------------------------------------------------------------------
+  ...
+  file-sued --      12  102400  153600              5     0     0
+  ...
+\end{lstlisting}
+
+Die Konfiguration der Quotas erfolgt über die Ansible Rolle
+\textit{k1599\_quota}. Damit werden die nötigen Anpassungen am System
+vorgenommen und die Quotas für alle angelegten Benutzer des Fachpraktikums
+automatisiert gesetzt.
+
 %----------------------------------------------------------------------------------------
 %	SECTION QUALITÄTSSICHERUNG
 %----------------------------------------------------------------------------------------
@@ -1443,9 +1522,13 @@ Dateiserver \newline Fileserver & Server, der einen festgelegten Bereich eines D
 \midrule
 Dienst & Ein im Hintergrund laufender Prozess auf einem Computer \\
 \midrule
+Hard Limit & Gibt den maximal nutzbaren Speicherplatz oder die maximale verwendbare Dateianzahl an. Ein Benutzer kann dieses Limit niemals überschreiten. Ein Erreichen dieses Limits ist für den Benuzter gleichzusetzten mit dem Verbrauch des verfügbaren Speicherplatzes\\
+\midrule
 Service & Eine für den Kunden bereitgestellte Servicedienstleistung \\
 \midrule
 Sicherheit \newline sicher \newline abgesichert & Ein IT Service gilt hier als sicher, wenn er die Anforderungen des BSI IT-Grundschutz erfüllt. \\
+\midrule
+Soft Limit & Ist eine Begrenzung, welche kleiner oder gleich dem Hard Limit gesetzt werden muss. Wird das Soft Limit überschritten, so erhält der Benutzer den Zustand "Over Quota". Das Soft Limit kann bis zum Wert des Hard Limits überschritten werden\\
 \midrule
 Projektmitarbeiter \newline (PMA) & Studierende in den Gruppen 5 und 10 \\
 \midrule
