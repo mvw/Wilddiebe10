@@ -16,7 +16,7 @@ docs: setup ${PDF}
 
 SKIP_CLEANUP?=0
 
-pdf: ${PDF} clean
+pdf: setup_tex ${PDF} clean
 
 clean:
 	test $(SKIP_CLEANUP) -ne 1 && $(RM) count *.blg *.fdb_latexmk *.dvi *.fls *.bbl *.log *.fdb *.glo *.tex~ *.ist *.toc *.run.xml *.bcf *.out *.aux || echo "Skip cleanup, pls do make clean manually."
@@ -31,7 +31,8 @@ setup:
 											texlive-bibtex-extra \
 											texlive-generic-extra \
 											biber
-								
+
+setup_tex:
 	texhash $(TEXMFHOME)
 	sudo mktexlsr 
 
