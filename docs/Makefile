@@ -8,12 +8,11 @@
 
 SOURCE=Projektdokumentation.tex
 PDF=$(SOURCE:tex=pdf)
-PDFSLIDE=$(SOURCE:md=pdf)
-REVEALJS=$(SOURCE:md=html)
-PWD=$(shell pwd)
 export TEXMFHOME=$(PWD)/texmf
 
-all: setup ${PDF}
+all: docs 
+
+docs: setup ${PDF}
 
 SKIP_CLEANUP?=0
 
@@ -35,13 +34,5 @@ setup:
 	texhash $(TEXMFHOME)
 	sudo mktexlsr 
 
-#slides: ${PDFSLIDE}
-
-#${REVEALJS}: ${SOURCE} Makefile
-#	pandoc -V transition=fade -V theme=sky -t revealjs -s ${SOURCE} -o ${REVEALJS} --slide-level 1
-#
-#${PDFSLIDE}: ${SOURCE} Makefile
-#	pandoc -t beamer -s ${SOURCE} -o ${PDFSLIDE} --slide-level 2 -V theme:Hannover
-#
 ${PDF}: ${SOURCE} Makefile
 	pdflatex ${SOURCE}
