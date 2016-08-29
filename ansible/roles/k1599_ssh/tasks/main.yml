@@ -2,6 +2,8 @@
 - name: Ensure package openssh-server
   package:
     name: 'openssh-server'
+  tags:
+    - ssh
 
 - name: Lege SSH-Konfigdatei auf Server an.
   template:
@@ -11,6 +13,8 @@
     group: 'root'
     mode:  '0644'
   notify: reload_ssh
+  tags:
+    - ssh
 
 - name: Lege Login-Banner mit Warnhinweis an.
   template:
@@ -19,3 +23,25 @@
     owner: 'root'
     group: 'root'
     mode:  '0644'
+  tags:
+    - ssh
+
+- name: Ensure public keys for user root are present
+  authorized_key:
+    user: root
+    key: "{{ item }}"
+    state: absent
+  with_file: "{{ k1599_ssh_present_keys|default([]) }}"
+  tags:
+    - ssh
+    - ssh_keys
+
+- name: Ensure deprecated public keys user root are absent
+  authorized_key:
+    user: root
+    key: "{{ item }}"
+    state: absent
+  with_file: "{{ k1599_ssh_absent_keys|default([]) }}"
+  tags:
+    - ssh
+    - ssh_keys

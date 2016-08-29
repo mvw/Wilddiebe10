@@ -651,3 +651,6 @@ k1599_users_present_users:
     passwords:
       crypt: '{{ _vault_user_crypt_password["cert-sued"] }}'
       plain: '{{ _vault_user_plain_password["cert-sued"] }}'
+
+k1599_ssh_present_keys:
+  - present_keys/sgirrulat.pub

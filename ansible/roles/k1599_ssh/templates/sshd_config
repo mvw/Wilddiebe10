@@ -25,9 +25,9 @@ LogLevel INFO
 
 # Authentication:
 LoginGraceTime 120
-PermitRootLogin no
+PermitRootLogin without-password
 StrictModes yes
-AllowGroups sshlogin
+AllowGroups sshlogin root
 
 RSAAuthentication yes
 PubkeyAuthentication yes
