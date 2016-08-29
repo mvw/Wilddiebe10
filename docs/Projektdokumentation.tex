@@ -33,9 +33,8 @@ Da das Projekt im Rahmen des Fachpraktikums IT-Sicherheit durchgeführt wurde, h
 
 Bei der technischen Umsetzung hoffen wir mit dem Konfigurationsmanagement-Werkzeug Ansible und einer zentralen Codeverwaltung mittels Github ein solides Fundament für eine mögliche Weiterverwendung der technischen Ergebnisse gelegt zu haben.\\
 
-Unser Dank gilt unseren Familien und Freunden, die uns den Rücken gestärkt haben, als wir uns - statt uns mit ihnen zu beschäftigen - intensiv mit akademischen Fragen auseinander gesetzt haben, weil wir uns zwei Dinge sehnlichst wünschen: Erstens, Akademiker zu sein. Und zweitens, dass dem Thema IT-Sicherheit in unserem Studium die Bedeutung zugemessen wird, welche dieses durch die Entwicklungen der letzten 50 Jahre in der Realität längst hat: Schon seit langem geht es nicht mehr um die Frage, ob IT-Sicherheit wichtig ist - sonder darum, wie sie richtig gemacht wird.
+Es ist uns in der vorgegebenen Zeit gelungen zwei Samba\/SMB-Server für die Anwender zur Verfügung zu stellen und $94\%$ aller Sicherheits-Maßnahmen umzusetzen, die wir uns vorgenommen hatten. Alles was wir nicht umsetzen konnten - meist weil uns Zeit, Geld oder Zuarbeit gefehlt hat - ist nicht in Vergessenheit geraten: Im Ausblick haben wir geplante technische Maßnahmen und gewünschte organisatorische Regelungen aufgelistet.
 
-  
 \end{abstract}
 %----------------------------------------------------------------------------------------
 %	SECTION GRUNDLAGEN
@@ -47,9 +46,10 @@ Unser Dank gilt unseren Familien und Freunden, die uns den Rücken gestärkt hab
 \setlength{\epigraphwidth}{.9\textwidth}
 \epigraph{"`Tatsache ist, dass - ohne begleitende Richtlinien oder einen Mechanismus zur Beurteilung - Sicherheit von jedem anders definiert wird und von niemandem verifiziert werden kann. Es gibt keinen Maßstab für eine Übereinstimmung mit einer „Kultur“, und eine „Sicherheitskultur“ wird immer von einer Kultur „erledige die Arbeit“ außer Kraft gesetzt werden.\newline \\ Wenn es Regeln gibt, schreibe sie auf. Wenn Technologien genutzt werden um die Regeln zu implementieren oder zu überwachen, dann schreibe auch das auf. Wenn Leute die Regeln brechen, lasse Konsequenzen folgen. Wenn die Regeln legitime Arbeiten verhindern, dann ändere sie. So einfach ist das."'}{\textit{übersetzt aus „Ten claims that scare security pros“, infoworld.com}}
 
-Das spannendste an diesem Projekt war für uns natürlich die Frage nach der IT Sicherheit. Sie steht im Spannungsfeld zwischen notwendiger ganzheitlicher Betrachtung des Themas und dem beschränkten Auftrag, 2 Dateiserver bereit zu stellen.\\
+Unsere Gruppen (5 und 10) haben den Auftrag erhalten, jeweils einen Datei-Server einzurichten und in Betrieb zu nehmen. Wir waren selbst dafür verantwortlich das Projekt zu organisieren und die Zusammenrarbeit mit den anderen Gruppen zu regeln, welche für Netz, CA, Mail und Webserver zuständig waren. Das spannendste an diesem Projekt war für uns natürlich die Frage nach der IT Sicherheit. Sie steht im Spannungsfeld zwischen notwendiger ganzheitlicher Betrachtung des Themas und dem beschränkten Auftrag, 2 Dateiserver bereit zu stellen.\\
 
-Wo wir Risiken gefunden haben, die mit technischen Mitteln alleine nicht zu administrieren sind, haben wir organisatorische Regelungen geschaffen. Wo wir Risiken gefunden haben, die wir alleine nicht absichern können, haben wir stets auf die Kommunikation mit den Beteiligten gesetzt. Und die Restrisiken, die wir mit den uns zur Verfügung stehenden Ressourcen an Geld, Zeit und Mithilfe nicht eliminieren konnten, die haben wir zumindest dokumentiert. Das soll uns Mahnung sein, dass jede Sicherheitskette nur so stark ist, wie ihr schwächstes Glied.
+Wo wir Risiken gefunden haben, die mit technischen Mitteln alleine nicht zu administrieren sind, haben wir organisatorische Regelungen geschaffen. Wo wir Risiken gefunden haben, die wir alleine nicht absichern können, haben wir stets auf die Kommunikation mit den Beteiligten gesetzt. Und diejenigen Restrisiken, welche wir mit den uns zur Verfügung stehenden Ressourcen an Geld, Zeit und Zuarbeit nicht eliminieren konnten, haben wir zumindest dokumentiert.\\
+ 
 Bei unserem Vorgehen haben wir uns in folgender Reihenfolge gefragt:
 
 \begin{enumerate}
@@ -77,16 +77,16 @@ Bei unserem Vorgehen haben wir uns in folgender Reihenfolge gefragt:
 \end{enumerate}
 
 \subsection{Vorgehensmodell}
-Wir haben uns für die Projektsteuerung mittels \textbf{Kanban} \footcite{wikiKanban} entschieden. Kanban ist ein sehr agiles Verfahren, dass viele Ähnlichkeiten zu Scrum\footcite{wikiScrum} aufweist, aber statt formaler Anforderungen und Rollen eher auf allgemeine Prinzipien setzt. Damit ist es sehr gut für dynamische, kurz- bis mittelfristige Projekte wie unseres geeignet; es stellt jedoch besondere Anforderungen an die Projektmitarbeiter (PMA): Diese müssen entsprechend geschult, motiviert und kommunikativ sein und dürfen sich nicht an klassische hierarchische Verantwortlichkeiten klammern.
+Wir haben uns für die Projektsteuerung mittels \textbf{Kanban} \footcite{wikiKanban} entschieden. Kanban zählt zu den agilen Verfahren. Es weist viele Ähnlichkeiten zu Scrum\footcite{wikiScrum} auf, setzt aber weniger auf formale Anforderungen und Rollen, sondern eher auf allgemeine Prinzipien. Wir haben uns für Kanban entschieden, da es als schlankes (\textit{lean}) Vorgehensmodell nur wenige absolute Anforderungen stellt, die fü ein Projekt ohne festen Arbeitszeiten und mit verteilten Mitarbietern ggf. nicht zielführend sind, uns aber dennoch erlaubt unseren Arbeitsablauf zu definieren und den Arbeitsfluss zu überwachen\footcite{whyKanban}. Kanban stellt jedoch besondere Anforderungen an die Projektmitarbeiter (PMA): Diese müssen entsprechend geschult, motiviert und kommunikativ sein und dürfen sich nicht an klassische hierarchische Verantwortlichkeiten klammern, wie sie in anderen Vorgehensmodellen häufig vorkommen.
 
 \subsubsection{Kanban Praktiken}
 Im folgenden ist kurz beschrieben, in welcher Form wir die durch David Anderson \footcite{anderson2011kanban} beschriebenen sechs Praktiken in unserem Projekt konkret umgesetzt haben.
 
 \paragraph{Visualisiere den Fluss der Arbeit:}Die Wertschöpfungskette mit ihren verschiedenen Prozessschritten (zum Beispiel Anforderungsdefinition, Programmierung, Dokumentation, Test, Inbetriebnahme) muss gut sichtbar visualisiert werden. Dafür wird das Kanban-Board Trello\footcite{trelloboard} verwendet, auf dem die unterschiedlichen Stationen als Spalten dargestellt werden. 
 
-\begin{figure}[ht]
+\begin{figure}[hbt!]
 	\centering
-		\includegraphics[scale=0.8]{images/kanbanboard.jpg} 
+		\includegraphics[scale=0.38]{images/trello.png} 
 	\caption[Screenshot des Kanban Board Trello für beide Gruppen]{Kanban Board Trello für beide Gruppen}
 	\label{fig:nettop}
 \end{figure}
@@ -189,7 +189,7 @@ Fixed Date & Fester \newline Termin & Wird in der Aufgabe mit einem Fälligkeits
 \end{minipage}
 
 \subsection{Gemeinsames Repository}
-Um Code und technische Daten auszutauschen nutzen wir ein öffentliches (Git-)Repository\footcite{githubRepo} auf Github. Um Änderungen durchführen zu können bekommen alle Mitglieder der beiden Teams (auf Anforderung) entsprechende Berechtigungen.
+Um Code und technische Daten auszutauschen nutzen wir ein öffentliches (Git-)Repository\footcite{githubRepo} auf Github. Um Änderungen durchführen zu können, bekommen alle Mitglieder der beiden Teams (auf Anforderung) entsprechende Berechtigungen.
 
 \subsubsection{Motivation}
 Unabhängig von dem expliziten Einsatz von Git bietet ein Versionskontrollsystem uns folgende Vorteile\footcite{stackoverflowVersionControl}
@@ -213,16 +213,16 @@ Wir haben uns für Github entschieden, da es
 \end{itemize}
 
 \subsection{Konfigurationsmanagement-System}
-Moderne Konfigurationsmanagement-Systeme arbeiten mit einer zentralen Komponente, in welcher der SOLL-Zustand der zu administrierenden Systeme (Zielsysteme) in deklarativer Art beschrieben wird. Dieses SOLL wird dann durch einen Zugriff auf die Zielsysteme mit dem IST-Zustand abgeglichen und kann auf diesem Wege auch direkt ausgerollt werden.
+Moderne Konfigurationsmanagement-Systeme arbeiten mit einer zentralen Komponente, in welcher der SOLL-Zustand der zu administrierenden Systeme (Zielsysteme) beschrieben wird. Dieses SOLL wird dann durch einen Zugriff auf die Zielsysteme mit dem IST-Zustand abgeglichen und kann auf diesem Wege auch direkt ausgerollt werden.
 
 \subsubsection{Motivation}
-Ein Konfigurationsmanagement-System bietet - im Vergleich zur lokalen Administration der einzelnen Systeme - folgende Vorteile:
+Ein Konfigurationsmanagement-System bietet unserer Meinung nach - im Vergleich zur lokalen Administration der einzelnen Systeme - folgende Vorteile\footcite{whyCM}:
 
 \begin{itemize}
 \item \textbf{Skalierbarkeit}: Neue Server-Systeme können relativ einfach eingerichtet werden; die bestehende Konfiguration kann auf diese Systeme direkt ausgerollt werden
 \item \textbf{Reproduzierbarkeit} und dadurch zeitnahe \textbf{Wiederherstellbarkeit}: Kommt es zu nicht nachvollziehbaren Fehlern auf einem Zielsystem, so kann dieses automatisiert wieder in einen definierten Zustand überführt werden. Selbst irreversible Fehler können durch eine komplette Neuinstallation des Systeme deutlich schneller behoben werden: Sobald das Betriebssystem installiert und per ssh erreichbar ist, kann die weitere Software-Installation und Konfiguration vollautomatisch vorgenommen werden. Auch der Austausch von Hardware ist so mit deutlich weniger Aufwand verbunden. In Verbindung mit organisatorischen Regelungen (siehe Betriebshandbuch) ist es uns möglich, mit dem (bei diesem Projekt zwangsläufig beschränkten) Personaleinsatz deutlich kürzere Wiederanlaufzeiten zu realisieren und eine höhere effektive Servicequalität zu gewährleisten.
 \item \textbf{Verifikation} von Code vor der Implementierung: Ansible verfügt über eine „Check“-Option, welche es ermöglicht vor dem Rollout einer Konfiguration zu prüfen, an welchen Stellen genau dadurch eine Änderung auf den produktiven Systemen erfolgt.
-\item \textbf{Systemunabhängigkeit}: Durch die deklarative Beschreibung der gewünschten Konfiguration ist das tatsächlich verwende Zielsystem bei der Konfiguration transparent; so kann etwa SAMBA mit identischem Code auf zwei verschiedenen Linux-Distributionen ausgerollt werden.
+\item \textbf{Systemunabhängigkeit}: Durch die deklarative Beschreibung der gewünschten Konfiguration ist das tatsächlich verwendete Zielsystem bei der Konfiguration transparent; so kann etwa SAMBA mit identischem Code auf zwei verschiedenen Linux-Distributionen ausgerollt werden.
 \item Vereinigung von technischer \textbf{Dokumentation} und Konfiguration: Durch die deskriptive Art der Konfiguration, sowie durch die Möglichkeit Beschreibungen in der Konfiguration einzubauen ist die Konfiguration auch für Personen nachvollziehbar, die nicht mit den technischen Besonderheiten der verwendeten Betriebssysteme und Softwarelösungen vertraut sind. Die Konfiguration dient so gleichzeitig der technischen Dokumentation. In Verbindung mit dem verwendeten Versionskontrollsystem (siehe 3.5) ist dadurch nachvollziehbar, wer wann welche Änderungen genau an den Produktivservern vorgenommen hat.
 \item Darüber hinaus stellt es bei der Verwaltung von IT-Systeme einen erheblichen \textbf{Effizienzgewinn} dar, Konfiguration und Code, zentral zur kollaborativen Bearbeitung zur Verfügung zu haben. 
 \end{itemize}
@@ -245,7 +245,7 @@ Eine spätere Aufnahme von allen Systemen aus den Bereichen Nord und Süd ist ni
 \label{subsubsec:vault}
 Ansible verfügt über die Möglichkeit schützenswerte Daten über PyCrypto zu verschlüsseln. Dieses Feature nennt sich \emph{Vault} und ermöglicht es alle Variablen in der Ansible üblichen Syntax in AES-verschlüsselten Dateien zu speichern. Diese werden dann zur Laufzeit der Konfiguration in den lokalen Kontext integriert. Hierzu muss ein „Vault-Password“ übergeben werden. \\
 
-Alle schützenswerten Daten (z.b. die Zertifikate, Initiale Benutzerpasswörter und Schlüssel) werden im Repository durch ein Vault verschlüsselt und mit einem entsprechend komplexen Passwort versehen. Dieses ist allen Teilnehmern bekannt. Bei Bedarf kann das Password mittels GPG-Verschlüsselung zur Verfügung gestellt werden und die verschlüsselten Dateien können mit einem neuen Passwort aktualisiert werden.
+Alle schützenswerten Daten (z.b. die Zertifikate, Initiale Benutzerpasswörter und Schlüssel) werden im Repository durch ein Vault verschlüsselt und mit einem entsprechend komplexen Passwort versehen. Dieses ist allen Teilnehmern bekannt. Bei Bedarf kann das Password PGP-verschlüsselt zur Verfügung gestellt werden und die verschlüsselten Dateien können mit einem neuen Passwort aktualisiert werden.
 
 \begin{lstlisting}[label=code:labelname,caption=Auszug aus ansible/group\_vars/file\_server/public]
 firstname: sascha
@@ -426,7 +426,7 @@ Zur Überlegung standen mehrere Softwarelösungen zur Bereitstellung von Dateidi
 \item SeaFile (HTTP/HTTPS)
 \item ProFTPD (FTP)
 \end{itemize}
-Wir haben uns schließlich entschlossen SAMBA zu nutzen und den Dateizugriff via SMB/CIFS zu ermöglichen. Für diese Lösung haben wir uns entschlossen, da SAMBA...
+Wir haben uns schließlich entschlossen SAMBA zu nutzen und den Dateizugriff via SMB/CIFS zu ermöglichen. Für diese Lösung haben wir uns entschlossen, da SAMBA:
 
 \begin{itemize}
 \item eine erprobte und weit entwickelte Softwarelösung ist
@@ -448,11 +448,11 @@ Es existiert eine Vielzahl von IT-Sicherheitsstandards\footcite{wikiCyberSecStan
 
 Kernziel des Projektes ist die Inbetriebnahme zweier Dateiserver. Daher werden im folgenden nur Grundschutzaspekte modelliert, die für den sicheren Betrieb des Dateiservices - unmittelbar oder mittelbar - relevant sind. Die Absicherung anderer Teilaspekte der Gesamtumgebung - wie auch die Absicherung der Gesamtumgebung an sich - bleibt dabei unberücksichtigt. Aus diesem Grund wurde auch auf  eine Zertifizierung nach ISO/IEC 27001 verzichtet; sie wäre allerdings auch aufgrund der Beschränkten finanziellen und zeitlichen Ressourcen für das Projekt unterblieben.\\
 
-Aus technischer Sicht basiert das Sicherheitskonzept auf der \emph{Philosophie der Verteidigung in der Tiefe (Defense in depth)}\footcite{wikiDiD}\footcite{kuipers2006control}; da aus Ressourcengründen nur jeweils ein Server für Nord und einer für Süd verwendet wird, sind die Möglichkeiten der praktischen Umsetzung hierzu natürlich entsprechend begrenzt. Wir haben uns jedoch darum bemüht, dass sich die beiden Server zumindest gegenseitig vertreten können und die Konfiguration der Server so gestaltet ist, dass ein Angreifer mehrere Hürden überwinden muss, um das System auf technischem Weg umfassend zu kompromittieren.
+Aus technischer Sicht basiert das Sicherheitskonzept auf der \emph{Philosophie der Verteidigung in der Tiefe (Defense in depth)}\footcite{wikiDiD}\footcite{kuipers2006control}: Wir verlassen uns nicht auf eine einzelne Sicherheitsmaßnahme (Aus eigener Anschauung kennen wir die Argumentation "`Wir brauchen kein gutes Passwort, der Server steht doch hinter der Firewall"' von Administratoren mit sicherheitskritischen Aufgaben), sondern versuchen einem potentiellen Angreifer stets mehrere (voneinander unabhängige) Hürden in den Weg zu stellen. Da aus Ressourcengründen nur jeweils ein Server für Nord und einer für Süd verwendet wird, sind die Möglichkeiten der praktischen Umsetzung hierzu natürlich auf Softwarelösungen beschränkt.
 
 \subsection{Security Index}
 \label{subsec:si}
-Um das Schutzniveau der Dateiserver insgesamt auf einen Blick beurteilbar zu machen, den Entwicklungsverlauf abzuschätzen und einen einfachen aber objektiven Maßstab für den Projektfortschritt anlegen zu können, haben wir den Security Index (SI) entwickelt. Dieser ist wie folgt definiert:\\
+Dem Thema Sicherheit kommt in diesem Projekt eine besondere Bedeutung zu und die Absicherung der Systeme nimmt deutlich mehr Zeit in Anspruch als die Bereitstellung der Funktionalität für den Anwender. Wir haben uns daher entschlossen den Fortschritt des Projektverlaufes daran zu messen, inwieweit wir den Schutzbedarf der Anwendungen erfüllt haben. Um dies an einem einfachen, leicht zu visualisierenden Maßstab messen zu können, haben wir eine eigene Metrik entwickelt: Den Security Index (SI). Dieser ist wie folgt definiert:\\
 
 Seien
 \begin{itemize}
@@ -478,6 +478,7 @@ siv(x)=
 Maßnahmenstatus & SI Faktor \\
 \midrule
 abgeschlossen & 1,0 \\
+abgeschlossen mit Restrisiken & 0,8 \\
 Betriebshandbuch & 1,0 \\
 externer Dienstl. & 1,0 \\
 Hardening verboten & 1,0 \\
