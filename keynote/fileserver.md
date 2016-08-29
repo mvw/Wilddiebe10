@@ -1,13 +1,25 @@
 ---
-title:
+title: Fileserver
+author: 
+ - Christoph Weißenborn
+ - Jörg Ricardo Schumacher
+ - Marc Ernst Eddy Woerkom
+ - Patrick Häbel
+ - Sascha Girrulat
+ - Silas Jansen
+ - Waldemar Schmidt
 tags: [K1599, Fileserver]
+abstract: 'Schaffen einer Kommunikationsstruktur für die Fa. Müller Backwaren und Fa. Meyer Brot.'
 ...
 
-# Overview
+
+# Übersicht
 
 ----
 
-## Allgemein
+## Übersicht
+This will give you an overview of the basic components of the team File-Sued
+and File-Nord:
 
 1. Grundlagen
 1. Projektorganisation
@@ -21,7 +33,52 @@ tags: [K1599, Fileserver]
 
 # Grundlagen
 
+## Wir Starten mit 
+
+Das ist ein Text
+
+# Organisation
+
 ----
 
-## Grundlagen
-### Something 
+# Grobkonzept
+
+----
+
+# Sicherheit
+
+----
+
+# Backup 
+
+----
+
+# Technik 
+## Rsyslog
+
+----
+
+# QS
+## Tests
+### Syntax
+### Travis
+
+----
+
+# Ausblick
+## Offenes
+
+---
+
+# Fazit
+## Ergebnisse 
+
+### Danke
+
+* Christoph Weißenborn
+* Jörg Ricardo Schumacher
+* Marc Ernst Eddy Woerkom
+* Patrick Häbel
+* Sascha Girrulat
+* Silas Jansen
+* Waldemar Schmidt
