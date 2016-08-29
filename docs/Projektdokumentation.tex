@@ -398,7 +398,7 @@ Gruppe FileNord und Gruppe FileSued
 \section{Funktionales Grobkonzept}
 
 \subsection{Hardware}
-
+\label{subsec:hardware}
 Aufgrund des nicht vorhandenen Projektbudgets haben wir uns entschieden, zwei Server zu verwenden, welche schon im Vorfeld von unseren Mitgliedern angemietet wurden:
 
 \begin{minipage}{\textwidth}
@@ -508,10 +508,9 @@ Ein SI von $1,0$ bedeutet also, dass alle vom BSI IT Grundschutz vorgeschlagenen
 Der SI kann und soll eine eingehende Betrachtung der aktuellen Sicherheitslage nicht ersetzen. Für eine grobe Abschätzung der IT Sicherheitsvorkehrungen, wie sie etwa im Management erforderlich ist, kann dieser Index jedoch genutzt werden.
 
 \begin{figure}[hbt!]
-	\centering
-		\includegraphics[scale=1]{images/si.png} 
+		\includegraphics[scale=0.66]{images/si.png} 
 	\caption{Security Index (SI) im Projektverlauf}
-	\label{img:mypic}
+	\label{img:si}
 \end{figure}
 
 \subsection{Schutzbedarfsfeststellung}
@@ -570,7 +569,7 @@ Verfügbarkeit & Normal & Maximumprinzip \\
 TABELLE FEHLT
 
 \subsubsection{Schutzbedarf: Räume}
-Entfällt, da hierfür - aus Kostengründen - auf einen bereits festgelegten externen Dienstleister gesetzt wird, bei dem die Konditionen nicht verhandelbar sind (siehe \ref{Hardware}).
+Entfällt, da hierfür - aus Kostengründen - auf einen bereits festgelegten externen Dienstleister gesetzt wird, bei dem die Konditionen nicht verhandelbar sind (siehe \ref{subsec:hardware}).
 
 \subsection{Bausteine}
 \begin{minipage}{\textwidth}
@@ -659,11 +658,6 @@ Alle letztendlich durchgeführten technischen Maßnahmen sind in der technischen
 Kürzel & Titel & Status & Verantwortung & Bemerkungen \\
 \midrule
 M1.28 & Lokale unterbrechungsfreie Stromversorgung & externer Dienstl. & 5+10 & Server gemietet bei netcup GmbH (Nord), bzw. Hetzner Online GmbH (Süd) \\
-M2.113 & Regelungen für Telearbeit & abgeschlossen & CIO & nur insoweit sie die IT betreffen \\
-M2.114 & Informationsfluss zwischen Telearbeiter und Institution & abgeschlossen & CIO & nur insoweit sie die IT betreffen \\
-M2.115 & Betreuungs- und Wartungskonzept für Telearbeitsplätze & abgeschlossen & CIO & BYOD \\
-M2.116 & Geregelte Nutzung der Kommunikationsmöglichkeiten bei Telearbeit & abgeschlossen & CIO & nur insoweit sie die IT betreffen \\
-M2.117 & Erstellung eines Sicherheitskonzeptes für Telearbeit & abgeschlossen & CIO & Teil der gestellten Anforderungen \\
 M2.137 & Beschaffung eines geeigneten Datensicherungssystems & nicht durchgeführt & 5+10 & aus Zeit- und Kostengründen nur teilweise realisiert \\
 M2.138 & Strukturierte Datenhaltung & abgeschlossen & 5+10 &  \\
 M2.154 & Erstellung eines Sicherheitskonzeptes gegen Schadprogramme & abgeschlossen & 5+10 &  \\
@@ -671,17 +665,9 @@ M2.157 & Auswahl eines geeigneten Viren-Schutzprogramms & abgeschlossen & 5+10 &
 M2.158 & Meldung von Schadprogramm-Infektionen & Betriebshandbuch & 5+10 &  \\
 M2.159 & Aktualisierung der eingesetzten Viren-Schutzprogramme und Signaturen & abgeschlossen & 5+10 &  \\
 M2.160 & Regelungen zum Schutz vor Schadprogrammen & abgeschlossen & 5+10 &  \\
-M2.161 & Entwicklung eines Kryptokonzepts & abgeschlossen & CIO & Teil der gestellten Anforderungen \\
-M2.162 & Bedarfserhebung für den Einsatz kryptographischer Verfahren und Produkte & abgeschlossen & CIO & Teil der gestellten Anforderungen \\
-M2.163 & Erhebung der Einflussfaktoren für kryptographische Verfahren und Produkte & abgeschlossen & CIO & Teil der gestellten Anforderungen \\
-M2.164 & Auswahl eines geeigneten kryptographischen Verfahrens & abgeschlossen & CIO & Teil der gestellten Anforderungen \\
-M2.165 & Auswahl eines geeigneten kryptographischen Produktes & abgeschlossen & CIO & Teil der gestellten Anforderungen \\
-M2.166 & Regelung des Einsatzes von Kryptomodulen & abgeschlossen & CIO & Teil der gestellten Anforderungen \\
-M2.204 & Verhinderung ungesicherter Netzzugänge & abgeschlossen & Alle & via VPN/SSL \\
 M2.205 & Übertragung und Abruf personenbezogener Daten & abgeschlossen & 5+10 &  \\
 M2.22 & Hinterlegen des Passwortes & abgeschlossen & 5+10 &  \\
 M2.224 & Vorbeugung gegen Schadprogramme & abgeschlossen & 5+10 &  \\
-M2.241 & Durchführung einer Anforderungsanalyse für den Telearbeitsplatz & abgeschlossen & CIO & nur insoweit sie die IT betreffen \\
 M2.273 & Zeitnahes Einspielen sicherheitsrelevanter Patches und Updates & Hardening verboten & 5+10 &  \\
 M2.31 & Dokumentation der zugelassenen Benutzer und Rechteprofile & abgeschlossen & 5+10 & via Ansible \\
 M2.314 & Verwendung von hochverfügbaren Architekturen für Server & externer Dienstl. & 5+10 & Server gemietet bei netcup GmbH (Nord), bzw. Hetzner Online GmbH (Süd) \\
@@ -693,36 +679,30 @@ M2.32 & Einrichtung einer eingeschränkten Benutzerumgebung & abgeschlossen & 5+
 M2.33 & Aufteilung der Administrationstätigkeiten unter Unix & nicht durchgeführt & 5+10 & alle in der Gruppe haben volle Admin-Rechte \\
 M2.34 & Dokumentation der Veränderungen an einem bestehenden System & Betriebshandbuch & 5+10 &  \\
 M2.35 & Informations-beschaffung über Sicherheitslücken des Systems & Betriebshandbuch & 5+10 &  \\
-M2.351 & Planung von Speicherlösungen & abgeschlossen & 5+10 & keine zentralen Mgmt Systeme \\
-M2.354 & Einsatz einer hochverfügbaren SAN-Lösung & nicht zutreffend & 5+10 & Verfügbarkeits-anforderung nicht Sehr hoch \\
+M2.351 & Planung von Speicherlösungen & abgeschlossen mit Restrisiken & 5+10 & keine zentralen Mgmt Systeme \\
+M2.354 & Einsatz einer hochverfügbaren SAN-Lösung & nicht zutreffend & 5+10 & Verfügbarkeitsanforderung nicht Sehr hoch \\
 M2.358 & Dokumentation der Systemeinstellungen von Speichersystemen & abgeschlossen & 5+10 &  \\
 M2.359 & Überwachung und Verwaltung von Speicherlösungen & geplant & 5+10 &  \\
 M2.360 & Sicherheits-Audits und Berichtswesen bei Speichersystemen & Betriebshandbuch & 5+10 &  \\
 M2.362 & Auswahl einer geeigneten Speicherlösung & abgeschlossen & 5+10 &  \\
-M2.41 & Verpflichtung der Mitarbeiter zur Datensicherung & abgeschlossen & CIO & in IT Richtlinie für Anwender \\
 M2.437 & Planung des Einsatzes eines Samba-Servers & abgeschlossen & 5+10 &  \\
 M2.438 & Sicherer Einsatz externer Programme auf einem Samba-Server & abgeschlossen & 5+10 &  \\
-M2.457 & Konzeption für die sichere Internet-Nutzung & abgeschlossen & CIO &  \\
-M2.458 & Richtlinie für die Internet-Nutzung & abgeschlossen & CIO &  \\
-M2.459 & Überblick über Internet-Dienste & abgeschlossen & CIO & Teil der gestellten Anforderungen \\
 M2.46 & Geeignetes Schlüsselmanagement & nur Organisatorisch & 5+10 & Server voll, Client nur Org. \\
 M2.525 & Erstellung einer Sicherheitsrichtlinie für Speicherlösungen & abgeschlossen & 5+10 &  \\
 M2.526 & Planung des Betriebs der Speicherlösung & Betriebshandbuch & 5+10 &  \\
 M2.527 & Sicheres Löschen in SAN-Umgebungen & externer Dienstl. & 5+10 & Server gemietet bei netcup GmbH (Nord), bzw. Hetzner Online GmbH (Süd) \\
-M2.528 & Planung der sicheren Trennung von Mandanten in Speicherlösungen & nicht zutreffend & 5+10 &  \\
+M2.528 & Planung der sicheren Trennung von Mandanten in Speicherlösungen & nicht zutreffend & 5+10 & Es existiert nur je ein Mandant \\
 M2.529 & Modellierung von Speicherlösungen & abgeschlossen & 5+10 &  \\
-M3.21 & Sicherheitstechnische Einweisung der Telearbeiter & abgeschlossen & CIO &  \\
 M3.23 & Einführung in kryptographische Grundbegriffe & abgeschlossen & 5+10 & alle Anwender sind Admins \\
 M3.54 & Schulung der Administratoren des Speichersystems & abgeschlossen & 5+10 &  \\
 M3.68 & Schulung der Administratoren eines Samba-Servers & abgeschlossen & 5+10 &  \\
 M3.69 & Einführung in die Bedrohung durch Schadprogramme & abgeschlossen & 5+10 &  \\
-M3.77 & Sensibilisierung zur sicheren Internet-Nutzung & abgeschlossen & CIO & alle Anwender sind Admins \\
 M3.92 & Grundlegende Begriffe beim Einsatz von Speicherlösungen & abgeschlossen & 5+10 &  \\
 M4.105 & Erste Maßnahmen nach einer Unix-Standardinstallation & Hardening verboten & 5+10 &  \\
 M4.106 & Aktivieren der Systemprotokollierung & abgeschlossen & 5+10 & rsyslog \\
 M4.13 & Sorgfältige Vergabe von IDs & abgeschlossen & 5+10 &  \\
 M4.14 & Obligatorischer Passwortschutz unter Unix & abgeschlossen & 5+10 &  \\
-M4.15 & Gesichertes Login & abgeschlossen & 5+10 & ausgenommen Meldung des letzten erfolglosen Login \\
+M4.15 & Gesichertes Login & abgeschlossen mit Restrisiken & 5+10 & ausgenommen Meldung des letzten erfolglosen Login \\
 M4.16 & Zugangs-beschränkungen für Benutzer-Kennungen und / oder Terminals & nicht zutreffend & 5+10 & keine festen Arbeitszeitfenster \\
 M4.17 & Sperren und Löschen nicht benötigter Accounts und Terminals & Betriebshandbuch & 5+10 &  \\
 M4.18 & Administrative und technische Absicherung des Zugangs zum Monitor- und Single-User-Modus & externer Dienstl. & 5+10 &  \\
@@ -730,14 +710,13 @@ M4.19 & Restriktive Attributvergabe bei Unix-Systemdateien und -verzeichnissen &
 M4.20 & Restriktive Attributvergabe bei Unix-Benutzerdateien und -verzeichnissen & abgeschlossen & 5+10 &  \\
 M4.21 & Verhinderung des unautorisierten Erlangens von Administratorrechten & abgeschlossen & 5+10 &  \\
 M4.22 & Verhinderung des Vertraulichkeitsverlusts schutzbedürftiger Daten im Unix-System & abgeschlossen & 5+10 & Login am System beschränkt auf Admins \\
-M4.23 & Sicherer Aufruf ausführbarer Dateien & nicht durchgeführt & 5+10 & PATH nicht überwacht \\
+M4.23 & Sicherer Aufruf ausführbarer Dateien & abgeschlossen mit Restrisiken & 5+10 & PATH nicht überwacht \\
 M4.237 & Sichere Grundkonfiguration eines IT-Systems & abgeschlossen & 5+10 & Integritätsdatenbank = Ansible \\
 M4.238 & Einsatz eines lokalen Paketfilters & abgeschlossen & 5+10 &  \\
 M4.239 & Sicherer Betrieb eines Servers & Betriebshandbuch & 5+10 &  \\
 M4.24 & Sicherstellung einer konsistenten Systemverwaltung & abgeschlossen & 5+10 &  \\
 M4.240 & Einrichten einer Testumgebung für einen Server & nicht zutreffend & 5+10 & Verfügbarkeitsanforderung nicht Sehr hoch \\
 M4.25 & Einsatz der Protokollierung im Unix-System & abgeschlossen & 5+10 &  \\
-M4.250 & Auswahl eines zentralen, netzbasierten Authentisierungsdienstes & nicht durchgeführt & Netz & Nord: AD, Süd: Keines \\
 M4.26 & Regelmäßiger Sicherheitscheck des Unix-Systems & nur Organisatorisch & 5+10 & keine automatisierte Prüfung \\
 M4.274 & Sichere Grundkonfiguration von Speichersystemen & abgeschlossen & 5+10 &  \\
 M4.275 & Sicherer Betrieb einer Speicherlösung & Betriebshandbuch & 5+10 &  \\
@@ -755,11 +734,9 @@ M4.334 & SMB Message Signing und Samba & abgeschlossen & 5+10 & da nur als Datei
 M4.335 &  Sicherer Betrieb eines Samba-Servers & abgeschlossen & 5+10 &  \\
 M4.432 & Sichere Konfiguration von Serverdiensten & abgeschlossen & 5+10 & Authentisierung intern unverschlüsselt \\
 M4.433 & Einsatz von Datenträgerverschlüsselung & externer Dienstl. & 5+10 &  \\
-M4.435 & Selbstverschlüsselnde Festplatten & nicht durchgeführt & 5+10 & Server gemietet bei netcup GmbH (Nord), bzw. Hetzner Online GmbH (Süd) \\
+M4.435 & Selbst-verschlüsselnde Festplatten & nicht durchgeführt & 5+10 & Server gemietet bei netcup GmbH (Nord), bzw. Hetzner Online GmbH (Süd) \\
 M4.447 & Sicherstellung der Integrität der SAN-Fabric & externer Dienstl. & 5+10 & Server gemietet bei netcup GmbH (Nord), bzw. Hetzner Online GmbH (Süd) \\
 M4.448 & Einsatz von Verschlüsselung für Speicherlösungen & nur Organisatorisch & 5+10 & at Rest nur in IT Sicherheitsrichtlinie \\
-M4.449 & Einführung eines Zonenkonzeptes & abgeschlossen & CIO & Teil der gestellten Anforderungen \\
-M4.63 & Sicherheitstechnische Anforderungen an den Telearbeitsrechner & nur Organisatorisch & CIO &  \\
 M4.7 & Änderung voreingestellter Passwörter & abgeschlossen & 5+10 &  \\
 M4.80 & Sichere Zugriffsmechanismen bei Fernadministration & abgeschlossen & 5+10 &  \\
 M4.84 & Nutzung der BIOS-Sicherheits-mechanismen & externer Dienstl. & 5+10 & Server gemietet bei netcup GmbH (Nord), bzw. Hetzner Online GmbH (Süd) \\
@@ -771,26 +748,18 @@ M4.89 & Abstrahlsicherheit & externer Dienstl. & 5+10 & Server gemietet bei netc
 M4.9 & Einsatz der Sicherheitsmechanismen von X-Window & abgeschlossen & 5+10 & X-Window nicht installiert \\
 M4.90 & Einsatz von kryptographischen Verfahren auf den verschiedenen Schichten des ISO/OSI-Referenzmodells & abgeschlossen & 5+10 &  \\
 M4.93 & Regelmäßige Integritätsprüfung & Betriebshandbuch & 5+10 &  \\
-M4.97 & Ein Dienst pro Server & nicht durchgeführt & 5+10 & Teil der gestellten Anforderungen für Services, Problem für DokuWiki \\
+M4.97 & Ein Dienst pro Server & abgeschlossen mit Restrisiken & 5+10 & Teil der gestellten Anforderungen für Services, Problem für Mumble Nord \\
 M5.10 & Restriktive Rechtevergabe & abgeschlossen & 5+10 &  \\
 M5.130 & Absicherung des SANs durch Segmentierung & externer Dienstl. & 5+10 & Server gemietet bei netcup GmbH (Nord), bzw. Hetzner Online GmbH (Süd) \\
-M5.138 & Einsatz von RADIUS-Servern & nicht zutreffend & Alle & Ausschließlich VPN \\
 M5.151 & Sichere Konfiguration des Samba Web Administration Tools & abgeschlossen & 5+10 & SWAT nicht installiert \\
-M5.155 & Datenschutz-Aspekte bei der Internet-Nutzung & abgeschlossen & CIO &  \\
-M5.16 & Übersicht über Netzdienste & abgeschlossen & CIO & Teil der gestellten Anforderungen \\
 M5.17 & Einsatz der Sicherheitsmechanismen von NFS & nicht zutreffend & 5+10 &  \\
 M5.177 & Serverseitige Verwendung von SSL/TLS & abgeschlossen & 5+10 & Teil der gestellten Anforderungen \\
 M5.18 & Einsatz der Sicherheitsmechanismen von NIS & nicht zutreffend & 5+10 &  \\
 M5.19 & Einsatz der Sicherheitsmechanismen von sendmail & nicht zutreffend & 5+10 &  \\
 M5.20 & Einsatz der Sicherheitsmechanismen von rlogin, rsh und rcp & abgeschlossen & 5+10 & Dienste sollten abgeschaltet sein (Ersatz: ssh) \\
 M5.21 & Sicherer Einsatz von telnet, ftp, tftp und rexec & nicht zutreffend & 5+10 & nicht aktiviert \\
-M5.51 & Sicherheitstechnische Anforderungen an die Kommunikationsverbindung Telearbeitsrechner - Institution & abgeschlossen & CIO & Client \\
-M5.52 & Sicherheitstechnische Anforderungen an den Kommunikationsrechner & abgeschlossen & CIO & Client \\
 M5.64 & Secure Shell & abgeschlossen & 5+10 &  \\
-M5.66 & Clientseitige Verwendung von SSL/TLS & abgeschlossen & CIO & Teil der gestellten Anforderungen \\
-M5.69 & Schutz vor aktiven Inhalten & abgeschlossen & CIO & Client \\
 M5.72 & Deaktivieren nicht benötigter Netzdienste & Hardening verboten & 5+10 &  \\
-M5.8 & Regelmäßiger Sicherheitscheck des Netzes & Betriebshandbuch & Alle &  \\
 M5.9 & Protokollierung am Server & abgeschlossen & 5+10 &  \\
 M6.1 & Erstellung einer Übersicht über Verfügbarkeitsanforderungen & Betriebshandbuch & 5+10 &  \\
 M6.110 & Festlegung des Geltungsbereichs und der Notfallmanagementstrategie & Betriebshandbuch & 5+10 &  \\
@@ -820,7 +789,6 @@ M6.34 & Erhebung der Einflussfaktoren der Datensicherung & abgeschlossen & 5+10 
 M6.35 & Festlegung der Verfahrensweise für die Datensicherung & abgeschlossen & 5+10 &  \\
 M6.36 & Festlegung des Minimaldatensicherungskonzeptes & abgeschlossen & 5+10 &  \\
 M6.37 & Dokumentation der Datensicherung & abgeschlossen & 5+10 &  \\
-M6.47 & Datensicherung bei der Telearbeit & abgeschlossen & CIO & Ablage aller wichtigen Daten auf dem Dateiserver \\
 M6.56 & Datensicherung bei Einsatz kryptographischer Verfahren & nur Organisatorisch & 5+10 &  \\
 M6.96 & Notfallvorsorge für einen Server & Betriebshandbuch & 5+10 &  \\
 M6.98 & Notfallvorsorge und Notfallreaktion für Speicherlösungen & Betriebshandbuch & 5+10 &  \\
@@ -875,7 +843,7 @@ Ansible ist eine auf Python basierende Open-Source Lösung zur Konfiguration und
 
 Das Verzeichnis der Systeme wird \emph{Inventory} genannt und ist in Gruppen organisiert. Diese werden zur Laufzeit evaluiert und mit Gruppen-, Host- und Rollen bezogenen Daten versehen. Auf diese Daten kann zur Laufzeit innerhalb der Rollen zugegriffen werden. Der Zugriff erfolgt über die \textit{Jinja Templating Engine}. Hierdurch wird eine Trennung von Daten und Code erzeugt die, die Wiederverwendung der erstellten Rollen unterstützt.
 
-Die Rollen enthalten die Konkreten \emph{„Tasks“} die in der Summe die Rollenbeschreibung bilden. Die Ausführung erfolgt sequentiell und ist i.d.R. idempotent.
+Die Rollen enthalten die Konkreten \emph{„Tasks“} die in der Summe die Rollenbeschreibung bilden. Die Ausführung erfolgt sequentiell und ist i.d.R. idempotent, d.h. das Ergebnis ändert sich durch die mehrfache Ausführung hintereinander nicht.
 
 \begin{lstlisting}[label=code:public,caption=Auszug aus ansible/group\_vars/file\_server/public]
 k1599_file_server_smbd_enabled: yes
@@ -1146,7 +1114,7 @@ Bei einem Fund erfolgt ein Eintrag in das Syslog:
   fileserver clamd[569]: ScanOnAccess: /share/public/eicar.com: Eicar-Test-Signature(44d88612fea8a8f36de82e1278abb02f:68) FOUND
 \end{lstlisting}
 
-Das Blockieren der Zugriffe ist bei unseren Systemen nicht möglich, da der Kernel die nötigen Erweiterungen nicht mit bringt. Außerdem wird diese Funktion bei der Überwachung des gesamten Dateisystems deaktiviert\footcite{clamAVnoOnAccess} um die mögliche Blockade des Kernels zu verhindern.
+Das Blockieren der Zugriffe ist bei unseren Systemen nicht möglich, da der Kernel die nötigen Erweiterungen nicht mitbringt. Außerdem wird diese Funktion bei der Überwachung des gesamten Dateisystems deaktiviert\footcite{clamAVnoOnAccess} um die mögliche Blockade des Kernels zu verhindern.
 
 \subsection{Namensauflösung}
 Es bestehen verschiedene Möglichkeiten um eine Namensauflösung im Firmennetzwerk zu realisieren. Für die technische Umsetzung wurde von der Gruppe Netzwerke Nord ein zentraler Dienst (DNS) zur Namensauflösung zur Verfügung gestellt; dieser wird auf dem Dateiserver Nord bei der VPN-Einwahl automatisch eingebunden. 
@@ -1166,7 +1134,7 @@ Die Einträge in der Datei \code{/etc/hosts} werden über die Ansible Rolle \tex
     - "{{ k1599\_common\_hosts|default([]) }}"
 \end{lstlisting}
 
-Um die Einträge auf allen verwalteten Systemen syncron zu halten werden die Daten in einem Dictionary zur Verfügung gestellt.
+Um die Einträge auf allen verwalteten Systemen synchron zu halten werden die Daten in einem \textit{Dictionary} zur Verfügung gestellt.
 
 \begin{lstlisting}[label=code:denyany,caption=Auszug aus ansible/group\_vars/all]
   k1599_common_hosts:
@@ -1450,7 +1418,8 @@ Da Ansible im Moment noch keine Möglichkeit bietet den Code z.B. Unittests zu u
 
 \section{Ausblick}
 \label{sec:ausblick}
-Sei es aus Zeit- und Budgetgründen, oder einfach weil wir auf Zuarbeit aus anderen Gruppen angewiesen sind: Es gibt noch viel zu tun und in der Gesamtumgebung abzustimmen:
+In diesem Abschnitt werden die Maßnahmen zusammengefasst, die wir als notwendig identifiziert haben, die jedoch im Rahmen des Projekte nicht umgesetzt werden konnten.
+
 \subsection{Geplante technische Maßnahmen}
 \begin{itemize}
 \item Aufnahme in die Domäne mayerbrot.intern
@@ -1488,13 +1457,6 @@ Auch wenn unser Auftrag sich sehr konkret auf Installation und Betrieb zweier Da
 \setlength{\epigraphwidth}{.4\textwidth}
 \epigraph{"`Nur Amateure greifen Maschinen an. Profis zielen auf Menschen."'}{\textit{Bruce Schneier}}
 
-\subsection{Projekterfolg}
-Es ist uns in der vorgegebenen Zeit gelungen zwei Datei-Server in Betrieb zu nehmen, die für ihren sicheren Betrieb notwendigen Maßnahmen - seien sie organisatorischer oder technischer Art - umfassend zu analysieren und den größten Teil dieser Maßnahmen anschließend zu implementieren. Nach dem von uns entwickelten Maßstab\ref{subsec:si} haben wir unser Ziel zu $94\%$ erreicht. \\
-
-Dennoch: Wäre dies eine produktiv eingesetzte Umgebung, so läge einer großer Teil der Arbeit noch vor uns. Jetzt würde es darum gehen dem Service den Feinschliff zu verpassen, in der Praxis auftretende Komplikationen zu beheben und die Absicherung iterativ zu verbessern. Da dies jedoch kein Produktivsystem ist, steht in unseren Gedanken der Lerneffekt im Vordergrund, den wir aus diesem Projekt für unser Studium mitnehmen. \\
-
-Bei einem solch komplexen Projekt bleibt es nicht aus, dass Fehler passieren. Mancher Satz ergibt im Nachgang keinen Sinn, ein Teil der Software-Konfiguration ist lückenhaft oder kompromittiert sogar die Sicherheit. Wir machen uns keine Illusionen: Weder unser System noch unsere Vorstellung davon ist frei von Bugs. Eine Binsenweisheit lautet "`Aus Fehlern wird man klug"'. Ganz so, wie in der IT-Sicherheit beim Aufdecken von Schwachstellen zunächst alle sich darauf einigen, worum es bei dieser Lücke genau geht\footcite{wikiCVE} und anschließend gemeinsam versuchen sie zu beheben, wünschen auch wir uns, dass wir aus diesem Projekt gemeinsam lernen können, die Zukunft der IT sicher zu gestalten.
-
 \subsection{Statement zum Praktikum}
 Das Thema IT-Sicherheit ist zweifelsohne brandaktuell und übt eine große Faszination selbst auf IT-Laien aus: Vom "`Hacken"' in Hollywood-Filmen bis hin zu den zahlreichen Artikeln in Zeitungen und Zeitschriften bei aktuellen Ereignissen steht die Relevanz des Themas nicht zur Diskussion.\\
 
@@ -1504,6 +1466,15 @@ Aus technischer Sicht haben wir im Abschnitt \ref{subsec:tellerrand} bereits ein
 
 In jedem Fall sind wir dankbar dafür, dass es dieses Praktikum gibt und dass wir in einem Land und zu einer Zeit leben, in der wir uns eingehend mit diesem Thema auseinandersetzen konnten.
 
+\subsection{Projekterfolg}
+Es ist uns in der vorgegebenen Zeit gelungen zwei Datei-Server in Betrieb zu nehmen, die für ihren sicheren Betrieb notwendigen Maßnahmen - seien sie organisatorischer oder technischer Art - umfassend zu analysieren und den größten Teil dieser Maßnahmen anschließend zu implementieren. Nach dem von uns entwickelten Maßstab\ref{subsec:si} haben wir unser Ziel zu $95\%$ erreicht. \\
+
+Es bleibt die Frage zu beantworten, was bei den restlichen $5\%$ der Maßnahmen geschehen ist, die sich aus der Sicherheitsanalyse ergeben haben. Hardwarenahe Sicherheitsfunktionen konnten aus Kostengründen nicht realisiert werden; andere technische Verbesserungen - etwa das Monitoring - wurden aus Zeitgründen nicht realisiert. Die von uns vorgesehen organisatorischen Maßnahmen sind vollstädnig implementiert, insoweit wir dafür nicht auf Zuarbeit anderer Gruppen angewiesen waren - von denen es leider oft keine Rückmeldung auf unsere Anfragen gab.
+
+Dennoch: Wäre dies eine produktiv eingesetzte Umgebung, so läge einer großer Teil der Arbeit noch vor uns. Jetzt würde es darum gehen dem Service den Feinschliff zu verpassen, in der Praxis auftretende Komplikationen zu beheben und die Absicherung iterativ zu verbessern. Da dies jedoch kein Produktivsystem ist, steht in unseren Gedanken der Lerneffekt im Vordergrund, den wir aus diesem Projekt für unser Studium mitnehmen. \\
+
+Bei einem solch komplexen Projekt bleibt es nicht aus, dass Fehler passieren. Mancher Satz ergibt im Nachgang keinen Sinn, ein Teil der Software-Konfiguration ist lückenhaft oder kompromittiert sogar die Sicherheit. Wir machen uns keine Illusionen: Weder unser System noch unsere Vorstellung davon ist frei von Bugs. Eine Binsenweisheit lautet "`Aus Fehlern wird man klug"'. Ganz so, wie in der IT-Sicherheit beim Aufdecken von Schwachstellen zunächst alle sich darauf einigen, worum es bei dieser Lücke genau geht\footcite{wikiCVE} und anschließend gemeinsam versuchen sie zu beheben, wünschen auch wir uns, dass wir aus diesem Projekt gemeinsam lernen können, die Zukunft der IT sicher zu gestalten.
+
 %----------------------------------------------------------------------------------------
 %	SECTION GLOSSAR
 %----------------------------------------------------------------------------------------
@@ -1512,12 +1483,13 @@ In jedem Fall sind wir dankbar dafür, dass es dieses Praktikum gibt und dass wi
 %\printglossaries
 
 \section{Glossar}
-\begin{minipage}{\textwidth}
 \begin{center}
-\captionof{table}{Begriffsdefinition in diesem Projekt}
-\begin{tabular}{p{3.2cm}p{12cm}}
+\captionof{table}{Begriffsdefinitionen im Kontext dieses Projektes}
+\begin{longtable}{p{3.2cm}p{12cm}}
 \toprule
 Begriff & Bedeutung im Kontext dieses Projektes \\
+\midrule
+CIO & Leiter der IT-Abteilung, aus dem englischen Chief Information Officer. Im Kontext dieses Projektes sind damit die Kursbetreuer gemeint. \\
 \midrule
 Dateiserver \newline Fileserver & Server, der einen festgelegten Bereich eines Dateisystems anderen Benutzern über das Netzwerk zur Verfügung stellt. Der Begriff ist ohne Kontext technisch unspezifisch; er bezieht sich nicht auf ein konkretes Protokoll oder eine Softwarelösung (FTP, SMB, Owncloud, etc.) \\
 \midrule
@@ -1543,9 +1515,8 @@ Anwesenheit \newline anwesend & Als anwesend werden in diesem Projekt alle natü
 \midrule
 Technische \newline Dokumentation & Die technische Dokumentation umfasst alle Beschreibungen, WIE etwas in technischer Ausführung getan werden muss / getan wurde. Demgegenüber beantwortet das Betriebshandbuch die Frage, WAS getan werden muss. \\
 \bottomrule
-\end{tabular}
+\end{longtable}
 \end{center}
-\end{minipage}
 
 %----------------------------------------------------------------------------------------
 %	SECTION BIBLIOGRAPHIE
