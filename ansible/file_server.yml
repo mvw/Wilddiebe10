@@ -11,3 +11,4 @@
     - { role: k1599_openvpn_client, tags: openvpn }
     - { role: ansible-role-firewall, tags: firewall }
     - { role: k1599_time_sync, tags: time_sync }
+    - { role: k1599_quota, tags: quota }
