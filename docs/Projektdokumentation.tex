@@ -426,7 +426,7 @@ Zur Überlegung standen mehrere Softwarelösungen zur Bereitstellung von Dateidi
 \item SeaFile (HTTP/HTTPS)
 \item ProFTPD (FTP)
 \end{itemize}
-Wir haben uns schließlich entschlossen SAMBA zu nutzen und den Dateizugriff via SMB/CIFS zu ermöglichen. Für diese Lösung haben wir uns entschlossen, da SAMBA:
+Wir haben uns schließlich entschlossen SAMBA\footcite{samba} zu nutzen und den Dateizugriff via SMB/CIFS zu ermöglichen. Für diese Lösung haben wir uns entschlossen, da SAMBA:
 
 \begin{itemize}
 \item eine erprobte und weit entwickelte Softwarelösung ist
@@ -646,7 +646,7 @@ B5.26	& Serviceorientierte Architektur	& \\
 \end{minipage}
 
 \subsection{Maßnahmen}
-Die Maßnahmen, welche sich aus den modellierten Bausteinen ergeben, sind in der Tabelle \ref{tab:massnahmen} „Identifizierte Maßnahmen“ zusammengefasst; dort ist auch der aktuelle Status der Maßnahme dokumentiert.\\
+Die Maßnahmen, welche sich aus den modellierten Bausteinen ergeben, sind in der Tabelle \ref{tab:massnahmen} „Identifizierte Maßnahmen“ zusammengefasst; dort ist auch der aktuelle Status der Maßnahme dokumentiert. Nähere Informationen (genaue Definition, Fachbegriffe, Beispiele technischer Konfiguration) lassen sich im IT-Grundschutz Handbuch\footcite{grundschutz} finden.\\
 
 Alle letztendlich durchgeführten technischen Maßnahmen sind in der technischen Systembeschreibung (siehe \ref{sec:techsys}) aufgeführt. Alle organisatorischen Maßnahmen auf der administrativen Seite sind in den Betriebs- und Serviceprozessen des Betriebshandbuches (im Anhang) dokumentiert;  die vom Anwender zu beachtenden Regelungen sind analog in der „IT Richtlinie für Anwender“ (ebenfalls im Anhang) aufgelistet. Die restlichen Maßnahmen - d.h. jene, die wir analysiert haben, aber im Rahmen des Projektes nicht durchführen konnten - sind im Ausblick (Kapitel \ref{sec:ausblick}aufgelistet.
 
@@ -885,6 +885,7 @@ k1599\_rsyslog\_server & RSyslog Server \\
 k1599\_ssh & OpenSSH \\
 k1599\_time\_sync & NTP \\
 k1599\_users & Benutzerkonten und initiale Passwörter \\
+k1599\_quota & Quota (Speicherplatzbeschränkungen) \\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -918,19 +919,19 @@ Damit der private Schlüssel nur vom Benutzer root zu lesen ist, werden die Rech
 
 \begin{lstlisting}[label=code:vpnserver,caption=OpenVPN-Server]
   #Server IP und port
-  remote {{ k1599\_ovpn\_server }} 1194
+  remote {{ k1599_ovpn_server }} 1194
 \end{lstlisting}
 
 \begin{lstlisting}[label=code:certtitle,caption=Zertifikats-Betreff]
-  {% if k1599\_ovpn\_server\_cn != '' %}
+  {% if k1599_ovpn_server_cn != '' %}
   #Authentifizierung des Servers ueber Common Name im Zertifikat
-  verify-x509-name {{ k1599\_ovpn\_server\_cn }} name
+  verify-x509-name {{ k1599_ovpn_server_cn }} name
   {% endif %}
 \end{lstlisting}
 
 \begin{lstlisting}[label=code:authmethod,caption=Authentifizierungsmethode]
   #Authentifizierung
-  auth {{ k1599\_ovpn\_server\_auth }}
+  auth {{ k1599_ovpn_server_auth }}
 \end{lstlisting}
 
 Die Variablen  werden durch Ansible bei der Erstellung der Konfigurationsdatei ausgefüllt. Falls der OpenVPN-Client mit \code{systemctl} gestartet wird, setzt sich der Service Name aus \code{openvpn@name\_der\_konfiguration} zusammen (abgelegt in \code{/etc/openvpn/client.conf}), daher hier \code{openvpn@client}.
@@ -947,7 +948,7 @@ Eine Passwortänderung ist für die Benutzer möglich über
   # The specific set of interfaces / networks to bind to
   # This can be either the interface name or an IP address/netmask;
   # interface names are normally preferred
-     interfaces = {{ k1599\_file\_server\_interfaces }}
+     interfaces = {{ k1599_file_server_interfaces }}
 
   # Only bind to the named interfaces and/or networks; you must use the
   # 'interfaces' option above to use this.
@@ -1026,7 +1027,7 @@ Die öffentliche Freigabe soll für jeden Benutzer beschreibbar sein, außerdem 
 \begin{lstlisting}[label=code:smbconf5,caption=Auszug aus /etc/samba/smb.conf]
   # Add public share
   [public]
-  path = {{ k1599\_file\_server\_public\_share\_path }}
+  path = {{ k1599_file_server_public_share_path }}
   read only = no
   guest ok = yes
   create mask = 0777
@@ -1114,7 +1115,7 @@ Bei einem Fund erfolgt ein Eintrag in das Syslog:
   fileserver clamd[569]: ScanOnAccess: /share/public/eicar.com: Eicar-Test-Signature(44d88612fea8a8f36de82e1278abb02f:68) FOUND
 \end{lstlisting}
 
-Das Blockieren der Zugriffe ist bei unseren Systemen nicht möglich, da der Kernel die nötigen Erweiterungen nicht mitbringt. Außerdem wird diese Funktion bei der Überwachung des gesamten Dateisystems deaktiviert\footcite{clamAVnoOnAccess} um die mögliche Blockade des Kernels zu verhindern.
+Das Blockieren der Zugriffe ist bei unseren Systemen nicht möglich, da der Kernel die nötigen Erweiterungen nicht mitbringt. Außerdem wird diese Funktion bei der Überwachung des gesamten Dateisystems deaktiviert\footcite{clamAVnoOnAccess} um die mögliche Blockade des Systems zu verhindern.
 
 \subsection{Namensauflösung}
 Es bestehen verschiedene Möglichkeiten um eine Namensauflösung im Firmennetzwerk zu realisieren. Für die technische Umsetzung wurde von der Gruppe Netzwerke Nord ein zentraler Dienst (DNS) zur Namensauflösung zur Verfügung gestellt; dieser wird auf dem Dateiserver Nord bei der VPN-Einwahl automatisch eingebunden. 
@@ -1131,7 +1132,7 @@ Die Einträge in der Datei \code{/etc/hosts} werden über die Ansible Rolle \tex
     line: "{{ item.ip }} {{item.name}} {{ item.fqdn|default('') }}"
     state: 'present'
   with_items:
-    - "{{ k1599\_common\_hosts|default([]) }}"
+    - "{{ k1599_common_hosts|default([]) }}"
 \end{lstlisting}
 
 Um die Einträge auf allen verwalteten Systemen synchron zu halten werden die Daten in einem \textit{Dictionary} zur Verfügung gestellt.
@@ -1199,7 +1200,7 @@ Außerdem werden die erlauben Gegenstellen durch Überprüfung der Zertifikats-C
         # Enable imtcp listener on port {{ k1599\_rsyslog\_port }}
         module(
           load="imtcp"
-          MaxSessions="{{ k1599\_rsyslog\_maxsessions|default(500) }}"
+          MaxSessions="{{ k1599_rsyslog_maxsessions|default(500) }}"
           StreamDriver.Mode="1" #Nur TLS zulassen
           StreamDriver.AuthMode="x509/name" # Pruefung des CN
           PermittedPeer=["FileNord","fileserver.mueller-backwaren.de"]
@@ -1207,8 +1208,8 @@ Außerdem werden die erlauben Gegenstellen durch Überprüfung der Zertifikats-C
 
         input(
           type="imtcp"
-          port="{{ k1599\_rsyslog\_port }}"
-          ruleset="imtcp\_remote\_input"
+          port="{{ k1599_rsyslog_port }}"
+          ruleset="imtcp_remote_input"
         )
         ...
 \end{lstlisting}
@@ -1488,6 +1489,8 @@ Bei einem solch komplexen Projekt bleibt es nicht aus, dass Fehler passieren. Ma
 \begin{longtable}{p{3.2cm}p{12cm}}
 \toprule
 Begriff & Bedeutung im Kontext dieses Projektes \\
+\midrule
+at Rest Verschlüsselung & Verschlüsselung von dauerhaft gespeicherten Daten \\
 \midrule
 CIO & Leiter der IT-Abteilung, aus dem englischen Chief Information Officer. Im Kontext dieses Projektes sind damit die Kursbetreuer gemeint. \\
 \midrule
