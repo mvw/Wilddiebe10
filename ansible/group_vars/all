@@ -1,5 +1,7 @@
 file_server_sued_ip: "{{ _vault_file_server_sued_ip }}"
 file_server_nord_ip: "{{ _vault_file_server_nord_ip }}"
+file_server_sued_internal_ip: '10.8.3.18'
+file_server_nord_internal_ip: '10.8.1.30'
 
 k1599_common_hosts:
   - ip: '10.8.3.1'
