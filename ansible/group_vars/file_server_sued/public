@@ -10,7 +10,6 @@ firewall_allowed_tcp_ports:
       - tun0
   - number: 10514
     interfaces:
-      - eth0
       - tun0
 
 k1599_ovpn_server_mtu: '1492'

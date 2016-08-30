@@ -9,5 +9,5 @@ file-server-sued ansible_host="{{ file_server_sued_ip }}"
 file-server-nord ansible_host="{{ file_server_nord_ip }}"
 
 [rsyslog_server]
-file-server-sued ansible_host="{{ file_server_sued_ip }}"
-file-server-nord ansible_host="{{ file_server_nord_ip }}"
+rsyslog-server-sued ansible_host="{{ file_server_sued_internal_ip }}"
+rsyslog-server-nord ansible_host="{{ file_server_nord_internal_ip }}"
