@@ -1,0 +1,238 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+\date{}
+
+\begin{document}
+
+\section{Einführung}\label{einfuxfchrung}
+
+Durch die zunehmende Nutzung von IT für Geschäftsprozesse in Unternehmen
+ist hängt der Geschäftserfolg zunehmend auch von der sicheren Nutzung
+unserer IT-Systeme ab. Gemeinsam mit ihnen möchten wir den schwere
+Verluste für das Unternehmen abwenden, wie z.B.
+
+\begin{itemize}
+\item
+  Durch einen Virenbefall können wichtige Geschäftsdaten
+  unwiederbringlich verloren gehen
+\item
+  Durch einen unsicheren Netzwerkzugang wird es Wirtschafspionen - die
+  heutzutage von den zahlreichen Auslandsgeheimdiensten ihrer jeweiligen
+  Länder unterstützt werden - ermöglicht zentrale Geschäftsgeheimnisse
+  zu entwenden und sich dadurch die von uns mühsam erarbeiteten und
+  erforschten Ergebnisse zu eigen zu machen. Stellen sie sich vor,
+  unsere unnachahmlichen Stutenwecken würden morgen aus China zum halben
+  Preis geliefert werden!
+\item
+  In Folge eines unsachgemäßen Gebrauches der Speicherumgebung haben
+  Betrüger Zugriff auf unsere Kontodaten erhalten und so einen
+  sechsstelligen Betrag ins Ausland überwiesen
+\end{itemize}
+
+In unserer Netzwerkumgebung ist es jedem Mitarbeiter gestattet, mit
+seinem eigenen Computer auf die IT-Services zuzugreifen (BYOD). Das
+bedeutet auch, dass wir nur mit ihrer Hilfe dafür sorgen können, dass
+wir auch morgen alle noch ein Unternehmen haben, dass unsere Kunden -
+und so auch unsere Familien - ernährt.
+
+\section{Was muss ich tun?}\label{was-muss-ich-tun}
+
+\begin{itemize}
+\item
+  \textbf{M 2.138 Strukturierte Datenhaltung}
+
+  \begin{itemize}
+  \item
+    Speichern sie Programm- und Arbeitsdaten in getrennten
+    Verzeichnissen. Dies erleichtert die Übersichtlichkeit und
+    Datensicherung.
+  \item
+    Richten sie für verschiedene Aufgaben und Projekte getrennte
+    Verzeichnisse ein
+  \item
+    Legen sie so wenig Dateien wie möglich in personenbezogenen
+    Verzeichnissen ab. Nutzen sie statt dessen Gruppenablagen oder die
+    Ablage für den allgemeinen Zugriff.
+  \end{itemize}
+\item
+  \textbf{M 2.160 Regelungen zum Schutz vor Schadprogrammen}
+
+  \begin{itemize}
+  \item
+    Aufgrund der dezentralen Verwaltung der Clients ist jeder Anwender
+    für ein aktuelles Virenschutz-Programm auf seinem Client selbst
+    verantwortlich
+  \item
+    Melden sie Schadprogramm-Infektionen dem Benutzerservice
+  \end{itemize}
+\item
+  \textbf{M 2.224 Vorbeugung gegen Schadprogramme}
+
+  \begin{itemize}
+  \item
+    Alle von Dritten erhaltenen Dateien und Programme sollten vor der
+    Aktivierung auf möglicherweise enthaltene Schadprogramme überprüft
+    werden.
+  \item
+    Daten und Programme sollten grundsätzlich nur von vertrauenswürdigen
+    Quellen geladen werden, also insbesondere von den
+    Original-Web-Seiten oder Original-Datenträgern des Erstellers
+  \item
+    Arbeiten sie mit einem Benutzerkonto ohne lokale
+    Administrator-Rechte
+  \item
+    Stellen sie alle Programme, welche Makros ausführen können (MS
+    Office, Adobe Acrobat, etc.) so ein, dass diese Makros nicht
+    automatisch ausgeführt werden können
+  \end{itemize}
+\item
+  \textbf{M 3.21 Sicherheitstechnische Einweisung der Telearbeiter}
+
+  \begin{itemize}
+  \item
+    Halten sie dienstliche und private Daten konsequent getrennt
+  \end{itemize}
+\item
+  \textbf{M 5.155 Datenschutz-Aspekte bei der Internet-Nutzung}
+
+  \begin{itemize}
+  \item
+    Konfigurieren sie ihren Browser so, dass er Cookies aus dem Internet
+    nicht automatisch akzeptiert
+  \item
+    Konfigurieren sie ihren Browser so, dass er die Historie nach jeder
+    Sitzung automatisch löscht. Führen sie dienstliche und private
+    Nutzung nicht über die gleiche Sitzung durch oder nutzen sie für
+    dienstliche und private Zwecke verschiedene Browser
+  \item
+    Speichern sie im Browser keine dienstlich sensiblen Angaben wie
+    Passwörter, Unternehmen-Kredikartendaten, Telefonnummern usw.
+  \end{itemize}
+\item
+  \textbf{M 5.51 Sicherheitstechnische Anforderungen an die
+  Kommunikationsverbindung Telearbeitsrechner - Institution}
+
+  \begin{itemize}
+  \item
+    Achten sie beim Surfen im Intranet auf eine abgesicherte Verbindung
+    (Schloss-Symbol im Browser)
+  \end{itemize}
+\item
+  \textbf{M 2.46 Geeignetes Schlüsselmanagement}
+
+  \begin{itemize}
+  \item
+    Verwenden sie für jeden Login ein anderes Passwort
+  \item
+    Verwenden sie KeePass zum Managen ihrer Passwörter und um neue
+    sichere Passwörter zu erzeugen
+  \item
+    Ändern sie ihre verwendeten Passwörter mindestens einmal im Quartal
+  \item
+    Besteht der Verdacht, dass eines ihrer Passwörter kompromittiert
+    wurden, dann informieren sie bitte den Benutzerservice
+  \end{itemize}
+\item
+  \textbf{M 4.448 Einsatz von Verschlüsselung für Speicherlösungen}
+
+  \begin{itemize}
+  \item
+    Verschlüsseln sie Daten, die einen hohen Schutzbedarf bezüglich
+    Vertraulichkeit aufweisen, mit einem aktuellen
+    Verschlüsselungsprogramm (etwa VeraCrypt) auf dem Netzlaufwerk.
+    Teilen sie das Passwort nur mit Gruppenmitgliedern, die zwingend
+    Zugriff auf diese Daten benötigen.
+  \end{itemize}
+\item
+  \textbf{M 4.63 Sicherheitstechnische Anforderungen an den
+  Telearbeitsrechner}
+
+  \begin{itemize}
+  \item
+    Schützen sie ihr Client-Benutzerkonto mit einem sicheren Passwort.
+    Sperren sie ihren Computer, wenn sie den Raum verlassen.
+  \item
+    Verschlüsseln sie ihre gesamte Festplatte mittels Bitlocker oder
+    Truecrypt
+  \item
+    Verwenden sie nur Passwörter, die mindestens 8 Zeichen lang sind
+  \end{itemize}
+\item
+  \textbf{M 4.433 Einsatz von Datenträgerverschlüsselung}
+
+  \begin{itemize}
+  \item
+    Verschlüsseln sie alle Datenträger, die sie mobil nutzen, etwa
+    Laptop-Festplatten oder USB-Sticks (Werkzeuge: Bitlocker,
+    TrustedDisk, TrueCrypt)
+  \end{itemize}
+\item
+  \textbf{M 5.69 Schutz vor aktiven Inhalten}
+
+  \begin{itemize}
+  \item
+    Konfigurieren sie ihren Browser so, dass aktive Inhalte nur auf
+    Rückfrage ausgeführt werden
+  \item
+    Führen sie aktive Inhalte, bei deren Herkunft sie sich nicht sicher
+    sind, nur in einer virtuellen Maschine, oder auf einem Computer der
+    nicht an unsere IT angeschlossen ist, aus
+  \end{itemize}
+\item
+  \textbf{M 6.56 Datensicherung bei Einsatz kryptographischer Verfahren}
+
+  \begin{itemize}
+  \item
+    Wenn sie ein Programm zur Passwortverwaltung oder Verschlüsselung
+    von Daten benutzen, denken sie bitte daran auch dieses Programm auf
+    dem Dateiserver abzulegen
+  \end{itemize}
+\end{itemize}
+
+\end{document}

@@ -57,5 +57,6 @@ setup_tex:
 
 ${PDF}: ${SOURCE} Makefile
 	latexmk -f -bibtex -pdf -bibtex-cond ${SOURCE}
+	pdflatex AnwenderItRichtlinie.tex
 
 .PHONY: docs clean
