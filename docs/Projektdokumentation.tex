@@ -648,7 +648,7 @@ B5.26	& Serviceorientierte Architektur	& \\
 \subsection{Maßnahmen}
 Die Maßnahmen, welche sich aus den modellierten Bausteinen ergeben, sind in der Tabelle \ref{tab:massnahmen} „Identifizierte Maßnahmen“ zusammengefasst; dort ist auch der aktuelle Status der Maßnahme dokumentiert. Nähere Informationen (genaue Definition, Fachbegriffe, Beispiele technischer Konfiguration) lassen sich im IT-Grundschutz Handbuch\footcite{grundschutz} finden.\\
 
-Alle letztendlich durchgeführten technischen Maßnahmen sind in der technischen Systembeschreibung (siehe \ref{sec:techsys}) aufgeführt. Alle organisatorischen Maßnahmen auf der administrativen Seite sind in den Betriebs- und Serviceprozessen des Betriebshandbuches (im Anhang) dokumentiert;  die vom Anwender zu beachtenden Regelungen sind analog in der „IT Richtlinie für Anwender“ (ebenfalls im Anhang) aufgelistet. Die restlichen Maßnahmen - d.h. jene, die wir analysiert haben, aber im Rahmen des Projektes nicht durchführen konnten - sind im Ausblick (Kapitel \ref{sec:ausblick}aufgelistet.
+Alle letztendlich durchgeführten technischen Maßnahmen sind in der technischen Systembeschreibung (siehe \ref{sec:techsys}) aufgeführt. Alle organisatorischen Maßnahmen auf der administrativen Seite sind in den Betriebs- und Serviceprozessen des Betriebshandbuches (im Anhang) dokumentiert;  die vom Anwender zu beachtenden Regelungen sind analog in der „IT Richtlinie für Anwender“ (ebenfalls im Anhang) aufgelistet. Die restlichen Maßnahmen - d.h. jene, die wir analysiert haben, aber im Rahmen des Projektes nicht durchführen konnten - sind im Ausblick (Kapitel \ref{sec:ausblick}) aufgelistet.
 
 \newpage
 \captionof{table}{Identifizierte Maßnahmen}
@@ -910,10 +910,10 @@ Für die Nutzung durch OpenVPN werden diese in der Konfigurationsdatei angeben:
 Damit der private Schlüssel nur vom Benutzer root zu lesen ist, werden die Rechte auf den privaten Schlüssel durch Ansible entsprechend gesetzt. Die Infos zur Konfiguration von OpenVPN und eine Vorlage für die Konfigurationsdatei ist unter \url{http://www.belmora.net/fapra1599/} zu finden. Diese wurde mit Variablen versehen, um sie für Nord und Süd nutzbar zu machen, da sich die Konfiguration der OpenVPN-Server unterscheidet, z.B. für:
 
 \begin{lstlisting}[label=code:tunnelmtu,caption=Tunnel-MTU]
-  {% if k1599\_ovpn\_server\_mtu != '' %}
+  {% if k1599_ovpn_server_mtu != '' %}
   #MTU: Fragmentierung, sollte der Einstellung auf dem Server
   #entsprechen, daher am besten nicht aendern
-  tun-mtu {{ k1599\_ovpn\_server\_mtu }}
+  tun-mtu {{ k1599_ovpn_server_mtu }}
   {% endif %}
 \end{lstlisting}
 
@@ -1197,7 +1197,7 @@ Die Konfiguration wird über die beiden Ansible Rollen \textit{k1599\_rsyslog\_c
 Außerdem werden die erlauben Gegenstellen durch Überprüfung der Zertifikats-CNs festgelegt.
 
 \begin{lstlisting}[label=code:syslog3,caption=Whitelisting der CN]
-        # Enable imtcp listener on port {{ k1599\_rsyslog\_port }}
+        # Enable imtcp listener on port {{ k1599_rsyslog_port }}
         module(
           load="imtcp"
           MaxSessions="{{ k1599_rsyslog_maxsessions|default(500) }}"
