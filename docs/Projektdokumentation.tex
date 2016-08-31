@@ -29,11 +29,11 @@
 \begin{abstract}
 Unsere Aufgabe war die Bereitstellung zweier Dateiserver innerhalb der vorgegebenen VPN-Netzwerkumgebung. Dabei waren wir verantwortlich für Organisation, Kommunikation und Dokumentation des Projektes. Unser Projekt hatte kein Budget, keine zentrale Leitung und keine festen Arbeitszeiten. Das agile Verfahren Kanban mit einem Trello-Board hat uns daher sehr geholfen unsere wichtigsten Ziele dennoch zeitgerecht zu erreichen.\\
 
-Da das Projekt im Rahmen des Fachpraktikums IT-Sicherheit durchgeführt wurde, haben wir ein besonderes Augenmerk auf das Sicherheitskonzept gelegt; der BSI IT-Grundschutz diente uns als Maßstab für die Frage, was Sicherheit in diesem Kontext überhaupt bedeutet.\\
+Da das Projekt im Rahmen des Fachpraktikums IT-Sicherheit durchgeführt wurde, haben wir ein besonderes Augenmerk auf das Sicherheitskonzept gelegt; der BSI IT-Grundschutz diente uns als Maßstab für die Analyse der Sicherheitsanforderungen.\\
 
 Bei der technischen Umsetzung hoffen wir mit dem Konfigurationsmanagement-Werkzeug Ansible und einer zentralen Codeverwaltung mittels Github ein solides Fundament für eine mögliche Weiterverwendung der technischen Ergebnisse gelegt zu haben.\\
 
-Es ist uns in der vorgegebenen Zeit gelungen zwei Samba\/SMB-Server für die Anwender zur Verfügung zu stellen und $94\%$ aller Sicherheits-Maßnahmen umzusetzen, die wir uns vorgenommen hatten. Alles was wir nicht umsetzen konnten - meist weil uns Zeit, Geld oder Zuarbeit gefehlt hat - ist nicht in Vergessenheit geraten: Im Ausblick haben wir geplante technische Maßnahmen und gewünschte organisatorische Regelungen aufgelistet.
+Es ist uns in der vorgegebenen Zeit gelungen zwei Samba\/SMB-Server für die Anwender zur Verfügung zu stellen und $95\%$ aller Sicherheits-Maßnahmen umzusetzen, die wir uns vorgenommen hatten. Alles was wir nicht umsetzen konnten - meist weil uns Zeit, Geld oder Zuarbeit gefehlt hat - ist nicht in Vergessenheit geraten: Im Ausblick haben wir geplante technische Maßnahmen und gewünschte organisatorische Regelungen aufgelistet.
 
 \end{abstract}
 %----------------------------------------------------------------------------------------
@@ -77,7 +77,7 @@ Bei unserem Vorgehen haben wir uns in folgender Reihenfolge gefragt:
 \end{enumerate}
 
 \subsection{Vorgehensmodell}
-Wir haben uns für die Projektsteuerung mittels \textbf{Kanban} \footcite{wikiKanban} entschieden. Kanban zählt zu den agilen Verfahren. Es weist viele Ähnlichkeiten zu Scrum\footcite{wikiScrum} auf, setzt aber weniger auf formale Anforderungen und Rollen, sondern eher auf allgemeine Prinzipien. Wir haben uns für Kanban entschieden, da es als schlankes (\textit{lean}) Vorgehensmodell nur wenige absolute Anforderungen stellt, die für ein Projekt ohne festen Arbeitszeiten und mit verteilten Mitarbietern ggf. nicht zielführend sind, uns aber dennoch erlaubt unseren Arbeitsablauf zu definieren und den Arbeitsfluss zu überwachen\footcite{whyKanban}. Kanban stellt jedoch besondere Anforderungen an die Projektmitarbeiter (PMA): Diese müssen entsprechend geschult, motiviert und kommunikativ sein und dürfen sich nicht an klassische hierarchische Verantwortlichkeiten klammern, wie sie in anderen Vorgehensmodellen häufig vorkommen.
+Wir haben uns für die Projektsteuerung mittels \textbf{Kanban} \footcite{wikiKanban} entschieden. Mit dem Begriff Kanban bezeichnen wir hier das Projektmanagement-Vefahren, wie es von David Anderson\footcite{anderson2011kanban} beschrieben wird. Kanban zählt zu den agilen Verfahren. Es weist viele Ähnlichkeiten zu Scrum\footcite{wikiScrum} auf, setzt aber weniger auf formale Anforderungen und Rollen, sondern eher auf allgemeine Prinzipien. Wir haben uns für Kanban entschieden, da es als schlankes (\textit{lean}) Vorgehensmodell nur wenige absolute Anforderungen stellt, die fü ein Projekt ohne festen Arbeitszeiten und mit verteilten Mitarbietern ggf. nicht zielführend sind, uns aber dennoch erlaubt unseren Arbeitsablauf zu definieren und den Arbeitsfluss zu überwachen\footcite{whyKanban}. Kanban stellt jedoch besondere Anforderungen an die Projektmitarbeiter (PMA): Diese müssen entsprechend geschult, motiviert und kommunikativ sein und dürfen sich nicht an klassische hierarchische Verantwortlichkeiten klammern, wie sie in anderen Vorgehensmodellen häufig vorkommen.
 
 \subsubsection{Kanban Praktiken}
 Im folgenden ist kurz beschrieben, in welcher Form wir die durch David Anderson \footcite{anderson2011kanban} beschriebenen sechs Praktiken in unserem Projekt konkret umgesetzt haben.
@@ -86,7 +86,7 @@ Im folgenden ist kurz beschrieben, in welcher Form wir die durch David Anderson 
 
 \begin{figure}[hbt!]
 	\centering
-		\includegraphics[scale=0.23]{images/trello.png}
+		\includegraphics[scale=0.38]{images/trello.png} 
 	\caption[Screenshot des Kanban Board Trello für beide Gruppen]{Kanban Board Trello für beide Gruppen}
 	\label{fig:nettop}
 \end{figure}
@@ -124,7 +124,7 @@ Im Rahmen unseres Projektes wurde der Projektfluss bei wöchentlichen Mumble-Mee
 Dieser Absatz ist ein Kontrollabschnitt, der sicher stellen soll, dass die vorliegende Projektdokumentation auch tatsächlich von allen Beteiligten gewissenhaft gelesen wurde. Der Verifikationscode lautet hier ''Able Archer 83''.
 
 \paragraph{Fördere Leadership auf allen Ebenen in der Organisation:} 
-Damit der Prozess der kontinuierlichen Verbesserung funktioniert, ist die Mitwirkung aller Projektbeteiligten erforderlich. Verantwortung sinnvoll übernehmen kann nur, wer auch eigenständig Entscheidungen treffen und umsetzen darf.\\
+Damit der Prozess der kontinuierlichen Verbesserung funktioniert, ist die Mitwirkung aller Projektbeteiligten erforderlich. Verantwortung sinnvoll übernehmen kann nur, wer auch die ihm übertragene Sache betreffende Entscheidungen treffen und umsetzen darf.\\
 
 In unserem Projekt sind alle PMA gleichberechtigte Partner. Jeder von uns ist daher berechtigt alle Entscheidungen zu treffen, deren Verantwortung er sich selbst zutraut. Einzige Bedingung ist, dass alle Entscheidungen und Maßnahmen dokumentiert und den anderen PMA zur Überprüfung zur Verfügung gestellt werden.
 
@@ -239,7 +239,7 @@ Es standen verschiedene Lösungen, wie z.B. Ansible\footcite{ansible}, Puppet\fo
 (Puppet und Chef Arbeiten nach einem „Pull-Prinzip“)
 \end{itemize}
 
-Eine spätere Aufnahme von allen Systemen aus den Bereichen Nord und Süd ist nicht nur denkbar, sondern wird von uns auch ausdrücklich empfohlen. Das manuelle Installieren und Konfigurieren von Software in und auf produktiven Systemen ist ein in der Softwareentwicklung häufig anzutreffender schlechter Lösungsansatz für ein bestimmtes Problem\footcite{humble2010continuous}.
+Eine spätere Aufnahme von allen Systemen aus den Bereichen Nord und Süd ist nicht nur denkbar, sondern wird von uns auch ausdrücklich empfohlen. Das manuelle Installieren und Konfigurieren von Software in und auf produktiven Systemen ist ein in der Softwareentwicklung häufig anzutreffender schlechter Lösungsansatz für ein bestimmtes Problem (Antipattern\footcite[S. 5-9]{humble2010continuous}).
 
 \subsubsection{Verschlüsselung kritischer Codeblöcke}
 \label{subsubsec:vault}
@@ -435,7 +435,7 @@ Wir haben uns schließlich entschlossen SAMBA\footcite{samba} zu nutzen und den 
 \item Transportverschlüsselung unterstützt (AES-CCM-128)
 \item für fast alle Unix-Derivate (auf dem Server) verfügbar ist
 \item SMB/CIFS-Freigaben bietet, die sowohl unter Windows als auch Linux direkt in die Verzeichnisstruktur des Clients eingebunden werden können, so dass aus jeder Anwendung heraus direkt das Speichern und Laden vom Server möglich ist
-\item auch langfristig keine Lizenzkosten verursacht - im Gegensatz etwa zu Microsoft-Lösungen
+\item auch langfristig keine Lizenzkosten verursacht
 \end{itemize}
 
 %----------------------------------------------------------------------------------------
@@ -446,7 +446,7 @@ Wir haben uns schließlich entschlossen SAMBA\footcite{samba} zu nutzen und den 
 \label{sec:sicherheitskonzept}
 Es existiert eine Vielzahl von IT-Sicherheitsstandards\footcite{wikiCyberSecStandards}. Das vorliegende Sicherheitskonzept richtet sich nach den Leitlinien des \emph{BSI IT-Grundschutz}\footcite{grundschutz}.\\
 
-Kernziel des Projektes ist die Inbetriebnahme zweier Dateiserver. Daher werden im folgenden nur Grundschutzaspekte modelliert, die für den sicheren Betrieb des Dateiservices - unmittelbar oder mittelbar - relevant sind. Die Absicherung anderer Teilaspekte der Gesamtumgebung - wie auch die Absicherung der Gesamtumgebung an sich - bleibt dabei unberücksichtigt. Aus diesem Grund wurde auch auf  eine Zertifizierung nach ISO/IEC 27001 verzichtet; sie wäre allerdings auch aufgrund der Beschränkten finanziellen und zeitlichen Ressourcen für das Projekt unterblieben.\\
+Kernziel des Projektes ist die Inbetriebnahme zweier Dateiserver. Daher werden im folgenden nur Grundschutzaspekte modelliert, die für den sicheren Betrieb des Dateiservices - unmittelbar oder mittelbar - relevant sind. Die Absicherung anderer Teilaspekte der Gesamtumgebung - wie auch die Absicherung der Gesamtumgebung an sich - bleibt dabei unberücksichtigt. Eine abschließende Zertifizierung nach ISO/IEC 27001 ist nicht Bestandteil des Projektumfangs.\\
 
 Aus technischer Sicht basiert das Sicherheitskonzept auf der \emph{Philosophie der Verteidigung in der Tiefe (Defense in depth)}\footcite{wikiDiD}\footcite{kuipers2006control}: Wir verlassen uns nicht auf eine einzelne Sicherheitsmaßnahme (Aus eigener Anschauung kennen wir die Argumentation "`Wir brauchen kein gutes Passwort, der Server steht doch hinter der Firewall"' von Administratoren mit sicherheitskritischen Aufgaben), sondern versuchen einem potentiellen Angreifer stets mehrere (voneinander unabhängige) Hürden in den Weg zu stellen. Da aus Ressourcengründen nur jeweils ein Server für Nord und einer für Süd verwendet wird, sind die Möglichkeiten der praktischen Umsetzung hierzu natürlich auf Softwarelösungen beschränkt.
 
@@ -503,7 +503,7 @@ SI:=\frac{\sum_{i=1}^n siv(m_i)\times f(m_i)}{\sum_{i=1}^{n}siv(m_i)}
 \end{equation}
 \end{center}
 
-Ein SI von $1,0$ bedeutet also, dass alle vom BSI IT Grundschutz vorgeschlagenen Maßnahmen umgesetzt wurden (soweit sie für den Dateiserver-Betrieb relevant sind). Die aktuelle Entwicklung des SI haben wir in unregelmäßigen Abständen - mindestens jedoch einmal wöchentlich - dokumentiert. Der zum Abgabetermin wirksame SI ist $0,94$.\\
+Ein SI von $1,0$ bedeutet also, dass alle vom BSI IT Grundschutz vorgeschlagenen Maßnahmen umgesetzt wurden (soweit sie für den Dateiserver-Betrieb relevant sind). Die aktuelle Entwicklung des SI haben wir in unregelmäßigen Abständen - mindestens jedoch einmal wöchentlich - dokumentiert. Der zum Abgabetermin wirksame SI ist $0,95$.\\
 
 Der SI kann und soll eine eingehende Betrachtung der aktuellen Sicherheitslage nicht ersetzen. Für eine grobe Abschätzung der IT Sicherheitsvorkehrungen, wie sie etwa im Management erforderlich ist, kann dieser Index jedoch genutzt werden.
 
@@ -547,7 +547,26 @@ Verfügbarkeit & Autorisierte Benutzer werden am Zugriff auf Informationen und S
 \end{minipage}
 
 \subsubsection{Schutzbedarf: Anwendungen}
-TABELLE FEHLT
+\begin{minipage}{\textwidth}
+\begin{center}
+\captionof{table}{Anwendung Dateiserver}
+\begin{tabular}{p{3.5cm}llp{6.3cm}}
+\toprule
+Anwendung & Grundwert & Schutzbedarf & Begründung \\
+\midrule
+Personaldaten-verwaltung & Vertraulichkeit & Hoch & Personaldaten sind besonders schutzbedürftige personenbezogene Daten, deren Bekanntwerden die Betroffenen erheblich beeinträchtigen könnte. \\
+Personaldaten-verwaltung & Integrität & Normal & da Fehler rasch erkannt und die Daten nachträglich korrigiert werden können. \\
+Personaldaten-verwaltung & Verfügbarkeit & Gering & Ausfälle von bis zu einer Woche können mittels manueller Verfahren überbückt werden \\
+Finanz-verwaltung & Vertraulichkeit & Hoch & Mit den Finanzdaten ist ein Zugriff auf die Konten der vereinigten Backwerke möglich \\
+Finanz-verwaltung & Integrität & Hoch & Falsche oder fehlende Abrechnungen führen zu unbezahlten oder unbearbeiteten Bestellungen \\
+Finanz-verwaltung & Verfügbarkeit & Normal & Rechnungen müssen nur innerhalb der üblichen Laufzeiten bezahlt werden \\
+Kassensystem & Vertraulichkeit & Gering & Backwerk-Bestellungen sind für unsere Kunden keine vertraulichen Informationen \\
+Kassensystem & Integrität & Normal & Falsche oder fehlende Kassendaten machen die Nachvollziehbarkeit von Ausgaben und Einnahmen unmöglich \\
+Kassensystem & Verfügbarkeit & Normal & Die Synchronisation der Kassenbestände erfolgt nachts und ist für den Tagesbetrieb nicht relevant\\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{minipage}
  
 \subsubsection{Schutzbedarf: IT-Systeme}
 \begin{minipage}{\textwidth}
@@ -566,7 +585,26 @@ Verfügbarkeit & Normal & Maximumprinzip \\
 \end{minipage}
 
 \subsubsection{Schutzbedarf: Kommunikationsverbindungen}
-TABELLE FEHLT
+\begin{minipage}{\textwidth}
+\begin{center}
+\captionof{table}{Modellierung übergeordneter Aspekte}
+\begin{tabular}{p{3.5cm}llp{6.3cm}}
+\toprule
+Anwendung & Grundwert & Schutzbedarf & Begründung \\
+Dateiserver? & Vertraulichkeit & Hoch & Maximumprinzip \\
+LAN-Client & Integrität & Hoch & Maximumprinzip \\
+ & Verfügbarkeit & Normal & Maximumprinzip \\
+Dateiserver? & Vertraulichkeit & Hoch & Kommunikation findet hier ausschließlich zur LAN-Anbindung statt \\
+Internet & Integrität & Hoch &  \\
+ & Verfügbarkeit & Normal &  \\
+Dateiserver? & Vertraulichkeit & Hoch & Nutzer-Login-Daten \\
+AD/DNS-Server & Integrität & Hoch & Nutzer-Authentifizierung \\
+ & Verfügbarkeit & Normal &  \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{minipage}
+\bigskip
 
 \subsubsection{Schutzbedarf: Räume}
 Entfällt, da hierfür - aus Kostengründen - auf einen bereits festgelegten externen Dienstleister gesetzt wird, bei dem die Konditionen nicht verhandelbar sind (siehe \ref{subsec:hardware}).
@@ -812,7 +850,7 @@ je Server.\\
 Da wir für unser Netz über keine Erfahrungswerte verfügen gehen wir von einem täglichen \emph{Änderungsvolumen} von 
 
 \begin{equation}
-cv_{daily} = 0.2 \times dv = 0.2 \times 5000 \text { MB} = 100 \text{ MB}
+cv_{daily} = 0.2 \times dv = 0.2 \times 5000 \text { MB} = 1000 \text{ MB}
 \end{equation}
 aus.
 
@@ -1194,7 +1232,7 @@ Die Konfiguration wird über die beiden Ansible Rollen \textit{k1599\_rsyslog\_c
         )
 \end{lstlisting}
 
-Außerdem werden die erlaubten Gegenstellen durch Überprüfung der Zertifikat-CNs festgelegt.
+Außerdem werden die erlautben Gegenstellen durch Überprüfung der Zertifikats-CNs festgelegt.
 
 \begin{lstlisting}[label=code:syslog3,caption=Whitelisting der CN]
         # Enable imtcp listener on port {{ k1599_rsyslog_port }}
@@ -1394,7 +1432,7 @@ Wir halten uns an die Ansible Dokumentation\footcite{ansible} und die dort empfo
 
 \subsection{Automatisierte Testverfahren}
 \subsubsection{Syntaxtests}
-Um alle relevanten Dateien einer syntaktischen Überprüfung zu unterziehen, wird unter Zuhilfenahme der Sprache \emph{python} entsprechende Funktionalität zur Verfügung gestellt. Hierzu liegt im Repository unter \code{/ansible} ein Makefile, in dem einige Ziele definiert sind, die es ermöglichen, die syntaktische Korrektheit sicherzustellen. Da die Funktion von Ansible, den Code auf Syntaxfehler zu überprüfen, sich nur auf den gerade ausgeführten Kontext bezieht und nicht auf den vollständigen Code, wird diese Funktion von uns separat zur Verfügung gestellt. Diese Ziele können lokal mittels dem Kommandozeilen Tool \code{make} ausgeführt werden.
+Um alle relevanten Dateien einer syntaktischen Überprüfung zu unterziehen wird unter Zuhilfenahme der Sprache \emph{python} entsprechende Funktionalität zur Verfügung gestellt. Hierzu liegt im Repository unter \code{/ansible} ein Makefile, in dem einige Ziele definiert sind, die es ermöglichen, die syntaktische Korrektheit sicherzustellen. Da die Funktion von Ansible, den Code auf Syntaxfehler zu überprüfen sich nur auf den gerade ausgeführten Kontext bezieht und nicht auf den vollständigen Code, wird diese Funktion von uns separat zur Verfügung gestellt. Diese Ziele können lokal mittels dem Kommandozeilen Tool \code{make} ausgeführt werden.
 
 \begin{figure}[!htbp]
 	\centering
@@ -1404,7 +1442,7 @@ Um alle relevanten Dateien einer syntaktischen Überprüfung zu unterziehen, wir
 \end{figure}
 
 \subsubsection{Integrationstests}
-Da Ansible im Moment noch keine Möglichkeit bietet den Code z.B. Unittests zu unterziehen, nutzen wir die Möglichkeit von Github aus Integrationstests über die Plattform Travis-CI durchzuführen. Hierzu wird im Repository unter \newline  \code{ansible/tests} eine Testumgebung definiert, die, so weit wie möglich, einem Fileserver entspricht. Hier werden alle genutzten und zur Erfüllung der Aufgabe benötigten Funktionen getestet. Eingeschränkt testbare Funktionen, wie z.B. der Aufbau der VPN Verbindung, werden im Rahmen der Möglichkeiten getestet. Funktionen, welche eine Netzwerkverbindung zu anderen Systemen benötigen, können auf dem Travis-CI System nicht getestet werden. Die dazugehörigen Testfälle werden im Repository unter \code{.travis.yml} definiert. Eine Liste der vorhandenen Testfälle findet sich im Anhang. Die Tests werden automatisch beim Hochladen eines neuen Patchsets im Git Repository durchgeführt.
+Da Ansible im Moment noch keine Möglichkeit bietet den Code z.B. Unittests zu unterziehen, nutzen wir die Möglichkeit von Github Integrationstests über die Platform Travis-CI durchzuführen. Hierzu wird im Repository unter \newline  \code{ansible/tests} eine Testumgebung definiert, welche (so weit wie möglich) einem Fileserver entspricht. Hier werden alle genutzten und zur Erfüllung der Aufgabe benötigten Funktionen getestet. Eingeschränkt testbare Funktionen, wie z.B. der Aufbau der VPN Verbindung werden im Rahmen der Möglichkeiten getestet. Funktionen, welche eine Netzwerkverbindung zu anderen Systemen benötigen, können auf dem Travis-CI System nicht getestet werden. Die dazugehörigen Testfälle werden im Repository unter \code{.travis.yml} definiert. Eine Liste der vorhandenen Testfälle findet sich im Anhang. Die Tests werden automatisch beim Hochladen eines neuen Patchsets im Git Repository durchgeführt.
 
 \begin{figure}[!htbp]
 	\centering
@@ -1445,10 +1483,10 @@ In diesem Abschnitt werden die Maßnahmen zusammengefasst, die wir als notwendig
 
 \subsection{Blick über den Tellerrand}
 \label{subsec:tellerrand}
-Auch wenn sich unser Auftrag sehr konkret auf Installation und Betrieb zweier Dateiserver beschränkt, so verstehen wir unsere Aufgabe auch so, dass wir die Gesamtumgebung für die Anwender im Blick behalten sollten. Deshalb haben wir auch Vorschläge gesammelt, die über das hinaus gehen, was von uns verlangt wurde.
+Auch wenn unser Auftrag sich sehr konkret auf Installation und Betrieb zweier Dateiserver beschränkt, so verstehen wir unsere Aufgabe auch so, dass wir die Gesamtumgebung für die Anwender im Blick behalten sollten. Deshalb haben wir auch Vorschläge gesammelt, die über das hinaus gehen, was von uns verlangt wurde.
 \begin{itemize}
 \item \textbf{VoIP Umgebung} (mögliche Realisierung: Asterisk mit SIP-Clients): Zum Betrieb einer modernen IT-Lösung für Unternehmen gehört auch, sich Gedanken darüber zu machen, wie die Mitarbeiter sicher und effizient miteinander sprechen können. Darüber hinaus gibt es zahlreiche weitere Anforderungen, die nur eine professionelle Lösung abdecken kann, z.B. Callcenter (z.B. für den Benutzerservice), Telekonferenzen, Faxdienste und die Integration mobiler Telefonie.
-\item Integrierte Sicherheit / \textbf{Security by Design}\footcite{waidner2013entwicklung}: erst eine aufeinander abgestimmte Client-Server-Architektur, bei der die IT-Abteilung Zugriff auf (und volle Kontrolle über) alle Systeme hat, kann ein wirksames Schutzniveau gewährleisten --- und die technische Lösung so gestalten, dass der Anwender das System einfach sicher benutzen kann.
+\item Integrierte Sicherheit / \textbf{Security by Design}\footcite{waidner2013entwicklung}: erst eine aufeinander abgestimmte Client-Server-Architektur, bei der die IT-Abteilung Zugriff auf (und volle Kontrolle über) alle Systeme hat, kann ein wirksames Schutzniveau gewährleisten - und die technische Lösung so gestalten, dass der Anwender das System einfach sicher benutzen kann.
 \end{itemize}
 %----------------------------------------------------------------------------------------
 %	SECTION FAZIT
@@ -1461,20 +1499,20 @@ Auch wenn sich unser Auftrag sehr konkret auf Installation und Betrieb zweier Da
 \subsection{Statement zum Praktikum}
 Das Thema IT-Sicherheit ist zweifelsohne brandaktuell und übt eine große Faszination selbst auf IT-Laien aus: Vom "`Hacken"' in Hollywood-Filmen bis hin zu den zahlreichen Artikeln in Zeitungen und Zeitschriften bei aktuellen Ereignissen, steht die Relevanz des Themas nicht zur Diskussion.\\
 
-Bei der konkreten Umsetzung des Praktikums haben wir lange über die Anforderungsspezifikation diskutiert: Ist die sehr offene und nur grob umrissene Aufgabenstellung positiv, weil sie die Studierenden zu Selbstverantwortung motiviert und uns ermöglicht, weitgehend selbst Entscheidungen zu treffen? Oder fehlt dem Projekt ein klarer Bezugspunkt: Kein Lastenheft, kein Kunde, an dessen Wünschen man sich orientieren kann und muss, keine Unternehmensleitung, welche die IT-Abteilung auf einen einheitlichen Kurs bringt. Die PMA hatten viele gute Ideen, doch das Fehlen von klaren Hierarchien bedeutet eben auch, dass viele gute Ideen nebeneinander her laufen; daraus entstehen redundante Werkzeuge und Maßnahmen und das vergeudet Ressourcen, die in jedem Projekt knapp bemessen sind. Andererseits ging es ja auch gerade darum, aus dem Chaos Ordnung zu erschaffen und eine eigene Organisation aufzubauen, da wo vorher keine war.\\
+Bei der konkreten Umsetzung des Praktikums haben wir lange über die Anforderungsspezifikation diskutiert: Ist die sehr offene und nur grob umrissene Aufgabenstellung positiv, weil sie die Studierenden zu Selbstverantwortung motiviert und uns ermöglicht, weitgehend selbst Entscheidungen zu treffen? Oder fehlt dem Projekt ein klarer Bezugspunkt: Kein Lastenheft, kein Kunde an dessen Wünschen man sich orientieren kann und muss, keine Unternehmensleitung welche die IT-Abteilung auf einen einheitlichen Kurs bringt. Die PMA hatten viele gute Ideen, doch das Fehlen von klaren Hierarchien bedeutet eben auch, dass viele gute Ideen nebeneinander her laufen; daraus entstehen redundante Werkzeuge und Maßnahmen und das vergeudet Ressourcen, die doch in jedem Projekt knapp bemessen sind. Andererseits ging es ja auch gerade darum, aus dem Chaos Ordnung zu erschaffen und eine eigene Organisation aufzubauen, da wo vorher keine war.\\
 
-Aus technischer Sicht haben wir im Abschnitt \ref{subsec:tellerrand} bereits einige Themen beschrieben, die für zukünftige Praktika interessant sein könnten. \\
+Aus technischer Sicht haben wir im Abschnitt \ref{subsec:tellerrand} bereits einige Themen beschrieben, die für zukünftige Praktikas interessant sein könnten. \\
 
-In jedem Fall sind wir dafür dankbar, dass es dieses Praktikum gibt und dass wir in einem Land und zu einer Zeit leben, in der wir uns eingehend mit diesem Thema auseinandersetzen konnten.
+In jedem Fall sind wir dankbar dafür, dass es dieses Praktikum gibt und dass wir in einem Land und zu einer Zeit leben, in der wir uns eingehend mit diesem Thema auseinandersetzen konnten.
 
 \subsection{Projekterfolg}
-Es ist uns in der vorgegebenen Zeit gelungen, zwei Datei-Server in Betrieb zu nehmen, die für ihren sicheren Betrieb notwendigen Maßnahmen - seien sie organisatorischer oder technischer Art - umfassend zu analysieren und den größten Teil dieser Maßnahmen anschließend zu implementieren. Nach dem von uns entwickelten Maßstab\ref{subsec:si} haben wir unser Ziel zu $95\%$ erreicht. \\
+Es ist uns in der vorgegebenen Zeit gelungen zwei Datei-Server in Betrieb zu nehmen, die für ihren sicheren Betrieb notwendigen Maßnahmen - seien sie organisatorischer oder technischer Art - umfassend zu analysieren und den größten Teil dieser Maßnahmen anschließend zu implementieren. Nach dem von uns entwickelten Maßstab\ref{subsec:si} haben wir unser Ziel zu $95\%$ erreicht. \\
 
-Es bleibt die Frage zu beantworten, was mit den restlichen $5\%$ der Maßnahmen geschehen ist, die sich aus der Sicherheitsanalyse ergeben haben. Hardwarenahe Sicherheitsfunktionen konnten aus Kostengründen nicht realisiert werden; andere technische Verbesserungen --- etwa das Monitoring --- wurden aus Zeitgründen nicht realisiert. Die von uns vorgesehenen organisatorischen Maßnahmen sind vollständig implementiert, insoweit wir dafür nicht auf Zuarbeit anderer Gruppen angewiesen waren --- von denen es leider oft keine Rückmeldung auf unsere Anfragen gab.
+Es bleibt die Frage zu beantworten, was bei den restlichen $5\%$ der Maßnahmen geschehen ist, die sich aus der Sicherheitsanalyse ergeben haben. Hardwarenahe Sicherheitsfunktionen konnten aus Kostengründen nicht realisiert werden; andere technische Verbesserungen - etwa das Monitoring - wurden aus Zeitgründen nicht realisiert. Die von uns vorgesehen organisatorischen Maßnahmen sind vollstädnig implementiert, insoweit wir dafür nicht auf Zuarbeit anderer Gruppen angewiesen waren - von denen es leider oft keine Rückmeldung auf unsere Anfragen gab.
 
-Dennoch: Wäre dies eine produktiv eingesetzte Umgebung, so läge ein großer Teil der Arbeit noch vor uns. Jetzt würde es darum gehen, dem Service den Feinschliff zu verpassen, in der Praxis auftretende Komplikationen zu beheben und die Absicherung iterativ zu verbessern. Da dies jedoch kein Produktivsystem ist, steht in unseren Gedanken der Lerneffekt im Vordergrund, den wir aus diesem Projekt für unser Studium mitnehmen. \\
+Dennoch: Wäre dies eine produktiv eingesetzte Umgebung, so läge einer großer Teil der Arbeit noch vor uns. Jetzt würde es darum gehen dem Service den Feinschliff zu verpassen, in der Praxis auftretende Komplikationen zu beheben und die Absicherung iterativ zu verbessern. Da dies jedoch kein Produktivsystem ist, steht in unseren Gedanken der Lerneffekt im Vordergrund, den wir aus diesem Projekt für unser Studium mitnehmen. \\
 
-Bei einem solch komplexen Projekt bleibt es nicht aus, dass Fehler passieren. Mancher Satz ergibt im Nachgang keinen Sinn, ein Teil der Software-Konfiguration ist lückenhaft oder kompromittiert sogar die Sicherheit. Wir machen uns keine Illusionen: Weder unser System noch unsere Vorstellung davon ist frei von Bugs. Eine Binsenweisheit lautet "`Aus Fehlern wird man klug"'. Ganz so, wie in der IT-Sicherheit beim Aufdecken von Schwachstellen zunächst alle sich darauf einigen, worum es bei dieser Lücke genau geht\footcite{wikiCVE} und anschließend gemeinsam versuchen, sie zu beheben, wünschen auch wir uns, dass wir aus diesem Projekt gemeinsam lernen können, die Zukunft der IT sicher zu gestalten.
+Bei einem solch komplexen Projekt bleibt es nicht aus, dass Fehler passieren. Mancher Satz ergibt im Nachgang keinen Sinn, ein Teil der Software-Konfiguration ist lückenhaft oder kompromittiert sogar die Sicherheit. Wir machen uns keine Illusionen: Weder unser System noch unsere Vorstellung davon ist frei von Bugs. Eine Binsenweisheit lautet "`Aus Fehlern wird man klug"'. Ganz so, wie in der IT-Sicherheit beim Aufdecken von Schwachstellen zunächst alle sich darauf einigen, worum es bei dieser Lücke genau geht\footcite{wikiCVE} und anschließend gemeinsam versuchen sie zu beheben, wünschen auch wir uns, dass wir aus diesem Projekt gemeinsam lernen können, die Zukunft der IT sicher zu gestalten.
 
 %----------------------------------------------------------------------------------------
 %	SECTION GLOSSAR
@@ -1498,13 +1536,13 @@ Dateiserver \newline Fileserver & Server, der einen festgelegten Bereich eines D
 \midrule
 Dienst & Ein im Hintergrund laufender Prozess auf einem Computer \\
 \midrule
-Hard Limit & Gibt den maximal nutzbaren Speicherplatz oder die maximale verwendbare Dateianzahl an. Ein Benutzer kann dieses Limit niemals überschreiten. Ein Erreichen dieses Limits ist für den Benuzter gleichzusetzten mit dem Verbrauch des verfügbaren Speicherplatzes \\
+Hard Limit & Gibt den maximal nutzbaren Speicherplatz oder die maximale verwendbare Dateianzahl an. Ein Benutzer kann dieses Limit niemals überschreiten. Ein Erreichen dieses Limits ist für den Benuzter gleichzusetzten mit dem Verbrauch des verfügbaren Speicherplatzes\\
 \midrule
 Service & Eine für den Kunden bereitgestellte Servicedienstleistung \\
 \midrule
 Sicherheit \newline sicher \newline abgesichert & Ein IT Service gilt hier als sicher, wenn er die Anforderungen des BSI IT-Grundschutz erfüllt. \\
 \midrule
-Soft Limit & Ist eine Begrenzung, welche kleiner oder gleich dem Hard Limit gesetzt werden muss. Wird das Soft Limit überschritten, so erhält der Benutzer den Zustand "Over Quota". Das Soft Limit kann bis zum Wert des Hard Limits überschritten werden \\
+Soft Limit & Ist eine Begrenzung, welche kleiner oder gleich dem Hard Limit gesetzt werden muss. Wird das Soft Limit überschritten, so erhält der Benutzer den Zustand "Over Quota". Das Soft Limit kann bis zum Wert des Hard Limits überschritten werden\\
 \midrule
 Projektmitarbeiter \newline (PMA) & Studierende in den Gruppen 5 und 10 \\
 \midrule
