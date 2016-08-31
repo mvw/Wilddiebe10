@@ -1,0 +1,149 @@
+\section{Ansible}
+\subsection{Testfälle}
+\begin{itemize}
+  \item Run syntax-checks via makefile
+  \item Run the role/playbook via makefile
+  \item Run the role/playbook again to make sure it's idempotent
+  \item Check if rsyslog port 10514 is open
+  \item Check if samba port 445 is open
+  \item Check if ssh port 22 is open
+  \item Check expected users will be created
+  \item Check users will member of expected groups
+  \item Check users will be member of the expected primary group
+  \item Check if user homes got the expected permissions
+  \item Check if groupuser homes got the expected permissions
+  \item Check expected groups will be created
+  \item Check if ssh service is up and running
+  \item Check if samba service is up and running
+  \item Check if samba group share is present
+  \item Check if rsyslog service is up and running
+  \item Check if nmbd service is disabled
+  \item Check if openntpd service is up and running
+  \item Check if quotas are enabled
+  \item Check if quota limits are set as expected
+  \item Check if the doc files are building.
+\end{itemize}
+\subsection{Ansible Rollen}
+\subsubsection{Eigene Rollen}
+\begin{itemize}
+  \item k1599\_anti\_virus
+  \item k1599\_common
+  \item k1599\_file\_server
+  \item k1599\_openvpn\_client
+  \item k1599\_quota
+  \item k1599\_rsyslog\_client
+  \item k1599\_rsyslog\_server
+  \item k1599\_ssh
+  \item k1599\_time\_sync
+  \item k1599\_users
+\end{itemize}
+\subsubsection{Externe Rollen}
+\begin{itemize}
+  \item ansible-role-firewall
+\end{itemize}
+\subsection{Erzeugte Gruppen}
+\begin{itemize}
+  \item web-nord
+  \item mail-nord
+  \item netz-nord
+  \item cert-nord
+  \item file-nord
+  \item web-sued
+  \item mail-sued
+  \item netz-sued
+  \item cert-sued
+  \item file-sued
+  \item fapra1599
+  \item sshlogin
+\end{itemize}
+\subsection{Erzeugte Benutzer}
+\begin{itemize}
+  \item msiepmann
+  \item shartmann
+  \item tgrosswendt
+  \item netz-nord
+  \item fkamfenkel
+  \item cpempelforth
+  \item mklein
+  \item file-sued
+  \item sgirrulat
+  \item fhofmann
+  \item ahacker
+  \item nnapp
+  \item mwoerkom
+  \item sbruch
+  \item bfischer
+  \item cboettge
+  \item jherold
+  \item fschweisfurth
+  \item web-nord
+  \item jwichert
+  \item mkutter
+  \item phaebel
+  \item cert-nord
+  \item ooffenburger
+  \item mploeger
+  \item dtroeger
+  \item nreusch
+  \item istieglitz
+  \item cweissenborn
+  \item lrichter
+  \item jschumacher
+  \item netz-sued
+  \item swyes
+  \item mail-sued
+  \item msandkuehler
+  \item emueller
+  \item twinkelhorst
+  \item mail-nord
+  \item sganswind
+  \item bwalter
+  \item pholtkamp
+  \item chesseling
+  \item mschrenk
+  \item wpankraz
+  \item file-nord
+  \item ksteinkohl
+  \item tbayer
+  \item mberner
+  \item klauter
+  \item web-sued
+  \item wlindemann
+  \item tschroeder
+  \item msalwitzek
+  \item jaffenzeller
+  \item wschmidt
+  \item aszewc
+  \item mmueller
+  \item sjansen
+  \item cert-sued
+\end{itemize}
+\subsection{Firewall}
+\subsubsection{Offene Ports - Gruppe Nord}
+\begin{itemize}
+  \item all: 22
+  \item tun0: 445
+  \item tun0: 10514
+  \item all: 64738
+\end{itemize}
+\subsubsection{Offene Ports - Gruppe Sued}
+\begin{itemize}
+  \item all: 22
+  \item tun0: 445
+  \item tun0: 10514
+\end{itemize}
+\subsection{Einträge /etc/hosts}
+\begin{itemize}
+  \item 10.8.3.1 : vpn-s vpn.mueller-backwaren.de
+  \item 10.8.3.14 : file-s fileserver.mueller-backwaren.de
+  \item 10.8.3.18 : mail-s mail.mueller-backwaren.de mail.mueller-backwaren.tpweb.de
+  \item 10.8.3.22 : web-s web.mueller-backwaren.de
+  \item 10.8.3.26 : ca-s ca.mueller-backwaren.de
+  \item 10.8.1.1 : vpn-n vpn.mayer-brot.de vpnnord.mayerbrot.intern
+  \item 10.8.1.20 : web-n web.mayer-brot.de webnord.mayerbrot.intern
+  \item 10.8.1.30 : file-n file.mayer-brot.de filenord.mayerbrot.intern
+  \item 10.8.1.40 : ca-n ca.mayer-brot.de canord.mayerbrot.intern
+  \item 10.8.1.50 : mail-n mail.mayer-brot.de mailnord.mayerbrot.intern
+  \item 10.8.2.1 : gateway-n
+  \item 10.8.2.2 : gateway-s
+\end{itemize}

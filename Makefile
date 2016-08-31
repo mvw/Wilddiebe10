@@ -5,48 +5,56 @@
 # Author: Sascha Girrulat <sascha@girrulat.de>
 #
 #
-
-all: wiki
+DEST='docs/includes/ansible_anhang.tex'
+all: anhang 
 
 ansible:
 	cd ansible; make
 
-wiki: clean wiki-prepare ls-testcases ls-ansible-roles ls-present-groups ls-present-users ls-allowed-ports ls-hosts-entrys
-	cat wiki.txt
+anhang: clean anhang-prepare ls-testcases ls-ansible-roles ls-present-groups ls-present-users ls-allowed-ports ls-hosts-entrys
+	cat $(DEST)
 
-wiki-prepare:
-	echo '====== Anhang ======' > wiki.txt
+anhang-prepare:
+	echo '\section{Ansible}' > $(DEST)
 
 ls-testcases:
-	echo '===== Testfälle =====' >> wiki.txt;
-	grep '#' .travis.yml | grep -E '(Check|Run)' | sed 's/#/-/g' >> wiki.txt
+	echo '\subsection{Testfälle}' >> $(DEST);
+	/usr/bin/env python2 -c "import scripts.anhang as anhang; anhang.print_item_header()" >> $(DEST);
+	grep '#' .travis.yml | grep -E '(Check|Run)' | sed 's/#/\\item/g' >> $(DEST)
+	/usr/bin/env python2 -c "import scripts.anhang as anhang; anhang.print_item_footer()" >> $(DEST);
 
 ls-ansible-roles:
-	echo '===== Ansible Rollen =====' >> wiki.txt;
-	echo '==== Eigene Rollen ====' >> wiki.txt; ls ansible/roles | sed 's/^/  - /g' >> wiki.txt;
-	echo '==== Externe Rollen ====' >> wiki.txt; ls ansible/vendor | sed 's/^/  - /g' >> wiki.txt;
+	echo '\subsection{Ansible Rollen}' >> $(DEST);
+	echo '\subsubsection{Eigene Rollen}' >> $(DEST);
+	/usr/bin/env python2 -c "import scripts.anhang as anhang; anhang.print_item_header()" >> $(DEST);
+	ls ansible/roles | sed 's/^/  \\item /g' | sed 's/_/\\_/g' >> $(DEST);
+	/usr/bin/env python2 -c "import scripts.anhang as anhang; anhang.print_item_footer()" >> $(DEST);
+	echo '\subsubsection{Externe Rollen}' >> $(DEST);
+	/usr/bin/env python2 -c "import scripts.anhang as anhang; anhang.print_item_header()" >> $(DEST);
+	ls ansible/vendor | sed 's/^/  \\item /g' | sed 's/_/\\_/g' >> $(DEST);
+	/usr/bin/env python2 -c "import scripts.anhang as anhang; anhang.print_item_footer()" >> $(DEST);
 
 ls-present-groups:
-	echo '===== Erzeugte Gruppen =====' >> wiki.txt
-	/usr/bin/env python2 -c "import scripts.anhang as anhang; anhang.get_present_groups()" >> wiki.txt;
+	echo '\subsection{Erzeugte Gruppen}' >> $(DEST)
+	/usr/bin/env python2 -c "import scripts.anhang as anhang; anhang.get_present_groups()" >> $(DEST);
 
 ls-present-users:
-	echo '===== Erzeugte Benutzer =====' >> wiki.txt
-	/usr/bin/env python2 -c "import scripts.anhang as anhang; anhang.get_present_users()" >> wiki.txt;
+	echo '\subsection{Erzeugte Benutzer}' >> $(DEST)
+	/usr/bin/env python2 -c "import scripts.anhang as anhang; anhang.get_present_users()" >> $(DEST);
 
 ls-allowed-ports:
-	echo '===== Firewall =====' >> wiki.txt
-	echo '==== Offene Ports - Gruppe Nord ====' >> wiki.txt
-	/usr/bin/env python2 -c "import scripts.anhang as anhang; anhang.get_allowed_tcp_ports('ansible/group_vars/file_server_nord/public')" >> wiki.txt;
-	echo '==== Offene Ports - Gruppe Sued ====' >> wiki.txt
-	/usr/bin/env python2 -c "import scripts.anhang as anhang; anhang.get_allowed_tcp_ports('ansible/group_vars/file_server_sued/public')" >> wiki.txt;
+	echo '\subsection{Firewall}' >> $(DEST)
+	echo '\subsubsection{Offene Ports - Gruppe Nord}' >> $(DEST)
+	/usr/bin/env python2 -c "import scripts.anhang as anhang; anhang.get_allowed_tcp_ports('ansible/group_vars/file_server_nord/public')" >> $(DEST);
+	echo '\subsubsection{Offene Ports - Gruppe Sued}' >> $(DEST)
+	/usr/bin/env python2 -c "import scripts.anhang as anhang; anhang.get_allowed_tcp_ports('ansible/group_vars/file_server_sued/public')" >> $(DEST);
 
 ls-hosts-entrys:
-	echo '===== Einträge /etc/hosts =====' >> wiki.txt
-	/usr/bin/env python2 -c "import scripts.anhang as anhang; anhang.get_hosts_entrys('ansible/group_vars/all')" >> wiki.txt;
+	echo '\subsection{Einträge /etc/hosts}' >> $(DEST)
+	/usr/bin/env python2 -c "import scripts.anhang as anhang; anhang.get_hosts_entrys('ansible/group_vars/all')" >> $(DEST);
 
 clean:
-	rm -f wiki.txt
+	rm -f $(DEST)
 
 update:
 	git submodule update --init
