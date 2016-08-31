@@ -16,7 +16,7 @@ docs: setup ${PDF}
 
 SKIP_CLEANUP?=0
 
-pdf: setup_tex anhang ${PDF} clean
+pdf: setup_tex ${PDF} clean
 
 anhang:
 	cd ../; make anhang
