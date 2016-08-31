@@ -24,5 +24,3 @@ docs/*.fdb*
 docs/texmf/*ls-R
 docs/*.log
 docs/*.run.xml
-keynote/*.pdf
-keynote/*.html
