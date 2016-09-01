@@ -82,21 +82,40 @@ Wir haben uns für die Projektsteuerung mittels \textbf{Kanban} \footcite{wikiKa
 \subsubsection{Kanban Praktiken}
 Im folgenden ist kurz beschrieben, in welcher Form wir die durch David Anderson \footcite{anderson2011kanban} beschriebenen sechs Praktiken in unserem Projekt konkret umgesetzt haben.
 
-\paragraph{Visualisiere den Fluss der Arbeit:}Die Wertschöpfungskette mit ihren verschiedenen Prozessschritten (zum Beispiel Anforderungsdefinition, Programmierung, Dokumentation, Test, Inbetriebnahme) muss gut sichtbar visualisiert werden. Dafür wird das Kanban-Board Trello\footcite{trelloboard} verwendet, auf dem die unterschiedlichen Stationen als Spalten dargestellt werden. 
+
+\paragraph{Visualisiere den Fluss der Arbeit:}Die Wertschöpfungskette mit ihren
+verschiedenen Prozessschritten (zum Beispiel Anforderungsdefinition,
+Programmierung, Dokumentation, Test, Inbetriebnahme) wird gut sichtbar für alle
+Beteiligten visualisiert. Dafür wird ein Kanban-Board (in der Regel ein großes
+Whiteboard) verwendet, auf dem die unterschiedlichen Stationen als Spalten
+dargestellt werden. Die einzelnen Anforderungen (es können Tasks, Features,
+User Stories, Minimal Marketable Features (MMF) usw. sein) werden auf
+Karteikarten oder Haftnotizen festgehalten und durchwandern mit der Zeit als so
+genannte Tickets das Kanban-Board von links nach rechts.\footcite{wikiKanban}\\
+
+Die Fileserver Gruppen haben sich entschlossen, als Kanban Implementation, die
+Platform Trello\footcite{trelloboard} einzusetzten. Hier werden die
+unterschiedlichen Stationen als Spalten dargestellt.
 
 \begin{figure}[hbt!]
 	\centering
-		\includegraphics[scale=0.23]{images/trello.png} 
+		\includegraphics[scale=0.23]{images/trello.png}
 	\caption[Screenshot des Kanban Board Trello für beide Gruppen]{Kanban Board Trello für beide Gruppen}
 	\label{fig:nettop}
 \end{figure}
 
 Trello unterstützt nicht alle Praktiken, bietet aber ein kostenloses und einfaches Setup für alle Teilnehmer. Um fehlende Funktionen - wie etwa die Begrenzung der angefangenen Arbeit - abzudecken, haben wir an deren Stelle entsprechende organisatorische Regelungen getroffen.
 
-\paragraph{Begrenze die Menge angefangener Arbeit:}Die Anzahl der Trello Tickets, die gleichzeitig bei einem PMA in Bearbeitung sind, darf bei uns nicht mehr als 2 betragen. Hierdurch entsteht ein Pull-System, bei dem sich jeder PMA seine Arbeit bei der Vorgängerstation abholt, anstatt fertige Arbeit einfach an die nächste Station zu übergeben.
+\paragraph{Begrenze die Menge angefangener Arbeit:}Die Anzahl der Trello Tickets, die gleichzeitig bei einem PMA in Bearbeitung sind, darf bei uns nicht mehr als 2 betragen. Hierdurch entsteht ein Pull-System, bei dem sich jeder PMA seine Arbeit bei der Vorgängerstation abholt, anstatt fertige Arbeit einfach an die nächste Station zu übergeben.\footcite{wikiKanban}
 
-\paragraph{Mache die Regeln für den Prozess explizit:}Um sicherzustellen, dass alle Beteiligten des Prozesses wissen, unter welchen Annahmen und Gesetzmäßigkeiten man arbeitet, werden möglichst alle Regeln, die es gibt, explizit gemacht. Dazu gehören insbesondere eine Definition des Begriffes „
-fertig“, analog der \emph{Definition of Done}\footcite{wikiScrum} (siehe \ref{subsec:dod}) in Scrum, sowie eine spezifizierte Abgrenzung der Trello-Spalten untereinander.
+\paragraph{Mache die Regeln für den Prozess explizit:}Um sicherzustellen, dass alle Beteiligten des Prozesses wissen, unter welchen Annahmen und Gesetzmäßigkeiten man arbeitet, werden möglichst alle Regeln, die es gibt, explizit gemacht. Dazu gehören z.B.
+\begin{itemize}
+\item eine Definition des Begriffes ‚fertig‘, ähnlich der Definition of Done in Scrum\footcite{wikiScrum},
+\item Bedeutung der einzelnen Spalten,
+\item Antworten auf die Fragen: wer zieht, wann zieht man, wie wählt man das nächste zu ziehende Ticket aus der Menge der vorhandenen Tickets aus, usw.\footcite{wikiKanban}
+\end{itemize}
+
+Enstsprechend der o.a. Punkte wurde eine gemeinsame \emph{Definition of Done} (siehe \ref{subsec:dod}) in Scrum, sowie eine spezifizierte Abgrenzung der Trello-Spalten vorgenommen.
 
 \begin{minipage}{\textwidth}
 \captionof{table}{Von uns definierte Trello-Kategorien (Spalten)}
@@ -117,21 +136,73 @@ Ideas & Aufgaben mit niedrigster Priorität, die optional umzusetzen sind. Taska
 \end{center}
 \end{minipage}
 
-\paragraph{Miss und steuere den Fluss:}Die Visualisierung und die Begrenzung des Arbeitsflusses sind einfache Mittel, mit denen rasch sichtbar wird, wie schnell die Tickets die verschiedenen Stationen durchlaufen und wo sich Tickets stauen. Die Stellen, vor denen sich Tickets häufen, während an den nachfolgenden Stationen freie Kapazitäten vorhanden sind, werden als Bottlenecks\footcite{anderson2011kanban} bezeichnet. Durch Analysen des Kanban-Boards können immer wieder Maßnahmen ergriffen werden, um einen möglichst gleichmäßigen Fluss (Flow) zu erreichen. Beispielsweise können die Limits für einzelne Stationen verändert werden, es können Puffer eingeführt werden (insbesondere vor Bottlenecks, die durch nur zeitweise Verfügbarkeit von Ressourcen entstehen), die Anzahl der Mitarbeiter an den verschiedenen Stationen kann verändert werden, technische Probleme werden beseitigt usw. Dieser kontinuierliche Verbesserungsprozess (japanisch: Kaizen) ist wesentlicher Bestandteil von Kanban.\\
+\paragraph{Miss und steuere den Fluss:} Die Mitglieder eines Kanban-Prozesses
+messen typische Größen wie Längen von Warteschlangen, Zykluszeit und Durchsatz,
+um festzustellen, wie gut die Arbeit organisiert ist, wo man noch etwas
+verbessern kann und welche Versprechen man an die Partner geben kann, für die
+man arbeitet. Dadurch wird die Planung erleichtert und die Verlässlichkeit
+gesteigert.\footcite{wikiKanban}
 
-Im Rahmen unseres Projektes wurde der Projektfluss bei wöchentlichen Mumble-Meetings besprochen und ggf. Maßnahmen zur Verbesserung eingeleitet. Dabei war die enge Zusammenarbeit der Gruppen 5 und 10 von großer Bedeutung, insbesondere da in Gruppe 10 nur 2 von 5 Kursteilnehmern auch tatsächlich für das Projekt zur Verfügung standen. Weiterhin haben wir unterschiedliche Prioritäten für die Kanban Tasks definiert (siehe \ref{subsec:priorisierung}).\\
+Im Rahmen unseres Projektes wurde der Projektfluss bei wöchentlichen
+Mumble-Meetings besprochen und ggf. Maßnahmen zur Verbesserung eingeleitet.
+Dabei war die enge Zusammenarbeit der Gruppen 5 und 10 von großer Bedeutung,
+insbesondere da in Gruppe 10 nur 2 von 5 Kursteilnehmern auch tatsächlich für
+das Projekt zur Verfügung standen. Weiterhin haben wir unterschiedliche
+Prioritäten für die Kanban Tasks definiert (siehe
+\ref{subsec:priorisierung}).\\
 
-Dieser Absatz ist ein Kontrollabschnitt, der sicher stellen soll, dass die vorliegende Projektdokumentation auch tatsächlich von allen Beteiligten gewissenhaft gelesen wurde. Der Verifikationscode lautet hier ''Able Archer 83''.
+Dieser Absatz ist ein Kontrollabschnitt, der sicher stellen soll, dass die
+vorliegende Projektdokumentation auch tatsächlich von allen Beteiligten
+gewissenhaft gelesen wurde. Der Verifikationscode lautet hier ''Able Archer
+83''.
 
-\paragraph{Fördere Leadership auf allen Ebenen in der Organisation:} 
-Damit der Prozess der kontinuierlichen Verbesserung funktioniert, ist die Mitwirkung aller Projektbeteiligten erforderlich. Verantwortung sinnvoll übernehmen kann nur, wer auch die ihm übertragene Sache betreffende Entscheidungen treffen und umsetzen darf.\\
+\paragraph{Fördere Leadership auf allen Ebenen in der Organisation:}
+Verbesserung kann nur funktionieren, wenn sich alle Ebenen in der Organisation
+daran beteiligen. Besonders wichtig ist es, dass Mitarbeiter, die direkt die
+Arbeit verrichten, "Acts of Leadership" zeigen und konkrete
+Verbesserungsvorschläge einbringen.\footcite{wikiKanban}\\
 
-In unserem Projekt sind alle PMA gleichberechtigte Partner. Jeder von uns ist daher berechtigt alle Entscheidungen zu treffen, deren Verantwortung er sich selbst zutraut. Einzige Bedingung ist, dass alle Entscheidungen und Maßnahmen dokumentiert und den anderen PMA zur Überprüfung zur Verfügung gestellt werden.
+Damit der Prozess der kontinuierlichen Verbesserung in der Gruppe funktioniert,
+ist die Mitwirkung aller Projektbeteiligten erforderlich. Verantwortung
+sinnvoll übernehmen kann nur, wer auch die ihm übertragene Sache betreffende
+Entscheidungen treffen und umsetzen darf.\\
+
+In unserem Projekt sind alle PMA gleichberechtigte Partner. Jeder von uns ist
+daher berechtigt alle Entscheidungen zu treffen, deren Verantwortung er sich
+selbst zutraut. Einzige Bedingung ist, dass alle Entscheidungen und Maßnahmen
+dokumentiert und den anderen PMA zur Überprüfung zur Verfügung gestellt werden.
 
 \paragraph{Verwende Modelle, um Chancen für kollaborative Verbesserungen zu erkennen:}
-Da der Fokus des Kurses auf der IT Sicherheit lag, haben wir uns entschlossen, den von uns verwendeten Maßstab für die Sicherheit unserer Lösung (siehe  \ref{subsec:si}) auch als Maßstab für den Fortschritt des Projektes zu verwenden. \\
+Modelle sind Vereinfachungen über den Prozess. Ein beliebtes Modell ist z.B.
+das von Wert, Fluss und Verschwendung aus der "Lean IT". Andere Modelle
+basieren auf den Ideen von Deming oder auf der Engpasstheorie, auf systemischem
+Denken oder auf der Komplexitätstheorie. Modelle können dabei helfen, ein
+besseres Prozessverständnis zu erreichen und Experimente zu finden, die zu
+einer Verbesserung des Prozesses führen.\footcite{wikiKanban}
 
-Durch eine wöchentliche Überprüfung der dazu verwendeten Liste an Maßnahmen haben wir stockende oder noch offene Arbeitspakete identifiziert und bei den regelmäßigen gemeinsamen Besprechungen den dafür notwendigen Arbeitsfluss organisiert.
+Da der Fokus des Kurses auf der IT Sicherheit lag, haben wir uns entschlossen,
+den von uns verwendeten Maßstab für die Sicherheit unserer Lösung (siehe
+\ref{subsec:si}) auch als Maßstab für den Fortschritt des Projektes zu
+verwenden.\footcite{wikiKanban} \\
+
+Durch eine regelmäßige Überprüfung der dazu verwendeten Liste an Maßnahmen
+haben wir stockende oder noch offene Arbeitspakete identifiziert und bei den
+regelmäßigen gemeinsamen Besprechungen den dafür notwendigen Arbeitsfluss
+organisiert.
+
+Die Visualisierung und die Begrenzung des Arbeitsflusses sind einfache Mittel,
+mit denen rasch sichtbar wird, wie schnell die Tickets die verschiedenen
+Stationen durchlaufen und wo sich Tickets stauen. Die Stellen, vor denen sich
+Tickets häufen, während an den nachfolgenden Stationen freie Kapazitäten
+vorhanden sind, werden als Bottlenecks bezeichnet. Durch Analysen des
+Kanban-Boards können immer wieder Maßnahmen ergriffen werden, um einen
+möglichst gleichmäßigen Fluss (Flow) zu erreichen. Beispielsweise können die
+Limits für einzelne Stationen verändert werden, es können Puffer eingeführt
+werden (insbesondere vor Bottlenecks, die durch nur zeitweise Verfügbarkeit von
+Ressourcen entstehen), die Anzahl der Mitarbeiter an den verschiedenen
+Stationen kann verändert werden, technische Probleme werden beseitigt usw.
+Dieser kontinuierliche Verbesserungsprozess (japanisch: Kaizen) ist
+wesentlicher Bestandteil von Kanban.\footcite{wikiKanban}\\
 
 \subsection{Meetings}
 \subsubsection{Status-Meetings}
