@@ -33,7 +33,7 @@ Da das Projekt im Rahmen des Fachpraktikums IT-Sicherheit durchgeführt wurde, h
 
 Bei der technischen Umsetzung hoffen wir mit dem Konfigurationsmanagement-Werkzeug Ansible und einer zentralen Codeverwaltung mittels Github ein solides Fundament für eine mögliche Weiterverwendung der technischen Ergebnisse gelegt zu haben.\\
 
-Es ist uns in der vorgegebenen Zeit gelungen zwei Samba\/SMB-Server für die Anwender zur Verfügung zu stellen und $95\%$ aller Sicherheits-Maßnahmen umzusetzen, die wir uns vorgenommen hatten. Alles was wir nicht umsetzen konnten - meist weil uns Zeit, Geld oder Zuarbeit gefehlt hat - ist nicht in Vergessenheit geraten: Im Ausblick haben wir geplante technische Maßnahmen und gewünschte organisatorische Regelungen aufgelistet.
+Es ist uns in der vorgegebenen Zeit gelungen zwei Samba/SMB-Server für die Anwender zur Verfügung zu stellen und $95\%$ aller Sicherheits-Maßnahmen umzusetzen, die wir uns vorgenommen hatten. Alles was wir nicht umsetzen konnten - meist weil uns Zeit, Geld oder Zuarbeit gefehlt hat - ist nicht in Vergessenheit geraten: Im Ausblick haben wir geplante technische Maßnahmen und gewünschte organisatorische Regelungen aufgelistet.
 
 \end{abstract}
 %----------------------------------------------------------------------------------------
@@ -1204,7 +1204,7 @@ Um exakte Zeitstempel für gespeicherte Dateien gewährleisten zu können, benö
 Das Paket \code{openntpd} bringt die dafür benötigte Konfigurationsdatei mit und benötigt keine weiteren Einstellungen. Die Wahl ist aus Sicherheitsgründen auf den sehr schlanken openntpd gefallen, da dafür keine Ports von außen erreichbar gemacht werden müssen und dieser auch als reiner Client funktioniert. Die Installation und der Start des Dienstes erfolgt über die Ansible Rolle \textit{k1599\_time\_sync}.
 
 \subsection{Syslog}
-Um zu unterstützen das keine Betriebs- oder ggf. Sicherheitsrelevanten Informationen verloren gehen stellt jeder der Fileserver einen zentralen Syslogdienst zur Verfügung. Dieser wird über \code{rsyslog realisiert}. Hierzu wurden die Standardkonfigurationen der Rsyslog-Server durch entsprechende Konfigurationsteile ergänzt. Im ersten Schritt loggen die Dateiserver zusätzlich per tcp auf sich selbst und auf den jeweils anderen Server. Dort wird unter \code{/var/log/rsyslog-k1599/<serverip>/} eine Dateistruktur erstellt, die dem allgemeinen Standard unter Linux ähnelt.
+Um zu unterstützen, dass keine betriebs- oder ggf. sicherheitsrelevanten Informationen verloren gehen, stellt jeder der Fileserver einen zentralen Syslogdienst zur Verfügung. Dieser wird über \code{rsyslog} realisiert. Hierzu wurden die Standardkonfigurationen der Rsyslog-Server durch entsprechende Konfigurationsteile ergänzt. Im ersten Schritt loggen die Dateiserver zusätzlich per tcp auf sich selbst und auf den jeweils anderen Server. Dort wird unter \code{/var/log/rsyslog-k1599/<serverip>/} eine Dateistruktur erstellt, die dem allgemeinen Standard unter Linux ähnelt.
 
 \begin{lstlisting}[label=code:syslog,caption=Syslog Dateien]
         root@filesued ~ # ls /var/log/rsyslog-k1599/
