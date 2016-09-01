@@ -24,3 +24,5 @@ docs/*.fdb*
 docs/texmf/*ls-R
 docs/*.log
 docs/*.run.xml
+Projektdokumentation.aux
+Projektdokumentation.synctex.gz
