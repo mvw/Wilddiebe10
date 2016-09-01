@@ -9,7 +9,7 @@
 
 \vfill
 \begin{center}
-\includegraphics[scale=0.5]{images/0705.png} 
+\includegraphics[scale=0.5]{images/0705.png}
 \end{center}
 
 %----------------------------------------------------------------------------------------
@@ -49,15 +49,15 @@ Es ist uns in der vorgegebenen Zeit gelungen zwei Samba/SMB-Server für die Anwe
 Unsere Gruppen (5 und 10) haben den Auftrag erhalten, jeweils einen Datei-Server einzurichten und in Betrieb zu nehmen. Wir waren selbst dafür verantwortlich das Projekt zu organisieren und die Zusammenrarbeit mit den anderen Gruppen zu regeln, welche für Netz, CA, Mail und Webserver zuständig waren. Das spannendste an diesem Projekt war für uns natürlich die Frage nach der IT Sicherheit. Sie steht im Spannungsfeld zwischen notwendiger ganzheitlicher Betrachtung des Themas und dem beschränkten Auftrag, 2 Dateiserver bereit zu stellen.\\
 
 Wo wir Risiken gefunden haben, die mit technischen Mitteln alleine nicht zu administrieren sind, haben wir organisatorische Regelungen geschaffen. Wo wir Risiken gefunden haben, die wir alleine nicht absichern können, haben wir stets auf die Kommunikation mit den Beteiligten gesetzt. Und diejenigen Restrisiken, welche wir mit den uns zur Verfügung stehenden Ressourcen an Geld, Zeit und Zuarbeit nicht eliminieren konnten, haben wir zumindest dokumentiert.\\
- 
+
 Bei unserem Vorgehen haben wir uns in folgender Reihenfolge gefragt:
 
 \begin{enumerate}
-\item Welche Zusammenarbeit zwischen den Teams Dateiserver Nord und Süd ist \newline notwendig für einen sicheren und effektiven Betrieb? 
+\item Welche Zusammenarbeit zwischen den Teams Dateiserver Nord und Süd ist \newline notwendig für einen sicheren und effektiven Betrieb?
 \item Wie können wir die Kommunikation innerhalb der Dateiserver-Gruppen effizient \newline gestalten?
 \item Welche (Teil-)Services müssen wir den Anwendern zur Verfügung stellen?
 \item Welche wollen wir darüber hinaus realisieren, wenn noch Zeit bleibt?
-\item Woran orientieren wir unser Sicherheitskonzept 
+\item Woran orientieren wir unser Sicherheitskonzept
 (d.h. wie wollen wir Sicherheit \newline quantifizieren und beurteilen)?
 \item Wie können wir die Kommunikation mit den anderen Teams auf eine zuverlässige Basis stellen? Was benötigen wir von ihnen? Welche Services können wir ihnen anbieten?
 \end{enumerate}
@@ -72,7 +72,7 @@ Bei unserem Vorgehen haben wir uns in folgender Reihenfolge gefragt:
 
 \subsection{Formelle Entscheidungsfindung}
 \begin{enumerate}
-\item Beschlüsse werden per einfacher Mehrheit gefasst. Dabei erhält jedes anwesende Projektmitglied eine Stimme. 
+\item Beschlüsse werden per einfacher Mehrheit gefasst. Dabei erhält jedes anwesende Projektmitglied eine Stimme.
 \item Die Abstimmung kann fernmündlich via Mumble\footcite{mumble}/Skype oder schriftlich durch E-Mail/Trello Task erfolgen. Bei einer schriftlichen Abstimmung gilt der Beschluss ab dem Zeitpunkt der nächsten wöchentlichen Mumble-Konferenz.
 \end{enumerate}
 
@@ -295,14 +295,14 @@ Ein Konfigurationsmanagement-System bietet unserer Meinung nach - im Vergleich z
 \item \textbf{Verifikation} von Code vor der Implementierung: Ansible verfügt über eine „Check“-Option, welche es ermöglicht vor dem Rollout einer Konfiguration zu prüfen, an welchen Stellen genau dadurch eine Änderung auf den produktiven Systemen erfolgt.
 \item \textbf{Systemunabhängigkeit}: Durch die deklarative Beschreibung der gewünschten Konfiguration ist das tatsächlich verwendete Zielsystem bei der Konfiguration transparent; so kann etwa SAMBA mit identischem Code auf zwei verschiedenen Linux-Distributionen ausgerollt werden.
 \item Vereinigung von technischer \textbf{Dokumentation} und Konfiguration: Durch die deskriptive Art der Konfiguration, sowie durch die Möglichkeit Beschreibungen in der Konfiguration einzubauen ist die Konfiguration auch für Personen nachvollziehbar, die nicht mit den technischen Besonderheiten der verwendeten Betriebssysteme und Softwarelösungen vertraut sind. Die Konfiguration dient so gleichzeitig der technischen Dokumentation. In Verbindung mit dem verwendeten Versionskontrollsystem (siehe 3.5) ist dadurch nachvollziehbar, wer wann welche Änderungen genau an den Produktivservern vorgenommen hat.
-\item Darüber hinaus stellt es bei der Verwaltung von IT-Systeme einen erheblichen \textbf{Effizienzgewinn} dar, Konfiguration und Code, zentral zur kollaborativen Bearbeitung zur Verfügung zu haben. 
+\item Darüber hinaus stellt es bei der Verwaltung von IT-Systeme einen erheblichen \textbf{Effizienzgewinn} dar, Konfiguration und Code, zentral zur kollaborativen Bearbeitung zur Verfügung zu haben.
 \end{itemize}
 
 Es standen verschiedene Lösungen, wie z.B. Ansible\footcite{ansible}, Puppet\footcite{puppet} und Chef\footcite{chef} zur Diskussion. Unsere Gruppen haben sich aus folgenden Gründen\footcite{whyAnsible} für den Einsatz von Ansible entschieden:
 
 \begin{itemize}
 \item Vollumfänglicher Betrieb \textbf{ohne Management-Server oder speziellen Agent} auf den Zielsystemen möglich (anders als bei Puppet und Chef)
-\item Einfache Syntax im yaml (\textbf{Markdown}) Format  
+\item Einfache Syntax im yaml (\textbf{Markdown}) Format
 (für Puppet und Chef sind umfangreichere Programmierkenntnisse erforderlich)
 \item Geringe Anforderungen an das ausführende System - Es ist \textbf{lediglich python und ein ssh Client nötig} (Puppet und Chef benötigen z.B. viele Ruby Bibliotheken)
 \item \textbf{kompatibel} mit allen verbreiteten Unix-Systemen (Linux, OpenBSD , Solaris,...)
@@ -331,7 +331,7 @@ passwords:
 \begin{lstlisting}[label=code:labelname,caption=Modifizierter Auszug aus ansible/group\_vars/file\_server/vault]
 __vault_user_crypt_password:
   sgirrulat:        'xxxxxxx'
-  
+
 __vault_user_plain_password:
   sgirrulat:        'xxxxxxx'
 \end{lstlisting}
@@ -346,7 +346,7 @@ Da sbmpasswd in Zusammenarbeit mit lokalen Benutzer nur mit Passwörtern in Klar
 \toprule
 Werkzeug & Verwendung für \\
 \midrule
-Trello & 
+Trello &
   \begin{minipage}[t]{1\textwidth}
     \begin{itemize}
     \item Arbeitspaketierung
@@ -356,7 +356,7 @@ Trello &
     \end{itemize}
   \end{minipage} \\
 \midrule
-DokuWiki & 
+DokuWiki &
   \begin{minipage}[t]{1\textwidth}
     \begin{itemize}
     \item Sammelstelle für Dokumentation
@@ -365,7 +365,7 @@ DokuWiki &
     \end{itemize}
   \end{minipage}\\
 \midrule
-Github Repository & 
+Github Repository &
   \begin{minipage}[t]{1\textwidth}
     \begin{itemize}
     \item Zentrale Ablage aller Konfigurationen
@@ -373,14 +373,14 @@ Github Repository &
     \end{itemize}
   \end{minipage}\\
   \midrule
-Travis CI & 
+Travis CI &
   \begin{minipage}[t]{1\textwidth}
     \begin{itemize}
     \item Integrationstests
     \end{itemize}
   \end{minipage}\\
   \midrule
-Mumble (VoIP) & 
+Mumble (VoIP) &
   \begin{minipage}[t]{1\textwidth}
     \begin{itemize}
     \item Telekonferenzsystem für Besprechungen
@@ -388,14 +388,14 @@ Mumble (VoIP) &
     \end{itemize}
   \end{minipage}\\
   \midrule
-Doodle & 
+Doodle &
   \begin{minipage}[t]{1\textwidth}
     \begin{itemize}
     \item Urlaubsplaner
     \end{itemize}
   \end{minipage}\\
   \midrule
-Newsgroup k1599 & 
+Newsgroup k1599 &
   \begin{minipage}[t]{1\textwidth}
     \begin{itemize}
     \item multilateraler Austausch mit anderen Gruppen
@@ -403,7 +403,7 @@ Newsgroup k1599 &
     \end{itemize}
   \end{minipage}\\
   \midrule
-Dropbox & 
+Dropbox &
   \begin{minipage}[t]{1\textwidth}
     \begin{itemize}
     \item gemeinsame Bearbeitung von Dokumentation \newline und Präsentation
@@ -411,7 +411,7 @@ Dropbox &
     \end{itemize}
   \end{minipage}\\
   \midrule
-TeamViewer & 
+TeamViewer &
   \begin{minipage}[t]{1\textwidth}
     \begin{itemize}
     \item Videokonferenz für Besprechungen / Präsentationen
@@ -536,7 +536,7 @@ Seien
 \item $m_i$ die i-te Grundschutz-Maßnahme aus der Tabelle \ref{tab:massnahmen} im Anhang
 \item $siv(m_i)$ (Security Index Value) das Gewicht \footnote{Motivation der Gewichtung: Die tatsächliche Effektivität und Wirksamkeit von technischen Maßnahmen ist leichter zu überprüfen als die von rein organisatorischen Festlegungen („Papier ist geduldig“)} der i-ten Maßnahme mit
 \begin{equation}
-siv(x)= 
+siv(x)=
 \begin{cases}
     0,& \text{wenn Dateiserverguppen nicht verantwortlich für x }\\
     1,& \text{wenn x organisatorische Maßnahme}\\
@@ -571,7 +571,7 @@ Rollout & 0,0  \\
 \end{itemize}
 \bigskip
 
-dann ist der Sicherheitsindex 
+dann ist der Sicherheitsindex
 
 \begin{center}
 \begin{equation}
@@ -584,7 +584,7 @@ Ein SI von $1,0$ bedeutet also, dass alle vom BSI IT Grundschutz vorgeschlagenen
 Der SI kann und soll eine eingehende Betrachtung der aktuellen Sicherheitslage nicht ersetzen. Für eine grobe Abschätzung der IT Sicherheitsvorkehrungen, wie sie etwa im Management erforderlich ist, kann dieser Index jedoch genutzt werden.
 
 \begin{figure}[hbt!]
-		\includegraphics[scale=0.66]{images/si.png} 
+		\includegraphics[scale=0.66]{images/si.png}
 	\caption{Security Index (SI) im Projektverlauf}
 	\label{img:si}
 \end{figure}
@@ -643,7 +643,7 @@ Kassensystem & Verfügbarkeit & Normal & Die Synchronisation der Kassenbestände
 \end{tabular}
 \end{center}
 \end{minipage}
- 
+
 \subsubsection{Schutzbedarf: IT-Systeme}
 \begin{minipage}{\textwidth}
 \begin{center}
@@ -916,14 +916,14 @@ M6.98 & Notfallvorsorge und Notfallreaktion für Speicherlösungen & Betriebshan
 \section{Datensicherungskonzept}
 \subsection{Zu sichernde Daten}
 Über das Backup werden alle Benutzerdaten auf den Datei-Freigaben gesichert. Betriebssystem und Software der Server sind \textbf{nicht} Bestandteil des Backups\footnote{Wie das System im Fehlerfall wiederhergestellt wird ist im Unterabschnitt \ref{subsec:restore} zu finden}.
- 
-Jeder Nutzer hat ein Quota von 100 MB und das System ist auf maximal 50 Nutzerkonten ausgelegt. Ergo beträgt das maximal zu sichernde \emph{Datenvolumen} 
+
+Jeder Nutzer hat ein Quota von 100 MB und das System ist auf maximal 50 Nutzerkonten ausgelegt. Ergo beträgt das maximal zu sichernde \emph{Datenvolumen}
 \begin{equation}
 dv = 50 \times 100 \text{ MB} = 5000 \text{ MB} < 5 \text{ GB}
 \end{equation}
 je Server.\\
 
-Da wir für unser Netz über keine Erfahrungswerte verfügen gehen wir von einem täglichen \emph{Änderungsvolumen} von 
+Da wir für unser Netz über keine Erfahrungswerte verfügen gehen wir von einem täglichen \emph{Änderungsvolumen} von
 
 \begin{equation}
 cv_{daily} = 0.2 \times dv = 0.2 \times 5000 \text { MB} = 1000 \text{ MB}
@@ -967,13 +967,13 @@ k1599_file_server_smbd_enabled: yes
  name: Ensure package samba is installed
  package:
    name: samba
-    
+
  name: Create public dir
  file:
    path: "{{ k1599_file_server_public_share_path }}"
    state: directory
    mode: '0777'
- 
+
  name: "Ensure service samba is started and enabled: {{ k1599_file_server_smbd_enabled }}"
  service:
    name: "{{ _smb_srv }}"
@@ -1084,7 +1084,7 @@ Zur weiteren Erhöhung der Sicherheit werden einige Protokoll-Optionen gesetzt. 
 
 \begin{lstlisting}[label=code:smbconf3,caption=Ausschnitt aus /etc/samba/smb.conf]
   #### Protocol ####
-  
+
   # allow only NTLMv2
   ntlm auth = no
   \end{lstlisting}
@@ -1092,11 +1092,11 @@ Zur Nutzung von Transportverschlüsselung wäre es möglich, das minimale Protok
 \begin{lstlisting}[label=code:smbconf4,caption=Möglicher Eintrag in /etc/samba/smb.conf]
   # set to mandatory for encrypted connection
   smb encrypt = auto
-  
+
   # encrypted connection only possible with SMB3
   server min protocol = NT1
   \end{lstlisting}
-  
+
 Da dies zum gegenwärtigen Zeitpunkt zu viele Clients ausschließen würde\footnote{bis einschließlich Windows 7, vgl. \cite{smbHistory}} und die Verbindung durch das VPN bereits verschlüsselt ist, haben wir uns dafür entschieden die Transportverschlüsselung aktuell nicht zu erzwingen.
 
 Unnötige geöffnete Ports werden durch die Deaktivierung von Netbios geschlossen, da Broadcasts über das VPN sowieso nicht weitergeleitet werden:
@@ -1111,23 +1111,23 @@ Die Definition der Freigaben erfolgt für das Home-Directory nach Samba-Standard
 
 \begin{lstlisting}[label=code:smbconf5,caption=Auszug aus /etc/samba/smb.conf]
   #======================= Share Definitions =======================
-  
+
   [homes]
      comment = Home Directories
      browseable = no
-  
+
   # By default, the home directories are exported read-only. Change the
   # next parameter to 'no' if you want to be able to write to them.
      read only = no
-  
+
   # File creation mask is set to 0700 for security reasons. If you want to
   # create files with group=rw permissions, set next parameter to 0775.
      create mask = 0700
-  
+
   # Directory creation mask is set to 0700 for security reasons. If you want to
   # create dirs. with group=rw permissions, set next parameter to 0775.
      directory mask = 0700
-  
+
   # By default, \\server\username shares can be connected to by anyone
   # with access to the samba server.
   # The following parameter makes sure that only "username" can connect
@@ -1147,7 +1147,7 @@ Die öffentliche Freigabe soll für jeden Benutzer beschreibbar sein, außerdem 
   create mask = 0777
   directory mask = 0777
 \end{lstlisting}
-  
+
 \subsection{Firewall}
 Als Firewall wird die Linux Kernel Firewall iptables\footcite{iptables} eingesetzt. Zur Umsetzung standen mehrere Implementierungen unter Debian/Ubuntu zur Verfügung, unter anderem \emph{Shorewall}, \emph{apf-firewall} und \emph{ansible-role-firewall}. Das Team hat sich aufgrund der einfachen Integration in den bestehenden Ansible-Code für das externe Playbook \url{https://github.com/sagiru/ansible-role-firewall} entschieden. Entscheidend war die einfache Integration der Firewall als Service. \\
 
@@ -1182,23 +1182,23 @@ Die Firewall wurde wie folgt konfiguriert:
 
 \begin{lstlisting}[label=code:smbconf5,caption=Ausgabe von iptables -L -v]
   Chain INPUT (policy ACCEPT 0 packets, 0 bytes)
-   pkts bytes target     prot opt in     out     source               destination         
-    408 20400 ACCEPT     all  --  lo     any     anywhere             anywhere            
+   pkts bytes target     prot opt in     out     source               destination
+    408 20400 ACCEPT     all  --  lo     any     anywhere             anywhere
   94393   44M ACCEPT     tcp  --  any    any     anywhere             anywhere             tcp dpt:ssh
     552 83776 ACCEPT     tcp  --  tun0   any     anywhere             anywhere             tcp dpt:microsoft-ds
    112K   30M ACCEPT     tcp  --  eth0   any     anywhere             anywhere             tcp dpt:10514
       0     0 ACCEPT     tcp  --  tun0   any     anywhere             anywhere             tcp dpt:10514
-     84  9632 ACCEPT     icmp --  any    any     anywhere             anywhere            
+     84  9632 ACCEPT     icmp --  any    any     anywhere             anywhere
    9387  713K ACCEPT     udp  --  any    any     anywhere             anywhere             udp spt:ntp
   82952 5716K ACCEPT     all  --  any    any     anywhere             anywhere             state RELATED,ESTABLISHED
    2570  164K LOG        all  --  any    any     anywhere             anywhere             limit: avg 15/min burst 5 LOG level debug prefix "Dropped by firewall: "
-   4593  253K DROP       all  --  any    any     anywhere             anywhere            
-  
+   4593  253K DROP       all  --  any    any     anywhere             anywhere
+
   Chain FORWARD (policy ACCEPT 0 packets, 0 bytes)
-   pkts bytes target     prot opt in     out     source               destination         
-  
+   pkts bytes target     prot opt in     out     source               destination
+
   Chain OUTPUT (policy ACCEPT 284K packets, 35M bytes)
-   pkts bytes target     prot opt in     out     source               destination         
+   pkts bytes target     prot opt in     out     source               destination
    9404  715K ACCEPT     udp  --  any    any     anywhere             anywhere             udp dpt:ntp
 \end{lstlisting}
 
@@ -1215,7 +1215,7 @@ Unser System hat keine Routing-Funktionen, die Forward Chain findet deshalb kein
 \subsection{Virenscanner: ClamAV}
 Neben dem Paket \code{ClamAV}\footcite{clamav} als eigentlicher Virenscanner sorgt das Zusatzpaket \code{freshclam} für die Aktualisierung der Virensignaturen. Das erfolgt automatisch 24x täglich.
 
-Für das gesamte Filesystem ist die Überwachung der Dateien bei Zugriff (on-access scan) aktiviert. Dazu muss ClamAV als \code{root} ausgeführt werden.  
+Für das gesamte Filesystem ist die Überwachung der Dateien bei Zugriff (on-access scan) aktiviert. Dazu muss ClamAV als \code{root} ausgeführt werden.
 
 \begin{lstlisting}[label=code:denyany,caption=Konfiguration in clamav.conf]
   User root
@@ -1232,7 +1232,7 @@ Bei einem Fund erfolgt ein Eintrag in das Syslog:
 Das Blockieren der Zugriffe ist bei unseren Systemen nicht möglich, da der Kernel die nötigen Erweiterungen nicht mitbringt. Außerdem wird diese Funktion bei der Überwachung des gesamten Dateisystems deaktiviert\footcite{clamAVnoOnAccess} um die mögliche Blockade des Systems zu verhindern.
 
 \subsection{Namensauflösung}
-Es bestehen verschiedene Möglichkeiten um eine Namensauflösung im Firmennetzwerk zu realisieren. Für die technische Umsetzung wurde von der Gruppe Netzwerke Nord ein zentraler Dienst (DNS) zur Namensauflösung zur Verfügung gestellt; dieser wird auf dem Dateiserver Nord bei der VPN-Einwahl automatisch eingebunden. 
+Es bestehen verschiedene Möglichkeiten um eine Namensauflösung im Firmennetzwerk zu realisieren. Für die technische Umsetzung wurde von der Gruppe Netzwerke Nord ein zentraler Dienst (DNS) zur Namensauflösung zur Verfügung gestellt; dieser wird auf dem Dateiserver Nord bei der VPN-Einwahl automatisch eingebunden.
 
 Da ein DNS-Server in der Süd-Umgebung nicht realisiert wurde und wir stets eine (so weit wie möglich) einheitliche Konfiguration auf unseren beiden Systemen ausrollen, werden auf beiden Systemen zur Namensauflösung zusätzlich Einträge in der lokalen \code{/etc/hosts} Datei gepflegt. Die Information welche Einträge vorhanden sein müssen wird durch die jeweilige Netzwerkgruppe zur Verfügung gestellt.
 
@@ -1268,7 +1268,7 @@ Um die Einträge auf allen verwalteten Systemen synchron zu halten werden die Da
 Eine Liste der verzeichneten Systeme findet sich in im Anhang.
 
 \subsection{Synchronisation der Uhrzeit}
-Um exakte Zeitstempel für gespeicherte Dateien gewährleisten zu können, benötigt das System die genaue Uhrzeit. Über NTP kann man die lokale Uhr mit anderen Systemen synchronisieren. Das Debian Projekt stellt dazu verschiedene Server in einem Pool zur Verfügung. 
+Um exakte Zeitstempel für gespeicherte Dateien gewährleisten zu können, benötigt das System die genaue Uhrzeit. Über NTP kann man die lokale Uhr mit anderen Systemen synchronisieren. Das Debian Projekt stellt dazu verschiedene Server in einem Pool zur Verfügung.
 
 \begin{lstlisting}[label=code:ntp,caption=Debian NTP Server]
   0.debian.pool.ntp.org
@@ -1339,7 +1339,7 @@ Eine Überprüfung der Server-CNs erfolgt nicht, da das aufgrund der fehlenden F
 \subsection{Benutzerverwaltung}
 Die Verwaltung der Benutzer erfolgt über die Ansible Rolle \textit{k1599\_users}. Hier wird überprüft, ob die Benutzer bereits existieren. Die Benutzer für den Samba Dienst werden über die Rolle \textit{k1599\_file\_server} verwaltet. \\
 
-Es wird auf Basis der Datenstruktur \code{k1599\_users\_present\_users} überprüft, ob die dort angegebenen Benutzer bereits existieren und ggf. angelegt werden müssen. Sollten die Benutzer bereits existieren, so werden sie nicht verändert. So wird sicher gestellt, dass Benutzer ihre Passwörter eigenständig ändern können und diese Änderungen anschließend nicht von Ansible zurückgesetzt werden. Wenn das Aktualisieren der Benutzer explizit gewünscht ist, dann kann auf der Ansible Kommandozeile ein extra Parameter \code{-e refresh\_users=yes} übergeben werden.  Hier kann auch durch das überschreiben der Datenstruktur \code{k1599\_users\_present\_users} (in der Rolle selbst oder durch höher priorisierte Variablen) nur Einfluss auf bestimmte Benutzer genommen werden. 
+Es wird auf Basis der Datenstruktur \code{k1599\_users\_present\_users} überprüft, ob die dort angegebenen Benutzer bereits existieren und ggf. angelegt werden müssen. Sollten die Benutzer bereits existieren, so werden sie nicht verändert. So wird sicher gestellt, dass Benutzer ihre Passwörter eigenständig ändern können und diese Änderungen anschließend nicht von Ansible zurückgesetzt werden. Wenn das Aktualisieren der Benutzer explizit gewünscht ist, dann kann auf der Ansible Kommandozeile ein extra Parameter \code{-e refresh\_users=yes} übergeben werden.  Hier kann auch durch das überschreiben der Datenstruktur \code{k1599\_users\_present\_users} (in der Rolle selbst oder durch höher priorisierte Variablen) nur Einfluss auf bestimmte Benutzer genommen werden.
 
 \begin{lstlisting}[label=code:syslog3,caption=Auszug aus ansible/group\_vars/file\_server/public]
   k1599_users_present_users:
@@ -1468,7 +1468,7 @@ Das weiter führende Thema Qualitätsmanagement\footcite{wikiQualityM} wird bei 
 Ein Task gilt erst dann als Done (abgeschlossen), wenn er JEDE der folgenden Bedingungen erfüllt:
 
 \begin{itemize}
-\item Zu jeder abgeschlossenen Aufgabe muss Dokumentation existieren und allen PMA bekannt gemacht werden, oder aber abgelegt sein an einem der folgenden Orte:   
+\item Zu jeder abgeschlossenen Aufgabe muss Dokumentation existieren und allen PMA bekannt gemacht werden, oder aber abgelegt sein an einem der folgenden Orte:
 \begin{itemize}
 \item DokuWiki
 \item Dropbox Ordner der Dokumentation
@@ -1484,7 +1484,7 @@ Ein Task gilt erst dann als Done (abgeschlossen), wenn er JEDE der folgenden Bed
 \item fehlgeschlagene Tests dürfen nicht ohne Rücksprache entfernt werden, außer das Feature dazu wird gleichzeitig entfernt
 \item die Travis-CI Testabdeckung sollte sich nicht verringern
 \item bei fehlgeschlagenen Tests wird nach dem Schema „You broke it, you fix it!“ vorgegangen
-\item auf einen fehlgeschlagenen Test/Branch sollten keine neuen Features hinzugefügt werden, hierfür sollte dann ein seperater Branch benutzt werden. Wenn der „master“-Branch dann wieder „grün“ ist, können die andere Features anschließend gemerged werden. Dem liegt die Prämisse „Be always Releasable“ zugrunde 
+\item auf einen fehlgeschlagenen Test/Branch sollten keine neuen Features hinzugefügt werden, hierfür sollte dann ein seperater Branch benutzt werden. Wenn der „master“-Branch dann wieder „grün“ ist, können die andere Features anschließend gemerged werden. Dem liegt die Prämisse „Be always Releasable“ zugrunde
 \end{itemize}
 
 \subsection{Programmier-Regeln}
@@ -1512,7 +1512,7 @@ Um alle relevanten Dateien einer syntaktischen Überprüfung zu unterziehen, wir
 
 \begin{figure}[!htbp]
 	\centering
-		\includegraphics[scale=0.75]{images/syntaxchecks.jpg} 
+		\includegraphics[scale=0.75]{images/syntaxchecks.jpg}
 	\caption{Syntaxprüfung mit unserem Skript}
 	\label{img:syntaxcheck}
 \end{figure}
@@ -1522,7 +1522,7 @@ Da Ansible im Moment noch keine Möglichkeit bietet den Code z.B. Unittests zu u
 
 \begin{figure}[!htbp]
 	\centering
-		\includegraphics[scale=0.75]{images/travisci.jpg} 
+		\includegraphics[scale=0.75]{images/travisci.jpg}
 	\caption{Travis CI Oberfläche}
 	\label{img:travisci}
 \end{figure}
@@ -1551,7 +1551,7 @@ In diesem Abschnitt werden die Maßnahmen zusammengefasst, die wir als notwendig
 \subsection{Gewünschte organisatorische Maßnahmen}
 \begin{itemize}
 \item IT Sicherheitsbeauftragter
-\item Vereinheitlichung der Sicherheitskonzepte zwischen den Gruppen 
+\item Vereinheitlichung der Sicherheitskonzepte zwischen den Gruppen
 \item gemeinsames Betriebskonzept für alle Gruppen (siehe Betriebshandbuch)
 \item klar festgelegte Risiko Owner für übernommene Risiken
 \item alle Gruppen umfassende und ausführliche Auslegung des Sicherheitskonzeptes in Vorbereitung auf eine mögliche Zertifizierung (nach welchem Standard dann auch immer\footcite{wikiCyberSecStandards})
