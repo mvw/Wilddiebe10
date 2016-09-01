@@ -147,3 +147,147 @@
   \item 10.8.2.1 : gateway-n
   \item 10.8.2.2 : gateway-s
 \end{itemize}
+
+\section{Testprotokoll}
+\captionof{table}{Identifizierte Maßnahmen}
+\label{tab:massnahmen}
+\begin{longtable}{p{6.8cm}p{2.4cm}p{2.4cm}p{3cm}}
+\toprule
+Funktion & Status Nord & Status Süd & Bemerkungen \\
+\midrule
+\textbf{Korrektheit und Vollständigkeit der Ansible Konfiguration }
+\begin{itemize}
+\item
+  Server komplett zurücksetzen und Ansible Konfiguration durchführen
+\item
+  läuft durch ohne Fehler
+\end{itemize} & OK & OK & \\
+\midrule
+\textbf{Einbinden Netzlaufwerk}
+
+\begin{itemize}
+\item
+  Windows 8.1+ Client
+\item
+  AD Anmeldung
+\item
+  Transport via AES
+\end{itemize} & & & \\
+\midrule
+\textbf{Daten schreiben auf Freigabe}
+
+\begin{itemize}
+\item
+  Linux (Samba 4.x) Client
+\end{itemize}
+
+\begin{itemize}
+\item
+  Transport via AES
+\end{itemize} & & & \\
+\midrule
+\textbf{Daten lesen von Freigabe}
+
+\begin{itemize}
+\item
+  Windows 8.1+ Client
+\item
+  Transport via AES
+\end{itemize} & & & \\
+\midrule
+\textbf{Einbinden Netzlaufwerk "Jeder"}
+
+\begin{itemize}
+\item
+  Linux (Samba 4.x) Client
+\end{itemize} & & & \\
+\midrule
+\textbf{Schreiben auf Jeder Freigabe }
+
+\begin{itemize}
+\item
+  Windows 8.1+ Client
+\item
+  AD Anmeldung
+\item
+  Transport via AES
+\end{itemize} & & & \\
+\midrule
+\textbf{Quotas}
+
+\begin{itemize}
+\item
+  Windows 8.1+ Client
+\item
+  AD Anmeldung
+\item
+  Schreiben von \textgreater{}100 MB
+\end{itemize} & & & \\
+\midrule
+\textbf{Quotas Jeder }
+
+\begin{itemize}
+\item
+  Linux (Samba 4.x) Client
+\item
+  Schreiben von \textgreater{}100 MB
+\end{itemize} & & & \\
+\midrule
+\textbf{Virus schreiben}
+
+\begin{itemize}
+\item
+  EICAR-Testdatei auf Freigabe schreiben
+\item 
+  Eintrag von ClamAV im lokalen Log: Eicar-Test-Signature
+\item 
+  Eintrag im rsyslog auf anderem Server
+\item
+  Zugriff wird verhindert
+\end{itemize} & & & \\
+\midrule
+\textbf{Zugriff via ipv6 nicht möglich}
+
+\begin{itemize}
+\item
+  Zugriff von interner IP auf SMB Freigabe per IPv6
+\item
+  Zugriff von externer IP auf SMB Freigabe per IPv6
+\end{itemize} & & & \\
+\midrule
+\textbf{Automatisches Backup}
+
+\begin{itemize}
+\item
+  anlegen von Referenzdatei auf persönlicher Freigabe
+\item
+  anlegen von Referenzdatei auf Jeder-Freigabe
+\item
+  Überprüfung der Backup-Datei auf dem jeweils anderen Server nach 24h
+\end{itemize} & & & \\
+\midrule
+\textbf{Syslog}
+
+\begin{itemize}
+\item
+  Anmeldung mit Admin-Account auf Server
+\item
+  Ausführen von SUDO-ping
+\item
+  Anmeldung und ping sind im lokalen Log vorhanden
+\item
+  Anmeldung und ping sind im remote-log vorhanden
+\end{itemize} & & & \\
+\midrule
+\textbf{Gesicherter Login}
+
+\begin{itemize}
+\item
+  Test-Login mit Admin-Account und falschem Passwort wird nach max. 10
+  Versuchen abgelehnt
+\item
+  Zeitpunkt des letzten Login und Logout werden beim Anmelden mitgeteilt
+\end{itemize} & & & \\
+
+\bottomrule
+\end{longtable}
