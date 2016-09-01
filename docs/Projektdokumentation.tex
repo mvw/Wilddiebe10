@@ -423,11 +423,18 @@ TeamViewer &
 \end{minipage}
 
 \subsection{Zusammenarbeit mit anderen Gruppen}
-FEHLT
+Für die bilaterale Zusammenarbeit mit anderen Gruppen haben wir auf E-Mail gesetzt. Die multilaterale Mitwirkung haben wir über die Newsgroup angesteuert, da dies unserer Meinung nach der effizienteste Weg ist, alle Interessierten zu erreichen.
 
-- Anfrage von uns an Netz Nord: IPv4, IPv6, DNS, AD \\
-- Antwort von Netz: IPv4-Adressen, kein IPv6, DNS per VPN, AD für Windows only \\
-- Angebot gemeinsames Betriebskonzept blieb unbeantwortet (30.07.16) \\
+Für die Inbetriebnahme unseres Servers benötigten wir zunächst Informationen der Netzgruppen zu:
+\begin{itemize}
+\item IPv4 Konfiguration unserer Server
+\item IPv6 Konfiguration unserer Server
+\item DNS Anbindung
+\item Active Directory
+\end{itemize}
+Diese Informationen haben wir zeitnah erhalten. Die für die CA zuständigen Gruppen haben uns die von ihnen benötigten Informationen jeweils proaktiv übermittelt, so dass wir unsere Server Mitte Juli im VPN in Betrieb nehmen konnten.\\
+
+Es ist sinnvoll einheitliche Betriebs- und Sicherheitsstandards in einer gesamten Produktivumgebung zu verwenden. Zu diesem Zweck haben wir den anderen Gruppen die Mitarbeit an einem gemeinsamen Betriebskonzept vorgeschlagen (30.07.16). Dieser Vorschlag blieb leider unbeantwortet, so dass wir die weiteren Arbeiten nur zwischen den Gruppen 5 und 10 abgesprochen haben.
 
 \subsubsection{Information der Anwender}
 Alle Kursteilnehmer haben eine E-Mail bekommen mit der zum einen die Daten des
@@ -1561,6 +1568,7 @@ In diesem Abschnitt werden die Maßnahmen zusammengefasst, die wir als notwendig
 \label{subsec:tellerrand}
 Auch wenn sich unser Auftrag sehr konkret auf Installation und Betrieb zweier Dateiserver beschränkt, so verstehen wir unsere Aufgabe auch so, dass wir die Gesamtumgebung für die Anwender im Blick behalten sollten. Deshalb haben wir auch Vorschläge gesammelt, die über das hinaus gehen, was von uns verlangt wurde.
 \begin{itemize}
+\item \textbf{Active Directory / Domäne}: Im vereinigten Netz Nord/Süd existieren mindestens $2 \times 5 = 10$ Gruppen und $5 \times 5 \times 2 = 50$ Benutzerkonten jeweils für Mailserver, Webserver, CA und Dateiserver. Diese alle einzeln und händisch zu verwalten ist ein administrativer Albtraum (d.h. ineffizient, nicht nachvollziehbar, führt zu inkonsistenten Datenbeständen, usw.). Daher ist die Zusammenführung in einer Domäne zu befürworten.
 \item \textbf{VoIP Umgebung} (mögliche Realisierung: Asterisk mit SIP-Clients): Zum Betrieb einer modernen IT-Lösung für Unternehmen gehört auch, sich Gedanken darüber zu machen, wie die Mitarbeiter sicher und effizient miteinander sprechen können. Darüber hinaus gibt es zahlreiche weitere Anforderungen, die nur eine professionelle Lösung abdecken kann, z.B. Callcenter (z.B. für den Benutzerservice), Telekonferenzen, Faxdienste und die Integration mobiler Telefonie.
 \item Integrierte Sicherheit / \textbf{Security by Design}\footcite{waidner2013entwicklung}: erst eine aufeinander abgestimmte Client-Server-Architektur, bei der die IT-Abteilung Zugriff auf (und volle Kontrolle über) alle Systeme hat, kann ein wirksames Schutzniveau gewährleisten - und die technische Lösung so gestalten, dass der Anwender das System einfach sicher benutzen kann.
 \end{itemize}
