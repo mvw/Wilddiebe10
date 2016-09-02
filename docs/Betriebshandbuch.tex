@@ -1,0 +1,1062 @@
+\documentclass[]{article}
+\usepackage{rotating}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{longtable,booktabs}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+\date{}
+
+\begin{document}
+
+\section{Beschreibung der Systeme}\label{beschreibung-der-systeme}
+
+\subsection{Dateiserver Nord}\label{dateiserver-nord}
+
+\begin{longtable}{|l|p{6cm}|}
+\toprule
+Beschreibung & Stellt Dienste zum Austausch / Ablegen von Dateien im
+Netzwerk bereit:
+
+\begin{itemize}
+\item
+  zentrale Ablage von Dateien (Software, Dokumente, etc.)
+\item
+  zentrale Ablage von Backup-Dateien der anderen Services
+\item
+  SAMBA/SMB
+\end{itemize}\tabularnewline
+\midrule
+Betriebsverantwortung & Gruppe 5\tabularnewline
+Server- / Gerätebasis & 1 virtueller Server (Angemietet bei netcup
+GmbH)\tabularnewline
+Betriebssystem & Ubuntu 16.04\tabularnewline
+Besonderheiten &\tabularnewline
+Redundanzkonzept & Manuelle Redundanz über Dateiserver der Gruppe
+10\tabularnewline
+Geforderte Verfügbarkeit & Gemäß\tabularnewline
+Liefert Funktionen für & \begin{itemize}
+\item
+  Zertifikatsserver (Backup)
+\item
+  Webserver (Backup)
+\item
+  Mailserver (Backup)
+\item
+  Netz (Backup)
+\end{itemize}\tabularnewline
+Benötigt Funktionen von & \begin{itemize}
+\item
+  Zertifikatsserver
+\item
+  Mailserver
+\item
+  Netz
+\end{itemize}\tabularnewline
+Systemverwaltung / Administration & Erfolgt via Ansible. Direkter Zugriff ausschließlich per SSH (Passwort oder Zertifikat)\tabularnewline
+Backup &\tabularnewline
+Restore &\tabularnewline
+\bottomrule
+\end{longtable}
+
+\newpage
+
+\subsection{Dateiserver Süd}\label{dateiserver-suxfcd}
+
+\begin{longtable}{|l|p{6cm}|}
+\toprule
+Beschreibung & Stellt Dienste zum Austausch / Ablegen von Dateien im
+Netzwerk bereit:
+
+\begin{itemize}
+\item
+  zentrale Ablage von Dateien (Software, Dokumente, etc.)
+\item
+  zentrale Ablage von Backup-Dateien der anderen Services
+\item
+  Dienste: SAMBA
+\end{itemize}\tabularnewline
+\midrule
+Betriebsverantwortung & Gruppe 10\tabularnewline
+Server- / Gerätebasis &\tabularnewline
+Betriebssystem &\tabularnewline
+Besonderheiten &\tabularnewline
+Redundanzkonzept & Manuelle Redundanz über Dateiserver der Gruppe
+5\tabularnewline
+Geforderte Verfügbarkeit & Gemäß\tabularnewline
+Liefert Funktionen für & \begin{itemize}
+\item
+  Zertifikatsserver (Backup)
+\item
+  Webserver (Backup)
+\item
+  Mailserver (Backup)
+\item
+  Netz (Backup)
+\end{itemize}\tabularnewline
+Benötigt Funktionen von & \begin{itemize}
+\item
+  Zertifikatsserver
+\item
+  Mailserver
+\item
+  Netz
+\end{itemize}\tabularnewline
+Systemverwaltung / Administration & Erfolgt via Ansible. Direkter Zugriff ausschließlich per SSH (Passwort oder Zertifikat)\tabularnewline
+Backup &\tabularnewline
+Restore &\tabularnewline
+\bottomrule
+\end{longtable}
+
+\newpage
+
+\section{Service Schnittstellen}\label{service-schnittstellen}
+
+\section{Beschreibung der
+Serviceprozesse}\label{beschreibung-der-serviceprozesse}
+
+\subsection{Change Management}\label{change-management}
+
+Das Change Management hat das Ziel, dass alle Anpassungen an der
+IT-Infrastruktur kontrolliert, effizient und unter Minimierung von
+Risiken für den Betrieb bestehender Services durchgeführt werden.
+
+Wir orientieren uns hier am Prozess aus der \textbf{IT Infrastructure
+Library (ITIL)}. Aus Ressourcengründen wurde auch hier auf eine
+pragmatische Lösung gesetzt - es wurden nur die Prozesse übernommen,
+welche für einen sicheren Betrieb der Umgebung aus unserer Sicht
+zwingend erforderlich sind. Auf eine Zertifizierung nach ISO/IEC
+20000:2005 wurde daher verzichtet.
+
+\subsubsection{Workflow}\label{workflow}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Request for Change (RfC):} Ein Mitarbeiter der vereinten
+  Backwerke stellt beim Change Manager einen formalen RfC. Dafür wird
+  das Formular 5.1.1 genutzt. Der RfC enthält alle Informationen, die
+  für die weitere Entscheidungsfindung wichtig sind.
+\item
+  \textbf{Change Advisory Board (CAB):} Das CAB besteht aus dem Change
+  Manager und von ihm benannten weiteren Personen. Es muss nach
+  Beantragung innerhalb von 7 Tagen zusammentreten und den RfC
+  genehmigen - oder diesen Alternativ mit Begründung der Ablehnung an
+  den Antragsteller zurück übermitteln.
+\item
+  \textbf{Implementierung}: Genehmigte Changes werden zur Bearbeitung an
+  die entsprechenden technischen Gruppen weitergegeben.
+\item
+  \textbf{Post Implementation Review:} Ziel ist es, die Effizienz der
+  durchgeführten Maßnahmen sowie des dazugehörigen Prozesses zu
+  durchleuchten. Dabei sollen sowohl die durchgeführte Veränderung als
+  auch die dabei benutzten Methoden und Prozesse einer Ist-Soll-Analyse
+  unterzogen werden. Bei größeren Changes spielen auch
+  Kosten-Nutzen-Vergleiche, die Return on Investment (ROI)-Kalkulation
+  sowie die Messung der Zielerreichung aus der geschäftlichen
+  Perspektive eine Rolle. Der Change Manager legt hierzu Termine und
+  Agenda fest und fordert dafür Unterstützung an.
+\end{enumerate}
+
+\subsubsection{Change Manager}\label{change-manager}
+
+Der Change-Manager ist verantwortlich für die Durchführung eines Changes
+in einer systematischen Art und Weise, nachdem die bekannten Risiken
+abgewogen wurden. Er überwacht auch den Fortschritt des Changes. Der
+Change-Manager beurteilt die Requests for Change (RfC) zusammen mit dem
+Change Advisory Board (CAB). Change Manager ist \textbf{Sascha
+Girrulat}.
+
+\subsubsection{Standard Changes}\label{standard-changes}
+
+Bei Standard Changes handelt es sich um häufig wiederkehrende Changes
+mit vergleichsweise geringem Risiko, deren Prozess vom CAB einmalig
+genehmigt wurde.
+
+Das Verfahren zur erstmaligen Genehmigung eines Standard Changes ist das
+gleiche wie bei herkömmlichen Changes. Wiederkehrende Standard Changes
+werden nicht durch einen RfC geleitet, sondern lediglich als Service
+Requests dokumentiert.
+
+\paragraph{Genehmigte Standard Changes}\label{genehmigte-standard-changes}
+
+\begin{longtable}{|p{3cm}|p{10cm}|}
+\toprule
+Standard Change & Prozess\tabularnewline
+\midrule
+Betriebssystem Update Server & \begin{enumerate}
+\item
+  Aufnahme als Service Request im Ticketsystem
+\item
+  Überprüfung des Changelogs auf Risiken
+\item
+  Einspielen des Updates außerhalb der garantierten Betriebszeit (siehe Seite
+  11) oder Information aller Gruppen der Vereinigten Backwerke 48 Stunden vor
+  Einspielen des Updates
+\item
+  Überprüfung des durch den Server bereitgestellten Services auf
+  Funktion
+\item
+  Dokumentation im Ticketsystem.
+\end{enumerate}\tabularnewline
+\midrule
+
+Dateiserver Dienst Update &
+\begin{enumerate}
+\item
+  Aufnahme als Service Request im Ticketsystem
+\item
+  Überprüfung des Changelogs auf Risiken
+
+\item
+  Einspielen des Updates außerhalb der garantierten Betriebszeit (siehe Seite 11) oder Information aller Gruppen der Vereinigten Backwerke 48 Stunden vor Einspielen des Updates
+
+\item
+  Überprüfung des durch den Server bereitgestellten Services auf
+  Funktion
+\item
+  Dokumentation im Ticketsystem.
+\end{enumerate}\tabularnewline
+Dateiserver:\\ Benutzerkonten lokal (einrichten, ändern, Passwort
+zurücksetzen) & \begin{enumerate}
+\item
+  Änderung vornehmen in Ansible-Konfiguration
+\item
+  Einspielen der neuen Konfiguration auf beiden Servern
+\item
+  Betroffenen Nutzer über Änderungen informieren
+\item
+  Warten auf Rückmeldung des Nutzers (bei Einrichtung oder Änderung)
+\end{enumerate}\tabularnewline
+Offline Backup Dateiserver (1x wöchentlich, So) &
+\begin{enumerate}
+\item
+  Prüfung, ob aktueller Termineintrag noch in gemeinsamem Kalender
+  vorhanden
+\item
+  Login auf dem Mumble Servers des CSIRT
+\item
+  Bekanntgabe an alle Anwesenden, dass mit der Sicherung begonnen wird
+\item
+  Erstellen eines Client-lokalen Backups von einem der beiden
+  Dateiserver, inklusive des tar.gz-Backups vom anderen Server auf eine
+  externe Festplatte
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \item
+    Sicherung der eigentlichen Anwender-Dateien
+  \item
+    Sicherung der Systemeinstellungen mittels tdbbackup /etc/samba/passdb.tdb
+
+    \begin{enumerate}
+    \def\labelenumiii{\roman{enumiii}.}
+    \item
+      smb.conf
+    \item
+      secrets.tdb
+    \item
+      tdbsam
+    \end{enumerate}
+  \item
+    Integrität der Backup-DB prüfen mittels tdbbackup -v etc/samba/passdb.tdb
+  \item
+    Sicherung der verwendeten Software: Samba
+  \item
+    Sicherung der Protokolldateien: rsyslog
+  \end{enumerate}
+\item
+  Trennen der externen Festplatte vom Computer
+\item
+  Löschen des aktuellen Termineintrags im gemeinsamen Kalender
+\item
+  Logout auf dem Mumble Server
+\end{enumerate}\tabularnewline
+\midrule
+Restore Dateiserver & \begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Ein Mitglied der Gruppe mit Betriebsverantwortung für den
+  entsprechenden Sever verifiziert, dass dieser tatsächlich nicht mehr
+  wieder in Betrieb genommen werden kann
+\item
+  Neuinstallation des Betriebssystems (auf dem gleichen oder, falls dies
+  nicht mehr möglich ist, auf einem anderen Server)
+\item
+  Einrichtung des SSH Zugangs auf dem neuen System
+\item
+  Restore der Serverkonfiguration auf letzte funktionierende
+  Ansible-Version (ggf. Anpassung der externen IP-Adresse)
+\item
+  Einspielen der Nutzerdaten aus dem letzten verfügbaren Backup (vom
+  anderen Dateiserver)
+\item
+  Mindestens zwei Techniker der Dateiservergruppen bestätigen die
+  Wiederverfügbarkeit der Daten
+\item
+  Information an alle Anwender der Vereinigten Backwerke über
+  vorgenommenen Restore, sowie an Change und Problem Manager
+\item
+  Dokumentation im
+  \href{https://docs.google.com/spreadsheets/d/1GDq3AEsVDu1a-X7tEl6qKDtSZdAXm8lsRzY6Ijw-dUQ/edit\#gid=0}{Ticketsystem}
+\end{enumerate}\tabularnewline
+\midrule
+Benutzer verlässt das Unternehmen & \begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Aufnahme als Service Request im
+  \href{https://docs.google.com/spreadsheets/d/1GDq3AEsVDu1a-X7tEl6qKDtSZdAXm8lsRzY6Ijw-dUQ/edit\#gid=0}{Ticketsystem}
+\item
+  Löschen ggf. vorhandener lokaler Konten auf den Dateiservern
+\item
+  Löschen der persönlichen Benutzerfreigaben auf beiden Dateiservern
+\item
+  Dokumentation im
+  \href{https://docs.google.com/spreadsheets/d/1GDq3AEsVDu1a-X7tEl6qKDtSZdAXm8lsRzY6Ijw-dUQ/edit\#gid=0}{Ticketsystem}
+\end{enumerate}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\subsubsection{Emergency Changes}\label{emergency-changes}
+
+Ein Sonderfall des Changes, der nicht den üblichen Prozess durchläuft,
+sondern sofort, notfalls auch unter erheblichem Risiko und ohne weitere
+Genehmigung vom CAB, meist zur Abwendung größeren Schadens durchgeführt
+wird. \emph{Bei einem Change dieser Art benötigt der durchführende
+Techniker nur die Zustimmung eines weiteren Technikers innerhalb der
+IT-Gruppen.} Vorrangig ist hier, auf eine Notsituation reagieren zu
+können, entsprechende weitere Genehmigungen und Tests werden erst nach
+dem Change durchgeführt.
+
+Die durchgeführten Emergency Changes sind jedoch umgehend nach der
+Wiederherstellung des normalen Betriebes zu dokumentieren und die
+betroffenen Gruppen, sowie der Change Manager sind zeitnah zu
+informieren.
+
+\subsection{Incident Management}\label{incident-management}
+
+Unter einem Incident / einer Störung versteht man nach IT Infrastructure
+Library (ITIL) ein Ereignis, das nicht zum standardmäßigen Betrieb eines
+Services gehört und das tatsächlich oder potenziell eine Unterbrechung
+dieses Services oder eine Minderung der vereinbarten Qualität
+verursacht.
+
+IT-Incident Management umfasst den gesamten organisatorischen und
+technischen Prozess der Reaktion solche Ereignisse. Ziel des
+Incident-Management-Prozesses ist die schnellstmögliche
+Wiederherstellung der Service-Leistung (auch mit Workarounds).
+
+\subsubsection{Benutzerservice}\label{benutzerservice}
+
+Um den Anwendern einen Single Point of Contact für alle IT-Anliegen zur
+Verfügung zu stellen, haben wir einen Benutzerservice eingerichtet. Der
+Benutzerservice hat die Aufgabe Anwenderanfragen entgegen zu nehmen, im
+Ticketsystem anzulegen und das Ticket dann an die betroffenen Gruppen
+weiter zu vermitteln.
+
+\subsubsection{Workflow}\label{workflow-1}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Meldung} des Incidents an \textbf{Fehler! Verweisquelle konnte
+  nicht gefunden werden.}\\
+  (Mitarbeiter des Benutzerservice können hier direkt mit 2. weiter
+  machen)
+\item
+  \textbf{Aufnahme} und Bewertung des Incident im
+  \href{https://docs.google.com/spreadsheets/d/1GDq3AEsVDu1a-X7tEl6qKDtSZdAXm8lsRzY6Ijw-dUQ/edit\#gid=0}{Ticketsystem}
+\item
+  Falls die Anfrage direkt beantwortet/gelöst werden kann weiter mit 6.
+  - sonst:\\
+  Information per Mail an alle Mitglieder der betroffenen Gruppen
+\item
+  \textbf{Bearbeitung} des Incident in den Gruppen
+\item
+  Dokumentation des Bearbeitungsstandes im
+  \href{https://docs.google.com/spreadsheets/d/1GDq3AEsVDu1a-X7tEl6qKDtSZdAXm8lsRzY6Ijw-dUQ/edit\#gid=0}{Ticketsystem}
+\item
+  Nach Abschluss der Arbeiten
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \item
+    Information an den Anfrager, sowie alle direkt betroffenen Anwender
+  \item
+    \textbf{Dokumentation} der Lösung im
+    \href{https://docs.google.com/spreadsheets/d/1GDq3AEsVDu1a-X7tEl6qKDtSZdAXm8lsRzY6Ijw-dUQ/edit\#gid=0}{Ticketsystem}
+  \end{enumerate}
+\end{enumerate}
+
+\subsubsection{IT Security Incident
+Management}\label{it-security-incident-management}
+
+IT Sicherheitsmanagement beinhaltet die Überwachung und Feststellung von
+Sicherheitsereignissen auf den System und die angemessene Reaktion auf
+diese Ereignisse.
+
+\paragraph{Computer Security Incident Response Team
+(CSIRT)}\label{computer-security-incident-response-team-csirt}
+
+\includegraphics[width=4.83401in,height=2.85457in]{images/image3.png}
+
+Die Aufgaben des CSIRT sind
+
+\begin{itemize}
+\item
+  die Überwachung der Systeme auf Sicherheitsvorfälle
+\item
+  als zentraler Kommunikationsknoten für eingehende
+  Sicherheitsereignisse und ausgehende Informationen über diese
+  Ereignisse zu agieren
+\item
+  Sicherheitsvorfälle zu dokumentieren
+\item
+  Das Bewusstsein für sichere IT innerhalb der Vereinigten Backwerke zu
+  schärfen um Vorfällen vorzubeugen
+\item
+  Externe System- und Netzwerkaudits zu unterstützen (etwa bei der
+  Schwachstellenanalyse und Penetrationstests)
+\item
+  sich über neue Angriffsvektoren und -strategien zu informieren
+\item
+  Informationen über Sicherheitsupdates eingesetzter Software einzuholen
+  und diese an die Administratoren der Services zu verbreiten
+\item
+  Administratoren bei Sicherheitsfragen zu beraten
+\item
+  bei Sicherheitsvorfällen zeitnah und angemessen die technische
+  Reaktion der Vereinigten Backwerke zu koordinieren und diese
+  umzusetzen
+\end{itemize}
+
+Jedes Teammitglied ist eigenständig verantwortlich für
+
+\begin{itemize}
+\item
+  die Bereithaltung wichtiger Software-Werkzeuge und eines vom
+  Vereinigten Backwerke Netz unabhängigen Computers mit
+  Internet-Anschluss
+\item
+  die Ablage wichtiger Notfallinformationen (IP-Adressen der Systeme,
+  Passwörter, Betriebshandbuch, Kopien von CA Schlüsseln) offline an
+  einer für denjenigen gut zugänglichen, sicheren Stelle
+\item
+  Die Überprüfung des
+  \href{https://www.buerger-cert.de/archive?type=WIDTechnicalWarning}{Bürger-CERT}
+  auf aktuelle Sicherheitswarnmeldungen
+\end{itemize}
+
+\subparagraph{Mitglieder}\label{mitglieder}
+\begin{longtable}{ll}
+\toprule
+Aus Gruppe & Personen\tabularnewline
+\midrule
+Gruppe 5 (Datei Nord) & Christoph Weißenborn\\
+                      & Jörg Ricardo Schumacher\tabularnewline
+Gruppe 10 (Datei Süd) & Sascha Girrulat\\
+                      & Silas Jansen\tabularnewline
+\bottomrule
+\end{longtable}
+
+\subparagraph{Mumble Server}\label{mumble-server}
+
+Bei einem Security Incident koordinieren sich die Mitglieder des CSIRT
+über den ersten der im folgenden Aufgelisteten Server. Falls dieser
+nicht verfügbar sein sollte, so koordinieren sie sich über den zweiten
+Server, usw.
+
+\begin{longtable}{lp{6cm}}
+\toprule
+Server & Login\tabularnewline
+\midrule
+Gruppe 10 & IP/DNS: 78.46.200.193
+
+User: \textless{}beliebig\textgreater{}
+
+Passwort: juXe1goi\tabularnewline
+Gruppe 5 & IP: 5.45.103.136:64738
+
+DNS: praktikum.ehanse.de:64738
+
+User: \textless{}beliebig\textgreater{}
+
+Passwort: piratenwilddiebe\tabularnewline
+Last Resort & Skype, Google Hangout oder Telefonkonferenz
+
+(Achtung, hier keine Geschäftsgeheimnisse kommunizieren!)\tabularnewline
+\bottomrule
+\end{longtable}
+
+\paragraph{Workflow}\label{workflow-2}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Meldung} des Sicherheitsvorfalls durch Anwender, Administrator
+  oder Monitoring an den Benutzerservice
+\item
+  Der Benutzerservice erstellt ein \textbf{Ticket} im
+  \href{https://docs.google.com/spreadsheets/d/1GDq3AEsVDu1a-X7tEl6qKDtSZdAXm8lsRzY6Ijw-dUQ/edit\#gid=0}{Ticketsystem}
+  und nimmt eine \textbf{Erstbewertung} des Vorfalls vor. Falls es sich
+  nach dieser Bewertung um einen möglichen Security Incident (gemäß )
+  handelt, werden alle Mitglieder des CSIRT (per Mail und - soweit
+  angegeben - telefonisch) informiert. Sie erhalten dabei auch die ID
+  des Tickets (Zeilennummer im Ticketsystem)
+\item
+  Das CSIRT koordiniert die Reaktion über die Mumble Server. Dabei
+  orientiert sich das Team an den folgenden Leitlinien:
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \item
+    Schaden begrenzen und weitere Risiken minimieren
+  \item
+    Die Art und den Umfang der Kompromittierung feststellen
+  \item
+    Beweise sichern
+  \item
+    Weitere Stellen informieren, falls notwendig (CIO, Polizei, BSI,
+    etc.)
+  \item
+    Systeme wiederherstellen
+  \item
+    Informationen für die Dokumentation zusammenstellen und
+    strukturieren
+  \item
+    Schaden und Kosten abschätzen
+  \item
+    Reaktion überprüfen und Verfahren anpassen
+  \end{enumerate}
+\end{enumerate}
+
+\subsection{Problem Management}\label{problem-management}
+
+Über das Problem-Management werden unbekannte Ursachen für tatsächliche
+und potentielle Störungen (Incidents) innerhalb der IT-Services
+untersucht und die Behebung gesteuert. Anders als das Incident
+Management arbeitet das Problem-Management sowohl reaktiv als auch
+proaktiv. Ein wesentliches Ziel ist hierbei die 'dauerhafte
+Problemlösung'.
+
+Ein Problem ist so lange offen, wie seine Ursache und deren Behebung
+nicht erledigt sind; demgegenüber kann ein Incident geschlossen werden,
+sobald die vom Anwender benötigte Funktionalität wieder hergestellt ist.
+
+Die Ursachen für das Problem werden analysiert und Maßnahmen zu ihrer
+Verhinderung oder Behebung entwickelt. Ergebnis dieser Analyse ist
+entweder ein Known Error (also die nun bekannte Ursache für eine
+Störung) oder ein Workaround (Umgehungslösung).
+
+Im Problem-Management erarbeitete Workarounds können dem Incident
+Management zur Verfügung gestellt werden, um künftig für identische
+Störungen eine schnelle Wiederherstellung des betroffenen IT-Services zu
+ermöglichen.
+
+Lösungen für bekannte Fehler (Known Errors) können als
+Änderungsanforderung (Request for Change) an das Change Management
+weitergeleitet werden.
+
+Problems werden als solche im
+\href{https://docs.google.com/spreadsheets/d/1GDq3AEsVDu1a-X7tEl6qKDtSZdAXm8lsRzY6Ijw-dUQ/edit\#gid=0}{Ticketsystem}
+dokumentiert.
+
+\subsubsection{Problem Manager}\label{problem-manager}
+
+Der Problem Manager ist dafür verantwortlich, alle Problems über ihren
+gesamten Lebenszyklus zu verwalten. Seine vorrangigen Ziele bestehen
+darin, der Entstehung von Incidents vorzubeugen und die negativen
+Auswirkungen von Incidents, die nicht verhindert werden können,
+möglichst gering zu halten. Zu diesem Zweck pflegt er die Informationen
+zu Known Errors und Workarounds.
+
+\paragraph{Festgelegte Problem
+Manager}\label{festgelegte-problem-manager}
+
+\begin{longtable}{ll}
+\toprule
+Gruppe & Problem Manager\tabularnewline
+\midrule
+Gruppe 5 (Dateiserver) & Waldemar Schmidt\tabularnewline
+Gruppe 10 (Dateiserver) & Silas Jansen\tabularnewline
+\bottomrule
+\end{longtable}
+
+\subsection{Service Management}\label{service-management}
+
+\subsubsection{\texorpdfstring{\protect\hypertarget{ux5fRef456699502}{}{\protect\hypertarget{ux5fToc457467702}{}{}}Service
+Level Agreement
+(SLA)}{Service Level Agreement (SLA)}}\label{service-level-agreement-sla}
+
+Der Begriff Service-Level-Agreement (SLA) bezeichnet die Schnittstelle
+zwischen Auftraggeber und Dienstleister für wiederkehrende
+Dienstleistungen. Ziel ist es, die Kontrollmöglichkeiten für den
+Auftraggeber transparent zu machen, indem zugesicherte
+Leistungseigenschaften wie etwa Leistungsumfang, Reaktionszeit und
+Schnelligkeit der Bearbeitung genau beschrieben werden. Wichtiger
+Bestandteil ist hierbei die Dienstgüte (Servicelevel), welche die
+vereinbarte Leistungsqualität beschreibt.
+
+\begin{longtable}{lp{6cm}}
+\toprule
+Serviceparameter & Geforderter Servicelevel\tabularnewline
+\midrule
+\protect\hypertarget{GarantierteBetriebszeit}{}{}Garantierte
+Betriebszeit & Mo-Sa, 04:00-22:00 Uhr\tabularnewline
+Verfügbarkeit & mind. 99,0\%
+
+(bezogen auf den Kalendermonat)
+
+Die max. Ausfalldauer pro Monat beträgt 7:10 Stunden.\tabularnewline
+Reaktionszeit & Security Incident: 2 Tage
+
+Incident (kritisch): 2 Tage
+
+Incident (normal): 2 Arbeitstage
+
+Problem: 14 Tage
+
+Infoanfrage: 2 Arbeitstage
+
+Service Request: 14 Tage\tabularnewline
+Entstörungszeit & Security Incident: 2 Tage
+
+Incident (kritisch): 3 Tage
+
+Incident (normal): 4 Arbeitstage
+
+Problem: -
+
+Infoanfrage: -
+
+Service Request: -\tabularnewline
+\bottomrule
+\end{longtable}
+
+\paragraph{Klassifizierung von Events}\label{klassifizierung-von-events}
+
+\begin{longtable}{lp{6cm}}
+\toprule
+Event & Beschreibung\tabularnewline
+\midrule
+Security Incident & Die Vertraulichkeit oder Integrität von Gütern,
+Informationen, Daten und IT-Services der Vereinigten Backwerke ist
+möglicherweise kompromittiert.\tabularnewline
+Störung (kritisch) & Ausfall eines Services
+
+\emph{oder}
+
+erheblicher Teilausfall eines Services\tabularnewline
+Störung (normal) & Geringer Teilausfall eines Services oder einer
+Komponente
+
+(z.B. Nichtverfügbarkeit von Zusatz-Funktionen)
+
+\emph{oder}
+
+Ausfall einer Redundanzkomponente
+
+\emph{oder}
+
+Nichtverfügbarkeit eines Services für einen einzelnen
+Anwender\tabularnewline
+Problem & Unerwünschtes oder unerwartetes Verhalten eines Services, dass
+aktuell ohne wesentliche Auswirkungen auf die Anwender
+ist\tabularnewline
+Infoanfrage & Informationsanfrage eines Anwenders die ohne Änderung an
+den Systemen geklärt werden kann\tabularnewline
+Service Request & Anfrage eines Anwenders zur Bereitstellung eines neuen
+Services
+
+\emph{oder}
+
+Anfrage eines Anwenders zur Bereitstellung einer bisher nicht
+realisierten Funktionalität eines bestehenden Services\tabularnewline
+\bottomrule
+\end{longtable}
+
+\subsection{Eskalationsprozedur}\label{eskalationsprozedur}
+
+Eskalationen dienen in der Regel dazu, eine Störungsbearbeitung durch
+Einbeziehung höherer Instanzen zu beschleunigen, bzw. durch eine
+Erweiterung der Kompetenzen und Befugnisse zu ermöglichen.
+
+Eskaliert wird, sobald sich abzeichnet, dass die definierte Entstörzeit
+nicht eingehalten werden kann - oder spätestens, wenn sie überschritten
+wurde. An weitere Eskalationsebenen wird eskaliert, wenn die jeweilige
+Eskalationsebene mit ihren Kompetenzen und Befugnissen nicht mehr
+ausreichend zur Behebung der Störung beitragen kann.
+
+Da Problems, Infoanfragen und Service Requests keiner definierten
+Entstörzeit unterliegen, für ihre Lösung jedoch ggf. dennoch eine
+Eskalation erforderlich ist, sollte diese - soweit möglich -
+einvernehmlich vorgenommen werden.
+
+\begin{longtable}{lp{6cm}}
+\toprule
+Eskalationsstufe & Verantwortlicher Ansprechpartner\tabularnewline
+\midrule
+\endhead
+Normalfall & \textbf{Benutzerservice}
+
+Tel.: +49 228-3875 8003
+
+Mail: gruppe5@mayerbrot.intern\tabularnewline
+1. Eskalation & \textbf{Problem Manager}
+
+siehe Festgelegte Problem Manager\tabularnewline
+2. Eskalation & \textbf{CIO}
+
+Ralf Naues
+
+Tel.: NA
+
+Mail: k1599@fernuni-hagen.de\tabularnewline
+\bottomrule
+\end{longtable}
+
+\subsection{Service Manager}\label{service-manager}
+
+Für die Umsetzung des Servicemanagements wird ein IT Service Manager
+eingesetzt. Für alle Belange der Anwender, die für die Steuerung der
+Serviceleistungen relevant sind, steht der Service Manager zur
+Verfügung. Er leistet in dieser Funktion jedoch keinen operativen
+Service und ist keine Eskalationsinstanz bei akuten Vorfällen. Er
+überwacht die Einhaltung der SLAs. Wichtige Informationsquellen hierfür
+sind Einträge im Ticketsystem wie auch persönliches Feedback von
+Leitungsbereich, Anwendern und IT Gruppen.
+
+Service Manager ist
+
+\textbf{Christoph Weißenborn}
+
+Tel.: +49151-12045346
+
+Mail: christoph.weissenborn@live.de
+
+\section{Beschreibung der
+Betriebsprozesse}\label{beschreibung-der-betriebsprozesse}
+
+\subsection{Einmalige Betriebsprozesse (ausgelöst durch
+Event)}\label{einmalige-betriebsprozesse-ausgeluxf6st-durch-event}
+
+Komplett bekannte, wiederkehrende Betriebsprozesse, welche Änderungen an
+den Systemen erfordern, sind als Genehmigte Standard Changes
+beschrieben. Bei den folgenden Prozessen handelt es sich daher nur um
+allgemeine Leitlinien für im Vorfeld nicht bekannte Maßnahmen:
+
+\subsubsection{Allgemeiner Change
+Dateiserver}\label{allgemeiner-change-dateiserver}
+
+\begin{itemize}
+\item
+  Nach jeder Änderung an der Datei smb.conf muss zunächst mit dem
+  Programm testparm geprüft werden, ob die Syntax der
+  Konfigurationsdatei korrekt ist. Syntaxfehler in der
+  Konfigurationsdatei können sonst dazu führen, dass der Server nicht
+  neu startet oder Sicherheitslücken entstehen.
+\end{itemize}
+
+\subsubsection{Einbindung externer Programme in SAMBA
+(Dateiserver)}\label{einbindung-externer-programme-in-samba-dateiserver}
+
+\begin{itemize}
+\item
+  Es ist sicherzustellen, dass nur Programme, die keine schadhafte
+  Funktion besitzen, von Samba aufgerufen werden. Mit dem Kommando\\
+  user\textgreater{} testparm -vs \textbar{} grep -E "(command
+  =)\textbar{}(script =)\textbar{}(exec =)\textbar{}\textbackslash{}
+  (panic action =)\textbar{}(program =)"\\
+  werden alle Parameter ausgegeben, die für die Einbindung externer
+  Programme in Samba verantwortlich sind. Zusätzlich zu den Parametern
+  werden die momentan gültigen Werte angezeigt.
+\end{itemize}
+
+\subsection{Zyklische Reviews}\label{zyklische-reviews}
+
+\subsubsection{Service Review}\label{service-review}
+
+\begin{longtable}{lp{6cm}}
+\toprule
+Zyklus & 1x im Quartal\tabularnewline
+\midrule
+Verantwortlich & Service Manager\tabularnewline
+Teilnehmer & \begin{itemize}
+\item
+  Service Manager
+\item
+  Problem Manager
+\item
+  ein Mitglied jeder am Betriebshandbuch teilnehmenden IT Gruppe
+\item
+  ein Mitglied des CSIRT
+\item
+  weitere Administratoren auf Anfrage des Service Managers
+\end{itemize}\tabularnewline
+Agenda & \begin{itemize}
+\item
+  Einhaltung der SLAs
+\item
+  Anzahl und Status der Incidents im Betrachtungszeitraum
+\item
+  Entwicklung der Servicequalität
+\item
+  geplante (oder sich im Ablauf ergebende) Änderungen am Service
+  Management
+\end{itemize}\tabularnewline
+\bottomrule
+\end{longtable}
+\newpage
+\subsubsection{IT Security Review}\label{it-security-review}
+
+\begin{longtable}{lp{6cm}}
+\toprule
+Zyklus & Jährlich\tabularnewline
+\midrule
+Verantwortlich & CIO\tabularnewline
+Teilnehmer & \begin{itemize}
+\item
+  CIO
+\item
+  Alle Mitglieder des CSIRT
+\item
+  weitere Administratoren auf Anfrage des CIO
+\item
+  Geschäftsleitung auf Anfrage des CIO
+\end{itemize}\tabularnewline
+Agenda & \begin{itemize}
+\item
+  Wirksamkeit und Aktualität von Regelungen zur Datensicherheit
+\item
+  Wirksamkeit und Aktualität von Regelungen zum Datenschutz
+\item
+  Review von Sicherheitsvorfällen im Betrachtungszeitraum
+\item
+  Überprüfung der Einhaltung gesetzlicher Vorschriften (Lizensierung,
+  etc.)
+\item
+  \href{https://www.buerger-cert.de/archive?type=WIDTechnicalWarning}{Bürger-CERT}
+  Meldungen und Bearbeitung im letzten Jahr
+\item
+  Organisation einer IT Sicherheitskampagne alle 2-3 Jahre
+\end{itemize}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\subsubsection{Datensicherung Review}\label{datensicherung-review}
+
+\begin{longtable}{lp{6cm}}
+\toprule
+Zyklus & 1x im Quartal\tabularnewline
+\midrule
+\endhead
+Verantwortlich & Alle Mitarbeiter Gruppe 5 und 10\tabularnewline
+Teilnehmer & \begin{itemize}
+\item
+  Gruppe 5
+\item
+  Gruppe 10
+\item
+  Ein Mitarbeiter des CSIRT
+\end{itemize}\tabularnewline
+Agenda & \begin{itemize}
+\item
+  Test Restore aus dem Backup
+\item
+  Funktionierte das Backup im Betrachtungszeitraum wie definiert?
+\item
+  Volumina und Backupzeiten noch im Rahmen des Datensicherungskonzeptes?
+\end{itemize}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\protect\hypertarget{ux5fToc457467708}{}{}
+
+\section{Anlagen}\label{anlagen}
+
+\subsection{Formulare}\label{formulare}
+
+\subsubsection{Request for Change (RfC)}\label{request-for-change-rfc}
+
+\begin{longtable}{|p{6cm}|p{6cm}|}
+\toprule
+Betroffener Service &\tabularnewline
+\midrule
+Grund für den Change: & \tabularnewline
+Voraussichtliche Auswirkungen: &\tabularnewline
+Rollbackszenario für den Fall eines Fehlschlags: &\tabularnewline
+Priorität: &\tabularnewline
+Beteiligte IT Gruppen: &\tabularnewline
+Beteiligte Anwendergruppen: &\tabularnewline
+Vorhersehbare Risiken: &\tabularnewline
+Zeitplan zur Durchführung: &\tabularnewline
+\bottomrule
+\end{longtable}
+
+\subsubsection{Aufnahme eines Services / Gruppe in
+Betriebshandbuch}\label{aufnahme-eines-services-gruppe-in-betriebshandbuch}
+
+\begin{longtable}{lp{6cm}}
+\toprule
+Bezeichnung des Services* &\tabularnewline
+\midrule
+Serverdaten* & Beschreibung:
+
+Server- / Gerätebasis:
+
+Betriebssystem:
+
+Besonderheiten:
+
+Redundanzkonzept:
+
+Geforderte Verfügbarkeit:
+
+Systemverwaltung / Administration:
+
+Backup:
+
+Restore:\tabularnewline
+Service Management & Wollt ihr am gemeinsamen SLA teilnehmen?
+
+(Unser Vorschlag: Verfügbarkeit Mo-Sa, 04:00-22:00 Uhr,
+99\%)\tabularnewline
+Incident Management & Der Benutzerservice nimmt Mails entgegen, trägt
+sie ins bereitgestellte Ticketsystem ein und informiert die betroffenen
+Gruppen über das neue Ticket. Wollt ihr am gemeinsamen Benutzerservice
+teilnehmen?
+
+Welche Gruppenmitglieder nehmen am Benutzerservice teil?\tabularnewline
+IT Security Incident Management & Das Computer Security Incident
+Response Team (CSIRT) reagiert gemeinsam auf Sicherheitsvorfälle und
+behandelt diese angemessen. Wollt ihr am gemeinsamen CSIRT teilnehmen?
+
+Welche Gruppenmitglieder nehmen am CSIRT teil?\tabularnewline
+Problem Management & Wollt ihr am gemeinsamen Problem Management
+teilnehmen?
+
+Wer wird für eure Gruppe Problem Manager?\tabularnewline
+Change Management & Wollt ihr am gemeinsamen Change Management (nach
+ITIL) teilnehmen?
+
+Möchtet ihr dafür jemanden als Change Manager benennen?
+
+Welche Standard Changes möchtet ihr mit aufnehmen lassen? (Mit
+Ablaufbeschreibung)\tabularnewline
+\bottomrule
+\end{longtable}
+
+Mit * gekennzeichnete Informationen sind Pflicht. Alle anderen Angaben
+optional.
+
+\subsection{}\label{section}
+\newpage
+\subsection{Technische Informationen}\label{technische-informationen}
+
+\subsubsection{Liste der IP Adressen und DNS-Namen pro
+Gerät}\label{liste-der-ip-adressen-und-dns-namen-pro-geruxe4t}
+\begin{sidewaystable}
+\begin{longtable}{lllll}
+\toprule
+Service & Intern IP & Intern DNS & Extern IP & Extern DNS\tabularnewline
+\midrule
+Nord VPN/DNS & 10.8.1.1 /24 & VPNNord.MayerBrot.intern & &\tabularnewline
+Nord Web & 10.8.1.20 /24 & WebNord.MayerBrot.intern & &\tabularnewline
+Nord File & 10.8.1.30 /24 & FileNord.MayerBrot.intern & 5.45.103.136 &
+praktikum.ehanse.de\tabularnewline
+Nord CA & 10.8.1.40 /24 & CaNord.MayerBrot.intern & 46.101.99.119 &
+ca-nord.fachpraktikum-1599.de\tabularnewline
+Nord Mail & 10.8.1.50 /24 & MailNord.MayerBrot.intern & &\tabularnewline
+Süd VPN & 10.8.3.1 /24 & & &\tabularnewline
+Süd Web & /24 & & &\tabularnewline
+Süd File & 10.8.3.14 /24 & fileserver.mueller-backwaren.de &
+138.201.175.250&
+static.250.175.201.138.clients.your-server.de\tabularnewline
+Süd CA & 10.8.3.26 /24 & ca.mueller-backwaren.de & &
+caserv-mueller.westeurope.cloudapp.azure.com\tabularnewline
+Süd Mail & /24 & & &\tabularnewline
+\bottomrule
+\end{longtable}
+
+\end{sidewaystable}
+\subsection{Organisatorische
+Informationen}\label{organisatorische-informationen}
+
+\subsubsection{Technisch relevante Gesetze und
+Verordnungen}\label{technisch-relevante-gesetze-und-verordnungen}
+
+\begin{itemize}
+\item
+  \href{http://www.gesetze-im-internet.de/tkg_2004/index.html}{Telekommunikationsgesetz
+  (TKG)}
+\item
+  \href{http://www.gesetze-im-internet.de/tk_v_2005/index.html}{Telekommunikationsüberwachungsverordnung
+  (TKüV)}
+\item
+  \href{http://www.gesetze-im-internet.de/urhg/index.html}{Urheberrechtsgesetz
+  (UrhG)}
+\item
+  \href{https://www.gesetze-im-internet.de/tk_v_2005/index.html\#BJNR313600005BJNE001301308}{Verordnung
+  über die technische und organisatorische Umsetzung von Maßnahmen zur
+  Überwachung der Telekommunikation}
+\item
+  \href{http://www.gesetze-im-internet.de/elektrog/index.html}{Elektro-
+  und Elektronikgerätegesetz (ElektroG)}
+\item
+  \href{http://www.gesetze-im-internet.de/sigg_2001/}{Signaturgesetz
+  (SigG)}
+\end{itemize}
+
+\end{document}
