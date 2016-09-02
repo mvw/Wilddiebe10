@@ -7,7 +7,7 @@ def print_item_footer():
         print '\\end{easylist}'
 
 def _print_line(output):
-        print "  \item %s" % output
+        print "  & %s" % output
 
 def get_present_groups(vars_file='ansible/group_vars/file_server/public', key='k1599_users_present_groups'):
     content = yaml.load(open(vars_file))

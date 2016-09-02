@@ -19,31 +19,36 @@ anhang-prepare:
 
 ls-testcases:
 	echo '\subsection{Testfälle}' >> $(DEST);
+	echo '\label{subsec:testfaelle}' >> $(DEST);
 	/usr/bin/env python2 -c "import scripts.anhang as anhang; anhang.print_item_header()" >> $(DEST);
-	grep '#' .travis.yml | grep -E '(Check|Run)' | sed 's/#/&/g' >> $(DEST)
+	grep '#' .travis.yml | grep -E '(Check|Run)' | sed 's/#/\&/g' >> $(DEST)
 	/usr/bin/env python2 -c "import scripts.anhang as anhang; anhang.print_item_footer()" >> $(DEST);
 
 ls-ansible-roles:
 	echo '\subsection{Ansible Rollen}' >> $(DEST);
+	echo '\label{subsec:ansible_rollen}' >> $(DEST);
 	echo '\subsubsection{Eigene Rollen}' >> $(DEST);
 	/usr/bin/env python2 -c "import scripts.anhang as anhang; anhang.print_item_header()" >> $(DEST);
-	ls ansible/roles | sed 's/^/  & /g' | sed 's/_/\\_/g' >> $(DEST);
+	ls ansible/roles | sed 's/^/  \& /g' | sed 's/_/\\_/g' >> $(DEST);
 	/usr/bin/env python2 -c "import scripts.anhang as anhang; anhang.print_item_footer()" >> $(DEST);
 	echo '\subsubsection{Externe Rollen}' >> $(DEST);
 	/usr/bin/env python2 -c "import scripts.anhang as anhang; anhang.print_item_header()" >> $(DEST);
-	ls ansible/vendor | sed 's/^/  & /g' | sed 's/_/\\_/g' >> $(DEST);
+	ls ansible/vendor | sed 's/^/  \& /g' | sed 's/_/\\_/g' >> $(DEST);
 	/usr/bin/env python2 -c "import scripts.anhang as anhang; anhang.print_item_footer()" >> $(DEST);
 
 ls-present-groups:
 	echo '\subsection{Erzeugte Gruppen}' >> $(DEST)
+	echo '\label{subsec:erzeugte_gruppen}' >> $(DEST)
 	/usr/bin/env python2 -c "import scripts.anhang as anhang; anhang.get_present_groups()" >> $(DEST);
 
 ls-present-users:
 	echo '\subsection{Erzeugte Benutzer}' >> $(DEST)
+	echo '\label{subsec:erzeugte_benutzer}' >> $(DEST)
 	/usr/bin/env python2 -c "import scripts.anhang as anhang; anhang.get_present_users()" >> $(DEST);
 
 ls-allowed-ports:
 	echo '\subsection{Firewall}' >> $(DEST)
+	echo '\label{subsec:firewall}' >> $(DEST)
 	echo '\subsubsection{Offene Ports - Gruppe Nord}' >> $(DEST)
 	/usr/bin/env python2 -c "import scripts.anhang as anhang; anhang.get_allowed_tcp_ports('ansible/group_vars/file_server_nord/public')" >> $(DEST);
 	echo '\subsubsection{Offene Ports - Gruppe Sued}' >> $(DEST)
@@ -51,6 +56,7 @@ ls-allowed-ports:
 
 ls-hosts-entrys:
 	echo '\subsection{Einträge /etc/hosts}' >> $(DEST)
+	echo '\label{subsec:hosts}' >> $(DEST)
 	/usr/bin/env python2 -c "import scripts.anhang as anhang; anhang.get_hosts_entrys('ansible/group_vars/all')" >> $(DEST);
 
 clean:
