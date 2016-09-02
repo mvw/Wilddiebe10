@@ -8,7 +8,7 @@
 \maketitle
 
 \vfill
-\begin{center}
+\begin{center}-
 \includegraphics[scale=0.5]{images/0705.png}
 \end{center}
 
@@ -27,14 +27,13 @@
 %----------------------------------------------------------------------------------------
 
 \begin{abstract}
-Unsere Aufgabe war die Bereitstellung zweier Dateiserver innerhalb der vorgegebenen VPN-Netzwerkumgebung. Dabei waren wir verantwortlich für Organisation, Kommunikation und Dokumentation des Projektes. Unser Projekt hatte kein Budget, keine zentrale Leitung und keine festen Arbeitszeiten. Das agile Verfahren Kanban mit einem Trello-Board hat uns daher sehr geholfen unsere wichtigsten Ziele dennoch zeitgerecht zu erreichen.\\
+Unsere Aufgabe war die Bereitstellung zweier Dateiserver innerhalb der vorgegebenen VPN-Netzwerkumgebung. Dabei waren wir verantwortlich für Organisation, Kommunikation und Dokumentation des Projektes. Unser Projekt hatte kein Budget, keine zentrale Leitung und keine festen Arbeitszeiten. Das agile Verfahren Kanban mit einem Trello-Board hat uns daher sehr geholfen, unsere wichtigsten Ziele dennoch zeitgerecht zu erreichen.\\
 
 Da das Projekt im Rahmen des Fachpraktikums IT-Sicherheit durchgeführt wurde, haben wir ein besonderes Augenmerk auf das Sicherheitskonzept gelegt; der BSI IT-Grundschutz diente uns als Maßstab für die Analyse der Sicherheitsanforderungen.\\
 
-Bei der technischen Umsetzung hoffen wir mit dem Konfigurationsmanagement-Werkzeug Ansible und einer zentralen Codeverwaltung mittels Github ein solides Fundament für eine mögliche Weiterverwendung der technischen Ergebnisse gelegt zu haben.\\
+Bei der technischen Umsetzung hoffen wir, mit dem Konfigurationsmanagement-Werkzeug Ansible und einer zentralen Codeverwaltung mittels Github ein solides Fundament für eine mögliche Weiterverwendung der technischen Ergebnisse gelegt zu haben.\\
 
-Es ist uns in der vorgegebenen Zeit gelungen zwei Samba/SMB-Server für die Anwender zur Verfügung zu stellen und $95\%$ aller Sicherheits-Maßnahmen umzusetzen, die wir uns vorgenommen hatten. Alles was wir nicht umsetzen konnten - meist weil uns Zeit, Geld oder Zuarbeit gefehlt hat - ist nicht in Vergessenheit geraten: Im Ausblick haben wir geplante technische Maßnahmen und gewünschte organisatorische Regelungen aufgelistet.
-
+Es ist uns in der vorgegebenen Zeit gelungen, zwei Samba/SMB-Server für die Anwender zur Verfügung zu stellen und $95\%$ aller Sicherheits-Maßnahmen umzusetzen, die wir uns vorgenommen hatten. Alles was wir nicht umsetzen konnten - meist weil uns Zeit, Geld oder Zuarbeit gefehlt haben - ist nicht in Vergessenheit geraten: Im Ausblick haben wir geplante technische Maßnahmen und gewünschte organisatorische Regelungen aufgelistet.
 \end{abstract}
 %----------------------------------------------------------------------------------------
 %	SECTION GRUNDLAGEN
@@ -44,9 +43,9 @@ Es ist uns in der vorgegebenen Zeit gelungen zwei Samba/SMB-Server für die Anwe
 \section{Grundlagen}
 
 \setlength{\epigraphwidth}{.9\textwidth}
-\epigraph{"`Tatsache ist, dass - ohne begleitende Richtlinien oder einen Mechanismus zur Beurteilung - Sicherheit von jedem anders definiert wird und von niemandem verifiziert werden kann. Es gibt keinen Maßstab für eine Übereinstimmung mit einer „Kultur“, und eine „Sicherheitskultur“ wird immer von einer Kultur „erledige die Arbeit“ außer Kraft gesetzt werden.\newline \\ Wenn es Regeln gibt, schreibe sie auf. Wenn Technologien genutzt werden um die Regeln zu implementieren oder zu überwachen, dann schreibe auch das auf. Wenn Leute die Regeln brechen, lasse Konsequenzen folgen. Wenn die Regeln legitime Arbeiten verhindern, dann ändere sie. So einfach ist das."'}{\textit{übersetzt aus „Ten claims that scare security pros“, infoworld.com}}
+\epigraph{"`Tatsache ist, dass - ohne begleitende Richtlinien oder einen Mechanismus zur Beurteilung - Sicherheit von jedem anders definiert wird und von niemandem verifiziert werden kann. Es gibt keinen Maßstab für eine Übereinstimmung mit einer „Kultur“ und eine „Sicherheitskultur“ wird immer von einer Kultur „erledige die Arbeit“ außer Kraft gesetzt werden.\newline \\ Wenn es Regeln gibt, schreibe sie auf. Wenn Technologien genutzt werden um die Regeln zu implementieren oder zu überwachen, dann schreibe auch das auf. Wenn Leute die Regeln brechen, lasse Konsequenzen folgen. Wenn die Regeln legitime Arbeiten verhindern, dann ändere sie. So einfach ist das."'}{\textit{übersetzt aus „Ten claims that scare security pros“, infoworld.com}}
 
-Unsere Gruppen (5 und 10) haben den Auftrag erhalten, jeweils einen Datei-Server einzurichten und in Betrieb zu nehmen. Wir waren selbst dafür verantwortlich das Projekt zu organisieren und die Zusammenrarbeit mit den anderen Gruppen zu regeln, welche für Netz, CA, Mail und Webserver zuständig waren. Das spannendste an diesem Projekt war für uns natürlich die Frage nach der IT Sicherheit. Sie steht im Spannungsfeld zwischen notwendiger ganzheitlicher Betrachtung des Themas und dem beschränkten Auftrag, 2 Dateiserver bereit zu stellen.\\
+Unsere Gruppen (5 und 10) haben den Auftrag erhalten, jeweils einen Datei-Server einzurichten und in Betrieb zu nehmen. Wir waren selbst dafür verantwortlich, das Projekt zu organisieren und die Zusammenarbeit mit den anderen Gruppen zu regeln, welche für Netz, CA, Mail und Webserver zuständig waren. Das spannendste an diesem Projekt war für uns natürlich die Frage nach der IT Sicherheit. Sie steht im Spannungsfeld zwischen notwendiger ganzheitlicher Betrachtung des Themas und dem beschränkten Auftrag, 2 Dateiserver bereit zu stellen.\\
 
 Wo wir Risiken gefunden haben, die mit technischen Mitteln alleine nicht zu administrieren sind, haben wir organisatorische Regelungen geschaffen. Wo wir Risiken gefunden haben, die wir alleine nicht absichern können, haben wir stets auf die Kommunikation mit den Beteiligten gesetzt. Und diejenigen Restrisiken, welche wir mit den uns zur Verfügung stehenden Ressourcen an Geld, Zeit und Zuarbeit nicht eliminieren konnten, haben wir zumindest dokumentiert.\\
 
@@ -77,10 +76,10 @@ Bei unserem Vorgehen haben wir uns in folgender Reihenfolge gefragt:
 \end{enumerate}
 
 \subsection{Vorgehensmodell}
-Wir haben uns für die Projektsteuerung mittels \textbf{Kanban} \footcite{wikiKanban} entschieden. Mit dem Begriff Kanban bezeichnen wir hier das Projektmanagement-Vefahren, wie es von David Anderson\footcite{anderson2011kanban} beschrieben wird. Kanban zählt zu den agilen Verfahren. Es weist viele Ähnlichkeiten zu Scrum\footcite{wikiScrum} auf, setzt aber weniger auf formale Anforderungen und Rollen, sondern eher auf allgemeine Prinzipien. Wir haben uns für Kanban entschieden, da es als schlankes (\textit{lean}) Vorgehensmodell nur wenige absolute Anforderungen stellt, die fü ein Projekt ohne festen Arbeitszeiten und mit verteilten Mitarbietern ggf. nicht zielführend sind, uns aber dennoch erlaubt unseren Arbeitsablauf zu definieren und den Arbeitsfluss zu überwachen\footcite{whyKanban}. Kanban stellt jedoch besondere Anforderungen an die Projektmitarbeiter (PMA): Diese müssen entsprechend geschult, motiviert und kommunikativ sein und dürfen sich nicht an klassische hierarchische Verantwortlichkeiten klammern, wie sie in anderen Vorgehensmodellen häufig vorkommen.
+Wir haben uns für die Projektsteuerung mittels \textbf{Kanban} \footcite{wikiKanban} entschieden. Mit dem Begriff Kanban bezeichnen wir hier das Projektmanagement-Verfahren, wie es von David Anderson\footcite{anderson2011kanban} beschrieben wird. Kanban zählt zu den agilen Verfahren. Es weist viele Ähnlichkeiten zu Scrum\footcite{wikiScrum} auf, setzt aber weniger auf formale Anforderungen und Rollen, sondern eher auf allgemeine Prinzipien. Wir haben uns für Kanban entschieden, da es als schlankes (\textit{lean}) Vorgehensmodell nur wenige absolute Anforderungen stellt, die für ein Projekt ohne feste Arbeitszeiten und mit verteilten Mitarbeitern ggf. nicht zielführend sind, uns aber dennoch erlaubt unseren Arbeitsablauf zu definieren und den Arbeitsfluss zu überwachen\footcite{whyKanban}. Kanban stellt jedoch besondere Anforderungen an die Projektmitarbeiter (PMA): Diese müssen entsprechend geschult, motiviert und kommunikativ sein und dürfen sich nicht an klassische hierarchische Verantwortlichkeiten klammern, wie sie in anderen Vorgehensmodellen häufig vorkommen.
 
 \subsubsection{Kanban Praktiken}
-Im folgenden ist kurz beschrieben, in welcher Form wir die durch David Anderson \footcite{anderson2011kanban} beschriebenen sechs Praktiken in unserem Projekt konkret umgesetzt haben.
+Im Folgenden ist kurz beschrieben, in welcher Form wir die durch David Anderson \footcite{anderson2011kanban} beschriebenen sechs Praktiken in unserem Projekt konkret umgesetzt haben.
 
 
 \paragraph{Visualisiere den Fluss der Arbeit:}Die Wertschöpfungskette mit ihren
@@ -115,7 +114,7 @@ Trello unterstützt nicht alle Praktiken, bietet aber ein kostenloses und einfac
 \item Antworten auf die Fragen: wer zieht, wann zieht man, wie wählt man das nächste zu ziehende Ticket aus der Menge der vorhandenen Tickets aus, usw.\footcite{wikiKanban}
 \end{itemize}
 
-Enstsprechend der o.a. Punkte wurde eine gemeinsame \emph{Definition of Done} (siehe \ref{subsec:dod}) in Scrum, sowie eine spezifizierte Abgrenzung der Trello-Spalten vorgenommen.
+Enstsprechend der o.a. Punkte wurde eine gemeinsame \emph{Definition of Done} (siehe \ref{subsec:dod}) in Scrum sowie eine spezifizierte Abgrenzung der Trello-Spalten vorgenommen.
 
 \begin{minipage}{\textwidth}
 \captionof{table}{Von uns definierte Trello-Kategorien (Spalten)}
@@ -125,10 +124,10 @@ Enstsprechend der o.a. Punkte wurde eine gemeinsame \emph{Definition of Done} (s
 Bezeichnung & Beschreibung \\
 \midrule
 Backlog & Aufgaben die auf Bearbeitung warten. Hier kann jeder zugreifen und sich eine Aufgabe nehmen. Um zu verhindern, dass Arbeit doppelt gemacht wird, wird das Übernehmen der Aufgabe durch Hinzufügen der eigenen Person zur Aufgabe gekennzeichnet. Da die Zuordnung zu Personen erst in der nächsten Spalte passiert, ist die Taskanzahl hier noch nicht beschränkt. \\
-In Progress - Research & Aufgaben die in Bearbeitung sind und bei denen der Inhalt noch evaluiert werden muss z.B. wenn noch nicht klar ist wie etwas konkret umgesetzt werden muss. Hier sollte die Anzahl, der Aufgaben pro Person, zwei nicht überschreiten. \\
-In Progress - Working on & Aufgaben die konkret in Bearbeitung sind. Hier sollte die Anzahl der Aufgaben pro Person drei nicht überschreiten. \\
+In Progress - Research & Aufgaben, die in Bearbeitung sind und bei denen der Inhalt noch evaluiert werden muss, z.B. wenn noch nicht klar ist wie etwas konkret umgesetzt werden muss. Hier sollte die Anzahl der Aufgaben pro Person zwei nicht überschreiten. \\
+In Progress - Working on & Aufgaben, die konkret in Bearbeitung sind. Hier sollte die Anzahl der Aufgaben pro Person drei nicht überschreiten. \\
 In Progress - Blocked & Die Aufgabe kann nicht weiter bearbeitet werden, etwa weil Zuarbeiten von anderen Personen fehlen oder technische Probleme eine weitere Bearbeitung verhindern. Die Anzahl der Aufgaben sollte pro Person fünf Aufgaben nicht überschreiten. \\
-To Review & Um sicherzustellen, dass alle Aufgaben gemäß DoD mit einem 4-Augen Prinzip bearbeitet wurden, werden bearbeitete Tasks anschließend hierher verschoben. Jeder kann sich hier Aufgaben nehmen und sich den Inhalt entweder vorführen lassen oder selbständig anschauen und ggf. kommentieren oder ergänzen. Sollten Ergänzungen nötig sein muss der Task entsprechend wieder in einen Zustand der Bearbeitung verschoben werden. Die Aufgabenanzahl sollte pro Person drei Aufgaben nicht überschreiten. \\
+To Review & Um sicherzustellen, dass alle Aufgaben gemäß DoD mit einem 4-Augen Prinzip bearbeitet wurden, werden bearbeitete Tasks anschließend hierher verschoben. Jeder kann sich hier Aufgaben nehmen und sich den Inhalt entweder vorführen lassen oder selbständig anschauen und ggf. kommentieren oder ergänzen. Sollten Ergänzungen nötig sein, muss der Task entsprechend wieder in einen Zustand der Bearbeitung verschoben werden. Die Aufgabenanzahl sollte pro Person drei Aufgaben nicht überschreiten. \\
 Done & Aufgabe ist gemäß DoD abgeschlossen. Taskanzahl ist unbegrenzt. \\
 Ideas & Aufgaben mit niedrigster Priorität, die optional umzusetzen sind. Taskanzahl ist unbegrenzt. \\
 \bottomrule
@@ -137,7 +136,7 @@ Ideas & Aufgaben mit niedrigster Priorität, die optional umzusetzen sind. Taska
 \end{minipage}
 
 \paragraph{Miss und steuere den Fluss:} Die Mitglieder eines Kanban-Prozesses
-messen typische Größen wie Längen von Warteschlangen, Zykluszeit und Durchsatz,
+messen typische Größen, wie Längen von Warteschlangen, Zykluszeit und Durchsatz,
 um festzustellen, wie gut die Arbeit organisiert ist, wo man noch etwas
 verbessern kann und welche Versprechen man an die Partner geben kann, für die
 man arbeitet. Dadurch wird die Planung erleichtert und die Verlässlichkeit
@@ -180,7 +179,7 @@ den von uns verwendeten Maßstab für die Sicherheit unserer Lösung (siehe
 \ref{subsec:si}) auch als Maßstab für den Fortschritt des Projektes zu
 verwenden.\footcite{wikiKanban} \\
 
-Durch eine regelmäßige Überprüfung der dazu verwendeten Liste an Maßnahmen
+Durch eine regelmäßige Überprüfung der dazu verwendeten Liste an Maßnahmen,
 haben wir stockende oder noch offene Arbeitspakete identifiziert und bei den
 regelmäßigen gemeinsamen Besprechungen den dafür notwendigen Arbeitsfluss
 organisiert.
@@ -201,11 +200,11 @@ wesentlicher Bestandteil von Kanban.\footcite{wikiKanban}\\
 
 \subsection{Meetings}
 \subsubsection{Status-Meetings}
-Aufgrund der geografischen Verteilung und der unterschiedlichen Verfügbarkeit der Teammitglieder werden wir die in der agilen Vorgehensweise üblichen, täglichen Statusmeetings in einer etwas geänderten Form abhalten. Alle Teilnehmer der Gruppen Dateiserver Nord und Süd treffen sich Mo,Mi,Fr um 20:00 für ein Statusmeeting von maximal 60 Minuten auf einem der vorhandenen Mumble Server. Hierbei gelten folgende Regeln:
+Aufgrund der geografischen Verteilung und der unterschiedlichen Verfügbarkeit der Teammitglieder, werden wir die in der agilen Vorgehensweise üblichen, täglichen Statusmeetings in einer etwas geänderten Form abhalten. Alle Teilnehmer der Gruppen Dateiserver Nord und Süd treffen sich Mo,Mi,Fr um 20:00 für ein Statusmeeting von maximal 60 Minuten auf einem der vorhandenen Mumble Server. Hierbei gelten folgende Regeln:
 
 \begin{itemize}
 \item Das Meetings findet vor dem virtuellen Kanban Board statt
-\item Jeder sollte seine Sprechzeit zur Status der eigenen Tasks auf 90 Sekunden beschränken
+\item Jeder sollte seine Sprechzeit zum Status der eigenen Tasks auf 90 Sekunden beschränken
 \item Jeder sollte innerhalb seiner Sprechzeit folgende Punkte durchgehen:
 \begin{itemize}
 \item Was habe ich seit dem letzten Treffen gemacht?
@@ -213,13 +212,13 @@ Aufgrund der geografischen Verteilung und der unterschiedlichen Verfügbarkeit d
 \item Was blockiert mich bei meiner Arbeit?
 \end{itemize}
 \item Wenn einer spricht, hört die restliche Gruppe zu
-\item Tasks sollten wenn möglich innerhalb des Meetings verschoben werden. Wenn die Aufgabenrestriktion der Spalten das nicht zulässt, können Tasks vorher schon auf Review gezogen werden, sollten aber nur innerhalb des Statusmeetings auf Done gezogen werden damit alle einen gemeinsamen Wissensstand haben welche Aufgaben bereits abgeschlossen sind. Am Wochenende werden Statusmeetings nach Absprache gehalten.
+\item Tasks sollten, wenn möglich, innerhalb des Meetings verschoben werden. Wenn die Aufgabenrestriktion der Spalten das nicht zulässt, können Tasks vorher schon auf Review gezogen werden, sollten aber nur innerhalb des Statusmeetings auf Done gezogen werden, damit alle einen gemeinsamen Wissensstand darüber haben, welche Aufgaben bereits abgeschlossen sind. Am Wochenende werden Statusmeetings nach Absprache gehalten.
 \end{itemize}
 
 \subsubsection{Review-Meetings}
 Einmal in der Woche wird ein Review Meeting durchgeführt, bei dem alle PMA kurz für die Gruppen erläutern, was in der Zwischenzeit geschehen ist. Bei Bedarf können über Screen- oder Teamviewer-Sessions Dinge vorgeführt werden oder Probleme gemeinsam gelöst werden. Die Terminabsprache erfolgt immer innerhalb des Review Meetings für das darauf folgende. Wenn nötig wird ein Protokoll geführt. Informationen hierzu werden im Wiki veröffentlicht. \\
 
-Wärend des Review Meetings wird auch „Board Grooming“ durchgeführt. Dieser Vorgang ist aus Scrum als \textit{Backlog Grooming}\footcite{wikiScrum} bekannt und beschreibt einen wiederkehrenden Prozess zur Überarbeitung und Weiterentwicklung des Backlogs. Wir werden hier ebenfalls einen für Kanban angepassten und vereinfachten Prozess anwenden, der folgende Punkte enthält:
+Wärend des Review Meetings wird auch „Board Grooming“ durchgeführt. Dieser Vorgang ist aus Scrum als \textit{Backlog Grooming}\footcite{wikiScrum} bekannt, und beschreibt einen wiederkehrenden Prozess zur Überarbeitung und Weiterentwicklung des Backlogs. Wir werden hier ebenfalls einen für Kanban angepassten und vereinfachten Prozess anwenden, der folgende Punkte enthält:
 
 \begin{itemize}
 \item ordnen und zusammenfassen von Aufgaben auf dem Board
@@ -236,7 +235,7 @@ Wärend des Review Meetings wird auch „Board Grooming“ durchgeführt. Dieser
 Für die Entscheidung, welche Tasks zuerst durchgeführt werden müssen, werden in Kanban häufig die Verzögerungskosten (Cost of Delay) zu Rate gezogen\footcite{wikiKanban}. Da diese bei einem Projekt ohne Budget oder Gewinnabsicht jedoch sehr fiktiv sind, haben wir auf eine formelle Analyse hierzu verzichtet und die Priorisierung bei den wöchentlichen Meetings abgesprochen.
 
 \subsubsection{Internes Service Level Agreement (Kanban SLA)}
-In Kanban sind (optional) verschiedene Service-Arten (Classes of Service) vorgesehen, mit denen die Priorisierung der einzelnen Tasks geregelt werden kann. Wir haben diese leicht verändert auch bei uns realisiert.
+In Kanban sind (optional) verschiedene Service-Arten (Classes of Service) vorgesehen, mit denen die Priorisierung der einzelnen Tasks geregelt werden kann. Wir haben diese, leicht verändert, auch bei uns realisiert.
 
 \begin{minipage}{\textwidth}
 \captionof{table}{Interne SLA Kategorien}
@@ -247,7 +246,7 @@ Kanban \newline Bezeichnung & Unsere \newline Bezeichnung & Beschreibung \\
 \midrule
 Standard & Standard & Wird automatisch für alle nicht gekennzeichneten Tickets angenommen. \\
 Expedite & Beschleunigt & Aufgaben die mit dieser Priorität versehen werden, gefährden direkt den Erfolg des Projekts und haben Einfluss auf alle Beteiligten. Diese Aufgaben müssen unmittelbar von allen verfügbaren Mitgliedern bearbeitet werden. Direkt im Anschluss muss eine Information der anderen Mitglieder stattfinden und der Sachstand im Task vermerkt werden. Diese Priorität sollte nur in absoluten Ausnahmen vergeben werden. Diese Aufgaben werden mit einer roten Markierung versehen. \\
-Intangible & Optional & Diese Aufgaben werden in der Spalte Ideen gesammelt und mit einer orangen Markierung versehen. Sie sind mit niedriger Priorität zu bearbeiten; solange noch Aufgaben mit höherer Priorität vorhanden sind sollten diese nicht bearbeitet werden. Diese Aufgaben haben keinen Einfluss auf den Grad der Fertigstellung der eigentlichen Projektaufgabe.\\
+Intangible & Optional & Diese Aufgaben werden in der Spalte Ideen gesammelt und mit einer orangen Markierung versehen. Sie sind mit niedriger Priorität zu bearbeiten; solange noch Aufgaben mit höherer Priorität vorhanden sind, sollten diese nicht bearbeitet werden. Diese Aufgaben haben keinen Einfluss auf den Grad der Fertigstellung der eigentlichen Projektaufgabe.\\
 Fixed Date & Fester \newline Termin & Wird in der Aufgabe mit einem Fälligkeitsdatum und einer blauen Markierung versehen. Die entsprechenden Tickets sollten so durch das Kanban-System geschleust werden, dass die Funktionalität kurz vor diesem Stichtag produktiv geht. \\
 \bottomrule
 \end{tabular}
@@ -255,17 +254,17 @@ Fixed Date & Fester \newline Termin & Wird in der Aufgabe mit einem Fälligkeits
 \end{minipage}
 
 \subsection{Gemeinsames Repository}
-Um Code und technische Daten auszutauschen nutzen wir ein öffentliches (Git-)Repository\footcite{githubRepo} auf Github. Um Änderungen durchführen zu können, bekommen alle Mitglieder der beiden Teams (auf Anforderung) entsprechende Berechtigungen.
+Um Code und technische Daten auszutauschen, nutzen wir ein öffentliches (Git-)Repository\footcite{githubRepo} auf Github. Um Änderungen durchführen zu können, bekommen alle Mitglieder der beiden Teams (auf Anforderung) entsprechende Berechtigungen.
 
 \subsubsection{Motivation}
-Unabhängig von dem expliziten Einsatz von Git bietet ein Versionskontrollsystem uns folgende Vorteile\footcite{stackoverflowVersionControl}
+Unabhängig von dem expliziten Einsatz von Git, bietet uns ein Versionskontrollsystem folgende Vorteile\footcite{stackoverflowVersionControl}
 
 \begin{itemize}
 \item \textbf{Nachvollziehbarkeit}: Es kann jederzeit nachvollzogen werden, wer wann was geändert hat.
-\item \textbf{Reversibilität}: im Fehlerfall können Änderungen leichter herausgefunden werden und ggf. zurückgenommen werden,
-\item \textbf{Synchronisierung}: gemeinsame Nutzung des Codes durch alle Teilnehmer
-\item \textbf{Kollaboration}: gleichzeitige Arbeit an verschiedenen Features durch Branches
-\item \textbf{Vergleichbarkeit}: durch die Archivierung aller Commits der Teilnehmer sind z.B. problemlos direkte Vergleiche zwischen verschiedenen Versionen möglich.
+\item \textbf{Reversibilität}: Im Fehlerfall können Änderungen leichter herausgefunden und ggf. zurückgenommen werden.
+\item \textbf{Synchronisation}: Gemeinsame Nutzung des Codes durch alle Teilnehmer.
+\item \textbf{Kollaboration}: Gleichzeitige Arbeit an verschiedenen Features durch Branches.
+\item \textbf{Vergleichbarkeit}: Durch die Archivierung aller Commits der Teilnehmer sind beispielsweise problemlos direkte Vergleiche zwischen verschiedenen Versionen möglich.
 \end{itemize}
 
 Wir haben uns für Github entschieden, da es
@@ -286,17 +285,17 @@ Ein Konfigurationsmanagement-System bietet unserer Meinung nach - im Vergleich z
 
 \begin{itemize}
 \item \textbf{Skalierbarkeit}: Neue Server-Systeme können relativ einfach eingerichtet werden; die bestehende Konfiguration kann auf diese Systeme direkt ausgerollt werden
-\item \textbf{Reproduzierbarkeit} und dadurch zeitnahe \textbf{Wiederherstellbarkeit}: Kommt es zu nicht nachvollziehbaren Fehlern auf einem Zielsystem, so kann dieses automatisiert wieder in einen definierten Zustand überführt werden. Selbst irreversible Fehler können durch eine komplette Neuinstallation des Systeme deutlich schneller behoben werden: Sobald das Betriebssystem installiert und per ssh erreichbar ist, kann die weitere Software-Installation und Konfiguration vollautomatisch vorgenommen werden. Auch der Austausch von Hardware ist so mit deutlich weniger Aufwand verbunden. In Verbindung mit organisatorischen Regelungen (siehe Betriebshandbuch) ist es uns möglich, mit dem (bei diesem Projekt zwangsläufig beschränkten) Personaleinsatz deutlich kürzere Wiederanlaufzeiten zu realisieren und eine höhere effektive Servicequalität zu gewährleisten.
+\item \textbf{Reproduzierbarkeit} und dadurch zeitnahe \textbf{Wiederherstellbarkeit}: Kommt es zu nicht nachvollziehbaren Fehlern auf einem Zielsystem, so kann dieses automatisiert wieder in einen definierten Zustand überführt werden. Selbst irreversible Fehler können durch eine komplette Neuinstallation der Systeme deutlich schneller behoben werden: Sobald das Betriebssystem installiert und per ssh erreichbar ist, kann die weitere Software-Installation und Konfiguration vollautomatisch vorgenommen werden. Auch der Austausch von Hardware ist so mit deutlich weniger Aufwand verbunden. In Verbindung mit organisatorischen Regelungen (siehe Betriebshandbuch) ist es uns möglich, mit dem (bei diesem Projekt zwangsläufig beschränkten) Personaleinsatz deutlich kürzere Wiederanlaufzeiten zu realisieren und eine höhere effektive Servicequalität zu gewährleisten.
 \item \textbf{Verifikation} von Code vor der Implementierung: Ansible verfügt über eine „Check“-Option, welche es ermöglicht vor dem Rollout einer Konfiguration zu prüfen, an welchen Stellen genau dadurch eine Änderung auf den produktiven Systemen erfolgt.
 \item \textbf{Systemunabhängigkeit}: Durch die deklarative Beschreibung der gewünschten Konfiguration ist das tatsächlich verwendete Zielsystem bei der Konfiguration transparent; so kann etwa SAMBA mit identischem Code auf zwei verschiedenen Linux-Distributionen ausgerollt werden.
-\item Vereinigung von technischer \textbf{Dokumentation} und Konfiguration: Durch die deskriptive Art der Konfiguration, sowie durch die Möglichkeit Beschreibungen in der Konfiguration einzubauen ist die Konfiguration auch für Personen nachvollziehbar, die nicht mit den technischen Besonderheiten der verwendeten Betriebssysteme und Softwarelösungen vertraut sind. Die Konfiguration dient so gleichzeitig der technischen Dokumentation. In Verbindung mit dem verwendeten Versionskontrollsystem (siehe 3.5) ist dadurch nachvollziehbar, wer wann welche Änderungen genau an den Produktivservern vorgenommen hat.
-\item Darüber hinaus stellt es bei der Verwaltung von IT-Systeme einen erheblichen \textbf{Effizienzgewinn} dar, Konfiguration und Code, zentral zur kollaborativen Bearbeitung zur Verfügung zu haben.
+\item Vereinigung von technischer \textbf{Dokumentation} und Konfiguration: Durch die deskriptive Art der Konfiguration sowie durch die Möglichkeit Beschreibungen in der Konfiguration einzubauen, ist die Konfiguration auch für Personen nachvollziehbar, die nicht mit den technischen Besonderheiten der verwendeten Betriebssysteme und Softwarelösungen vertraut sind. Die Konfiguration dient so gleichzeitig der technischen Dokumentation. In Verbindung mit dem verwendeten Versionskontrollsystem (siehe 3.5) ist dadurch nachvollziehbar, wer wann welche Änderungen genau an den Produktivservern vorgenommen hat.
+\item Darüber hinaus stellt es bei der Verwaltung von IT-Systemen einen erheblichen \textbf{Effizienzgewinn} dar, Konfiguration und Code zentral zur kollaborativen Bearbeitung zur Verfügung zu haben.
 \end{itemize}
 
 Es standen verschiedene Lösungen, wie z.B. Ansible\footcite{ansible}, Puppet\footcite{puppet} und Chef\footcite{chef} zur Diskussion. Unsere Gruppen haben sich aus folgenden Gründen\footcite{whyAnsible} für den Einsatz von Ansible entschieden:
 
 \begin{itemize}
-\item Vollumfänglicher Betrieb \textbf{ohne Management-Server oder speziellen Agent} auf den Zielsystemen möglich (anders als bei Puppet und Chef)
+\item Vollumfänglicher Betrieb \textbf{ohne Management-Server oder speziellem Agent} auf den Zielsystemen möglich (anders als bei Puppet und Chef)
 \item Einfache Syntax im yaml (\textbf{Markdown}) Format
 (für Puppet und Chef sind umfangreichere Programmierkenntnisse erforderlich)
 \item Geringe Anforderungen an das ausführende System - Es ist \textbf{lediglich python und ein ssh Client nötig} (Puppet und Chef benötigen z.B. viele Ruby Bibliotheken)
@@ -305,13 +304,13 @@ Es standen verschiedene Lösungen, wie z.B. Ansible\footcite{ansible}, Puppet\fo
 (Puppet und Chef Arbeiten nach einem „Pull-Prinzip“)
 \end{itemize}
 
-Eine spätere Aufnahme von allen Systemen aus den Bereichen Nord und Süd ist nicht nur denkbar, sondern wird von uns auch ausdrücklich empfohlen. Das manuelle Installieren und Konfigurieren von Software in und auf produktiven Systemen ist ein in der Softwareentwicklung häufig anzutreffender schlechter Lösungsansatz für ein bestimmtes Problem (Antipattern\footcite[S. 5-9]{humble2010continuous}).
+Eine spätere Aufnahme von allen Systemen aus den Bereichen Nord und Süd ist nicht nur denkbar, sondern wird von uns auch ausdrücklich empfohlen. Das manuelle Installieren und Konfigurieren von Software in und auf produktiven Systemen ist ein in der Softwareentwicklung häufig anzutreffender, schlechter Lösungsansatz für ein bestimmtes Problem (Antipattern\footcite[S. 5-9]{humble2010continuous}).
 
 \subsubsection{Verschlüsselung kritischer Codeblöcke}
 \label{subsubsec:vault}
 Ansible verfügt über die Möglichkeit schützenswerte Daten über PyCrypto zu verschlüsseln. Dieses Feature nennt sich \emph{Vault} und ermöglicht es alle Variablen in der Ansible üblichen Syntax in AES-verschlüsselten Dateien zu speichern. Diese werden dann zur Laufzeit der Konfiguration in den lokalen Kontext integriert. Hierzu muss ein „Vault-Password“ übergeben werden. \\
 
-Alle schützenswerten Daten (z.b. die Zertifikate, Initiale Benutzerpasswörter und Schlüssel) werden im Repository durch ein Vault verschlüsselt und mit einem entsprechend komplexen Passwort versehen. Dieses ist allen Teilnehmern bekannt. Bei Bedarf kann das Password PGP-verschlüsselt zur Verfügung gestellt werden und die verschlüsselten Dateien können mit einem neuen Passwort aktualisiert werden.
+Alle schützenswerten Daten (z.b. die Zertifikate, initiale Benutzerpasswörter und Schlüssel) werden im Repository durch ein Vault verschlüsselt und mit einem entsprechend komplexen Passwort versehen. Dieses ist allen Teilnehmern bekannt. Bei Bedarf kann das Password PGP-verschlüsselt zur Verfügung gestellt werden und die verschlüsselten Dateien können mit einem neuen Passwort aktualisiert werden.
 
 \begin{lstlisting}[label=code:labelname,caption=Auszug aus ansible/group\_vars/file\_server/public]
 firstname: sascha
@@ -331,7 +330,7 @@ __vault_user_plain_password:
   sgirrulat:        'xxxxxxx'
 \end{lstlisting}
 
-Da sbmpasswd in Zusammenarbeit mit lokalen Benutzer nur mit Passwörtern in Klartext umgehen kann und Ansible nur mit Passwörter im Crypt Format, mussten für alle Nutzerkonten die entsprechenden Passwörter in beiden Formaten erzeugt und gespeichert werden.
+Da sbmpasswd in Zusammenarbeit mit lokalen Benutzern nur mit Passwörtern in Klartext umgehen kann und Ansible nur mit Passwörter im Crypt Format, mussten für alle Nutzerkonten die entsprechenden Passwörter in beiden Formaten erzeugt und gespeichert werden.
 
 \newpage
 \begin{minipage}{\textwidth}
@@ -429,14 +428,14 @@ Für die Inbetriebnahme unseres Servers benötigten wir zunächst Informationen 
 \end{itemize}
 Diese Informationen haben wir zeitnah erhalten. Die für die CA zuständigen Gruppen haben uns die von ihnen benötigten Informationen jeweils proaktiv übermittelt, so dass wir unsere Server Mitte Juli im VPN in Betrieb nehmen konnten.\\
 
-Es ist sinnvoll einheitliche Betriebs- und Sicherheitsstandards in einer gesamten Produktivumgebung zu verwenden. Zu diesem Zweck haben wir den anderen Gruppen die Mitarbeit an einem gemeinsamen Betriebskonzept vorgeschlagen (30.07.16). Dieser Vorschlag blieb leider unbeantwortet, so dass wir die weiteren Arbeiten nur zwischen den Gruppen 5 und 10 abgesprochen haben.
+Es ist sinnvoll, einheitliche Betriebs- und Sicherheitsstandards in einer gesamten Produktivumgebung zu verwenden. Zu diesem Zweck haben wir den anderen Gruppen die Mitarbeit an einem gemeinsamen Betriebskonzept vorgeschlagen (30.07.16). Dieser Vorschlag blieb leider unbeantwortet, so dass wir die weiteren Arbeiten nur zwischen den Gruppen 5 und 10 abgesprochen haben.
 
 \subsubsection{Information der Anwender}
-Alle Kursteilnehmer haben eine E-Mail bekommen mit der zum einen die Daten des
+Alle Kursteilnehmer haben eine E-Mail bekommen, mit der zum einen die Daten des
 persönlichen Accounts mitgeteilt wurden und zum anderen der zugehörige
-Gruppenbenutzer z.b. ''cert-nord''. Für alle Benutzer wurde ein individuelles
+Gruppenbenutzer, z.B. ''cert-nord''. Für alle Benutzer wurde ein individuelles
 Password erzeugt und zugeordnet. Ebenfalls gibt es für jede Gruppe einen
-eigenen Benutzer bei dem das Password nur den entsprechenden
+eigenen Benutzer, bei dem das Password nur den entsprechenden
 Gruppen-Mitgliedern bekannt gemacht wurde.\\
 
 \textbf{Vorlage:}
@@ -445,9 +444,8 @@ Gruppen-Mitgliedern bekannt gemacht wurde.\\
 Sehr geehrte(r) KursteilnehmerIn,\\
 
 auf den Servern der FileNord und FileSued wurden zwei Benutzer fuer Sie
-angelegt. Hierbei handelt es sich zum einen um einen personalisierten Benutzer
-fuer Sie und zum anderen um einen Benutzer fuer ihre Gruppe.\\
-
+angelegt. Hierbei handelt es sich zum Einen, um einen personalisierten Benutzer
+fuer Sie und zum Anderen, um einen Benutzer fuer ihre Gruppe.\\
 Persoenlicher Benutzer:\bigskip
 
   name: \{\{ user\_name \}\}
@@ -524,13 +522,13 @@ Wir haben uns schließlich entschlossen SAMBA\footcite{samba} zu nutzen und den 
 \label{sec:sicherheitskonzept}
 Es existiert eine Vielzahl von IT-Sicherheitsstandards\footcite{wikiCyberSecStandards}. Das vorliegende Sicherheitskonzept richtet sich nach den Leitlinien des \emph{BSI IT-Grundschutz}\footcite{grundschutz}.\\
 
-Kernziel des Projektes ist die Inbetriebnahme zweier Dateiserver. Daher werden im folgenden nur Grundschutzaspekte modelliert, die für den sicheren Betrieb des Dateiservices - unmittelbar oder mittelbar - relevant sind. Die Absicherung anderer Teilaspekte der Gesamtumgebung - wie auch die Absicherung der Gesamtumgebung an sich - bleibt dabei unberücksichtigt. Eine abschließende Zertifizierung nach ISO/IEC 27001 ist nicht Bestandteil des Projektumfangs.\\
+Kernziel des Projektes ist die Inbetriebnahme zweier Dateiserver. Daher werden im Folgenden nur Grundschutzaspekte modelliert, die für den sicheren Betrieb des Dateiservices - mittelbar oder unmittelbar - relevant sind. Die Absicherung anderer Teilaspekte der Gesamtumgebung - wie auch die Absicherung der Gesamtumgebung an sich - bleibt dabei unberücksichtigt. Eine abschließende Zertifizierung nach ISO/IEC 27001 ist nicht Bestandteil des Projektumfangs.\\
 
 Aus technischer Sicht basiert das Sicherheitskonzept auf der \emph{Philosophie der Verteidigung in der Tiefe (Defense in depth)}\footcite{wikiDiD}\footcite{kuipers2006control}: Wir verlassen uns nicht auf eine einzelne Sicherheitsmaßnahme (Aus eigener Anschauung kennen wir die Argumentation "`Wir brauchen kein gutes Passwort, der Server steht doch hinter der Firewall"' von Administratoren mit sicherheitskritischen Aufgaben), sondern versuchen einem potentiellen Angreifer stets mehrere (voneinander unabhängige) Hürden in den Weg zu stellen. Da aus Ressourcengründen nur jeweils ein Server für Nord und einer für Süd verwendet wird, sind die Möglichkeiten der praktischen Umsetzung hierzu natürlich auf Softwarelösungen beschränkt.
 
 \subsection{Security Index}
 \label{subsec:si}
-Dem Thema Sicherheit kommt in diesem Projekt eine besondere Bedeutung zu und die Absicherung der Systeme nimmt deutlich mehr Zeit in Anspruch als die Bereitstellung der Funktionalität für den Anwender. Wir haben uns daher entschlossen den Fortschritt des Projektverlaufes daran zu messen, inwieweit wir den Schutzbedarf der Anwendungen erfüllt haben. Um dies an einem einfachen, leicht zu visualisierenden Maßstab messen zu können, haben wir eine eigene Metrik entwickelt: Den Security Index (SI). Dieser ist wie folgt definiert:\\
+Dem Thema Sicherheit kommt in diesem Projekt eine besondere Bedeutung zu und die Absicherung der Systeme nimmt deutlich mehr Zeit in Anspruch, als die Bereitstellung der Funktionalität für den Anwender. Wir haben uns daher entschlossen, den Fortschritt des Projektverlaufes daran zu messen, inwieweit wir den Schutzbedarf der Anwendungen erfüllt haben. Um dies an einem einfachen, leicht zu visualisierenden Maßstab messen zu können, haben wir eine eigene Metrik entwickelt: Den Security Index (SI). Dieser ist wie folgt definiert:\\
 
 Seien
 \begin{itemize}
@@ -561,7 +559,7 @@ Betriebshandbuch & 1,0 \\
 externer Dienstl. & 1,0 \\
 Hardening verboten & 1,0 \\
 nicht zutreffend & 1,0 \\
-nur Organisatorisch & 0,5 \\
+nur organisatorisch & 0,5 \\
 geplant & 0,0 \\
 nicht durchgeführt & 0,0 \\
 offen & 0,0 \\
@@ -601,8 +599,8 @@ Der SI kann und soll eine eingehende Betrachtung der aktuellen Sicherheitslage n
 Kategorie & Definition \\
 \midrule
 Normal & Die Schadensauswirkungen sind begrenzt (etwa auf eine einzelne Verkaufsstelle) und überschaubar. \newline Die maximal tragbare Ausfallzeit übersteigt 4 Tage.\\[0.3cm]
-Hoch & Die Schadenauswirkungen können beträchtlich sein und z.B. zum Ausfall eines einzelnen Dienstes für alle Verkaufsstellen führen. \newline Die maximal tragbare Ausfallzeit beträgt zwischen 2 und 4 Tagen. \\[0.3cm]
-Sehr hoch & Die Schadensauswirkungen können den Bestand der vereinigten Back-werke existentiell bedrohen oder das Betriebsergebnis des Jahres katastrophal Beschädigen. \newline Die maximal tragbare Ausfallzeit liegt unter 2 Tagen \\
+Hoch & Die Schadensauswirkungen können beträchtlich sein und z.B. zum Ausfall eines einzelnen Dienstes für alle Verkaufsstellen führen. \newline Die maximal tragbare Ausfallzeit beträgt zwischen 2 und 4 Tagen. \\[0.3cm]
+Sehr hoch & Die Schadensauswirkungen können den Bestand der vereinigten Back-werke existentiell bedrohen oder das Betriebsergebnis des Jahres katastrophal beschädigen. \newline Die maximal tragbare Ausfallzeit liegt unter 2 Tagen. \\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -616,9 +614,9 @@ Sehr hoch & Die Schadensauswirkungen können den Bestand der vereinigten Back-we
 \toprule
 Grundwert & Definition der Verletzung \\
 \midrule
-Vertraulichkeit & Vertrauliche Informationen werden unberechtigt zur Kenntnis genommen oder weitergegeben \\
-Integrität & Die Korrektheit der Informationen und der Funktionsweise von Systemen ist nicht mehr gegeben \\
-Verfügbarkeit & Autorisierte Benutzer werden am Zugriff auf Informationen und Systeme behindert \\
+Vertraulichkeit & Vertrauliche Informationen werden unberechtigt zur Kenntnis genommen oder weitergegeben. \\
+Integrität & Die Korrektheit der Informationen und der Funktionsweise von Systemen ist nicht mehr gegeben. \\
+Verfügbarkeit & Autorisierte Benutzer werden am Zugriff auf Informationen und Systeme behindert. \\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -634,13 +632,13 @@ Anwendung & Grundwert & Schutzbedarf & Begründung \\
 \midrule
 Personaldaten-verwaltung & Vertraulichkeit & Hoch & Personaldaten sind besonders schutzbedürftige personenbezogene Daten, deren Bekanntwerden die Betroffenen erheblich beeinträchtigen könnte. \\
 Personaldaten-verwaltung & Integrität & Normal & da Fehler rasch erkannt und die Daten nachträglich korrigiert werden können. \\
-Personaldaten-verwaltung & Verfügbarkeit & Gering & Ausfälle von bis zu einer Woche können mittels manueller Verfahren überbückt werden \\
-Finanz-verwaltung & Vertraulichkeit & Hoch & Mit den Finanzdaten ist ein Zugriff auf die Konten der vereinigten Backwerke möglich \\
-Finanz-verwaltung & Integrität & Hoch & Falsche oder fehlende Abrechnungen führen zu unbezahlten oder unbearbeiteten Bestellungen \\
-Finanz-verwaltung & Verfügbarkeit & Normal & Rechnungen müssen nur innerhalb der üblichen Laufzeiten bezahlt werden \\
-Kassensystem & Vertraulichkeit & Gering & Backwerk-Bestellungen sind für unsere Kunden keine vertraulichen Informationen \\
-Kassensystem & Integrität & Normal & Falsche oder fehlende Kassendaten machen die Nachvollziehbarkeit von Ausgaben und Einnahmen unmöglich \\
-Kassensystem & Verfügbarkeit & Normal & Die Synchronisation der Kassenbestände erfolgt nachts und ist für den Tagesbetrieb nicht relevant\\
+Personaldaten-verwaltung & Verfügbarkeit & Gering & Ausfälle von bis zu einer Woche können mittels manueller Verfahren überbrückt werden. \\
+Finanz-verwaltung & Vertraulichkeit & Hoch & Mit den Finanzdaten ist ein Zugriff auf die Konten der vereinigten Backwerke möglich. \\
+Finanz-verwaltung & Integrität & Hoch & Falsche oder fehlende Abrechnungen führen zu unbezahlten oder unbearbeiteten Bestellungen. \\
+Finanz-verwaltung & Verfügbarkeit & Normal & Rechnungen müssen nur innerhalb der üblichen Laufzeiten bezahlt werden. \\
+Kassensystem & Vertraulichkeit & Gering & Backwerk-Bestellungen sind für unsere Kunden keine vertraulichen Informationen. \\
+Kassensystem & Integrität & Normal & Falsche oder fehlende Kassendaten machen die Nachvollziehbarkeit von Ausgaben und Einnahmen unmöglich. \\
+Kassensystem & Verfügbarkeit & Normal & Die Synchronisation der Kassenbestände erfolgt nachts und ist für den Tagesbetrieb nicht relevant.\\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -669,13 +667,13 @@ Verfügbarkeit & Normal & Maximumprinzip \\
 \begin{tabular}{p{3.5cm}llp{6.3cm}}
 \toprule
 Anwendung & Grundwert & Schutzbedarf & Begründung \\
-Dateiserver? & Vertraulichkeit & Hoch & Maximumprinzip \\
+Dateiserver & Vertraulichkeit & Hoch & Maximumprinzip \\
 LAN-Client & Integrität & Hoch & Maximumprinzip \\
  & Verfügbarkeit & Normal & Maximumprinzip \\
-Dateiserver? & Vertraulichkeit & Hoch & Kommunikation findet hier ausschließlich zur LAN-Anbindung statt \\
+Dateiserver & Vertraulichkeit & Hoch & Kommunikation findet hier ausschließlich zur LAN-Anbindung statt \\
 Internet & Integrität & Hoch &  \\
  & Verfügbarkeit & Normal &  \\
-Dateiserver? & Vertraulichkeit & Hoch & Nutzer-Login-Daten \\
+Dateiserver & Vertraulichkeit & Hoch & Nutzer-Login-Daten \\
 AD/DNS-Server & Integrität & Hoch & Nutzer-Authentifizierung \\
  & Verfügbarkeit & Normal &  \\
 \bottomrule
@@ -750,7 +748,7 @@ Kürzel 	& Titel & Bemerkungen \\
 \midrule
 B5.8	& Telearbeit	& Relevant für die sichere Einbindung der Clients \\
 B5.17	& Samba			& \\
-B5.18	& DNS-Server	& Betrieben durch Netzgruppen; im weiteren daher unberücksichtigt \\
+B5.18	& DNS-Server	& Betrieben durch Netzgruppen; im Weiteren daher unberücksichtigt \\
 B5.19	& Internet-Nutzung	& \\
 B5.22	& Protokollierung	& \\
 B5.23	& Cloud Management	& Basiert auf IETF Cloud Reference Framework \\
@@ -769,9 +767,9 @@ Alle letztendlich durchgeführten technischen Maßnahmen sind in der technischen
 \newpage
 \captionof{table}{Identifizierte Maßnahmen}
 \label{tab:massnahmen}
-\begin{longtable}{lp{3.7cm}p{3cm}lp{3.8cm}}
+\begin{longtable}{l|p{3.7cm}|p{3,5cm}|p{2cm}|p{3.8cm}}
 \toprule
-Kürzel & Titel & Status & Verantwortung & Bemerkungen \\
+Kürzel & Titel & Status & Verantw. & Bemerkungen \\
 \midrule
 M1.28 & Lokale unterbrechungsfreie Stromversorgung & externer Dienstl. & 5+10 & Server gemietet bei netcup GmbH (Nord), bzw. Hetzner Online GmbH (Süd) \\
 M2.137 & Beschaffung eines geeigneten Datensicherungssystems & nicht durchgeführt & 5+10 & aus Zeit- und Kostengründen nur teilweise realisiert \\
@@ -803,10 +801,10 @@ M2.360 & Sicherheits-Audits und Berichtswesen bei Speichersystemen & Betriebshan
 M2.362 & Auswahl einer geeigneten Speicherlösung & abgeschlossen & 5+10 &  \\
 M2.437 & Planung des Einsatzes eines Samba-Servers & abgeschlossen & 5+10 &  \\
 M2.438 & Sicherer Einsatz externer Programme auf einem Samba-Server & abgeschlossen & 5+10 &  \\
-M2.46 & Geeignetes Schlüsselmanagement & nur Organisatorisch & 5+10 & Server voll, Client nur Org. \\
+M2.46 & Geeignetes Schlüsselmanagement & nur organisatorisch & 5+10 & Server voll, Client nur Org. \\
 M2.525 & Erstellung einer Sicherheitsrichtlinie für Speicherlösungen & abgeschlossen & 5+10 &  \\
 M2.526 & Planung des Betriebs der Speicherlösung & Betriebshandbuch & 5+10 &  \\
-M2.527 & Sicheres Löschen in SAN-Umgebungen & externer Dienstl. & 5+10 & Server gemietet bei netcup GmbH (Nord), bzw. Hetzner Online GmbH (Süd) \\
+M2.527 & Sicheres löschen in SAN-Umgebungen & externer Dienstl. & 5+10 & Server gemietet bei netcup GmbH (Nord), bzw. Hetzner Online GmbH (Süd) \\
 M2.528 & Planung der sicheren Trennung von Mandanten in Speicherlösungen & nicht zutreffend & 5+10 & Es existiert nur je ein Mandant \\
 M2.529 & Modellierung von Speicherlösungen & abgeschlossen & 5+10 &  \\
 M3.23 & Einführung in kryptographische Grundbegriffe & abgeschlossen & 5+10 & alle Anwender sind Admins \\
@@ -847,7 +845,7 @@ M4.331 & Sichere Konfiguration des Betriebssystems für einen Samba-Server & abg
 M4.332 & Sichere Konfiguration der Zugriffssteuerung bei einem Samba-Server & abgeschlossen & 5+10 &  \\
 M4.333 & Sichere Konfiguration von Winbind unter Samba & nicht zutreffend & 5+10 & kein AD eingerichtet \\
 M4.334 & SMB Message Signing und Samba & abgeschlossen & 5+10 & da nur als Dateiserver genutzt kann Default bleiben \\
-M4.335 &  Sicherer Betrieb eines Samba-Servers & abgeschlossen & 5+10 &  \\
+M4.335 & Sicherer Betrieb eines Samba-Servers & abgeschlossen & 5+10 &  \\
 M4.432 & Sichere Konfiguration von Serverdiensten & abgeschlossen & 5+10 & Authentisierung intern unverschlüsselt \\
 M4.433 & Einsatz von Datenträgerverschlüsselung & externer Dienstl. & 5+10 &  \\
 M4.435 & Selbst-verschlüsselnde Festplatten & nicht durchgeführt & 5+10 & Server gemietet bei netcup GmbH (Nord), bzw. Hetzner Online GmbH (Süd) \\
@@ -875,7 +873,7 @@ M5.19 & Einsatz der Sicherheitsmechanismen von sendmail & nicht zutreffend & 5+1
 M5.20 & Einsatz der Sicherheitsmechanismen von rlogin, rsh und rcp & abgeschlossen & 5+10 & Dienste sollten abgeschaltet sein (Ersatz: ssh) \\
 M5.21 & Sicherer Einsatz von telnet, ftp, tftp und rexec & nicht zutreffend & 5+10 & nicht aktiviert \\
 M5.64 & Secure Shell & abgeschlossen & 5+10 &  \\
-M5.72 & Deaktivieren nicht benötigter Netzdienste & Hardening verboten & 5+10 &  \\
+M5.72 & Deaktivierung nicht benötigter Netzdienste & Hardening verboten & 5+10 &  \\
 M5.9 & Protokollierung am Server & abgeschlossen & 5+10 &  \\
 M6.1 & Erstellung einer Übersicht über Verfügbarkeitsanforderungen & Betriebshandbuch & 5+10 &  \\
 M6.110 & Festlegung des Geltungsbereichs und der Notfallmanagementstrategie & Betriebshandbuch & 5+10 &  \\
@@ -884,19 +882,19 @@ M6.112 & Aufbau einer geeigneten Organisationsstruktur für das Notfallmanagemen
 M6.113 & Bereitstellung angemessener Ressourcen für das Notfallmanagement & Betriebshandbuch & 5+10 &  \\
 M6.114 & Erstellung eines Notfallkonzepts & Betriebshandbuch & 5+10 &  \\
 M6.115 & Integration der Mitarbeiter in den Notfallmanagement-Prozess & Betriebshandbuch & 5+10 &  \\
-M6.116 & Integration von Notfallmanagement in organisationsweite Abläufe und Prozesse & Betriebshandbuch & 5+10 &  \\
+M6.116 & Integration des Notfallmanagements in organisationsweite Abläufe und Prozesse & Betriebshandbuch & 5+10 &  \\
 M6.117 & Tests und Notfallübungen & Betriebshandbuch & 5+10 &  \\
 M6.118 & Überprüfung und Aufrechterhaltung der Notfallmaßnahmen & Betriebshandbuch & 5+10 &  \\
 M6.119 & Dokumentation im Notfallmanagement-Prozess & Betriebshandbuch & 5+10 &  \\
 M6.120 & Überprüfung und Steuerung des Notfallmanagement-Systems & Betriebshandbuch & 5+10 &  \\
 M6.135 & Regelmäßige Sicherung wichtiger Systemkomponenten eines Samba-Servers & Betriebshandbuch & 5+10 &  \\
-M6.136 &  Erstellen eines Notfallplans für den Ausfall eines Samba-Servers & Betriebshandbuch & 5+10 &  \\
+M6.136 & Erstellen eines Notfallplans für den Ausfall eines Samba-Servers & Betriebshandbuch & 5+10 &  \\
 M6.141 & Festlegung von Ausweichverfahren bei der Internet-Nutzung & Betriebshandbuch & 5+10 &  \\
 M6.162 & Reaktion bei praktischer Schwächung eines Kryptoverfahrens & Betriebshandbuch & 5+10 &  \\
 M6.20 & Geeignete Aufbewahrung der Backup-Datenträger & abgeschlossen & 5+10 &  \\
 M6.21 & Sicherungskopie der eingesetzten Software & abgeschlossen & 5+10 &  \\
 M6.22 & Sporadische Überprüfung auf Wiederherstellbarkeit von Datensicherungen & Betriebshandbuch & 5+10 &  \\
-M6.23 & Verhaltensregeln bei Auftreten von Schadprogrammen & Betriebshandbuch & 5+10 &  \\
+M6.23 & Verhaltensregeln beim Auftreten von Schadprogrammen & Betriebshandbuch & 5+10 &  \\
 M6.24 & Erstellen eines Notfall-Bootmediums & abgeschlossen & 5+10 & Alternatives Vorgehen implementiert: Server neu aufsetzen und config via ansible einspielen \\
 M6.31 & Verhaltensregeln nach Verlust der Systemintegrität & Betriebshandbuch & 5+10 &  \\
 M6.32 & Regelmäßige Datensicherung & abgeschlossen & 5+10 &  \\
@@ -905,7 +903,7 @@ M6.34 & Erhebung der Einflussfaktoren der Datensicherung & abgeschlossen & 5+10 
 M6.35 & Festlegung der Verfahrensweise für die Datensicherung & abgeschlossen & 5+10 &  \\
 M6.36 & Festlegung des Minimaldatensicherungskonzeptes & abgeschlossen & 5+10 &  \\
 M6.37 & Dokumentation der Datensicherung & abgeschlossen & 5+10 &  \\
-M6.56 & Datensicherung bei Einsatz kryptographischer Verfahren & nur Organisatorisch & 5+10 &  \\
+M6.56 & Datensicherung bei Einsatz kryptographischer Verfahren & nur organisatorisch & 5+10 &  \\
 M6.96 & Notfallvorsorge für einen Server & Betriebshandbuch & 5+10 &  \\
 M6.98 & Notfallvorsorge und Notfallreaktion für Speicherlösungen & Betriebshandbuch & 5+10 &  \\
 \bottomrule
