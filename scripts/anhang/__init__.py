@@ -1,10 +1,10 @@
 import yaml
 
 def print_item_header():
-        print '\\begin{itemize}'
+        print '\\begin{easylist}'
 
 def print_item_footer():
-        print '\\end{itemize}'
+        print '\\end{easylist}'
 
 def _print_line(output):
         print "  \item %s" % output

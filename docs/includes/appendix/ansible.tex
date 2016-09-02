@@ -1,0 +1,155 @@
+\section{Ansible}
+\subsection{Testfälle}
+\label{subsec:testfaelle}
+\begin{easylist}
+  & Run syntax-checks via makefile
+  & Run the role/playbook via makefile
+  & Run the role/playbook again to make sure it's idempotent
+  & Check if rsyslog port 10514 is open
+  & Check if samba port 445 is open
+  & Check if ssh port 22 is open
+  & Check expected users will be created
+  & Check users will member of expected groups
+  & Check users will be member of the expected primary group
+  & Check if user homes got the expected permissions
+  & Check if groupuser homes got the expected permissions
+  & Check expected groups will be created
+  & Check if ssh service is up and running
+  & Check if samba service is up and running
+  & Check if samba group share is present
+  & Check if rsyslog service is up and running
+  & Check if nmbd service is disabled
+  & Check if openntpd service is up and running
+  & Check if quotas are enabled
+  & Check if quota limits are set as expected
+  & Check if the doc files are building.
+\end{easylist}
+\subsection{Ansible Rollen}
+\label{subsec:ansible_rollen}
+\subsubsection{Eigene Rollen}
+\begin{easylist}
+  & k1599\_anti\_virus
+  & k1599\_common
+  & k1599\_file\_server
+  & k1599\_openvpn\_client
+  & k1599\_quota
+  & k1599\_rsyslog\_client
+  & k1599\_rsyslog\_server
+  & k1599\_ssh
+  & k1599\_time\_sync
+  & k1599\_users
+\end{easylist}
+\subsubsection{Externe Rollen}
+\begin{easylist}
+  & ansible-role-firewall
+\end{easylist}
+\subsection{Erzeugte Gruppen}
+\label{subsec:erzeugte_gruppen}
+\begin{easylist}
+  & web-nord
+  & mail-nord
+  & netz-nord
+  & cert-nord
+  & file-nord
+  & web-sued
+  & mail-sued
+  & netz-sued
+  & cert-sued
+  & file-sued
+  & fapra1599
+  & sshlogin
+\end{easylist}
+\subsection{Erzeugte Benutzer}
+\label{subsec:erzeugte_benutzer}
+\begin{easylist}
+  & msiepmann
+  & shartmann
+  & tgrosswendt
+  & netz-nord
+  & fkamfenkel
+  & cpempelforth
+  & mklein
+  & file-sued
+  & sgirrulat
+  & fhofmann
+  & ahacker
+  & nnapp
+  & mwoerkom
+  & sbruch
+  & bfischer
+  & cboettge
+  & jherold
+  & fschweisfurth
+  & web-nord
+  & jwichert
+  & mkutter
+  & phaebel
+  & cert-nord
+  & ooffenburger
+  & mploeger
+  & dtroeger
+  & nreusch
+  & istieglitz
+  & cweissenborn
+  & lrichter
+  & jschumacher
+  & netz-sued
+  & swyes
+  & mail-sued
+  & msandkuehler
+  & emueller
+  & twinkelhorst
+  & mail-nord
+  & sganswind
+  & bwalter
+  & pholtkamp
+  & chesseling
+  & mschrenk
+  & wpankraz
+  & file-nord
+  & ksteinkohl
+  & tbayer
+  & mberner
+  & klauter
+  & web-sued
+  & wlindemann
+  & tschroeder
+  & msalwitzek
+  & jaffenzeller
+  & wschmidt
+  & aszewc
+  & mmueller
+  & sjansen
+  & cert-sued
+\end{easylist}
+\subsection{Firewall}
+\label{subsec:firewall}
+\subsubsection{Offene Ports - Gruppe Nord}
+\begin{easylist}
+  & all: 22
+  & tun0: 445
+  & tun0: 10514
+  & all: 64738
+\end{easylist}
+\subsubsection{Offene Ports - Gruppe Sued}
+\begin{easylist}
+  & all: 22
+  & tun0: 445
+  & tun0: 10514
+\end{easylist}
+\subsection{Einträge /etc/hosts}
+\label{subsec:hosts}
+\begin{easylist}
+  & 10.8.3.1 : vpn-s vpn.mueller-backwaren.de
+  & 10.8.3.14 : file-s fileserver.mueller-backwaren.de
+  & 10.8.3.18 : mail-s mail.mueller-backwaren.de mail.mueller-backwaren.tpweb.de
+  & 10.8.3.22 : web-s web.mueller-backwaren.de
+  & 10.8.3.26 : ca-s ca.mueller-backwaren.de
+  & 10.8.1.1 : vpn-n vpn.mayer-brot.de vpnnord.mayerbrot.intern
+  & 10.8.1.20 : web-n web.mayer-brot.de webnord.mayerbrot.intern
+  & 10.8.1.30 : file-n file.mayer-brot.de filenord.mayerbrot.intern
+  & 10.8.1.40 : ca-n ca.mayer-brot.de canord.mayerbrot.intern
+  & 10.8.1.50 : mail-n mail.mayer-brot.de mailnord.mayerbrot.intern
+  & 10.8.2.1 : gateway-n
+  & 10.8.2.2 : gateway-s
+\end{easylist}

@@ -956,7 +956,7 @@ Siehe Betriebshandbuch, Standard Change „Offline Backup“
 \newpage
 \section{Technische Systembeschreibung}
 \label{sec:techsys}
-Falls nicht explizit getrennt aufgeführt, dann sind die im folgenden aufgeführten Einstellungen auf beiden Dateiservern identisch. Die Softwareinstallation und Konfiguration ist in Ansible hinterlegt. Der vollständige Ansible-Code ist im Anhang zu finden.
+Falls nicht explizit getrennt aufgeführt, dann sind die im folgenden aufgeführten Einstellungen auf beiden Dateiservern identisch. Die Softwareinstallation und Konfiguration ist in Ansible hinterlegt. Der vollständige Ansible-Code ist als Dateianhang beigefügt.
 
 \subsection{Einführung in die technische Umsetzug mit Ansible}
 \label{subsec:ansiblecode}
@@ -964,7 +964,7 @@ Ansible ist eine auf Python basierende Open-Source Lösung zur Konfiguration und
 
 Das Verzeichnis der Systeme wird \emph{Inventory} genannt und ist in Gruppen organisiert. Diese werden zur Laufzeit evaluiert und mit Gruppen-, Host- und Rollen bezogenen Daten versehen. Auf diese Daten kann zur Laufzeit innerhalb der Rollen zugegriffen werden. Der Zugriff erfolgt über die \textit{Jinja Templating Engine}. Hierdurch wird eine Trennung von Daten und Code erzeugt die, die Wiederverwendung der erstellten Rollen unterstützt.
 
-Die Rollen enthalten die Konkreten \emph{„Tasks“} die in der Summe die Rollenbeschreibung bilden. Die Ausführung erfolgt sequentiell und ist i.d.R. idempotent, d.h. das Ergebnis ändert sich durch die mehrfache Ausführung hintereinander nicht.
+Die Rollen\ref{subsec:ansible_rollen} enthalten die Konkreten \emph{„Tasks“} die in der Summe die Rollenbeschreibung bilden. Die Ausführung erfolgt sequentiell und ist i.d.R. idempotent, d.h. das Ergebnis ändert sich durch die mehrfache Ausführung hintereinander nicht.
 
 \begin{lstlisting}[label=code:public,caption=Auszug aus ansible/group\_vars/file\_server/public]
 k1599_file_server_smbd_enabled: yes
@@ -1175,7 +1175,7 @@ Die Iptables Regeln werden über ein Dictionary in Ansible konfiguriert.
         - tun0
 \end{lstlisting}
 
-Wenn für einen Port kein Interface angegeben wird, gilt die Konfiguration für alle vorhandenen Interfaces. Der Zugriff wird nur für die nötigen Dienste freigeschaltet und nach Möglichkeit nur über das VPN erreichbar gemacht. Für die Aufbauphase werden die Dienste zusätzlich auf \code{eth0} freigegeben. Der SSH Zugang bleibt auch für spätere Wartungszwecke auf \code{eth0} verfügbar. Das soll sicherstellen, dass der Server auch im Fehlerfall unabhängig vom VPN gewartet werden kann.
+Wenn für einen Port kein Interface angegeben wird, gilt die Konfiguration für alle vorhandenen Interfaces. Der Zugriff wird nur für die nötigen Dienste freigeschaltet und nach Möglichkeit nur über das VPN erreichbar gemacht. Für die Aufbauphase werden die Dienste zusätzlich auf \code{eth0} freigegeben. Der SSH Zugang bleibt auch für spätere Wartungszwecke auf \code{eth0} verfügbar. Das soll sicherstellen, dass der Server auch im Fehlerfall unabhängig vom VPN gewartet werden kann\ref{subsec:firewall}.
 
 \subsubsection{Umsetzung}
 Die Firewall wurde wie folgt konfiguriert:
@@ -1243,7 +1243,7 @@ Es bestehen verschiedene Möglichkeiten um eine Namensauflösung im Firmennetzwe
 
 Da ein DNS-Server in der Süd-Umgebung nicht realisiert wurde und wir stets eine (so weit wie möglich) einheitliche Konfiguration auf unseren beiden Systemen ausrollen, werden auf beiden Systemen zur Namensauflösung zusätzlich Einträge in der lokalen \code{/etc/hosts} Datei gepflegt. Die Information welche Einträge vorhanden sein müssen wird durch die jeweilige Netzwerkgruppe zur Verfügung gestellt.
 
-Die Einträge in der Datei \code{/etc/hosts} werden über die Ansible Rolle \textit{k1599\_common} gepflegt.
+Die Einträge in der Datei \code{/etc/hosts}\ref{subsec:hosts} werden über die Ansible Rolle \textit{k1599\_common} gepflegt.
 
 \begin{lstlisting}[label=code:denyany,caption=Auszug aus ansible/roles/k1599\_common/tasks/main.yml]
   name: Ensure network hosts in /etc/hosts are present
@@ -1271,8 +1271,6 @@ Um die Einträge auf allen verwalteten Systemen synchron zu halten werden die Da
       fqdn: 'mail.mueller-backwaren.de mail.mueller-backwaren.tpweb.de'
     ...
 \end{lstlisting}
-
-Eine Liste der verzeichneten Systeme findet sich in im Anhang.
 
 \subsection{Synchronisation der Uhrzeit}
 Um exakte Zeitstempel für gespeicherte Dateien gewährleisten zu können, benötigt das System die genaue Uhrzeit. Über NTP kann man die lokale Uhr mit anderen Systemen synchronisieren. Das Debian Projekt stellt dazu verschiedene Server in einem Pool zur Verfügung.
@@ -1344,9 +1342,11 @@ Außerdem werden die erlautben Gegenstellen durch Überprüfung der Zertifikats-
 Eine Überprüfung der Server-CNs erfolgt nicht, da das aufgrund der fehlenden FQDN beim Zertifikats-CD für Nord nicht funktioniert. Es kann daher nur die Gültigkeit der Zertifikate überprüft werden.
 
 \subsection{Benutzerverwaltung}
-Die Verwaltung der Benutzer erfolgt über die Ansible Rolle \textit{k1599\_users}. Hier wird überprüft, ob die Benutzer bereits existieren. Die Benutzer für den Samba Dienst werden über die Rolle \textit{k1599\_file\_server} verwaltet. \\
+Die Verwaltung der Benutzer\ref{subsec:erzeugte_benutzer} erfolgt über die Ansible Rolle \textit{k1599\_users}. Hier wird überprüft, ob die Benutzer bereits existieren. Die Benutzer für den Samba Dienst werden über die Rolle \textit{k1599\_file\_server} verwaltet. \\
 
-Es wird auf Basis der Datenstruktur \code{k1599\_users\_present\_users} überprüft, ob die dort angegebenen Benutzer bereits existieren und ggf. angelegt werden müssen. Sollten die Benutzer bereits existieren, so werden sie nicht verändert. So wird sicher gestellt, dass Benutzer ihre Passwörter eigenständig ändern können und diese Änderungen anschließend nicht von Ansible zurückgesetzt werden. Wenn das Aktualisieren der Benutzer explizit gewünscht ist, dann kann auf der Ansible Kommandozeile ein extra Parameter \code{-e refresh\_users=yes} übergeben werden.  Hier kann auch durch das überschreiben der Datenstruktur \code{k1599\_users\_present\_users} (in der Rolle selbst oder durch höher priorisierte Variablen) nur Einfluss auf bestimmte Benutzer genommen werden.
+Es wird auf Basis der Datenstruktur \code{k1599\_users\_present\_users} überprüft, ob die dort angegebenen Benutzer bereits existieren und ggf. angelegt werden müssen. Sollten die Benutzer bereits existieren, so werden sie nicht verändert. So wird sicher gestellt, dass Benutzer ihre Passwörter eigenständig ändern können und diese Änderungen anschließend nicht von Ansible zurückgesetzt werden. Wenn das Aktualisieren der Benutzer explizit gewünscht ist, dann kann auf der Ansible Kommandozeile ein extra Parameter \code{-e refresh\_users=yes} übergeben werden.  Hier kann auch durch das überschreiben der Datenstruktur \code{k1599\_users\_present\_users} (in der Rolle selbst oder durch höher priorisierte Variablen) nur Einfluss auf bestimmte Benutzer genommen werden.\\
+
+Darüber hinaus werden aus der Datenstruktur \code{k1599\_users\_present\_users} für jede Projektgruppe entsprechende Unixgruppen\ref{subsec:erzeugte_gruppen} angelegt und die Benutzer zugeordnet.
 
 \begin{lstlisting}[label=code:syslog3,caption=Auszug aus ansible/group\_vars/file\_server/public]
   k1599_users_present_users:
@@ -1525,7 +1525,7 @@ Um alle relevanten Dateien einer syntaktischen Überprüfung zu unterziehen, wir
 \end{figure}
 
 \subsubsection{Integrationstests}
-Da Ansible im Moment noch keine Möglichkeit bietet den Code z.B. Unittests zu unterziehen, nutzen wir die Möglichkeit von Github Integrationstests über die Platform Travis-CI durchzuführen. Hierzu wird im Repository unter \newline  \code{ansible/tests} eine Testumgebung definiert, welche (so weit wie möglich) einem Fileserver entspricht. Hier werden alle genutzten und zur Erfüllung der Aufgabe benötigten Funktionen getestet. Eingeschränkt testbare Funktionen, wie z.B. der Aufbau der VPN Verbindung, werden im Rahmen der Möglichkeiten getestet. Funktionen, welche eine Netzwerkverbindung zu anderen Systemen benötigen, können auf dem Travis-CI System nicht getestet werden. Die dazugehörigen Testfälle werden im Repository unter \code{.travis.yml} definiert. Eine Liste der vorhandenen Testfälle findet sich im Anhang. Die Tests werden automatisch beim Hochladen eines neuen Patchsets im Git Repository durchgeführt.
+Da Ansible im Moment noch keine Möglichkeit bietet den Code z.B. Unittests zu unterziehen, nutzen wir die Möglichkeit von Github Integrationstests über die Platform Travis-CI durchzuführen. Hierzu wird im Repository unter \newline  \code{ansible/tests} eine Testumgebung definiert, welche (so weit wie möglich) einem Fileserver entspricht. Hier werden alle genutzten und zur Erfüllung der Aufgabe benötigten Funktionen getestet. Eingeschränkt testbare Funktionen, wie z.B. der Aufbau der VPN Verbindung, werden im Rahmen der Möglichkeiten getestet. Funktionen, welche eine Netzwerkverbindung zu anderen Systemen benötigen, können auf dem Travis-CI System nicht getestet werden. Die dazugehörigen Testfälle\ref{subsec:testfaelle} werden im Repository unter \code{.travis.yml} definiert. Die Tests werden automatisch beim Hochladen eines neuen Patchsets im Git Repository durchgeführt.
 
 \begin{figure}[!htbp]
 	\centering
@@ -1651,6 +1651,7 @@ Technische \newline Dokumentation & Die technische Dokumentation umfasst alle Be
 \printbibliography
 
 \appendix
-\include{includes/ansible_anhang}
+\include{includes/appendix/ansible}
+\include{includes/appendix/testprotokoll}
 
 \end{document}

@@ -1,6 +1,7 @@
 *site.retry
 *.vault-password
 *.sw?
+*.aux
 *~
 *#
 *.bak
@@ -10,7 +11,7 @@ wiki.txt
 scripts/users/yaml/*.yml
 scripts/users/data/*.csv
 scripts/users/mail/*
-docs/*/*.aux
+docs/*.aux
 docs/*.bcf
 docs/*.bbl
 docs/*.bbg

@@ -5,7 +5,7 @@
 # Author: Sascha Girrulat <sascha@girrulat.de>
 #
 #
-DEST='docs/includes/ansible_anhang.tex'
+DEST='docs/includes/appendix/ansible.tex'
 all: anhang 
 
 ansible:
@@ -20,18 +20,18 @@ anhang-prepare:
 ls-testcases:
 	echo '\subsection{Testfälle}' >> $(DEST);
 	/usr/bin/env python2 -c "import scripts.anhang as anhang; anhang.print_item_header()" >> $(DEST);
-	grep '#' .travis.yml | grep -E '(Check|Run)' | sed 's/#/\\item/g' >> $(DEST)
+	grep '#' .travis.yml | grep -E '(Check|Run)' | sed 's/#/&/g' >> $(DEST)
 	/usr/bin/env python2 -c "import scripts.anhang as anhang; anhang.print_item_footer()" >> $(DEST);
 
 ls-ansible-roles:
 	echo '\subsection{Ansible Rollen}' >> $(DEST);
 	echo '\subsubsection{Eigene Rollen}' >> $(DEST);
 	/usr/bin/env python2 -c "import scripts.anhang as anhang; anhang.print_item_header()" >> $(DEST);
-	ls ansible/roles | sed 's/^/  \\item /g' | sed 's/_/\\_/g' >> $(DEST);
+	ls ansible/roles | sed 's/^/  & /g' | sed 's/_/\\_/g' >> $(DEST);
 	/usr/bin/env python2 -c "import scripts.anhang as anhang; anhang.print_item_footer()" >> $(DEST);
 	echo '\subsubsection{Externe Rollen}' >> $(DEST);
 	/usr/bin/env python2 -c "import scripts.anhang as anhang; anhang.print_item_header()" >> $(DEST);
-	ls ansible/vendor | sed 's/^/  \\item /g' | sed 's/_/\\_/g' >> $(DEST);
+	ls ansible/vendor | sed 's/^/  & /g' | sed 's/_/\\_/g' >> $(DEST);
 	/usr/bin/env python2 -c "import scripts.anhang as anhang; anhang.print_item_footer()" >> $(DEST);
 
 ls-present-groups:
