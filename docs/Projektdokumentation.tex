@@ -1483,7 +1483,7 @@ Ein Task gilt erst dann als Done (abgeschlossen), wenn er JEDE der folgenden Bed
 \item Fehlgeschlagene Tests dürfen nicht ohne Rücksprache entfernt werden, außer das Feature dazu wird gleichzeitig entfernt.
 \item Die Travis-CI Testabdeckung sollte sich nicht verringern.
 \item Bei fehlgeschlagenen Tests wird nach dem Schema „You broke it, you fix it!“ vorgegangen.
-\item Auf einen fehlgeschlagenen Test/Branch sollten keine neuen Features hinzugefügt werden, hierfür sollte dann ein seperater Branch benutzt werden. Wenn der „master“-Branch dann wieder „grün“ ist, können die andere Features anschließend gemerged werden. Dem liegt die Prämisse „Be always Releasable“ zugrunde.
+\item Auf einen fehlgeschlagenen Test/Branch sollten keine neuen Features hinzugefügt werden, hierfür sollte dann ein separater Branch benutzt werden. Wenn der „master“-Branch dann wieder „grün“ ist, können die andere Features anschließend gemerged werden. Dem liegt die Prämisse „Be always Releasable“ zugrunde.
 \end{itemize}
 
 \subsection{Programmier-Regeln}
@@ -1517,7 +1517,7 @@ Um alle relevanten Dateien einer syntaktischen Überprüfung zu unterziehen, wir
 \end{figure}
 
 \subsubsection{Integrationstests}
-Da Ansible im Moment noch keine Möglichkeit bietet den Code z.B. Unittests zu unterziehen, nutzen wir die Möglichkeit von Github Integrationstests über die Platform Travis-CI durchzuführen. Hierzu wird im Repository unter \newline  \code{ansible/tests} eine Testumgebung definiert, welche (so weit wie möglich) einem Fileserver entspricht. Hier werden alle genutzten und, zur Erfüllung der Aufgabe, benötigten Funktionen getestet. Eingeschränkt testbare Funktionen, wie z.B. der Aufbau der VPN Verbindung, werden im Rahmen der Möglichkeiten getestet. Funktionen, welche eine Netzwerkverbindung zu anderen Systemen benötigen, können auf dem Travis-CI System nicht getestet werden. Die dazugehörigen Testfälle\ref{subsec:testfaelle} werden im Repository unter \code{.travis.yml} definiert. Die Tests werden automatisch beim Hochladen eines neuen Patchsets im Git Repository durchgeführt.
+Da Ansible im Moment noch keine Möglichkeit bietet den Code z.B. Unittests zu unterziehen, nutzen wir die Möglichkeit von Github Integrationstests über die Platform Travis-CI durchzuführen. Hierzu wird im Repository unter \newline  \code{ansible/tests} eine Testumgebung definiert, welche (so weit wie möglich) einem Fileserver entspricht. Hier werden alle genutzten und zur Erfüllung der Aufgabe benötigten Funktionen getestet. Eingeschränkt testbare Funktionen, wie z.B. der Aufbau der VPN Verbindung, werden im Rahmen der Möglichkeiten getestet. Funktionen, welche eine Netzwerkverbindung zu anderen Systemen benötigen, können auf dem Travis-CI System nicht getestet werden. Die dazugehörigen Testfälle\ref{subsec:testfaelle} werden im Repository unter \code{.travis.yml} definiert. Die Tests werden automatisch beim Hochladen eines neuen Patchsets im Git Repository durchgeführt.
 
 \begin{figure}[!htbp]
 	\centering
