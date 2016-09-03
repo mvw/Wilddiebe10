@@ -99,9 +99,9 @@ Liefert Funktionen für & \begin{itemize}
 \end{itemize}\tabularnewline
 Benötigt Funktionen von & \begin{itemize}
 \item
-  Zertifikatsserver
+  Zertifikatsservern
 \item
-  Mailserver
+  Mailservern
 \item
   Netz
 \end{itemize}\tabularnewline
@@ -148,9 +148,9 @@ Liefert Funktionen für & \begin{itemize}
 \end{itemize}\tabularnewline
 Benötigt Funktionen von & \begin{itemize}
 \item
-  Zertifikatsserver
+  Zertifikatsservern
 \item
-  Mailserver
+  Mailservern
 \item
   Netz
 \end{itemize}\tabularnewline
@@ -169,7 +169,7 @@ Serviceprozesse}\label{beschreibung-der-serviceprozesse}
 
 \subsection{Change Management}\label{change-management}
 
-Das Change Management hat das Ziel, dass alle Anpassungen an der
+Das Change Management hat das Ziel, dass alle Anpassungen der
 IT-Infrastruktur kontrolliert, effizient und unter Minimierung von
 Risiken für den Betrieb bestehender Services durchgeführt werden.
 
@@ -193,7 +193,7 @@ zwingend erforderlich sind. Auf eine Zertifizierung nach ISO/IEC
   \textbf{Change Advisory Board (CAB):} Das CAB besteht aus dem Change
   Manager und von ihm benannten weiteren Personen. Es muss nach
   Beantragung innerhalb von 7 Tagen zusammentreten und den RfC
-  genehmigen - oder diesen Alternativ mit Begründung der Ablehnung an
+  genehmigen - oder diesen alternativ, inklusive Begründung der Ablehnung, an
   den Antragsteller zurück übermitteln.
 \item
   \textbf{Implementierung}: Genehmigte Changes werden zur Bearbeitung an
@@ -226,7 +226,7 @@ mit vergleichsweise geringem Risiko, deren Prozess vom CAB einmalig
 genehmigt wurde.
 
 Das Verfahren zur erstmaligen Genehmigung eines Standard Changes ist das
-gleiche wie bei herkömmlichen Changes. Wiederkehrende Standard Changes
+Gleiche wie bei herkömmlichen Changes. Wiederkehrende Standard Changes
 werden nicht durch einen RfC geleitet, sondern lediglich als Service
 Requests dokumentiert.
 
@@ -246,7 +246,7 @@ Betriebssystem Update Server & \begin{enumerate}
   11) oder Information aller Gruppen der Vereinigten Backwerke 48 Stunden vor
   Einspielen des Updates
 \item
-  Überprüfung des durch den Server bereitgestellten Services auf
+  Überprüfung des, durch den Server bereitgestellten, Services auf
   Funktion
 \item
   Dokumentation im Ticketsystem.
@@ -264,7 +264,7 @@ Dateiserver Dienst Update &
   Einspielen des Updates außerhalb der garantierten Betriebszeit (siehe Seite 11) oder Information aller Gruppen der Vereinigten Backwerke 48 Stunden vor Einspielen des Updates
 
 \item
-  Überprüfung des durch den Server bereitgestellten Services auf
+  Überprüfung des, durch den Server bereitgestellten, Services auf
   Funktion
 \item
   Dokumentation im Ticketsystem.
@@ -286,7 +286,7 @@ Offline Backup Dateiserver (1x wöchentlich, So) &
   Prüfung, ob aktueller Termineintrag noch in gemeinsamem Kalender
   vorhanden
 \item
-  Login auf dem Mumble Servers des CSIRT
+  Login auf dem Mumble Server des CSIRT
 \item
   Bekanntgabe an alle Anwesenden, dass mit der Sicherung begonnen wird
 \item
@@ -332,8 +332,8 @@ Restore Dateiserver & \begin{enumerate}
   entsprechenden Sever verifiziert, dass dieser tatsächlich nicht mehr
   wieder in Betrieb genommen werden kann
 \item
-  Neuinstallation des Betriebssystems (auf dem gleichen oder, falls dies
-  nicht mehr möglich ist, auf einem anderen Server)
+  Neuinstallation des Betriebssystems auf dem Gleichen oder, falls dies
+  nicht mehr möglich ist, auf einem anderen Server
 \item
   Einrichtung des SSH Zugangs auf dem neuen System
 \item
@@ -347,7 +347,7 @@ Restore Dateiserver & \begin{enumerate}
   Wiederverfügbarkeit der Daten
 \item
   Information an alle Anwender der Vereinigten Backwerke über
-  vorgenommenen Restore, sowie an Change und Problem Manager
+  vorgenommenen Restore sowie an Change und Problem Manager
 \item
   Dokumentation im
   \href{https://docs.google.com/spreadsheets/d/1GDq3AEsVDu1a-X7tEl6qKDtSZdAXm8lsRzY6Ijw-dUQ/edit\#gid=0}{Ticketsystem}
@@ -371,18 +371,18 @@ Benutzer verlässt das Unternehmen & \begin{enumerate}
 
 \subsubsection{Emergency Changes}\label{emergency-changes}
 
-Ein Sonderfall des Changes, der nicht den üblichen Prozess durchläuft,
+Ein Sonderfall des Changes, der nicht den üblichen Prozess durchläuft
 sondern sofort, notfalls auch unter erheblichem Risiko und ohne weitere
 Genehmigung vom CAB, meist zur Abwendung größeren Schadens durchgeführt
 wird. \emph{Bei einem Change dieser Art benötigt der durchführende
 Techniker nur die Zustimmung eines weiteren Technikers innerhalb der
-IT-Gruppen.} Vorrangig ist hier, auf eine Notsituation reagieren zu
-können, entsprechende weitere Genehmigungen und Tests werden erst nach
+IT-Gruppen.} Vorrangig ist hier auf eine Notsituation reagieren zu
+können. Entsprechende weitere Genehmigungen und Tests werden erst nach
 dem Change durchgeführt.
 
 Die durchgeführten Emergency Changes sind jedoch umgehend nach der
 Wiederherstellung des normalen Betriebes zu dokumentieren und die
-betroffenen Gruppen, sowie der Change Manager sind zeitnah zu
+betroffenen Gruppen sowie der Change Manager sind zeitnah zu
 informieren.
 
 \subsection{Incident Management}\label{incident-management}
@@ -394,7 +394,7 @@ dieses Services oder eine Minderung der vereinbarten Qualität
 verursacht.
 
 IT-Incident Management umfasst den gesamten organisatorischen und
-technischen Prozess der Reaktion solche Ereignisse. Ziel des
+technischen Prozess der Reaktion auf solche Ereignisse. Ziel des
 Incident-Management-Prozesses ist die schnellstmögliche
 Wiederherstellung der Service-Leistung (auch mit Workarounds).
 
@@ -411,8 +411,7 @@ weiter zu vermitteln.
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \item
-  \textbf{Meldung} des Incidents an \textbf{Fehler! Verweisquelle konnte
-  nicht gefunden werden.}\\
+  \textbf{Meldung} des Incidents an:\\
   (Mitarbeiter des Benutzerservice können hier direkt mit 2. weiter
   machen)
 \item
@@ -433,7 +432,7 @@ weiter zu vermitteln.
   \begin{enumerate}
   \def\labelenumii{\alph{enumii}.}
   \item
-    Information an den Anfrager, sowie alle direkt betroffenen Anwender
+    Information an den Anfrager sowie aller direkt betroffenen Anwender
   \item
     \textbf{Dokumentation} der Lösung im
     \href{https://docs.google.com/spreadsheets/d/1GDq3AEsVDu1a-X7tEl6qKDtSZdAXm8lsRzY6Ijw-dUQ/edit\#gid=0}{Ticketsystem}
@@ -444,7 +443,7 @@ weiter zu vermitteln.
 Management}\label{it-security-incident-management}
 
 IT Sicherheitsmanagement beinhaltet die Überwachung und Feststellung von
-Sicherheitsereignissen auf den System und die angemessene Reaktion auf
+Sicherheitsereignissen auf dem System und die angemessene Reaktion auf
 diese Ereignisse.
 
 \paragraph{Computer Security Incident Response Team
@@ -465,7 +464,7 @@ Die Aufgaben des CSIRT sind
   Sicherheitsvorfälle zu dokumentieren
 \item
   Das Bewusstsein für sichere IT innerhalb der Vereinigten Backwerke zu
-  schärfen um Vorfällen vorzubeugen
+  schärfen, um Vorfällen vorzubeugen
 \item
   Externe System- und Netzwerkaudits zu unterstützen (etwa bei der
   Schwachstellenanalyse und Penetrationstests)
@@ -514,7 +513,7 @@ Gruppe 10 (Datei Süd) & Sascha Girrulat\\
 \subparagraph{Mumble Server}\label{mumble-server}
 
 Bei einem Security Incident koordinieren sich die Mitglieder des CSIRT
-über den ersten der im folgenden Aufgelisteten Server. Falls dieser
+über den Ersten der im folgenden aufgelisteten Server. Falls dieser
 nicht verfügbar sein sollte, so koordinieren sie sich über den zweiten
 Server, usw.
 
@@ -554,7 +553,7 @@ Last Resort & Skype, Google Hangout oder Telefonkonferenz
   nach dieser Bewertung um einen möglichen Security Incident (gemäß )
   handelt, werden alle Mitglieder des CSIRT (per Mail und - soweit
   angegeben - telefonisch) informiert. Sie erhalten dabei auch die ID
-  des Tickets (Zeilennummer im Ticketsystem)
+  des Tickets (Zeilennummer im Ticketsystem).
 \item
   Das CSIRT koordiniert die Reaktion über die Mumble Server. Dabei
   orientiert sich das Team an den folgenden Leitlinien:
@@ -592,7 +591,7 @@ proaktiv. Ein wesentliches Ziel ist hierbei die 'dauerhafte
 Problemlösung'.
 
 Ein Problem ist so lange offen, wie seine Ursache und deren Behebung
-nicht erledigt sind; demgegenüber kann ein Incident geschlossen werden,
+nicht erledigt sind; demgegenüber kann ein Incident geschlossen werden
 sobald die vom Anwender benötigte Funktionalität wieder hergestellt ist.
 
 Die Ursachen für das Problem werden analysiert und Maßnahmen zu ihrer
@@ -643,9 +642,9 @@ Level Agreement
 Der Begriff Service-Level-Agreement (SLA) bezeichnet die Schnittstelle
 zwischen Auftraggeber und Dienstleister für wiederkehrende
 Dienstleistungen. Ziel ist es, die Kontrollmöglichkeiten für den
-Auftraggeber transparent zu machen, indem zugesicherte
-Leistungseigenschaften wie etwa Leistungsumfang, Reaktionszeit und
-Schnelligkeit der Bearbeitung genau beschrieben werden. Wichtiger
+Auftraggeber transparent zu machen indem zugesicherte
+Leistungseigenschaften, wie etwa Leistungsumfang, Reaktionszeit und
+Schnelligkeit, der Bearbeitung genau beschrieben werden. Wichtiger
 Bestandteil ist hierbei die Dienstgüte (Servicelevel), welche die
 vereinbarte Leistungsqualität beschreibt.
 
@@ -712,10 +711,10 @@ Ausfall einer Redundanzkomponente
 
 Nichtverfügbarkeit eines Services für einen einzelnen
 Anwender\tabularnewline
-Problem & Unerwünschtes oder unerwartetes Verhalten eines Services, dass
+Problem & Unerwünschtes oder unerwartetes Verhalten eines Services, das
 aktuell ohne wesentliche Auswirkungen auf die Anwender
 ist\tabularnewline
-Infoanfrage & Informationsanfrage eines Anwenders die ohne Änderung an
+Infoanfrage & Informationsanfrage eines Anwenders, die ohne Änderung an
 den Systemen geklärt werden kann\tabularnewline
 Service Request & Anfrage eines Anwenders zur Bereitstellung eines neuen
 Services
@@ -733,7 +732,7 @@ Eskalationen dienen in der Regel dazu, eine Störungsbearbeitung durch
 Einbeziehung höherer Instanzen zu beschleunigen, bzw. durch eine
 Erweiterung der Kompetenzen und Befugnisse zu ermöglichen.
 
-Eskaliert wird, sobald sich abzeichnet, dass die definierte Entstörzeit
+Eskaliert wird sobald sich abzeichnet, dass die definierte Entstörzeit
 nicht eingehalten werden kann - oder spätestens, wenn sie überschritten
 wurde. An weitere Eskalationsebenen wird eskaliert, wenn die jeweilige
 Eskalationsebene mit ihren Kompetenzen und Befugnissen nicht mehr
@@ -775,7 +774,7 @@ Serviceleistungen relevant sind, steht der Service Manager zur
 Verfügung. Er leistet in dieser Funktion jedoch keinen operativen
 Service und ist keine Eskalationsinstanz bei akuten Vorfällen. Er
 überwacht die Einhaltung der SLAs. Wichtige Informationsquellen hierfür
-sind Einträge im Ticketsystem wie auch persönliches Feedback von
+sind Einträge im Ticketsystem sowie persönliches Feedback von
 Leitungsbereich, Anwendern und IT Gruppen.
 
 Service Manager ist
@@ -815,7 +814,7 @@ Dateiserver}\label{allgemeiner-change-dateiserver}
 \begin{itemize}
 \item
   Es ist sicherzustellen, dass nur Programme, die keine schadhafte
-  Funktion besitzen, von Samba aufgerufen werden. Mit dem Kommando\\
+  Funktion besitzen von Samba aufgerufen werden. Mit dem Kommando\\
   user\textgreater{} testparm -vs \textbar{} grep -E "(command
   =)\textbar{}(script =)\textbar{}(exec =)\textbar{}\textbackslash{}
   (panic action =)\textbar{}(program =)"\\

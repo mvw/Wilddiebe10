@@ -767,9 +767,9 @@ Alle letztendlich durchgeführten technischen Maßnahmen sind in der technischen
 \newpage
 \captionof{table}{Identifizierte Maßnahmen}
 \label{tab:massnahmen}
-\begin{longtable}{l|p{3.7cm}|p{3,5cm}|p{2cm}|p{3.8cm}}
+\begin{longtable}{lp{3.7cm}|p{3cm}l|p{3.8cm}}
 \toprule
-Kürzel & Titel & Status & Verantw. & Bemerkungen \\
+Kürzel & Titel & Status & Verantwortung & Bemerkungen \\
 \midrule
 M1.28 & Lokale unterbrechungsfreie Stromversorgung & externer Dienstl. & 5+10 & Server gemietet bei netcup GmbH (Nord), bzw. Hetzner Online GmbH (Süd) \\
 M2.137 & Beschaffung eines geeigneten Datensicherungssystems & nicht durchgeführt & 5+10 & aus Zeit- und Kostengründen nur teilweise realisiert \\
@@ -915,7 +915,7 @@ M6.98 & Notfallvorsorge und Notfallreaktion für Speicherlösungen & Betriebshan
 \newpage
 \section{Datensicherungskonzept}
 \subsection{Zu sichernde Daten}
-Über das Backup werden alle Benutzerdaten auf den Datei-Freigaben gesichert. Betriebssystem und Software der Server sind \textbf{nicht} Bestandteil des Backups\footnote{Wie das System im Fehlerfall wiederhergestellt wird ist im Unterabschnitt \ref{subsec:restore} zu finden}.
+Über das Backup werden alle Benutzerdaten auf den Datei-Freigaben gesichert. Betriebssystem und Software der Server sind \textbf{nicht} Bestandteil des Backups\footnote{Wie das System im Fehlerfall wiederhergestellt wird, ist im Unterabschnitt \ref{subsec:restore} zu finden}.
 
 Jeder Nutzer hat ein Quota von 100 MB und das System ist auf maximal 50 Nutzerkonten ausgelegt. Ergo beträgt das maximal zu sichernde \emph{Datenvolumen}
 \begin{equation}
@@ -923,7 +923,7 @@ dv = 50 \times 100 \text{ MB} = 5000 \text{ MB} < 5 \text{ GB}
 \end{equation}
 je Server.\\
 
-Da wir für unser Netz über keine Erfahrungswerte verfügen gehen wir von einem täglichen \emph{Änderungsvolumen} von
+Da wir für unser Netz über keine Erfahrungswerte verfügen, gehen wir von einem täglichen \emph{Änderungsvolumen} von
 
 \begin{equation}
 cv_{daily} = 0.2 \times dv = 0.2 \times 5000 \text { MB} = 1000 \text{ MB}
@@ -936,9 +936,9 @@ Die Datensicherung erfolgt über ein Skript, welches einen tar.gz-Container erst
 Der aktuelle Textabschnitt ist im Dokument enthalten um absichern zu können, dass der Gesamttext von allen PMA gelesen wurde. Zu diesem Zweck kann bei einer Abfrage der Überprüfungsschlüssel ''Loyal Arrow 09'' angegeben werden.
 \subsection{Restore}
 \label{subsec:restore}
-Das \emph{Vorgehen} ist im Betriebshandbuch, Standard Change „Restore Dateiserver“ beschrieben. Die gesamte \emph{Rekonstruktionszeit} eines Vollbackups beträgt ca. 4 Stunden (inkl. Betriebssystem, Software, Daten und Tests). Das ist annehmbar, da es im Rahmen der festgestellten Anforderungen bleibt (siehe \ref{subsec:schutzbedarfsfeststellung}). \\
+Das \emph{Vorgehen} ist im Betriebshandbuch Standard Change „Restore Dateiserver“ beschrieben. Die gesamte \emph{Rekonstruktionszeit} eines Vollbackups beträgt ca. 4 Stunden (inkl. Betriebssystem, Software, Daten und Tests). Das ist annehmbar, da es im Rahmen der festgestellten Anforderungen bleibt (siehe \ref{subsec:schutzbedarfsfeststellung}). \\
 
-Die komplette Neuinstallation des Systems - anstatt nur ein vorher erstelltes System-Abbild wieder zurückzuspielen - ist ungewöhnlich, denn sie beinhaltet immer das Risiko, dass dabei durch die veränderte Software Fehler entstehen, welche erst behoben werden müssen, bevor der Service wieder verfügbar ist. Demgegenüber steht jedoch der Vorteil, dass dann ein System mit aktuellem Softwarestand in Betrieb genommen wird. Da die von uns festgestellten Anforderungen an die Verfügbarkeit des Systems geringer sind als die Anforderungen an die Vertraulichkeit, gehen wir hier Fail-safe\footcite{wikiFailsafe} vor, d.h. wir stellen einen Service erst dann zur Verfügung, wenn wir auch seine Vertraulichkeit gewährleisten können.
+Die komplette Neuinstallation des Systems - anstatt nur ein vorher erstelltes System-Abbild wieder zurückzuspielen - ist ungewöhnlich, denn sie beinhaltet immer das Risiko, dass dabei durch die veränderte Software Fehler entstehen, welche erst behoben werden müssen, bevor der Service wieder verfügbar ist. Demgegenüber steht jedoch der Vorteil, dass dann ein System mit aktuellem Softwarestand in Betrieb genommen wird. Da die von uns festgestellten Anforderungen an die Verfügbarkeit des Systems geringer sind, als die Anforderungen an die Vertraulichkeit, gehen wir hier Fail-safe\footcite{wikiFailsafe} vor, d.h. wir stellen einen Service erst dann zur Verfügung, wenn wir auch seine Vertraulichkeit gewährleisten können.
 
 \subsection{Minimaldatensicherungskonzept}
 Siehe Betriebshandbuch, Standard Change „Offline Backup“
@@ -949,13 +949,13 @@ Siehe Betriebshandbuch, Standard Change „Offline Backup“
 \newpage
 \section{Technische Systembeschreibung}
 \label{sec:techsys}
-Falls nicht explizit getrennt aufgeführt, dann sind die im folgenden aufgeführten Einstellungen auf beiden Dateiservern identisch. Die Softwareinstallation und Konfiguration ist in Ansible hinterlegt. Der vollständige Ansible-Code ist als Dateianhang beigefügt.
+Falls nicht explizit getrennt aufgeführt, sind die im Folgenden aufgeführten Einstellungen auf beiden Dateiservern identisch. Die Softwareinstallation und Konfiguration ist in Ansible hinterlegt. Der vollständige Ansible-Code ist als Dateianhang beigefügt.
 
 \subsection{Einführung in die technische Umsetzug mit Ansible}
 \label{subsec:ansiblecode}
 Ansible ist eine auf Python basierende Open-Source Lösung zur Konfiguration und Administration von Linux/Unix Systemen. Es nutzt wahlweise YAML oder JSON zur Zustandsbeschreibung von Systemen. Diese Beschreibung basiert auf einer beliebig kombinierbaren Menge von Rollen, einem Verzeichnis der Zielsysteme und einer Menge von Daten.
 
-Das Verzeichnis der Systeme wird \emph{Inventory} genannt und ist in Gruppen organisiert. Diese werden zur Laufzeit evaluiert und mit Gruppen-, Host- und Rollen bezogenen Daten versehen. Auf diese Daten kann zur Laufzeit innerhalb der Rollen zugegriffen werden. Der Zugriff erfolgt über die \textit{Jinja Templating Engine}. Hierdurch wird eine Trennung von Daten und Code erzeugt die, die Wiederverwendung der erstellten Rollen unterstützt.
+Das Verzeichnis der Systeme wird \emph{Inventory} genannt und ist in Gruppen organisiert. Diese werden zur Laufzeit evaluiert und mit Gruppen-, Host- und Rollen bezogenen Daten versehen. Auf diese Daten kann zur Laufzeit innerhalb der Rollen zugegriffen werden. Der Zugriff erfolgt über die \textit{Jinja Templating Engine}. Hierdurch wird eine Trennung von Daten und Code erzeugt, welche die Wiederverwendung der erstellten Rollen unterstützt.
 
 Die Rollen\ref{subsec:ansible_rollen} enthalten die Konkreten \emph{„Tasks“} die in der Summe die Rollenbeschreibung bilden. Die Ausführung erfolgt sequentiell und ist i.d.R. idempotent, d.h. das Ergebnis ändert sich durch die mehrfache Ausführung hintereinander nicht.
 
@@ -1051,7 +1051,7 @@ Damit der private Schlüssel nur vom Benutzer root zu lesen ist, werden die Rech
 Die Variablen  werden durch Ansible bei der Erstellung der Konfigurationsdatei ausgefüllt. Falls der OpenVPN-Client mit \code{systemctl} gestartet wird, setzt sich der Service Name aus \code{openvpn@name\_der\_konfiguration} zusammen (abgelegt in \code{/etc/openvpn/client.conf}), daher hier \code{openvpn@client}.
 
 \subsection{Samba}
-Die Konfiguration wird über die Ansible-Rolle \textit{k1599\_file\_server} durchgeführt. Es stehen für jeden Benutzer eine private Freigabe mit Passwort unter \code{\$benutzername}, sowie eine öffentliche Freigabe \code{public} für Alle ohne Authentifizierung zur Verfügung. Die zwischen Nord und Süd unterschiedlichen Einstellungen sind in der \code{smb.conf} mit Variablen versehen, um diese universell nutzbar zu machen. Um Samba auf das OpenVPN-Interface zu beschränken ist die Angabe der IP des Interfaces in der Samba-Konfiguration nötig. tun0 anzugeben funktioniert nicht. Die Variable wird durch Ansible für Nord und Süd entsprechend gefüllt.\\
+Die Konfiguration wird über die Ansible-Rolle \textit{k1599\_file\_server} durchgeführt. Es stehen für jeden Benutzer eine private Freigabe mit Passwort unter \code{\$benutzername} sowie eine öffentliche Freigabe \code{public} für alle ohne Authentifizierung zur Verfügung. Die zwischen Nord und Süd unterschiedlichen Einstellungen sind in der \code{smb.conf} mit Variablen versehen, um diese universell nutzbar zu machen. Um Samba auf das OpenVPN-Interface zu beschränken ist die Angabe der IP des Interfaces in der Samba-Konfiguration nötig. tun0 anzugeben funktioniert nicht. Die Variable wird durch Ansible für Nord und Süd entsprechend gefüllt.\\
 
 Eine Passwortänderung ist für die Benutzer möglich über
 \code{smbpasswd -r \$servername -U \$benutzername}.
@@ -1097,7 +1097,7 @@ Zur Nutzung von Transportverschlüsselung wäre es möglich, das minimale Protok
   server min protocol = NT1
   \end{lstlisting}
 
-Da dies zum gegenwärtigen Zeitpunkt zu viele Clients ausschließen würde\footnote{bis einschließlich Windows 7, vgl. \cite{smbHistory}} und die Verbindung durch das VPN bereits verschlüsselt ist, haben wir uns dafür entschieden die Transportverschlüsselung aktuell nicht zu erzwingen.
+Da dies zum gegenwärtigen Zeitpunkt zu viele Clients ausschließen würde\footnote{bis einschließlich Windows 7, vgl. \cite{smbHistory}} und die Verbindung durch das VPN bereits verschlüsselt ist, haben wir uns dafür entschieden, die Transportverschlüsselung aktuell nicht zu erzwingen.
 
 Unnötige geöffnete Ports werden durch die Deaktivierung von Netbios geschlossen, da Broadcasts über das VPN sowieso nicht weitergeleitet werden:
 \begin{lstlisting}[label=code:smbconf5,caption=Auszug aus /etc/samba/smb.conf]
@@ -1149,9 +1149,9 @@ Die öffentliche Freigabe soll für jeden Benutzer beschreibbar sein, außerdem 
 \end{lstlisting}
 
 \subsection{Firewall}
-Als Firewall wird die Linux Kernel Firewall iptables\footcite{iptables} eingesetzt. Zur Umsetzung standen mehrere Implementierungen unter Debian/Ubuntu zur Verfügung, unter anderem \emph{Shorewall}, \emph{apf-firewall} und \emph{ansible-role-firewall}. Das Team hat sich aufgrund der einfachen Integration in den bestehenden Ansible-Code für das externe Playbook \url{https://github.com/sagiru/ansible-role-firewall} entschieden. Entscheidend war die einfache Integration der Firewall als Service. \\
+Als Firewall wird die Linux Kernel Firewall iptables\footcite{iptables} eingesetzt. Zur Umsetzung standen mehrere Implementierungen unter Debian/Ubuntu zur Verfügung, unter anderem \emph{Shorewall}, \emph{apf-firewall} und \emph{ansible-role-firewall}. Das Team hat sich, aufgrund der einfachen Integration in den bestehenden Ansible-Code, für das externe Playbook \url{https://github.com/sagiru/ansible-role-firewall} entschieden. Entscheidend war die einfache Integration der Firewall als Service. \\
 
-Um die benötigten Anforderungen für das Projekt zu erfüllen waren allerdings kleinere Anpassungen nötig. Es fehlten  Funktionalitäten wie z.b. das Beschränken von Portfreigaben auf explizite Interface oder die Möglichkeit den Zustand des Services (an/aus) zu Konfigurieren. Diese Funktionalitäten wurden eingebaut und entsprechend in das Upstreamprojekt zurück gegeben.
+Um die benötigten Anforderungen für das Projekt zu erfüllen, waren allerdings kleinere Anpassungen nötig. Es fehlten Funktionalitäten, wie z.B. das Beschränken von Portfreigaben auf explizite Interface oder die Möglichkeit den Zustand des Services (an/aus) zu konfigurieren. Diese Funktionalitäten wurden eingebaut und entsprechend in das Upstreamprojekt zurück gegeben.
 
 \subsubsection{Konfiguration}
 Die Iptables Regeln werden über ein Dictionary in Ansible konfiguriert.
@@ -1175,7 +1175,7 @@ Die Firewall wurde wie folgt konfiguriert:
 \begin{itemize}
 \item ICMP ist auf allen Interfaces aktiv.
 \item SSH wird zu Wartungszwecken auf allen Interfaces erlaubt.
-\item NTP wird auf allen Interfaces zugelassen (durch Openntp eigentlich nicht notwendig)
+\item NTP wird auf allen Interfaces zugelassen (durch Openntp eigentlich nicht notwendig).
 \item Samba wird nur über das VPN erreichbar gemacht.
 \item Rsyslog ist noch auf allen Interfaces aktiv. Zum Produktivgang ist die Umstellung auf VPN geplant.
 \end{itemize}
@@ -1208,12 +1208,12 @@ Die Regeln werden in ihrer Reihenfolge abgearbeitet. Falls keine zutreffend ist 
   fileserver kernel: [312017.164741] Dropped by firewall: IN=eth0 OUT= MAC=52:54:a2:01:71:ae:12:54:a2:01:71:ae:08:00 SRC=221.154.167.85 DST=172.31.1.100 LEN=40 TOS=0x00 PREC=0x00 TTL=49 ID=61162 PROTO=TCP SPT=39130 DPT=23 WINDOW=58288 RES=0x00 SYN URGP=0
 \end{lstlisting}
 
-Außerdem werden eingehende Pakete, die zu ausgehenden Verbindungen gehören zugelassen (\code{state RELATED,ESTABLISHED}).
+Außerdem werden eingehende Pakete, die zu ausgehenden Verbindungen gehören, zugelassen (\code{state RELATED,ESTABLISHED}).
 
-Unser System hat keine Routing-Funktionen, die Forward Chain findet deshalb keine Beachtung. In der Output Chain gibt es keine Regel, die Pakete verwirft. Somit sind ausgehende Verbindungen unbeschränkt möglich. Eine spätere Einschränkung ist aber auf die gleiche Weise wie für die Input Chain möglich.
+Unser System hat keine Routing-Funktionen. Die Forward Chain findet deshalb keine Beachtung. In der Output Chain gibt es keine Regel, die Pakete verwirft. Somit sind ausgehende Verbindungen unbeschränkt möglich. Eine spätere Einschränkung ist aber auf die gleiche Weise, wie für die Input Chain möglich.
 
 \subsection{Virenscanner: ClamAV}
-Neben dem Paket \code{ClamAV}\footcite{clamav} als eigentlicher Virenscanner sorgt das Zusatzpaket \code{freshclam} für die Aktualisierung der Virensignaturen. Das erfolgt automatisch 24x täglich.
+Neben dem Paket \code{ClamAV}\footcite{clamav} als eigentlicher Virenscanner, sorgt das Zusatzpaket \code{freshclam} für die Aktualisierung der Virensignaturen. Das erfolgt automatisch 24x täglich.
 
 Für das gesamte Filesystem ist die Überwachung der Dateien bei Zugriff (on-access scan) aktiviert. Dazu muss ClamAV als \code{root} ausgeführt werden.
 
@@ -1229,12 +1229,12 @@ Bei einem Fund erfolgt ein Eintrag in das Syslog:
   fileserver clamd[569]: ScanOnAccess: /share/public/eicar.com: Eicar-Test-Signature(44d88612fea8a8f36de82e1278abb02f:68) FOUND
 \end{lstlisting}
 
-Das Blockieren der Zugriffe ist bei unseren Systemen nicht möglich, da der Kernel die nötigen Erweiterungen nicht mitbringt. Außerdem wird diese Funktion bei der Überwachung des gesamten Dateisystems deaktiviert\footcite{clamAVnoOnAccess} um die mögliche Blockade des Systems zu verhindern.
+Das Blockieren der Zugriffe ist bei unseren Systemen nicht möglich, da der Kernel die nötigen Erweiterungen nicht mitbringt. Außerdem wird diese Funktion bei der Überwachung des gesamten Dateisystems deaktiviert\footcite{clamAVnoOnAccess}, um die mögliche Blockade des Systems zu verhindern.
 
 \subsection{Namensauflösung}
-Es bestehen verschiedene Möglichkeiten um eine Namensauflösung im Firmennetzwerk zu realisieren. Für die technische Umsetzung wurde von der Gruppe Netzwerke Nord ein zentraler Dienst (DNS) zur Namensauflösung zur Verfügung gestellt; dieser wird auf dem Dateiserver Nord bei der VPN-Einwahl automatisch eingebunden.
+Es bestehen verschiedene Möglichkeiten, eine Namensauflösung im Firmennetzwerk zu realisieren. Für die technische Umsetzung wurde von der Gruppe Netzwerke Nord ein zentraler Dienst (DNS) zur Namensauflösung zur Verfügung gestellt; dieser wird auf dem Dateiserver Nord bei der VPN-Einwahl automatisch eingebunden.
 
-Da ein DNS-Server in der Süd-Umgebung nicht realisiert wurde und wir stets eine (so weit wie möglich) einheitliche Konfiguration auf unseren beiden Systemen ausrollen, werden auf beiden Systemen zur Namensauflösung zusätzlich Einträge in der lokalen \code{/etc/hosts} Datei gepflegt. Die Information welche Einträge vorhanden sein müssen wird durch die jeweilige Netzwerkgruppe zur Verfügung gestellt.
+Da ein DNS-Server in der Süd-Umgebung nicht realisiert wurde und wir stets eine (so weit wie möglich) einheitliche Konfiguration auf unseren beiden Systemen ausrollen, werden auf beiden Systemen zur Namensauflösung zusätzlich Einträge in der lokalen \code{/etc/hosts} Datei gepflegt. Die Information, welche Einträge vorhanden sein müssen wird durch die jeweilige Netzwerkgruppe zur Verfügung gestellt.
 
 Die Einträge in der Datei \code{/etc/hosts}\ref{subsec:hosts} werden über die Ansible Rolle \textit{k1599\_common} gepflegt.
 
@@ -1249,7 +1249,7 @@ Die Einträge in der Datei \code{/etc/hosts}\ref{subsec:hosts} werden über die 
     - "{{ k1599_common_hosts|default([]) }}"
 \end{lstlisting}
 
-Um die Einträge auf allen verwalteten Systemen synchron zu halten werden die Daten in einem \textit{Dictionary} zur Verfügung gestellt.
+Um die Einträge auf allen verwalteten Systemen synchron zu halten, werden die Daten in einem \textit{Dictionary} zur Verfügung gestellt.
 
 \begin{lstlisting}[label=code:denyany,caption=Auszug aus ansible/group\_vars/all]
   k1599_common_hosts:
@@ -1278,7 +1278,7 @@ Um exakte Zeitstempel für gespeicherte Dateien gewährleisten zu können, benö
 Das Paket \code{openntpd} bringt die dafür benötigte Konfigurationsdatei mit und benötigt keine weiteren Einstellungen. Die Wahl ist aus Sicherheitsgründen auf den sehr schlanken openntpd gefallen, da dafür keine Ports von außen erreichbar gemacht werden müssen und dieser auch als reiner Client funktioniert. Die Installation und der Start des Dienstes erfolgt über die Ansible Rolle \textit{k1599\_time\_sync}.
 
 \subsection{Syslog}
-Um zu unterstützen, dass keine betriebs- oder ggf. sicherheitsrelevanten Informationen verloren gehen, stellt jeder der Fileserver einen zentralen Syslogdienst zur Verfügung. Dieser wird über \code{rsyslog} realisiert. Hierzu wurden die Standardkonfigurationen der Rsyslog-Server durch entsprechende Konfigurationsteile ergänzt. Im ersten Schritt loggen die Dateiserver zusätzlich per tcp auf sich selbst und auf den jeweils anderen Server. Dort wird unter \code{/var/log/rsyslog-k1599/<serverip>/} eine Dateistruktur erstellt, die dem allgemeinen Standard unter Linux ähnelt.
+Um zu unterstützen das keine betriebs- oder ggf. sicherheitsrelevanten Informationen verloren gehen, stellt jeder der Fileserver einen zentralen Syslogdienst zur Verfügung. Dieser wird über \code{rsyslog} realisiert. Hierzu wurden die Standardkonfigurationen der Rsyslog-Server durch entsprechende Konfigurationsteile ergänzt. Im ersten Schritt loggen die Dateiserver zusätzlich per tcp auf sich selbst und auf den jeweils anderen Server. Dort wird unter \code{/var/log/rsyslog-k1599/<serverip>/} eine Dateistruktur erstellt, die dem allgemeinen Standard unter Linux ähnelt.
 
 \begin{lstlisting}[label=code:syslog,caption=Syslog Dateien]
         root@filesued ~ # ls /var/log/rsyslog-k1599/
@@ -1290,8 +1290,8 @@ Um zu unterstützen, dass keine betriebs- oder ggf. sicherheitsrelevanten Inform
 \end{lstlisting}
 
 Der Rsyslogserver ist so konfiguriert, dass Daten via tcp auf dem Port 10514
-angenommen werden. Die Verbindungssicherheit wird über TLS und die durch die
-Zertifikatsgruppen ausgestellten Schlüssel sichergestellt.\\
+angenommen werden. Die Verbindungssicherheit wird über TLS und die, durch die
+Zertifikatsgruppen ausgestellten, Schlüssel sichergestellt.\\
 
 Die Konfiguration wird über die beiden Ansible Rollen \textit{k1599\_rsyslog\_client} und
 \textit{k1599\_rsyslog\_server} vorgenommen. Die Zertifikate der Nord- und Süd-CA sind in \code{ca-chain.cert.pem} zu finden, damit beide Server ihre Zertifikate gegenseitig als gültig anerkennen.
@@ -1306,7 +1306,7 @@ Die Konfiguration wird über die beiden Ansible Rollen \textit{k1599\_rsyslog\_c
         )
 \end{lstlisting}
 
-Außerdem werden die erlautben Gegenstellen durch Überprüfung der Zertifikats-CNs festgelegt.
+Außerdem werden die erlaubten Gegenstellen durch Überprüfung der Zertifikats-CNs festgelegt.
 
 \begin{lstlisting}[label=code:syslog3,caption=Whitelisting der CN]
         # Enable imtcp listener on port {{ k1599_rsyslog_port }}
@@ -1337,7 +1337,7 @@ Eine Überprüfung der Server-CNs erfolgt nicht, da das aufgrund der fehlenden F
 \subsection{Benutzerverwaltung}
 Die Verwaltung der Benutzer\ref{subsec:erzeugte_benutzer} erfolgt über die Ansible Rolle \textit{k1599\_users}. Hier wird überprüft, ob die Benutzer bereits existieren. Die Benutzer für den Samba Dienst werden über die Rolle \textit{k1599\_file\_server} verwaltet. \\
 
-Es wird auf Basis der Datenstruktur \code{k1599\_users\_present\_users} überprüft, ob die dort angegebenen Benutzer bereits existieren und ggf. angelegt werden müssen. Sollten die Benutzer bereits existieren, so werden sie nicht verändert. So wird sicher gestellt, dass Benutzer ihre Passwörter eigenständig ändern können und diese Änderungen anschließend nicht von Ansible zurückgesetzt werden. Wenn das Aktualisieren der Benutzer explizit gewünscht ist, dann kann auf der Ansible Kommandozeile ein extra Parameter \code{-e refresh\_users=yes} übergeben werden.  Hier kann auch durch das überschreiben der Datenstruktur \code{k1599\_users\_present\_users} (in der Rolle selbst oder durch höher priorisierte Variablen) nur Einfluss auf bestimmte Benutzer genommen werden.\\
+Es wird auf Basis der Datenstruktur \code{k1599\_users\_present\_users} überprüft, ob die dort angegebenen Benutzer bereits existieren oder ggf. angelegt werden müssen. Sollten die Benutzer bereits existieren, so werden sie nicht verändert. So wird sicher gestellt, dass Benutzer ihre Passwörter eigenständig ändern können und diese Änderungen anschließend nicht von Ansible zurückgesetzt werden. Wenn das Aktualisieren der Benutzer explizit gewünscht ist, kann auf der Ansible Kommandozeile ein extra Parameter \code{-e refresh\_users=yes} übergeben werden.  Hier kann auch durch das Überschreiben der Datenstruktur \code{k1599\_users\_present\_users} (in der Rolle selbst oder durch höher priorisierte Variablen) nur Einfluss auf bestimmte Benutzer genommen werden.\\
 
 Darüber hinaus werden aus der Datenstruktur \code{k1599\_users\_present\_users} für jede Projektgruppe entsprechende Unixgruppen\ref{subsec:erzeugte_gruppen} angelegt und die Benutzer zugeordnet.
 
@@ -1377,7 +1377,7 @@ Darüber hinaus werden aus der Datenstruktur \code{k1599\_users\_present\_users}
 \end{lstlisting}
 
 \subsection{Quota}
-Mit Filesystem Quotas ist es möglich den für einzelne Benutzer zur Verfügung
+Mit Filesystem Quotas ist es möglich, den für einzelne Benutzer zur Verfügung
 stehenden Speicherplatz zu beschränken. Dadurch wird sichergestellt, dass jeder
 Benutzer eine gewisse Menge Platz zur Verfügung hat und kein anderer Benutzer
 den gesamten Speicherplatz belegen kann. Jedem Benutzer stellen wir 100MB
@@ -1428,7 +1428,7 @@ und der Konfiguration ausgegeben werden:\\
 \end{lstlisting}
 
 Die Angabe des belegten Speicherplatzes erfolgt standardmäßig in Kilobyte. Die
-Konfiguration der qota wird dann über das Hilfsprogramm \code{quotatool}
+Konfiguration der Quota wird dann über das Hilfsprogramm \code{quotatool}
 vorgenommen:\\
 
 \code{  quotatool -b -q 102400 -l 153600 -u file-sued /}\\
@@ -1437,7 +1437,7 @@ Hiermit werden die Beschränkungen für den Benutzer \code{file-sued} auf 100MB
 als \textit{Soft Limit} (Überschreitung maximal 7 Tage) und 150MB als
 \textit{Hard Limit} gesetzt.
 
-Als Ergebnis von ergibt sich dann für den einzelnen Benutzer:\\
+Als Ergebnis davon ergibt sich für den einzelnen Benutzer:\\
 
 \begin{lstlisting}[label=code:quota2,caption=repquota]
   *** Report for user quotas on device /dev/sda1
@@ -1468,27 +1468,27 @@ Das weiter führende Thema Qualitätsmanagement\footcite{wikiQualityM} wird bei 
 Ein Task gilt erst dann als Done (abgeschlossen), wenn er JEDE der folgenden Bedingungen erfüllt:
 
 \begin{itemize}
-\item Zu jeder abgeschlossenen Aufgabe muss Dokumentation existieren und allen PMA bekannt gemacht werden, oder aber abgelegt sein an einem der folgenden Orte:
+\item Zu jeder abgeschlossenen Aufgabe muss eine Dokumentation existieren und allen PMA bekannt gemacht werden oder aber an einem der folgenden Orte abgelegt sein:
 \begin{itemize}
 \item DokuWiki
 \item Dropbox Ordner der Dokumentation
 \item im entsprechenden Trello Task
 \end{itemize}
-\item nach Änderungen im Ansible Code müssen die Integrationstests erfolgreich durchgelaufen sein
-\item Für neue (nach Task relevante) Features müssen Integrationstests hinzugefügt werden, welche die entsprechende Funktionalität überprüfen z.B. folgende Punkte:
+\item nach Änderungen im Ansible Code müssen die Integrationstests erfolgreich durchgelaufen sein.
+\item Für neue (nach Task relevante) Features müssen Integrationstests hinzugefügt werden, welche die entsprechende Funktionalität überprüfen, z.B. folgende Punkte:
 \begin{itemize}
-\item Bei einem neuen Dienst sollte überprüft werden, ob dieser seine Funktionalität tatsächlich erfüllt
-\item bei einem geöffneten Port sollte überprüft werden, dass dieser nach dem Ansible-Lauf auch offen ist
+\item Bei einem neuen Dienst sollte überprüft werden, ob dieser seine Funktionalität tatsächlich erfüllt.
+\item Bei einem geöffneten Port sollte überprüft werden, ob dieser nach dem Ansible-Lauf auch offen ist.
 \end{itemize}
-\item die Aufgabe bezieht ihre Relevanz aus dem funktionalen Konzept oder dem Sicherheitskonzept
-\item fehlgeschlagene Tests dürfen nicht ohne Rücksprache entfernt werden, außer das Feature dazu wird gleichzeitig entfernt
-\item die Travis-CI Testabdeckung sollte sich nicht verringern
-\item bei fehlgeschlagenen Tests wird nach dem Schema „You broke it, you fix it!“ vorgegangen
-\item auf einen fehlgeschlagenen Test/Branch sollten keine neuen Features hinzugefügt werden, hierfür sollte dann ein seperater Branch benutzt werden. Wenn der „master“-Branch dann wieder „grün“ ist, können die andere Features anschließend gemerged werden. Dem liegt die Prämisse „Be always Releasable“ zugrunde
+\item Die Aufgabe bezieht ihre Relevanz aus dem funktionalen Konzept oder dem Sicherheitskonzept.
+\item Fehlgeschlagene Tests dürfen nicht ohne Rücksprache entfernt werden, außer das Feature dazu wird gleichzeitig entfernt.
+\item Die Travis-CI Testabdeckung sollte sich nicht verringern.
+\item Bei fehlgeschlagenen Tests wird nach dem Schema „You broke it, you fix it!“ vorgegangen.
+\item Auf einen fehlgeschlagenen Test/Branch sollten keine neuen Features hinzugefügt werden, hierfür sollte dann ein seperater Branch benutzt werden. Wenn der „master“-Branch dann wieder „grün“ ist, können die andere Features anschließend gemerged werden. Dem liegt die Prämisse „Be always Releasable“ zugrunde.
 \end{itemize}
 
 \subsection{Programmier-Regeln}
-Wir halten uns an die Ansible Dokumentation\footcite{ansible} und die dort empfohlenen „Best Practices“\footcite{ansibleBestPractices}. Eine Ausnahme ist der Aufbau eines Ansible Tasks: Um die Lesbarkeit zu verbessern und den Code zu vereinheitlichen werden diese wie folgt definiert:
+Wir halten uns an die Ansible Dokumentation\footcite{ansible} und die dort empfohlenen „Best Practices“\footcite{ansibleBestPractices}. Eine Ausnahme ist der Aufbau eines Ansible Tasks: Um die Lesbarkeit zu verbessern und den Code zu vereinheitlichen, werden diese wie folgt definiert:
 
 \begin{minipage}{\textwidth}
 \begin{lstlisting}[label=code:ansiblebpbad,caption=Formatierung nach Standard]
@@ -1508,7 +1508,7 @@ Wir halten uns an die Ansible Dokumentation\footcite{ansible} und die dort empfo
 
 \subsection{Automatisierte Testverfahren}
 \subsubsection{Syntaxtests}
-Um alle relevanten Dateien einer syntaktischen Überprüfung zu unterziehen, wird unter Zuhilfenahme der Sprache \emph{python} entsprechende Funktionalität zur Verfügung gestellt. Hierzu liegt im Repository unter \code{/ansible} ein Makefile, in dem einige Ziele definiert sind, die es ermöglichen, die syntaktische Korrektheit sicherzustellen. Da die Funktion von Ansible, den Code auf Syntaxfehler zu überprüfen, sich nur auf den gerade ausgeführten Kontext bezieht und nicht auf den vollständigen Code, wird diese Funktion von uns separat zur Verfügung gestellt. Diese Ziele können lokal mittels dem Kommandozeilen Tool \code{make} ausgeführt werden.
+Um alle relevanten Dateien einer syntaktischen Überprüfung zu unterziehen, wird unter Zuhilfenahme der Sprache \emph{python} entsprechende Funktionalität zur Verfügung gestellt. Hierzu liegt im Repository unter \code{/ansible} ein Makefile, in dem einige Ziele definiert sind, die es ermöglichen die syntaktische Korrektheit sicherzustellen. Da die Funktion von Ansible den Code auf Syntaxfehler zu überprüfen, sich nur auf den gerade ausgeführten Kontext bezieht und nicht auf den vollständigen Code, wird diese Funktion von uns separat zur Verfügung gestellt. Diese Ziele können lokal mittels dem Kommandozeilen Tool \code{make} ausgeführt werden.
 
 \begin{figure}[!htbp]
 	\centering
@@ -1518,7 +1518,7 @@ Um alle relevanten Dateien einer syntaktischen Überprüfung zu unterziehen, wir
 \end{figure}
 
 \subsubsection{Integrationstests}
-Da Ansible im Moment noch keine Möglichkeit bietet den Code z.B. Unittests zu unterziehen, nutzen wir die Möglichkeit von Github Integrationstests über die Platform Travis-CI durchzuführen. Hierzu wird im Repository unter \newline  \code{ansible/tests} eine Testumgebung definiert, welche (so weit wie möglich) einem Fileserver entspricht. Hier werden alle genutzten und zur Erfüllung der Aufgabe benötigten Funktionen getestet. Eingeschränkt testbare Funktionen, wie z.B. der Aufbau der VPN Verbindung, werden im Rahmen der Möglichkeiten getestet. Funktionen, welche eine Netzwerkverbindung zu anderen Systemen benötigen, können auf dem Travis-CI System nicht getestet werden. Die dazugehörigen Testfälle\ref{subsec:testfaelle} werden im Repository unter \code{.travis.yml} definiert. Die Tests werden automatisch beim Hochladen eines neuen Patchsets im Git Repository durchgeführt.
+Da Ansible im Moment noch keine Möglichkeit bietet den Code z.B. Unittests zu unterziehen, nutzen wir die Möglichkeit von Github Integrationstests über die Platform Travis-CI durchzuführen. Hierzu wird im Repository unter \newline  \code{ansible/tests} eine Testumgebung definiert, welche (so weit wie möglich) einem Fileserver entspricht. Hier werden alle genutzten und, zur Erfüllung der Aufgabe, benötigten Funktionen getestet. Eingeschränkt testbare Funktionen, wie z.B. der Aufbau der VPN Verbindung, werden im Rahmen der Möglichkeiten getestet. Funktionen, welche eine Netzwerkverbindung zu anderen Systemen benötigen, können auf dem Travis-CI System nicht getestet werden. Die dazugehörigen Testfälle\ref{subsec:testfaelle} werden im Repository unter \code{.travis.yml} definiert. Die Tests werden automatisch beim Hochladen eines neuen Patchsets im Git Repository durchgeführt.
 
 \begin{figure}[!htbp]
 	\centering
@@ -1542,7 +1542,7 @@ In diesem Abschnitt werden die Maßnahmen zusammengefasst, die wir als notwendig
 \item Monitoring (Nagios\footcite{nagios}/Check\_MK)
 \begin{itemize}
 	\item Überwachung der von uns gewünschten aktiven Prozesse, CPU-/RAM-/HDD-Auslastung
-	\item Benachrichtigung per Mail per Warnmeldungen und Problemen
+	\item Benachrichtigung per Mail bei Warnmeldungen und Problemen
 	\item Visualisierung mit NagVis
 	\item Aufnahme der Monitoring-Umgebung in Sicherheits- und Betriebskonzepte
 \end{itemize}
@@ -1554,16 +1554,16 @@ In diesem Abschnitt werden die Maßnahmen zusammengefasst, die wir als notwendig
 \item Vereinheitlichung der Sicherheitskonzepte zwischen den Gruppen
 \item gemeinsames Betriebskonzept für alle Gruppen (siehe Betriebshandbuch)
 \item klar festgelegte Risiko Owner für übernommene Risiken
-\item alle Gruppen umfassende und ausführliche Auslegung des Sicherheitskonzeptes in Vorbereitung auf eine mögliche Zertifizierung (nach welchem Standard dann auch immer\footcite{wikiCyberSecStandards})
+\item alle Gruppen umfassende und ausführliche Auslegung des Sicherheitskonzeptes, in Vorbereitung auf eine mögliche Zertifizierung (nach welchem Standard dann auch immer\footcite{wikiCyberSecStandards})
 \end{itemize}
 
 \subsection{Blick über den Tellerrand}
 \label{subsec:tellerrand}
-Auch wenn sich unser Auftrag sehr konkret auf Installation und Betrieb zweier Dateiserver beschränkt, so verstehen wir unsere Aufgabe auch so, dass wir die Gesamtumgebung für die Anwender im Blick behalten sollten. Deshalb haben wir auch Vorschläge gesammelt, die über das hinaus gehen, was von uns verlangt wurde.
+Auch wenn sich unser Auftrag sehr konkret auf Installation und Betrieb zweier Dateiserver beschränkt, so verstehen wir unsere Aufgabe auch so, dass wir die Gesamtumgebung für die Anwender im Blick behalten sollten. Deshalb haben wir auch Vorschläge gesammelt, die über das hinaus gehen, was von uns erwartet wurde.
 \begin{itemize}
 \item \textbf{Active Directory / Domäne}: Im vereinigten Netz Nord/Süd existieren mindestens $2 \times 5 = 10$ Gruppen und $5 \times 5 \times 2 = 50$ Benutzerkonten jeweils für Mailserver, Webserver, CA und Dateiserver. Diese alle einzeln und händisch zu verwalten ist ein administrativer Albtraum (d.h. ineffizient, nicht nachvollziehbar, führt zu inkonsistenten Datenbeständen, usw.). Daher ist die Zusammenführung in einer Domäne zu befürworten.
 \item \textbf{VoIP Umgebung} (mögliche Realisierung: Asterisk mit SIP-Clients): Zum Betrieb einer modernen IT-Lösung für Unternehmen gehört auch, sich Gedanken darüber zu machen, wie die Mitarbeiter sicher und effizient miteinander sprechen können. Darüber hinaus gibt es zahlreiche weitere Anforderungen, die nur eine professionelle Lösung abdecken kann, z.B. Callcenter (z.B. für den Benutzerservice), Telekonferenzen, Faxdienste und die Integration mobiler Telefonie.
-\item Integrierte Sicherheit / \textbf{Security by Design}\footcite{waidner2013entwicklung}: erst eine aufeinander abgestimmte Client-Server-Architektur, bei der die IT-Abteilung Zugriff auf (und volle Kontrolle über) alle Systeme hat, kann ein wirksames Schutzniveau gewährleisten - und die technische Lösung so gestalten, dass der Anwender das System einfach sicher benutzen kann.
+\item Integrierte Sicherheit / \textbf{Security by Design}\footcite{waidner2013entwicklung}: erst eine aufeinander abgestimmte Client-Server-Architektur, bei der die IT-Abteilung Zugriff auf (und volle Kontrolle über) alle Systeme hat, kann ein wirksames Schutzniveau gewährleisten und die technische Lösung so gestalten, dass der Anwender das System einfach und sicher benutzen kann.
 \end{itemize}
 %----------------------------------------------------------------------------------------
 %	SECTION FAZIT
@@ -1576,7 +1576,7 @@ Auch wenn sich unser Auftrag sehr konkret auf Installation und Betrieb zweier Da
 \subsection{Statement zum Praktikum}
 Das Thema IT-Sicherheit ist zweifelsohne brandaktuell und übt eine große Faszination selbst auf IT-Laien aus: Vom "`Hacken"' in Hollywood-Filmen bis hin zu den zahlreichen Artikeln in Zeitungen und Zeitschriften bei aktuellen Ereignissen, steht die Relevanz des Themas nicht zur Diskussion.\\
 
-Bei der konkreten Umsetzung des Praktikums haben wir lange über die Anforderungsspezifikation diskutiert: Ist die sehr offene und nur grob umrissene Aufgabenstellung positiv, weil sie die Studierenden zu Selbstverantwortung motiviert und uns ermöglicht, weitgehend selbst Entscheidungen zu treffen? Oder fehlt dem Projekt ein klarer Bezugspunkt: Kein Lastenheft; kein Kunde, an dessen Wünschen man sich orientieren kann und muss; keine Unternehmensleitung, welche die IT-Abteilung auf einen einheitlichen Kurs bringt. Die PMA hatten viele gute Ideen, doch das Fehlen von klaren Hierarchien bedeutet eben auch, dass viele gute Ideen nebeneinander her laufen; daraus entstehen redundante Werkzeuge und Maßnahmen und das vergeudet Ressourcen, die doch in jedem Projekt knapp bemessen sind. Andererseits ging es ja auch gerade darum, aus dem Chaos Ordnung zu erschaffen und eine eigene Organisation aufzubauen, da wo vorher keine war.\\
+Bei der konkreten Umsetzung des Praktikums haben wir lange über die Anforderungsspezifikation diskutiert: Ist die sehr offene und nur grob umrissene Aufgabenstellung positiv, weil sie die Studierenden zu Selbstverantwortung motiviert und uns ermöglicht, weitgehend selbst Entscheidungen zu treffen? Oder fehlt dem Projekt ein klarer Bezugspunkt: Kein Lastenheft; kein Kunde, an dessen Wünschen man sich orientieren kann und muss; keine Unternehmensleitung, welche die IT-Abteilung auf einen einheitlichen Kurs bringt. Die PMA hatten viele gute Ideen, doch das Fehlen von klaren Hierarchien bedeutet eben auch, dass viele gute Ideen nebeneinander her laufen; daraus entstehen redundante Werkzeuge und Maßnahmen und das vergeudet Ressourcen, die doch in jedem Projekt knapp bemessen sind. Andererseits ging es ja auch gerade darum, aus dem Chaos Ordnung zu erschaffen und eine eigene Organisation aufzubauen, wo vorher keine war.\\
 
 Aus technischer Sicht haben wir im Abschnitt \ref{subsec:tellerrand} bereits einige Themen beschrieben, die für zukünftige Praktika interessant sein könnten. \\
 
@@ -1585,11 +1585,11 @@ In jedem Fall sind wir dafür dankbar, dass es dieses Praktikum gibt und dass wi
 \subsection{Projekterfolg}
 Es ist uns in der vorgegebenen Zeit gelungen zwei Datei-Server in Betrieb zu nehmen, die für ihren sicheren Betrieb notwendigen Maßnahmen - seien sie organisatorischer oder technischer Art - umfassend zu analysieren und den größten Teil dieser Maßnahmen anschließend zu implementieren. Nach dem von uns entwickelten Maßstab\ref{subsec:si} haben wir unser Ziel zu $95\%$ erreicht. \\
 
-Es bleibt die Frage zu beantworten, was mit den restlichen $5\%$ der Maßnahmen geschehen ist, die sich aus der Sicherheitsanalyse ergeben haben. Hardwarenahe Sicherheitsfunktionen konnten aus Kostengründen nicht realisiert werden; andere technische Verbesserungen - etwa das Monitoring - wurden aus Zeitgründen nicht realisiert. Die von uns vorgesehen organisatorischen Maßnahmen sind vollstädnig implementiert, insoweit wir dafür nicht auf Zuarbeit anderer Gruppen angewiesen waren - von denen es leider oft keine Rückmeldung auf unsere Anfragen gab.
+Es bleibt die Frage zu beantworten, was mit den restlichen $5\%$ der Maßnahmen geschehen ist, die sich aus der Sicherheitsanalyse ergeben haben. Hardwarenahe Sicherheitsfunktionen konnten aus Kostengründen nicht realisiert werden; andere technische Verbesserungen - etwa das Monitoring - wurden aus Zeitgründen nicht realisiert. Die von uns vorgesehen organisatorischen Maßnahmen sind vollständig implementiert, insofern wir dafür nicht auf Zuarbeit anderer Gruppen angewiesen waren, von denen es leider oft keine Rückmeldung auf unsere Anfragen gab.
 
 Dennoch: Wäre dies eine produktiv eingesetzte Umgebung, so läge ein großer Teil der Arbeit noch vor uns. Jetzt würde es darum gehen, dem Service den Feinschliff zu verpassen, in der Praxis auftretende Komplikationen zu beheben und die Absicherung iterativ zu verbessern. Da dies jedoch kein Produktivsystem ist, steht in unseren Gedanken der Lerneffekt im Vordergrund, den wir aus diesem Projekt für unser Studium mitnehmen. \\
 
-Bei einem solch komplexen Projekt bleibt es nicht aus, dass Fehler passieren. Mancher Satz ergibt im Nachgang keinen Sinn, ein Teil der Software-Konfiguration ist lückenhaft oder kompromittiert sogar die Sicherheit. Wir machen uns keine Illusionen: Weder unser System noch unsere Vorstellung davon ist frei von Bugs. Eine Binsenweisheit lautet "`Aus Fehlern wird man klug"'. Ganz so, wie in der IT-Sicherheit beim Aufdecken von Schwachstellen zunächst alle sich darauf einigen, worum es bei dieser Lücke genau geht\footcite{wikiCVE} und anschließend gemeinsam versuchen sie zu beheben, wünschen auch wir uns, dass wir aus diesem Projekt gemeinsam lernen können, die Zukunft der IT sicher zu gestalten.
+Bei einem solch komplexen Projekt bleibt es nicht aus, dass Fehler passieren. Mancher Satz ergibt im Nachgang keinen Sinn, ein Teil der Software-Konfiguration ist lückenhaft oder kompromittiert sogar die Sicherheit. Wir machen uns keine Illusionen: Weder unser System noch unsere Vorstellung davon ist frei von Bugs. Eine Binsenweisheit lautet "`Aus Fehlern wird man klug"'. Ganz so, wie sich in der IT-Sicherheit beim Aufdecken von Schwachstellen zunächst alle darauf einigen, worum es bei dieser Lücke genau geht\footcite{wikiCVE} und anschließend gemeinsam versuchen sie zu beheben, wünschen auch wir uns, dass wir aus diesem Projekt gemeinsam lernen können die Zukunft der IT sicher zu gestalten.
 
 %----------------------------------------------------------------------------------------
 %	SECTION GLOSSAR
@@ -1613,11 +1613,11 @@ Dateiserver \newline Fileserver & Server, der einen festgelegten Bereich eines D
 \midrule
 Dienst & Ein im Hintergrund laufender Prozess auf einem Computer \\
 \midrule
-Hard Limit & Gibt den maximal nutzbaren Speicherplatz oder die maximale verwendbare Dateianzahl an. Ein Benutzer kann dieses Limit niemals überschreiten. Ein Erreichen dieses Limits ist für den Benutzer gleichzusetzen mit dem Verbrauch des verfügbaren Speicherplatzes \\
+Hard Limit & Gibt den maximal nutzbaren Speicherplatz oder die maximal verwendbare Dateianzahl an. Ein Benutzer kann dieses Limit niemals überschreiten. Ein Erreichen dieses Limits ist für den Benutzer gleichzusetzen mit dem Verbrauch des verfügbaren Speicherplatzes \\
 \midrule
 Service & Eine für den Kunden bereitgestellte Servicedienstleistung \\
 \midrule
-Sicherheit \newline sicher \newline abgesichert & Ein IT Service gilt hier als sicher, wenn er die Anforderungen des BSI IT-Grundschutz erfüllt. \\
+Sicherheit \newline sicher \newline abgesichert & Ein IT Service gilt hier als sicher, wenn er die Anforderungen des BSI IT-Grundschutzes erfüllt. \\
 \midrule
 Soft Limit & Ist eine Begrenzung, welche kleiner oder gleich dem Hard Limit gesetzt werden muss. Wird das Soft Limit überschritten, so erhält der Benutzer den Zustand "Over Quota". Das Soft Limit kann bis zum Wert des Hard Limits überschritten werden \\
 \midrule
