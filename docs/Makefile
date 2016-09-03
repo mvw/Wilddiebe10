@@ -57,9 +57,12 @@ ifeq ($(UNAME_S),Linux)
 											biber
 endif
 ifeq ($(UNAME_S),FreeBSD)
-	pkg install latex-mk
-	pkg install latex-biber
-	pkg install tex-dvipsk
+	@echo ---
+	@echo Notice: Update missing software as root via
+	@echo pkg install latex-mk
+	@echo pkg install latex-biber
+	@echo pkg install tex-dvipsk
+	@echo ---
 endif
 
 setup_tex:
