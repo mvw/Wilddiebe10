@@ -1213,7 +1213,7 @@ Außerdem werden eingehende Pakete, die zu ausgehenden Verbindungen gehören, zu
 Unser System hat keine Routing-Funktionen. Die Forward Chain findet deshalb keine Beachtung. In der Output Chain gibt es keine Regel, die Pakete verwirft. Somit sind ausgehende Verbindungen unbeschränkt möglich. Eine spätere Einschränkung ist aber auf die gleiche Weise, wie für die Input Chain möglich.
 
 \subsection{Virenscanner: ClamAV}
-Neben dem Paket \code{ClamAV}\footcite{clamav} als eigentlicher Virenscanner, sorgt das Zusatzpaket \code{freshclam} für die Aktualisierung der Virensignaturen. Das erfolgt automatisch 24x täglich.
+Neben dem Paket \code{ClamAV}\footcite{clamAV} als eigentlicher Virenscanner, sorgt das Zusatzpaket \code{freshclam} für die Aktualisierung der Virensignaturen. Das erfolgt automatisch 24x täglich.
 
 Für das gesamte Filesystem ist die Überwachung der Dateien bei Zugriff (on-access scan) aktiviert. Dazu muss ClamAV als \code{root} ausgeführt werden.
 
