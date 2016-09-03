@@ -1,0 +1,72 @@
+---
+- set_fact:
+    _backup_dirs: '/home/ /share/public'
+
+- name: "Ensure required packages are installed"
+  package:  name={{ item }} 
+  with_items: 
+      - gnupg 
+      - tar
+      - openssh-client
+
+- name: "Ensure backup script exists"
+  copy:
+    src: ../backup.sh
+    dest: /backup.sh
+    owner: root
+    group: root
+    mode: 0700
+
+- name: "Preparing backup directory"
+  file: 
+    path: /backup
+    state: directory
+    owner: root
+    group: sudo
+    mode: 0770
+
+- name: "Setting directories to backup"
+  replace:
+    dest: /backup.sh
+    regexp: "^BACKUP_DIRS=.*$"
+    replace: "BACKUP_DIRS=\"{{ _backup_dirs }}\""
+
+- name: "Setting ssh for backup"
+  replace:
+    dest: /backup.sh
+    regexp: "^SSH_KEYFILE=.*$"
+    replace: "SSH_KEYFILE=\"{{ _backup_ssh_keyfile }}\""
+ 
+- name: "Setting gpg key for backup"
+  replace:
+    dest: /backup.sh
+    regexp: "^GPG_PASS=.*$"
+    replace: "GPG_PASS=\"{{ _backup_gpg_key }}\""
+
+- name: "Setting backup filename"
+  replace:
+    dest: /backup.sh
+    regexp: "^BACKUP_FILENAME=.*$"
+    replace: "BACKUP_FILENAME=\"{{ backup_filename }}\""
+
+- name: "Setting backup filename"
+  replace:
+    dest: /backup.sh
+    regexp: "^REMOTE_HOST=.*$"
+    replace: "REMOTE_HOST=\"{{ _backup_remote_host }}\""
+
+- name: "Setting user for backup filename"
+  replace:
+    dest: /backup.sh
+    regexp: "^REMOTE_USER=.*$"
+    replace: "REMOTE_USER=\"{{ _backup_remote_user }}\""
+
+- name: "Cron job for backup"
+  cron:
+    cron_file: "/etc/crontab"
+    user: root
+    name: "Backup"
+    state: present
+    hour: 3
+    minute: 0
+    job: "/backup.sh"

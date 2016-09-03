@@ -12,3 +12,4 @@
     - { role: ansible-role-firewall, tags: firewall }
     - { role: k1599_time_sync, tags: time_sync }
     - { role: k1599_quota, tags: quota }
+    - { role: k1599_backup, tags: backup }

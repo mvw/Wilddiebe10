@@ -19,3 +19,5 @@ k1599_ovpn_server_auth: 'SHA1'
 
 k1599_rsyslog_user: 'syslog'
 k1599_rsyslog_user_group: 'adm'
+
+backup_filename: /backup/backup_filenord.tar.gz

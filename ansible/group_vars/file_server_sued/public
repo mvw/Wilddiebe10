@@ -16,3 +16,5 @@ k1599_ovpn_server_mtu: '1492'
 
 k1599_rsyslog_user: 'root'
 k1599_rsyslog_user_group: 'root'
+
+backup_filename: /backup/backup_filesued.tar.gz
