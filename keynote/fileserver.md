@@ -3,7 +3,7 @@ title: Fileserver
 author: 
  - Christoph Weißenborn
  - Jörg Ricardo Schumacher
- - Marc Ernst Eddy Woerkom
+ - Marc van Woerkom
  - Patrick Häbel
  - Sascha Girrulat
  - Silas Jansen
@@ -77,7 +77,7 @@ Das ist ein Text
 
 * Christoph Weißenborn
 * Jörg Ricardo Schumacher
-* Marc Ernst Eddy Woerkom
+* Marc van Woerkom
 * Patrick Häbel
 * Sascha Girrulat
 * Silas Jansen
