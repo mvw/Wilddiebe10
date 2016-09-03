@@ -22,8 +22,9 @@ docs/*.toc
 docs/*.out
 docs/*.fls
 docs/*.fdb*
+docs/*.gz
 docs/texmf/*ls-R
-docs/*.log
+*.log
 docs/*.run.xml
 Projektdokumentation.aux
 Projektdokumentation.synctex.gz
