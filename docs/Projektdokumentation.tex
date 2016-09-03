@@ -534,17 +534,17 @@ Seien
 \begin{itemize}
 \item $n$ die Anzahl der von uns identifizierten BSI IT-Grundschutz Maßnahmen
 \item $m_i$ die i-te Grundschutz-Maßnahme aus der Tabelle \ref{tab:massnahmen} im Anhang
-\item $siv(m_i)$ (Security Index Value) das Gewicht \footnote{Motivation der Gewichtung: Die tatsächliche Effektivität und Wirksamkeit von technischen Maßnahmen ist leichter zu überprüfen als die von rein organisatorischen Festlegungen („Papier ist geduldig“)} der i-ten Maßnahme mit
+\item $siv(m_i)$ (Security Index Value) das Gewicht \footnote{Motivation der Gewichtung: Die tatsächliche Effektivität und Wirksamkeit von technischen Maßnahmen ist leichter zu überprüfen, als die von rein organisatorischen Festlegungen („Papier ist geduldig“)} der $i$-ten Maßnahme mit
 \begin{equation}
 siv(x)=
 \begin{cases}
-    0,& \text{wenn Dateiserverguppen nicht verantwortlich für x }\\
-    1,& \text{wenn x organisatorische Maßnahme}\\
-    2,& \text{wenn x technische Maßnahme von normaler Bedeutung}\\
-    4,& \text{wenn x technische Maßnahme von herausragender Bedeutung}
+    0,& \text{wenn Dateiserverguppen nicht verantwortlich für $x$ }\\
+    1,& \text{wenn $x$ organisatorische Maßnahme}\\
+    2,& \text{wenn $x$ technische Maßnahme von normaler Bedeutung}\\
+    4,& \text{wenn $x$ technische Maßnahme von herausragender Bedeutung}
 \end{cases}
 \end{equation}
-\item $f(m_i)$ der Grad der Erfüllung der Maßnahme (zwischen 0 und 1), zu entnehmen aus der folgenden Tabelle: \\
+\item $f(m_i)$ der Grad der Erfüllung der Maßnahme (zwischen $0$ und $1$), zu entnehmen aus der folgenden Tabelle: \\
 
 \begin{minipage}{\textwidth}
 \begin{center}
@@ -579,7 +579,7 @@ SI:=\frac{\sum_{i=1}^n siv(m_i)\times f(m_i)}{\sum_{i=1}^{n}siv(m_i)}
 \end{equation}
 \end{center}
 
-Ein SI von $1,0$ bedeutet also, dass alle vom BSI IT Grundschutz vorgeschlagenen Maßnahmen umgesetzt wurden (soweit sie für den Dateiserver-Betrieb relevant sind). Die aktuelle Entwicklung des SI haben wir in unregelmäßigen Abständen - mindestens jedoch einmal wöchentlich - dokumentiert. Der zum Abgabetermin wirksame SI ist $0,95$.\\
+Ein SI von $1,0$ bedeutet also, dass alle vom BSI IT Grundschutz vorgeschlagenen Maßnahmen umgesetzt wurden (soweit sie für den Dateiserver-Betrieb relevant sind). Die aktuelle Entwicklung des SI haben wir in unregelmäßigen Abständen -- mindestens jedoch einmal wöchentlich -- dokumentiert. Der zum Abgabetermin wirksame SI ist $0,95$.\\
 
 Der SI kann und soll eine eingehende Betrachtung der aktuellen Sicherheitslage nicht ersetzen. Für eine grobe Abschätzung der IT Sicherheitsvorkehrungen, wie sie etwa im Management erforderlich ist, kann dieser Index jedoch genutzt werden.
 
@@ -598,9 +598,9 @@ Der SI kann und soll eine eingehende Betrachtung der aktuellen Sicherheitslage n
 \toprule
 Kategorie & Definition \\
 \midrule
-Normal & Die Schadensauswirkungen sind begrenzt (etwa auf eine einzelne Verkaufsstelle) und überschaubar. \newline Die maximal tragbare Ausfallzeit übersteigt 4 Tage.\\[0.3cm]
-Hoch & Die Schadensauswirkungen können beträchtlich sein und z.B. zum Ausfall eines einzelnen Dienstes für alle Verkaufsstellen führen. \newline Die maximal tragbare Ausfallzeit beträgt zwischen 2 und 4 Tagen. \\[0.3cm]
-Sehr hoch & Die Schadensauswirkungen können den Bestand der vereinigten Back-werke existentiell bedrohen oder das Betriebsergebnis des Jahres katastrophal beschädigen. \newline Die maximal tragbare Ausfallzeit liegt unter 2 Tagen. \\
+Normal & Die Schadensauswirkungen sind begrenzt (etwa auf eine einzelne Verkaufsstelle) und überschaubar. \newline Die maximal tragbare Ausfallzeit übersteigt vier Tage.\\[0.3cm]
+Hoch & Die Schadensauswirkungen können beträchtlich sein und z.B. zum Ausfall eines einzelnen Dienstes für alle Verkaufsstellen führen. \newline Die maximal tragbare Ausfallzeit beträgt zwischen zwei und vier Tagen. \\[0.3cm]
+Sehr hoch & Die Schadensauswirkungen können den Bestand der vereinigten Back-werke existentiell bedrohen oder das Betriebsergebnis des Jahres katastrophal beschädigen. \newline Die maximal tragbare Ausfallzeit liegt unter zwei Tagen. \\
 \bottomrule
 \end{tabular}
 \end{center}
