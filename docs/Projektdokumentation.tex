@@ -937,7 +937,7 @@ Die Datensicherung erfolgt über ein Skript, welches einen tar.gz-Container erst
 \label{subsec:restore}
 Das \emph{Vorgehen} ist im Betriebshandbuch Standard Change „Restore Dateiserver“ beschrieben. Die gesamte \emph{Rekonstruktionszeit} eines Vollbackups beträgt ca. 4 Stunden (inkl. Betriebssystem, Software, Daten und Tests). Das ist annehmbar, da es im Rahmen der festgestellten Anforderungen bleibt (siehe \ref{subsec:schutzbedarfsfeststellung}). \\
 
-Die komplette Neuinstallation des Systems - anstatt nur ein vorher erstelltes System-Abbild wieder zurückzuspielen - ist ungewöhnlich, denn sie beinhaltet immer das Risiko, dass dabei durch die veränderte Software Fehler entstehen, welche erst behoben werden müssen, bevor der Service wieder verfügbar ist. Demgegenüber steht jedoch der Vorteil, dass dann ein System mit aktuellem Softwarestand in Betrieb genommen wird. Da die von uns festgestellten Anforderungen an die Verfügbarkeit des Systems geringer sind, als die Anforderungen an die Vertraulichkeit, gehen wir hier Fail-safe\footcite{wikiFailsafe} vor, d.h. wir stellen einen Service erst dann zur Verfügung, wenn wir auch seine Vertraulichkeit gewährleisten können.
+Die komplette Neuinstallation des Systems -- anstatt nur ein vorher erstelltes System-Abbild wieder zurückzuspielen -- ist ungewöhnlich, denn sie beinhaltet immer das Risiko, dass dabei durch die veränderte Software Fehler entstehen, welche erst behoben werden müssen, bevor der Service wieder verfügbar ist. Demgegenüber steht jedoch der Vorteil, dass dann ein System mit aktuellem Softwarestand in Betrieb genommen wird. Da die von uns festgestellten Anforderungen an die Verfügbarkeit des Systems geringer sind, als die Anforderungen an die Vertraulichkeit, gehen wir hier Fail-safe\footcite{wikiFailsafe} vor, d.h. wir stellen einen Service erst dann zur Verfügung, wenn wir auch seine Vertraulichkeit gewährleisten können.
 
 \subsection{Minimaldatensicherungskonzept}
 Siehe Betriebshandbuch, Standard Change „Offline Backup“
@@ -956,7 +956,7 @@ Ansible ist eine auf Python basierende Open-Source Lösung zur Konfiguration und
 
 Das Verzeichnis der Systeme wird \emph{Inventory} genannt und ist in Gruppen organisiert. Diese werden zur Laufzeit evaluiert und mit Gruppen-, Host- und Rollen bezogenen Daten versehen. Auf diese Daten kann zur Laufzeit innerhalb der Rollen zugegriffen werden. Der Zugriff erfolgt über die \textit{Jinja Templating Engine}. Hierdurch wird eine Trennung von Daten und Code erzeugt, welche die Wiederverwendung der erstellten Rollen unterstützt.
 
-Die Rollen\ref{subsec:ansible_rollen} enthalten die Konkreten \emph{„Tasks“} die in der Summe die Rollenbeschreibung bilden. Die Ausführung erfolgt sequentiell und ist i.d.R. idempotent, d.h. das Ergebnis ändert sich durch die mehrfache Ausführung hintereinander nicht.
+Die Rollen\ref{subsec:ansible_rollen} enthalten die konkreten \emph{„Tasks“}, die in der Summe die Rollenbeschreibung bilden. Die Ausführung erfolgt sequentiell und ist i.d.R. idempotent, d.h. das Ergebnis ändert sich durch die mehrfache Ausführung hintereinander nicht.
 
 \begin{lstlisting}[label=code:public,caption=Auszug aus ansible/group\_vars/file\_server/public]
 k1599_file_server_smbd_enabled: yes
@@ -1150,7 +1150,7 @@ Die öffentliche Freigabe soll für jeden Benutzer beschreibbar sein, außerdem 
 \subsection{Firewall}
 Als Firewall wird die Linux Kernel Firewall iptables\footcite{iptables} eingesetzt. Zur Umsetzung standen mehrere Implementierungen unter Debian/Ubuntu zur Verfügung, unter anderem \emph{Shorewall}, \emph{apf-firewall} und \emph{ansible-role-firewall}. Das Team hat sich, aufgrund der einfachen Integration in den bestehenden Ansible-Code, für das externe Playbook \url{https://github.com/sagiru/ansible-role-firewall} entschieden. Entscheidend war die einfache Integration der Firewall als Service. \\
 
-Um die benötigten Anforderungen für das Projekt zu erfüllen, waren allerdings kleinere Anpassungen nötig. Es fehlten Funktionalitäten, wie z.B. das Beschränken von Portfreigaben auf explizite Interface oder die Möglichkeit den Zustand des Services (an/aus) zu konfigurieren. Diese Funktionalitäten wurden eingebaut und entsprechend in das Upstreamprojekt zurück gegeben.
+Um die benötigten Anforderungen für das Projekt zu erfüllen, waren allerdings kleinere Anpassungen nötig. Es fehlten Funktionalitäten, wie z.B. das Beschränken von Portfreigaben auf explizite Interfaces oder die Möglichkeit den Zustand des Services (an/aus) zu konfigurieren. Diese Funktionalitäten wurden eingebaut und entsprechend in das Upstreamprojekt zurück gegeben.
 
 \subsubsection{Konfiguration}
 Die Iptables Regeln werden über ein Dictionary in Ansible konfiguriert.
@@ -1233,7 +1233,7 @@ Das Blockieren der Zugriffe ist bei unseren Systemen nicht möglich, da der Kern
 \subsection{Namensauflösung}
 Es bestehen verschiedene Möglichkeiten, eine Namensauflösung im Firmennetzwerk zu realisieren. Für die technische Umsetzung wurde von der Gruppe Netzwerke Nord ein zentraler Dienst (DNS) zur Namensauflösung zur Verfügung gestellt; dieser wird auf dem Dateiserver Nord bei der VPN-Einwahl automatisch eingebunden.
 
-Da ein DNS-Server in der Süd-Umgebung nicht realisiert wurde und wir stets eine (so weit wie möglich) einheitliche Konfiguration auf unseren beiden Systemen ausrollen, werden auf beiden Systemen zur Namensauflösung zusätzlich Einträge in der lokalen \code{/etc/hosts} Datei gepflegt. Die Information, welche Einträge vorhanden sein müssen wird durch die jeweilige Netzwerkgruppe zur Verfügung gestellt.
+Da ein DNS-Server in der Süd-Umgebung nicht realisiert wurde und wir stets eine (so weit wie möglich) einheitliche Konfiguration auf unseren beiden Systemen ausrollen, werden auf beiden Systemen zur Namensauflösung zusätzlich Einträge in der lokalen \code{/etc/hosts} Datei gepflegt. Die Information, welche Einträge vorhanden sein müssen, wird durch die jeweilige Netzwerkgruppe zur Verfügung gestellt.
 
 Die Einträge in der Datei \code{/etc/hosts}\ref{subsec:hosts} werden über die Ansible Rolle \textit{k1599\_common} gepflegt.
 
@@ -1277,7 +1277,7 @@ Um exakte Zeitstempel für gespeicherte Dateien gewährleisten zu können, benö
 Das Paket \code{openntpd} bringt die dafür benötigte Konfigurationsdatei mit und benötigt keine weiteren Einstellungen. Die Wahl ist aus Sicherheitsgründen auf den sehr schlanken openntpd gefallen, da dafür keine Ports von außen erreichbar gemacht werden müssen und dieser auch als reiner Client funktioniert. Die Installation und der Start des Dienstes erfolgt über die Ansible Rolle \textit{k1599\_time\_sync}.
 
 \subsection{Syslog}
-Um zu unterstützen das keine betriebs- oder ggf. sicherheitsrelevanten Informationen verloren gehen, stellt jeder der Fileserver einen zentralen Syslogdienst zur Verfügung. Dieser wird über \code{rsyslog} realisiert. Hierzu wurden die Standardkonfigurationen der Rsyslog-Server durch entsprechende Konfigurationsteile ergänzt. Im ersten Schritt loggen die Dateiserver zusätzlich per tcp auf sich selbst und auf den jeweils anderen Server. Dort wird unter \code{/var/log/rsyslog-k1599/<serverip>/} eine Dateistruktur erstellt, die dem allgemeinen Standard unter Linux ähnelt.
+Um zu unterstützen, das keine betriebs- oder ggf. sicherheitsrelevanten Informationen verloren gehen, stellt jeder der Fileserver einen zentralen Syslogdienst zur Verfügung. Dieser wird über \code{rsyslog} realisiert. Hierzu wurden die Standardkonfigurationen der Rsyslog-Server durch entsprechende Konfigurationsteile ergänzt. Im ersten Schritt loggen die Dateiserver zusätzlich per tcp auf sich selbst und auf den jeweils anderen Server. Dort wird unter \code{/var/log/rsyslog-k1599/<serverip>/} eine Dateistruktur erstellt, die dem allgemeinen Standard unter Linux ähnelt.
 
 \begin{lstlisting}[label=code:syslog,caption=Syslog Dateien]
         root@filesued ~ # ls /var/log/rsyslog-k1599/
