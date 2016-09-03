@@ -47,7 +47,7 @@ Es ist uns in der vorgegebenen Zeit gelungen, zwei Samba/SMB-Server für die Anw
 
 Unsere Gruppen (5 und 10) haben den Auftrag erhalten, jeweils einen Datei-Server einzurichten und in Betrieb zu nehmen. Wir waren selbst dafür verantwortlich, das Projekt zu organisieren und die Zusammenarbeit mit den anderen Gruppen zu regeln, welche für Netz, CA, Mail und Webserver zuständig waren. Das Spannendste an diesem Projekt war für uns natürlich die Frage nach der IT Sicherheit. Sie steht im Spannungsfeld zwischen notwendiger ganzheitlicher Betrachtung des Themas und dem beschränkten Auftrag zwei Dateiserver bereit zu stellen.\\
 
-Wo wir Risiken gefunden haben, die mit technischen Mitteln alleine nicht zu administrieren sind, haben wir organisatorische Regelungen geschaffen. Wo wir Risiken gefunden haben, die wir alleine nicht absichern können, haben wir stets auf die Kommunikation mit den Beteiligten gesetzt. Und diejenigen Restrisiken, welche wir mit den uns zur Verfügung stehenden Ressourcen an Geld, Zeit und Zuarbeit nicht eliminieren konnten, haben wir zumindest dokumentiert.\\
+Wo wir Risiken gefunden haben, die mit technischen Mitteln alleine nicht zu administrieren sind, haben wir organisatorische Regelungen geschaffen. Bei Risiken , welche wir alleine nicht absichern konnten, haben wir stets auf die Kommunikation mit den Beteiligten gesetzt. Und diejenigen Restrisiken, welche wir mit den uns zur Verfügung stehenden Ressourcen an Geld, Zeit und Zuarbeit nicht eliminieren konnten, haben wir zumindest dokumentiert.\\
 
 Bei unserem Vorgehen haben wir uns in folgender Reihenfolge gefragt:
 
@@ -663,18 +663,18 @@ Verfügbarkeit & Normal & Maximumprinzip \\
 \subsubsection{Schutzbedarf: Kommunikationsverbindungen}
 \begin{minipage}{\textwidth}
 \begin{center}
-\captionof{table}{Modellierung übergeordneter Aspekte}
-\begin{tabular}{p{3.5cm}llp{6.3cm}}
+\captionof{table}{Anwendung Dateiserver}
+\begin{tabular}{p{3cm}llp{6.8cm}}
 \toprule
 Anwendung & Grundwert & Schutzbedarf & Begründung \\
-Dateiserver & Vertraulichkeit & Hoch & Maximumprinzip \\
-LAN-Client & Integrität & Hoch & Maximumprinzip \\
+Dateiserver zu LAN-Client & Vertraulichkeit & Hoch & Maximumprinzip \\
+ & Integrität & Hoch & Maximumprinzip \\
  & Verfügbarkeit & Normal & Maximumprinzip \\
-Dateiserver & Vertraulichkeit & Hoch & Kommunikation findet hier ausschließlich zur LAN-Anbindung statt \\
-Internet & Integrität & Hoch &  \\
+Dateiserver zu Internet & Vertraulichkeit & Hoch & Kommunikation findet hier ausschließlich zur LAN-Anbindung statt \\
+ & Integrität & Hoch &  \\
  & Verfügbarkeit & Normal &  \\
-Dateiserver & Vertraulichkeit & Hoch & Nutzer-Login-Daten \\
-AD/DNS-Server & Integrität & Hoch & Nutzer-Authentifizierung \\
+Dateiserver zu AD/DNS-Server & Vertraulichkeit & Hoch & Nutzer-Login-Daten \\
+ & Integrität & Hoch & Nutzer-Authentifizierung \\
  & Verfügbarkeit & Normal &  \\
 \bottomrule
 \end{tabular}
@@ -738,6 +738,7 @@ B1.8 	& Behandlung von \newline Sicherheitsvorfällen & Geregelt im Betriebshand
 \end{tabular}
 \end{center}
 \end{minipage}
+\bigskip
 
 \begin{minipage}{\textwidth}
 \begin{center}
@@ -764,7 +765,6 @@ Die Maßnahmen, welche sich aus den modellierten Bausteinen ergeben, sind in der
 
 Alle letztendlich durchgeführten technischen Maßnahmen sind in der technischen Systembeschreibung (siehe \ref{sec:techsys}) aufgeführt. Alle organisatorischen Maßnahmen auf der administrativen Seite sind in den Betriebs- und Serviceprozessen des Betriebshandbuches (im Anhang) dokumentiert;  die vom Anwender zu beachtenden Regelungen sind analog in der „IT Richtlinie für Anwender“ (ebenfalls im Anhang) aufgelistet. Die restlichen Maßnahmen - d.h. jene, die wir analysiert haben, aber im Rahmen des Projektes nicht durchführen konnten - sind im Ausblick (Kapitel \ref{sec:ausblick}) aufgelistet.
 
-\newpage
 \captionof{table}{Identifizierte Maßnahmen}
 \label{tab:massnahmen}
 \begin{longtable}{lp{3.7cm}|p{3cm}l|p{3.8cm}}
