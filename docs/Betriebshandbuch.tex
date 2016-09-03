@@ -1,5 +1,6 @@
 \documentclass[]{article}
 \usepackage{rotating}
+\usepackage[backend=biber, style=alphabetic, sorting=ynt]{biblatex}
 \usepackage{lmodern}
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
@@ -23,6 +24,7 @@
 \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
 \usepackage{hyperref}
+\usepackage{authblk} % multiple authors
 \hypersetup{unicode=true,
             pdfborder={0 0 0},
             breaklinks=true}
@@ -57,15 +59,58 @@
 \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
 \fi
 
-\date{}
+%----------------------------------------------------------------------------------------
+%	NAME AND CLASS SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\Title}{Betriebshandbuch k1599} % Assignment title
+\newcommand{\DueDate}{03.09.2016} % Due date
+\newcommand{\Class}{Fachpraktikum IT-Sicherheit} % Course/class
+\newcommand{\ClassTime}{} % Class/lecture time
+\newcommand{\ClassInstructor}{Ralf Naues} % Teacher/lecturer
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title{
+\vspace{0.2in} %2in ohne Bild
+\textmd{\textbf{\Class:\ \Title}}\\
+\normalsize\vspace{0.1in}\small{Abzugeben\ am\ \DueDate}\\
+\vspace{0.1in}\large{\textit{Betreuung durch \ClassInstructor\ \ClassTime}}
+\vspace{3in} % 3in ohne Bild
+}
+
+\author[1]{Christoph Weißenborn}
+\author[1]{Jörg Ricardo Schumacher}
+\author[1]{Marc van Woerkom}
+\author[1]{Patrick Häbel}
+\author[2]{Sascha Girrulat}
+\author[2]{Silas Jansen}
+\author[1]{Waldemar Schmidt}
+\affil[1]{Gruppe 5 (Nord)}
+\affil[2]{Gruppe 10 (Süd)}
+\date{} % Insert date here if you want it to appear below your name
+
 
 \begin{document}
 
+\maketitle
+
+%----------------------------------------------------------------------------------------
+%	TABLE OF CONTENTS
+%----------------------------------------------------------------------------------------
+
+%\setcounter{tocdepth}{1} % Uncomment this line if you don't want subsections listed in the ToC
+
+\newpage
+\tableofcontents
+\newpage
 \section{Beschreibung der Systeme}\label{beschreibung-der-systeme}
 
 \subsection{Dateiserver Nord}\label{dateiserver-nord}
 
-\begin{longtable}{|l|p{6cm}|}
+\begin{longtable}{l|p{8cm}}
 \toprule
 Beschreibung & Stellt Dienste zum Austausch / Ablegen von Dateien im
 Netzwerk bereit:
@@ -115,7 +160,7 @@ Restore &\tabularnewline
 
 \subsection{Dateiserver Süd}\label{dateiserver-suxfcd}
 
-\begin{longtable}{|l|p{6cm}|}
+\begin{longtable}{l|p{8cm}}
 \toprule
 Beschreibung & Stellt Dienste zum Austausch / Ablegen von Dateien im
 Netzwerk bereit:
@@ -232,7 +277,7 @@ Requests dokumentiert.
 
 \paragraph{Genehmigte Standard Changes}\label{genehmigte-standard-changes}
 
-\begin{longtable}{|p{3cm}|p{10cm}|}
+\begin{longtable}{p{3cm}|p{10cm}}
 \toprule
 Standard Change & Prozess\tabularnewline
 \midrule
@@ -827,7 +872,7 @@ Dateiserver}\label{allgemeiner-change-dateiserver}
 
 \subsubsection{Service Review}\label{service-review}
 
-\begin{longtable}{lp{6cm}}
+\begin{longtable}{lp{8cm}}
 \toprule
 Zyklus & 1x im Quartal\tabularnewline
 \midrule
@@ -860,7 +905,7 @@ Agenda & \begin{itemize}
 \newpage
 \subsubsection{IT Security Review}\label{it-security-review}
 
-\begin{longtable}{lp{6cm}}
+\begin{longtable}{lp{8cm}}
 \toprule
 Zyklus & Jährlich\tabularnewline
 \midrule
@@ -896,7 +941,7 @@ Agenda & \begin{itemize}
 
 \subsubsection{Datensicherung Review}\label{datensicherung-review}
 
-\begin{longtable}{lp{6cm}}
+\begin{longtable}{lp{8cm}}
 \toprule
 Zyklus & 1x im Quartal\tabularnewline
 \midrule
@@ -922,14 +967,14 @@ Agenda & \begin{itemize}
 \end{longtable}
 
 \protect\hypertarget{ux5fToc457467708}{}{}
-
+\newpage
 \section{Anlagen}\label{anlagen}
 
 \subsection{Formulare}\label{formulare}
 
 \subsubsection{Request for Change (RfC)}\label{request-for-change-rfc}
 
-\begin{longtable}{|p{6cm}|p{6cm}|}
+\begin{longtable}{p{5.5cm}p{7.5cm}}
 \toprule
 Betroffener Service &\tabularnewline
 \midrule
@@ -947,53 +992,67 @@ Zeitplan zur Durchführung: &\tabularnewline
 \subsubsection{Aufnahme eines Services / Gruppe in
 Betriebshandbuch}\label{aufnahme-eines-services-gruppe-in-betriebshandbuch}
 
-\begin{longtable}{lp{6cm}}
+\begin{longtable}{lp{8cm}}
 \toprule
 Bezeichnung des Services* &\tabularnewline
 \midrule
-Serverdaten* & Beschreibung:
+Serverdaten* & Beschreibung: \bigskip
 
-Server- / Gerätebasis:
+Server- / Gerätebasis: \bigskip
 
-Betriebssystem:
+Betriebssystem: \bigskip
 
-Besonderheiten:
+Besonderheiten: \bigskip
 
-Redundanzkonzept:
+Redundanzkonzept: \bigskip
 
-Geforderte Verfügbarkeit:
+Geforderte Verfügbarkeit: \bigskip
 
-Systemverwaltung / Administration:
+Systemverwaltung / Administration: \bigskip
 
-Backup:
+Backup: \bigskip
 
 Restore:\tabularnewline
+\midrule
 Service Management & Wollt ihr am gemeinsamen SLA teilnehmen?
-
+\bigskip
 (Unser Vorschlag: Verfügbarkeit Mo-Sa, 04:00-22:00 Uhr,
 99\%)\tabularnewline
+\midrule
 Incident Management & Der Benutzerservice nimmt Mails entgegen, trägt
 sie ins bereitgestellte Ticketsystem ein und informiert die betroffenen
 Gruppen über das neue Ticket. Wollt ihr am gemeinsamen Benutzerservice
 teilnehmen?
 
-Welche Gruppenmitglieder nehmen am Benutzerservice teil?\tabularnewline
+\bigskip
+Welche Gruppenmitglieder nehmen am Benutzerservice teil?
+\tabularnewline
+\midrule
 IT Security Incident Management & Das Computer Security Incident
 Response Team (CSIRT) reagiert gemeinsam auf Sicherheitsvorfälle und
 behandelt diese angemessen. Wollt ihr am gemeinsamen CSIRT teilnehmen?
 
-Welche Gruppenmitglieder nehmen am CSIRT teil?\tabularnewline
+\bigskip
+Welche Gruppenmitglieder nehmen am CSIRT teil?
+\tabularnewline
+\midrule
 Problem Management & Wollt ihr am gemeinsamen Problem Management
 teilnehmen?
 
+\bigskip
 Wer wird für eure Gruppe Problem Manager?\tabularnewline
 Change Management & Wollt ihr am gemeinsamen Change Management (nach
 ITIL) teilnehmen?
 
+\bigskip
 Möchtet ihr dafür jemanden als Change Manager benennen?
 
+\bigskip
 Welche Standard Changes möchtet ihr mit aufnehmen lassen? (Mit
-Ablaufbeschreibung)\tabularnewline
+Ablaufbeschreibung)
+
+\bigskip
+\tabularnewline
 \bottomrule
 \end{longtable}
 
@@ -1002,6 +1061,34 @@ optional.
 
 \subsection{}\label{section}
 \newpage
+\subsection{Organisatorische
+Informationen}\label{organisatorische-informationen}
+
+\subsubsection{Technisch relevante Gesetze und
+Verordnungen}\label{technisch-relevante-gesetze-und-verordnungen}
+
+\begin{itemize}
+\item
+  \href{http://www.gesetze-im-internet.de/tkg_2004/index.html}{Telekommunikationsgesetz
+  (TKG)}
+\item
+  \href{http://www.gesetze-im-internet.de/tk_v_2005/index.html}{Telekommunikationsüberwachungsverordnung
+  (TKüV)}
+\item
+  \href{http://www.gesetze-im-internet.de/urhg/index.html}{Urheberrechtsgesetz
+  (UrhG)}
+\item
+  \href{https://www.gesetze-im-internet.de/tk_v_2005/index.html\#BJNR313600005BJNE001301308}{Verordnung
+  über die technische und organisatorische Umsetzung von Maßnahmen zur
+  Überwachung der Telekommunikation}
+\item
+  \href{http://www.gesetze-im-internet.de/elektrog/index.html}{Elektro-
+  und Elektronikgerätegesetz (ElektroG)}
+\item
+  \href{http://www.gesetze-im-internet.de/sigg_2001/}{Signaturgesetz
+  (SigG)}
+\end{itemize}
+
 \subsection{Technische Informationen}\label{technische-informationen}
 
 \subsubsection{Liste der IP Adressen und DNS-Namen pro
@@ -1030,32 +1117,5 @@ Süd Mail & /24 & & &\tabularnewline
 \end{longtable}
 
 \end{sidewaystable}
-\subsection{Organisatorische
-Informationen}\label{organisatorische-informationen}
-
-\subsubsection{Technisch relevante Gesetze und
-Verordnungen}\label{technisch-relevante-gesetze-und-verordnungen}
-
-\begin{itemize}
-\item
-  \href{http://www.gesetze-im-internet.de/tkg_2004/index.html}{Telekommunikationsgesetz
-  (TKG)}
-\item
-  \href{http://www.gesetze-im-internet.de/tk_v_2005/index.html}{Telekommunikationsüberwachungsverordnung
-  (TKüV)}
-\item
-  \href{http://www.gesetze-im-internet.de/urhg/index.html}{Urheberrechtsgesetz
-  (UrhG)}
-\item
-  \href{https://www.gesetze-im-internet.de/tk_v_2005/index.html\#BJNR313600005BJNE001301308}{Verordnung
-  über die technische und organisatorische Umsetzung von Maßnahmen zur
-  Überwachung der Telekommunikation}
-\item
-  \href{http://www.gesetze-im-internet.de/elektrog/index.html}{Elektro-
-  und Elektronikgerätegesetz (ElektroG)}
-\item
-  \href{http://www.gesetze-im-internet.de/sigg_2001/}{Signaturgesetz
-  (SigG)}
-\end{itemize}
 
 \end{document}
