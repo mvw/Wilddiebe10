@@ -491,7 +491,7 @@ Datei Süd & Sascha Girrulat & Hetzner Online GmbH & Debian GNU/Linux 8.5 \\
 \end{center}
 \end{minipage}\bigskip
 
-Wo sich diese - aus finanziellen Erwägungen getroffene - Entscheidung später auf das Sicherheitskonzept auswirkt, haben wir dies entsprechend dokumentiert.
+Wo sich diese -- aus finanziellen Erwägungen getroffene -- Entscheidung später auf das Sicherheitskonzept auswirkt, haben wir dies entsprechend dokumentiert.
 
 \subsection{Dateiservice}
 Zur Überlegung standen mehrere Softwarelösungen zur Bereitstellung von Dateidiensten:
@@ -510,7 +510,7 @@ Wir haben uns schließlich entschlossen SAMBA\footcite{samba} zu nutzen und den 
 \item über die Kommandozeile aus der Ferne administriert werden kann
 \item Transportverschlüsselung unterstützt (AES-CCM-128)
 \item für fast alle Unix-Derivate (auf dem Server) verfügbar ist
-\item SMB/CIFS-Freigaben bietet, die sowohl unter Windows als auch Linux direkt in die Verzeichnisstruktur des Clients eingebunden werden können, so dass aus jeder Anwendung heraus direkt das Speichern und Laden vom Server möglich ist
+\item SMB/CIFS-Freigaben bietet, die sowohl unter Windows, als auch Linux direkt in die Verzeichnisstruktur des Clients eingebunden werden können, so dass aus jeder Anwendung heraus direkt das Speichern und Laden vom Server möglich ist
 \item auch langfristig keine Lizenzkosten verursacht
 \end{itemize}
 
@@ -522,7 +522,7 @@ Wir haben uns schließlich entschlossen SAMBA\footcite{samba} zu nutzen und den 
 \label{sec:sicherheitskonzept}
 Es existiert eine Vielzahl von IT-Sicherheitsstandards\footcite{wikiCyberSecStandards}. Das vorliegende Sicherheitskonzept richtet sich nach den Leitlinien des \emph{BSI IT-Grundschutz}\footcite{grundschutz}.\\
 
-Kernziel des Projektes ist die Inbetriebnahme zweier Dateiserver. Daher werden im Folgenden nur Grundschutzaspekte modelliert, die für den sicheren Betrieb des Dateiservices - mittelbar oder unmittelbar - relevant sind. Die Absicherung anderer Teilaspekte der Gesamtumgebung - wie auch die Absicherung der Gesamtumgebung an sich - bleibt dabei unberücksichtigt. Eine abschließende Zertifizierung nach ISO/IEC 27001 ist nicht Bestandteil des Projektumfangs.\\
+Kernziel des Projektes ist die Inbetriebnahme zweier Dateiserver. Daher werden im Folgenden nur Grundschutzaspekte modelliert, die für den sicheren Betrieb des Dateiservices -- mittelbar oder unmittelbar -- relevant sind. Die Absicherung anderer Teilaspekte der Gesamtumgebung -- wie auch die Absicherung der Gesamtumgebung an sich -- bleibt dabei unberücksichtigt. Eine abschließende Zertifizierung nach ISO/IEC 27001 ist nicht Bestandteil des Projektumfangs.\\
 
 Aus technischer Sicht basiert das Sicherheitskonzept auf der \emph{Philosophie der Verteidigung in der Tiefe (Defense in depth)}\footcite{wikiDiD}\footcite{kuipers2006control}: Wir verlassen uns nicht auf eine einzelne Sicherheitsmaßnahme (Aus eigener Anschauung kennen wir die Argumentation "`Wir brauchen kein gutes Passwort, der Server steht doch hinter der Firewall"' von Administratoren mit sicherheitskritischen Aufgaben), sondern versuchen einem potentiellen Angreifer stets mehrere (voneinander unabhängige) Hürden in den Weg zu stellen. Da aus Ressourcengründen nur jeweils ein Server für Nord und einer für Süd verwendet wird, sind die Möglichkeiten der praktischen Umsetzung hierzu natürlich auf Softwarelösungen beschränkt.
 
@@ -534,17 +534,17 @@ Seien
 \begin{itemize}
 \item $n$ die Anzahl der von uns identifizierten BSI IT-Grundschutz Maßnahmen
 \item $m_i$ die i-te Grundschutz-Maßnahme aus der Tabelle \ref{tab:massnahmen} im Anhang
-\item $siv(m_i)$ (Security Index Value) das Gewicht \footnote{Motivation der Gewichtung: Die tatsächliche Effektivität und Wirksamkeit von technischen Maßnahmen ist leichter zu überprüfen als die von rein organisatorischen Festlegungen („Papier ist geduldig“)} der i-ten Maßnahme mit
+\item $siv(m_i)$ (Security Index Value) das Gewicht \footnote{Motivation der Gewichtung: Die tatsächliche Effektivität und Wirksamkeit von technischen Maßnahmen ist leichter zu überprüfen, als die von rein organisatorischen Festlegungen („Papier ist geduldig“)} der $i$-ten Maßnahme mit
 \begin{equation}
 siv(x)=
 \begin{cases}
-    0,& \text{wenn Dateiserverguppen nicht verantwortlich für x }\\
-    1,& \text{wenn x organisatorische Maßnahme}\\
-    2,& \text{wenn x technische Maßnahme von normaler Bedeutung}\\
-    4,& \text{wenn x technische Maßnahme von herausragender Bedeutung}
+    0,& \text{wenn Dateiserverguppen nicht verantwortlich für $x$ }\\
+    1,& \text{wenn $x$ organisatorische Maßnahme}\\
+    2,& \text{wenn $x$ technische Maßnahme von normaler Bedeutung}\\
+    4,& \text{wenn $x$ technische Maßnahme von herausragender Bedeutung}
 \end{cases}
 \end{equation}
-\item $f(m_i)$ der Grad der Erfüllung der Maßnahme (zwischen 0 und 1), zu entnehmen aus der folgenden Tabelle: \\
+\item $f(m_i)$ der Grad der Erfüllung der Maßnahme (zwischen $0$ und $1$), zu entnehmen aus der folgenden Tabelle: \\
 
 \begin{minipage}{\textwidth}
 \begin{center}
@@ -579,7 +579,7 @@ SI:=\frac{\sum_{i=1}^n siv(m_i)\times f(m_i)}{\sum_{i=1}^{n}siv(m_i)}
 \end{equation}
 \end{center}
 
-Ein SI von $1,0$ bedeutet also, dass alle vom BSI IT Grundschutz vorgeschlagenen Maßnahmen umgesetzt wurden (soweit sie für den Dateiserver-Betrieb relevant sind). Die aktuelle Entwicklung des SI haben wir in unregelmäßigen Abständen - mindestens jedoch einmal wöchentlich - dokumentiert. Der zum Abgabetermin wirksame SI ist $0,95$.\\
+Ein SI von $1,0$ bedeutet also, dass alle vom BSI IT Grundschutz vorgeschlagenen Maßnahmen umgesetzt wurden (soweit sie für den Dateiserver-Betrieb relevant sind). Die aktuelle Entwicklung des SI haben wir in unregelmäßigen Abständen -- mindestens jedoch einmal wöchentlich -- dokumentiert. Der zum Abgabetermin wirksame SI ist $0,95$.\\
 
 Der SI kann und soll eine eingehende Betrachtung der aktuellen Sicherheitslage nicht ersetzen. Für eine grobe Abschätzung der IT Sicherheitsvorkehrungen, wie sie etwa im Management erforderlich ist, kann dieser Index jedoch genutzt werden.
 
@@ -598,9 +598,9 @@ Der SI kann und soll eine eingehende Betrachtung der aktuellen Sicherheitslage n
 \toprule
 Kategorie & Definition \\
 \midrule
-Normal & Die Schadensauswirkungen sind begrenzt (etwa auf eine einzelne Verkaufsstelle) und überschaubar. \newline Die maximal tragbare Ausfallzeit übersteigt 4 Tage.\\[0.3cm]
-Hoch & Die Schadensauswirkungen können beträchtlich sein und z.B. zum Ausfall eines einzelnen Dienstes für alle Verkaufsstellen führen. \newline Die maximal tragbare Ausfallzeit beträgt zwischen 2 und 4 Tagen. \\[0.3cm]
-Sehr hoch & Die Schadensauswirkungen können den Bestand der vereinigten Back-werke existentiell bedrohen oder das Betriebsergebnis des Jahres katastrophal beschädigen. \newline Die maximal tragbare Ausfallzeit liegt unter 2 Tagen. \\
+Normal & Die Schadensauswirkungen sind begrenzt (etwa auf eine einzelne Verkaufsstelle) und überschaubar. \newline Die maximal tragbare Ausfallzeit übersteigt vier Tage.\\[0.3cm]
+Hoch & Die Schadensauswirkungen können beträchtlich sein und z.B. zum Ausfall eines einzelnen Dienstes für alle Verkaufsstellen führen. \newline Die maximal tragbare Ausfallzeit beträgt zwischen zwei und vier Tagen. \\[0.3cm]
+Sehr hoch & Die Schadensauswirkungen können den Bestand der vereinigten Back-werke existentiell bedrohen oder das Betriebsergebnis des Jahres katastrophal beschädigen. \newline Die maximal tragbare Ausfallzeit liegt unter zwei Tagen. \\
 \bottomrule
 \end{tabular}
 \end{center}
