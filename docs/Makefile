@@ -9,6 +9,7 @@
 SOURCE=Projektdokumentation.tex
 PDF=$(SOURCE:tex=pdf)
 export TEXMFHOME=$(PWD)/texmf
+UNAME_S := $(shell uname -s)
 
 all: docs 
 
@@ -42,8 +43,9 @@ clean:
 		*.out \
 		includes/*.aux \
 		*.aux || echo "Skip cleanup, pls do make clean manually."
-	
+
 setup:
+ifeq ($(UNAME_S),Linux)
 	sudo apt-get install texlive-latex-recommended \
 											texlive-extra-utils \
 											texlive-latex-extra \
@@ -53,6 +55,12 @@ setup:
 											texlive-bibtex-extra \
 											texlive-generic-extra \
 											biber
+endif
+ifeq ($(UNAME_S),FreeBSD)
+	pkg install latex-mk
+	pkg install latex-biber
+	pkg install tex-dvipsk
+endif
 
 setup_tex:
 	texhash $(TEXMFHOME)
