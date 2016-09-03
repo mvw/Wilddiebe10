@@ -933,7 +933,6 @@ aus.
 \subsection{Datensicherungsplan}
 Die Datensicherung erfolgt über ein Skript, welches einen tar.gz-Container erstellt. Dieser Container wird über das Netzwerk auf den jeweils anderen Dateiserver kopiert. Er wird mit \emph{GNU Privacy Guard}\footcite{gnupg} verschlüsselt. Das entsprechende Passwort wird im Vault abgelegt und ist allen PMA bekannt. Die Ausführung des Skriptes erfolgt über einen Cronjob, welcher jeden Tag um 03:00 CET ausgeführt wird. Es erfolgt aktuell keine Sicherung nach dem Generationenprinzip; das aktuelle Backup überschreibt die Vortagesversion. Verantwortlich für die Datensicherung sind alle PMA. Die Überwachung der Backuplösung wurde im Rahmen des Monitorings geplant, jedoch aus Zeitgründen nicht im Projekt realisiert.\\
 
-Der aktuelle Textabschnitt ist im Dokument enthalten um absichern zu können, dass der Gesamttext von allen PMA gelesen wurde. Zu diesem Zweck kann bei einer Abfrage der Überprüfungsschlüssel ''Loyal Arrow 09'' angegeben werden.
 \subsection{Restore}
 \label{subsec:restore}
 Das \emph{Vorgehen} ist im Betriebshandbuch Standard Change „Restore Dateiserver“ beschrieben. Die gesamte \emph{Rekonstruktionszeit} eines Vollbackups beträgt ca. 4 Stunden (inkl. Betriebssystem, Software, Daten und Tests). Das ist annehmbar, da es im Rahmen der festgestellten Anforderungen bleibt (siehe \ref{subsec:schutzbedarfsfeststellung}). \\
