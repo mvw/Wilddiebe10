@@ -9,6 +9,12 @@
       - tar
       - openssh-client
 
+- name: "Ensure host key of remote machine is known"
+  known_hosts:
+    path: /root/.ssh/known_hosts
+    name: "{{ _backup_remote_host }}"
+    key: "{{ _backup_remote_host }} {{ _backup_remote_host_key }}"
+
 - name: "Ensure backup script exists"
   copy:
     src: ../backup.sh
