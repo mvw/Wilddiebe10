@@ -1,8 +1,12 @@
-Grundlagen: Christoph
-Projektorganisation & Qualitätssicherung: Sascha
-Funktionales Grobkonzept: Sascha
-Sicherheitskonzept: Christoph
-Datensicherungskonzept: Patrick
-Technische Systembeschreibung: Patrick: DNS, OpenVPN, Backup; Marc: Samba, Virensanner, Jörg: Firewall, Benutzerverwaltung, SSH; Sascha: Syslog, Erzeugen der Benutzer; Christoph: Quota
-Ausblick: Jörg
-Fazit: Jörg
+﻿02min Grundlagen: Christoph
+12min Projektorganisation & Qualitätssicherung: Sascha
+03min Funktionales Grobkonzept: Sascha
+10min Sicherheitskonzept: Christoph
+08min Datensicherungskonzept: Patrick
+03min Technische Systembeschreibung: Patrick: DNS, OpenVPN, Backup; 
+06min Marc: Samba, Virensanner, 
+05min Jörg: Firewall, Benutzerverwaltung, SSH; 
+03min Sascha: Syslog, Erzeugen der Benutzer; 
+03min Christoph: Quota
+03min Ausblick: Jörg
+02min Fazit: Jörg
